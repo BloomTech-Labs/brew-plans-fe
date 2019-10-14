@@ -4,11 +4,11 @@ import { Formik } from 'formik';
 import { withTheme } from 'react-native-paper';
 import SubmitButton from './SubmitButton';
 
-const SignUpForm = props => {
+const LoginForm = props => {
   const theme = props.theme;
   return (
     <Formik
-      initialValues={{ username: '', email: '', password: '' }}
+      initialValues={{ username: '', password: '' }}
       onSubmit={values => console.log(values)}
     >
       {props => (
@@ -19,13 +19,6 @@ const SignUpForm = props => {
             onBlur={props.handleBlur('username')}
             value={props.values.username}
             placeholder='Please enter username'
-          />
-          <TextInput
-            style={theme.formInput}
-            onChangeText={props.handleChange('email')}
-            onBlur={props.handleBlur('email')}
-            value={props.values.email}
-            placeholder='Please enter email'
           />
           <TextInput
             style={theme.formInput}
@@ -41,4 +34,4 @@ const SignUpForm = props => {
   );
 };
 
-export default withTheme(SignUpForm);
+export default withTheme(LoginForm);

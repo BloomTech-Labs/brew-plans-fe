@@ -8,7 +8,10 @@ export default {
   },
 
   formInput: {
-    marginBottom: 16,
-    borderBottomColor: 'black'
+    marginBottom: 16
+  },
+
+  submitButton: {
+    backgroundColor: 'green'
   }
 };
