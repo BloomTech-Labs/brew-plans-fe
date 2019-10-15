@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import Theme from './Theme';
 import BottomNav from './BottomNav';
 
+// Layout
 const Layout = props => {
   return (
     <Theme>
