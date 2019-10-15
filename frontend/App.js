@@ -19,22 +19,22 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.onHandleChange)
+    console.log(this.props)
     return (
         <View style={styles.container}>
-          <Text>{this.props.username}</Text>
+          <Text>{this.props.user.username}</Text>
           <TextInput 
-          value={this.props.username} 
+          value={this.props.user.username} 
           style={styles.input} 
           onChangeText={(text) => this.handleChange('username', text)}
           />
           <TextInput 
-          value={this.props.password} 
+          value={this.props.user.password} 
           style={styles.input} 
           onChangeText={(text) => this.handleChange('password', text)}
           />
           <TextInput 
-          value={this.props.email} 
+          value={this.props.user.email} 
           style={styles.input} 
           onChangeText={(text) => this.handleChange('email', text)}
           />
@@ -60,10 +60,12 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {
-      username: state.user.username,
-      password: state.user.password,
-      email: state.user.email
+    user: {
+      username: state.user.user.username,
+      password: state.user.user.password,
+      email: state.user.user.email
     }
+  };
 };
 
 const mapDispatchToProps = dispatch => {
