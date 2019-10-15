@@ -19,7 +19,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
         <View style={styles.container}>
           <Text>{this.props.user.username}</Text>
@@ -38,7 +37,7 @@ class App extends Component {
           style={styles.input} 
           onChangeText={(text) => this.handleChange('email', text)}
           />
-          <Button onPress={() => this.handleSubmit(this.props.user)} title="Yeet"></Button>
+          <Button onPress={() => this.handleSubmit(this.props.user)} title="Press"></Button>
         </View>
     );
   }
