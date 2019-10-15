@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, TextInput, View } from 'react-native';
+import { TextInput, View } from 'react-native';
 import { Formik } from 'formik';
 import { withTheme } from 'react-native-paper';
 import SubmitButton from './SubmitButton';

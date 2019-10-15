@@ -8,10 +8,15 @@ export default {
   },
 
   formInput: {
-    marginBottom: 16
+    marginBottom: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: 'lightgray',
+    width: '90%'
   },
 
   submitButton: {
-    backgroundColor: 'green'
+    backgroundColor: 'green',
+    width: '60%',
+    fontSize: 56
   }
 };
