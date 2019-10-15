@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, TextInput, View } from 'react-native';
+import { connect } from 'react-redux';
 import { Formik } from 'formik';
 import { withTheme } from 'react-native-paper';
 import SocialButton from './SocialButton';
@@ -67,4 +68,25 @@ const SignUpForm = props => {
   );
 };
 
-export default withTheme(SignUpForm);
+const mapStateToProps = state => {
+  return {
+    user: {
+      username: state.user.user.username,
+      password: state.user.user.password,
+      email: state.user.user.email
+    }
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onHandleChange: (inputField, inputValue) =>
+      dispatch(handleChange(inputField, inputValue)),
+    onHandleSubmit: user => dispatch(handleSubmit(user))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withTheme(SignUpForm));
