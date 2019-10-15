@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import Layout from './src/components/Layout/Layout';
 import SignUpForm from './src/components/UserForms/SignUpForm';
+import { Text } from 'react-native-paper';
 
 const App = () => {
   return (
     <Layout>
-      <SignUpForm />
+      <Text>Home Page</Text>
     </Layout>
   );
 };
