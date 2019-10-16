@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import Theme from './Theme';
-import BottomNav from './BottomNav';
+import Navbar from './Navbar';
 
 // Layout
 const Layout = props => {

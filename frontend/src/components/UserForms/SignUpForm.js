@@ -14,20 +14,8 @@ const SignUpForm = props => {
       onSubmit={values => console.log(values)}
     >
       {props => (
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%'
-          }}
-        >
-          <View
-            style={{
-              width: '100%',
-              alignItems: 'center',
-              marginBottom: 48
-            }}
-          >
+        <View style={theme.formView}>
+          <View style={theme.formInputsContainer}>
             <TextInput
               style={theme.formInput}
               onChangeText={props.handleChange('username')}
@@ -51,14 +39,7 @@ const SignUpForm = props => {
             />
           </View>
           <SubmitButton onPress={props.handleSubmit} title='Sign Up' />
-          <View
-            style={{
-              flexDirection: 'row',
-              width: '50%',
-              justifyContent: 'space-between',
-              marginTop: 48
-            }}
-          >
+          <View style={theme.formSocialsContainer}>
             <SocialButton icon='book' />
             <SocialButton icon='book' />
           </View>
