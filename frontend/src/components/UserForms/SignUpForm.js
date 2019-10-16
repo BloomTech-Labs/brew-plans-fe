@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, TextInput, View } from 'react-native';
+import { TextInput, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Formik } from 'formik';
 import { withTheme } from 'react-native-paper';
@@ -8,13 +8,15 @@ import SubmitButton from './SubmitButton';
 
 import {
   handleSubmit,
-  handleChange
+  handleChange,
+  // getSeededRecipes
 } from '../../store/actions/index.js'
 
 const SignUpForm = props => {
   const theme = props.theme;
   const newUser = props.newUser;
-  console.log(newUser)
+  // const seedRecipes = props.onGetSeedRecipes();
+  
 
   const handleSubmit = () => {
     props.onHandleSubmit();
@@ -89,13 +91,13 @@ const SignUpForm = props => {
 };
 
 const mapStateToProps = state => {
-  console.log('mapStateToProps state:', state)
   return {
     newUser: {
       username: state.user.newUser.username,
       password: state.user.newUser.password,
       email: state.user.newUser.email
-    }
+    },
+    // seededRecipes: state.seededRecipes.seededRecipes
   };
 };
 
@@ -103,7 +105,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onHandleChange: (inputField, inputValue) =>
       dispatch(handleChange(inputField, inputValue)),
-    onHandleSubmit: () => dispatch(handleSubmit())
+    onHandleSubmit: () => dispatch(handleSubmit()),
+    // onGetSeedRecipes: () => dispatch(getSeededRecipes())
   };
 };
 

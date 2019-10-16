@@ -4,7 +4,6 @@ import {
 } from './actionTypes.js';
 
 export const handleSubmit = () => {
-  
   return {
     type: SUBMIT_USER_INPUT
   };

@@ -6,7 +6,6 @@ import { Text } from 'react-native-paper';
 const App = () => {
   return (
     <Layout>
-      <Text>Home Page</Text>
       <SignUpForm />
     </Layout>
   );

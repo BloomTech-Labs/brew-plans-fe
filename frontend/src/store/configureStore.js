@@ -1,9 +1,11 @@
 import { createStore, combineReducers } from 'redux';
 
 import userReducer from './reducers/userReducer.js';
+import seededRecipeReducer from './reducers/seededRecipeReducer.js';
 
 const rootReducer = combineReducers({
-  user: userReducer
+  user: userReducer,
+  seededRecipes: seededRecipeReducer
 });
 
 const configureStore = () => {

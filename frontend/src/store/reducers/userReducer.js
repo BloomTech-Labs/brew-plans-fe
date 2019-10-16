@@ -19,12 +19,13 @@ const userReducer = (state = initialState, action) => {
     // update state when new user enters username/password/email
     case UPDATE_USER_INPUT:
       console.log('state: ', state);
-      // console.log('update_user payload:', action.payload);
+      console.log('update_user payload:', action.payload);
       // grab the type of input and the value of input from the payload
       const { type, value } = action.payload;
       // return old state spread + new value entered from newUser
       // immutability ensures this only affects newUser state
       return {
+        ...state,
         newUser: {
           ...state.newUser,
           [type]: value
@@ -41,7 +42,7 @@ const userReducer = (state = initialState, action) => {
         userCredentials
         )
         .then(res => {
-          console.log(res);
+          console.log(res.data);
         })
         .catch(err => {
           console.log(err);
