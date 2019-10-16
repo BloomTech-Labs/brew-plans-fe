@@ -9,13 +9,11 @@ import SubmitButton from './SubmitButton';
 import {
   handleSubmit,
   handleChange,
-  // getSeededRecipes
 } from '../../store/actions/index.js'
 
 const SignUpForm = props => {
   const theme = props.theme;
   const newUser = props.newUser;
-  // const seedRecipes = props.onGetSeedRecipes();
   
 
   const handleSubmit = () => {
@@ -54,21 +52,21 @@ const SignUpForm = props => {
               style={theme.formInput}
               onChangeText={(value) => handleChange('username', value)}
               onBlur={props.handleBlur('username')}
-              value={props.values.username}
+              value={newUser.username}
               placeholder='Please enter username'
             />
             <TextInput
               style={theme.formInput}
               onChangeText={(value) => handleChange('email', value)}
               onBlur={props.handleBlur('email')}
-              value={props.values.email}
+              value={newUser.email}
               placeholder='Please enter email'
             />
             <TextInput
               style={theme.formInput}
               onChangeText={(value) => handleChange('password', value)}
               onBlur={props.handleBlur('password')}
-              value={props.values.password}
+              value={newUser.password}
               placeholder='Please enter password'
             />
           </View>
@@ -97,7 +95,6 @@ const mapStateToProps = state => {
       password: state.user.newUser.password,
       email: state.user.newUser.email
     },
-    // seededRecipes: state.seededRecipes.seededRecipes
   };
 };
 
@@ -105,8 +102,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onHandleChange: (inputField, inputValue) =>
       dispatch(handleChange(inputField, inputValue)),
-    onHandleSubmit: () => dispatch(handleSubmit()),
-    // onGetSeedRecipes: () => dispatch(getSeededRecipes())
+    onHandleSubmit: () => dispatch(handleSubmit())
   };
 };
 

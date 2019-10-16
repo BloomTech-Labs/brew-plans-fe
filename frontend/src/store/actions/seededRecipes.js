@@ -1,6 +1,6 @@
 import {
   GET_SEEDED_RECIPES
-} from '../actions/actionTypes.js';
+} from './actionTypes.js';
 
 export const getSeededRecipes = () => {
   return {

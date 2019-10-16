@@ -11,8 +11,7 @@ const initialState = {
 
 const seededRecipeReducer = (state = initialState, action) => {
   switch(action.type) {
-
-    // make get request to backend to get seeded recipes
+// make get request to backend to get seeded recipes
     case GET_SEEDED_RECIPES:
       axios.get('https://backend-development-coffee.herokuapp.com/seededrecipes/all')
         .then(res => {

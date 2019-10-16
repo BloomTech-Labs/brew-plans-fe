@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {
   UPDATE_USER_INPUT,
-  SUBMIT_USER_INPUT
+  SUBMIT_USER_INPUT,
+  GET_USER_INFO
 } from '../actions/actionTypes.js'
 
 const initialState = {
@@ -9,6 +10,11 @@ const initialState = {
     username: '',
     password: '',
     email: ''
+  },
+  currentUser: {
+    username: '',
+    email: '',
+    id: ''
   }
 }
 
@@ -41,6 +47,16 @@ const userReducer = (state = initialState, action) => {
         'https://backend-development-coffee.herokuapp.com/users/register', 
         userCredentials
         )
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+
+    case GET_USER_INFO:
+      const { userId } = action.payload;
+      axios.get(`https://backend-development-coffee.herokuapp.com/users/${userId}`)
         .then(res => {
           console.log(res.data);
         })
