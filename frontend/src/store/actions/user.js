@@ -3,11 +3,10 @@ import {
   SUBMIT_USER_INPUT
 } from './actionTypes.js';
 
-export const handleSubmit = (user) => {
+export const handleSubmit = () => {
   
   return {
-    type: SUBMIT_USER_INPUT,
-    payload: user
+    type: SUBMIT_USER_INPUT
   };
 }
 

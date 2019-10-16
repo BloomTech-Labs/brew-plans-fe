@@ -1,12 +1,22 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import Theme from './Theme';
-import { ThemeProvider } from 'react-native-paper';
+import BottomNav from './BottomNav';
 
-const Layout = () => {
+// Layout
+const Layout = props => {
   return (
     <Theme>
-      <View style={{ flex: 1 }}></View>
+      <View
+        style={{
+          flex: 1,
+          padding: 32,
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        {props.children}
+      </View>
     </Theme>
   );
 };
