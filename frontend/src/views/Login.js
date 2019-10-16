@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
 import Layout from '../components/Layout/Layout';
 import LoginForm from '../components/UserForms/LoginForm';
 
-const SignUp = props => {
+const Login = props => {
   return (
     <Layout>
       <LoginForm />
@@ -11,4 +10,4 @@ const SignUp = props => {
   );
 };
 
-export default SignUp;
+export default Login;

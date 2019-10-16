@@ -1,16 +1,16 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+// import { Text, Button, withTheme } from 'react-native-paper';
 import Layout from '../components/Layout/Layout';
+import LandingButton from '../components/Landing/LandingButton';
 
 const Landing = props => {
   return (
     <Layout>
-      <Text>Landing Page</Text>
-      <Button
+      <LandingButton
         title='Sign Up'
         onPress={() => props.navigation.navigate('SignUp')}
       />
-      <Button
+      <LandingButton
         title='Login'
         onPress={() => props.navigation.navigate('Login')}
       />

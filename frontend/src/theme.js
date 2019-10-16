@@ -1,15 +1,17 @@
 import { DefaultTheme } from 'react-native-paper';
 
-const colors = {
-  primary: 'orange'
-};
-
 const fontSizes = [8, 16, 24, 32, 40, 48, 56];
 
 const space = [8, 16, 24, 32, 40, 48, 56];
 
 export default {
   ...DefaultTheme,
+
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#ffa537',
+    background: '#ece6cf'
+  },
 
   formView: {
     alignItems: 'center',
@@ -31,7 +33,6 @@ export default {
   },
 
   submitButton: {
-    backgroundColor: colors.primary,
     width: '60%'
   },
 
@@ -39,6 +40,6 @@ export default {
     flexDirection: 'row',
     width: '50%',
     justifyContent: 'space-between',
-    marginTop: 48
+    marginTop: space[5]
   }
 };

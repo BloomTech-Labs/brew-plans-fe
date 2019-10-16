@@ -30,7 +30,7 @@ const LoginForm = props => {
               placeholder='Please enter password'
             />
           </View>
-          <SubmitButton onPress={props.handleSubmit} title='Sign Up' />
+          <SubmitButton onPress={props.handleSubmit} title='Login' />
           <View style={theme.formSocialsContainer}>
             <SocialButton icon='book' />
             <SocialButton icon='book' />

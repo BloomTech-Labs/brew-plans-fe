@@ -12,7 +12,8 @@ const Layout = props => {
           flex: 1,
           padding: 32,
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          backgroundColor: '#ece6cf'
         }}
       >
         {props.children}
