@@ -1,7 +1,7 @@
 import React from 'react';
-import { TextInput, View } from 'react-native';
+import { View } from 'react-native';
 import { Formik } from 'formik';
-import { withTheme } from 'react-native-paper';
+import { withTheme, TextInput } from 'react-native-paper';
 import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
 
@@ -20,6 +20,8 @@ const LoginForm = props => {
               onChangeText={props.handleChange('username')}
               onBlur={props.handleBlur('username')}
               value={props.values.username}
+              label='Username'
+              mode='outlined'
               placeholder='Please enter username'
             />
             <TextInput
@@ -27,6 +29,8 @@ const LoginForm = props => {
               onChangeText={props.handleChange('password')}
               onBlur={props.handleBlur('password')}
               value={props.values.password}
+              label='Password'
+              mode='outlined'
               placeholder='Please enter password'
             />
           </View>
