@@ -23,7 +23,7 @@ const initialState = {
   },
   loadingError: '',
   allUsers: [],
-  isLoggedIn: true
+  isLoggedIn: false
 };
 
 // reducer performs actions on/with user state
