@@ -5,10 +5,10 @@ import { withTheme } from 'react-native-paper';
 const SubmitButton = props => {
   const theme = props.theme;
   return (
-    <Button style={theme.submitButton} mode='contained' onPress={props.onPress}>
+    <Button style={{ width: '50%' }} mode='contained' onPress={props.onPress}>
       {props.title}
     </Button>
   );
 };
 
-export default withTheme(SubmitButton);
+export default SubmitButton;

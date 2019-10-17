@@ -10,7 +10,8 @@ export default {
   colors: {
     ...DefaultTheme.colors,
     primary: '#ffa537',
-    background: '#ece6cf'
+    background: '#ece6cf',
+    surface: '#0f1f40'
   },
 
   formView: {
@@ -22,24 +23,25 @@ export default {
   formInputsContainer: {
     width: '100%',
     alignItems: 'center',
-    marginBottom: space[3]
+    marginBottom: space[2]
   },
 
   formInput: {
-    marginBottom: space[2],
-    borderBottomWidth: 1,
-    borderBottomColor: 'lightgray',
-    width: '90%'
-  },
-
-  submitButton: {
-    width: '60%'
+    marginBottom: space[1],
+    width: '90%',
+    fontSize: 3
   },
 
   formSocialsContainer: {
-    flexDirection: 'row',
     width: '50%',
+    marginTop: space[4],
+    alignItems: 'center'
+  },
+
+  formIcons: {
+    flexDirection: 'row',
+    width: '100%',
     justifyContent: 'space-between',
-    marginTop: space[5]
+    textAlign: 'center'
   }
 };
