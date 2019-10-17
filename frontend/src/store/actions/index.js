@@ -1,7 +1,8 @@
 export { 
   handleChange, 
   handleUserSignup,
-  getUserInfo
+  getUserInfo,
+  googleSignIn
 } from './user.js';
 
 export {

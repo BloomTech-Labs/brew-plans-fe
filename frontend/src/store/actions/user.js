@@ -1,4 +1,5 @@
 import axios from 'axios';
+import * as Google from 'expo-google-app-auth';
 
 import {
   UPDATE_SIGNUP_INPUT,
@@ -8,7 +9,10 @@ import {
   GET_USER_INFO_START,
   GET_USER_INFO_SUCCESS,
   GET_ALL_USER_INFO_SUCCESS,
-  GET_USER_INFO_FAIL
+  GET_USER_INFO_FAIL,
+  GOOGLE_SIGNIN_START,
+  GOOGLE_SIGNIN_SUCCESS,
+  GOOGLE_SIGNIN_FAIL
 } from './actionTypes.js';
 
 export const handleUserSignup = (userCredentials) => dispatch => {
@@ -60,5 +64,21 @@ export const getUserInfo = (userId) => dispatch => {
     .catch(err => {
       dispatch({ type: GET_USER_INFO_FAIL, payload: err })
     })
+  }
+}
+
+export const googleSignIn = (config) => async dispatch => {
+  dispatch({ type: GOOGLE_SIGNIN_START })
+  try {
+    const { type, accessToken, user } = await Google.logInAsync(config);
+    if (type === 'success') {
+      /* `accessToken` is now valid and can be used to get data from the Google API with HTTP requests */
+      // console.log('type: ', type);
+      // console.log('accessToken: ', accessToken);
+      // console.log('user: ', user);
+      await dispatch({ type: GOOGLE_SIGNIN_SUCCESS, payload: user })
+    }
+  } catch ({ message }) {
+    dispatch({ type: GOOGLE_SIGNIN_FAIL, payload: message })
   }
 }

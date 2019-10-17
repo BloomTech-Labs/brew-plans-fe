@@ -8,31 +8,16 @@ import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
 
 import { handleUserSignup, handleChange } from '../../store/actions/index.js';
-import * as Google from 'expo-google-app-auth';
+
 
 
 const SignUpForm = props => {
-  console.log('signupformprops: ', props)
+  // console.log('signupformprops: ', props)
   const loginConfig = {
     androidClientId: "449923889220-pa3veecaq72o4tiairfrputrj7f0dp2n.apps.googleusercontent.com",
     scopes: ['profile', 'email'],
   }
   
-  const googleSignIn = async () => {
-    try {
-      const { type, accessToken, user } = await Google.logInAsync(loginConfig);
-      if (type === 'success') {
-        /* `accessToken` is now valid and can be used to get data from the Google API with HTTP requests */
-        // console.log('type: ', type);
-        // console.log('accessToken: ', accessToken);
-        console.log('user: ', user);
-        await props.navigate('Dashboard');
-      }
-    } catch ({ message }) {
-      alert(message);
-      console.log(message)
-    }
-  };
   const { theme, newUser } = props;
   // console.log(props);
   // console.log('newUser: ', newUser);
@@ -92,7 +77,7 @@ const SignUpForm = props => {
               Sign up with
             </Text>
             <View style={theme.formIcons}>
-              <SocialButton icon='zoom-in' googleSignIn={googleSignIn}/>
+              <SocialButton icon='zoom-in' loginConfig={loginConfig}/>
               <SocialButton icon='book' />
             </View>
           </View>
@@ -116,6 +101,6 @@ export default connect(
   mapStateToProps,
   {
     handleUserSignup,
-    handleChange
+    handleChange,
   }
 )(withTheme(SignUpForm));

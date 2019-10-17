@@ -4,7 +4,7 @@ import Layout from '../components/Layout/Layout';
 import SignUpForm from '../components/UserForms/SignUpForm';
 
 const SignUp = props => {
-  console.log('signup view: ', props)
+  // console.log('signup view: ', props)
   return (
     <Layout>
       <SignUpForm navigate={props.navigation.navigate}/>
