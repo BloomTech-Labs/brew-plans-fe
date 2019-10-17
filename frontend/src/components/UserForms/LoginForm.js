@@ -22,6 +22,7 @@ const LoginForm = props => {
               value={props.values.username}
               label='Username'
               mode='outlined'
+              placeholder='Please enter username'
             />
             <TextInput
               style={theme.formInput}
@@ -30,6 +31,7 @@ const LoginForm = props => {
               value={props.values.password}
               label='Password'
               mode='outlined'
+              placeholder='Please enter password'
             />
           </View>
           <SubmitButton onPress={props.handleSubmit} title='Login' />
