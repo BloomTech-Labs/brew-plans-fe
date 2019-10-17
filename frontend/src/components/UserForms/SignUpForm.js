@@ -7,22 +7,23 @@ import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
 
 import {
-  handleSubmit,
+  handleUserSignup,
   handleChange,
-} from '../../store/actions/index.js'
+} from '../../store/actions/index.js';
 
 const SignUpForm = props => {
   const theme = props.theme;
   const newUser = props.newUser;
-  
+  // console.log(props);
+  // console.log('newUser: ', newUser);
 
-  const handleSubmit = () => {
-    props.onHandleSubmit();
-  };
+  const submitSignup = () => {
+    props.handleUserSignup(newUser);
+  }
 
-  const handleChange = (inputField, inputValue) => {
-    props.onHandleChange(inputField, inputValue);
-  };
+  const handleChange = (inputType, inputValue) => {
+    props.handleChange(inputType, inputValue);
+  }
 
   return (
     <Formik
@@ -31,23 +32,10 @@ const SignUpForm = props => {
         email: newUser.email, 
         password: newUser.password 
       }}
-      onSubmit={() => handleSubmit()}
     >
       {props => (
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%'
-          }}
-        >
-          <View
-            style={{
-              width: '100%',
-              alignItems: 'center',
-              marginBottom: 48
-            }}
-          >
+        <View style={theme.formView}>
+          <View style={theme.formInputsContainer}>
             <TextInput
               style={theme.formInput}
               onChangeText={(value) => handleChange('username', value)}
@@ -70,15 +58,8 @@ const SignUpForm = props => {
               placeholder='Please enter password'
             />
           </View>
-          <SubmitButton onPress={props.handleSubmit} title='Sign Up' />
-          <View
-            style={{
-              flexDirection: 'row',
-              width: '50%',
-              justifyContent: 'space-between',
-              marginTop: 48
-            }}
-          >
+          <SubmitButton onPress={() => submitSignup()} title='Sign Up' />
+          <View style={theme.formSocialsContainer}>
             <SocialButton icon='book' />
             <SocialButton icon='book' />
           </View>
@@ -98,15 +79,10 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onHandleChange: (inputField, inputValue) =>
-      dispatch(handleChange(inputField, inputValue)),
-    onHandleSubmit: () => dispatch(handleSubmit())
-  };
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  {
+    handleUserSignup,
+    handleChange
+  }
 )(withTheme(SignUpForm));

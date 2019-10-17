@@ -1,30 +1,38 @@
+import axios from 'axios';
+
 import {
-  UPDATE_USER_INPUT,
-  SUBMIT_USER_INPUT,
+  UPDATE_SIGNUP_INPUT,
+  USER_REGISTER_START,
+  USER_REGISTER_SUCCESS,
+  USER_REGISTER_FAIL,
   GET_USER_INFO
 } from './actionTypes.js';
 
-export const handleSubmit = () => {
-  return {
-    type: SUBMIT_USER_INPUT
-  };
+export const handleUserSignup = (userCredentials) => dispatch => {
+  dispatch({ type: USER_REGISTER_START });
+  axios.post(
+    'https://brewplans-production.herokuapp.com/users/register',
+    userCredentials
+    )
+    .then(res => {
+      dispatch({ type: USER_REGISTER_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: USER_REGISTER_FAIL, payload: err })
+    })
 }
 
-export const handleChange = (inputField, inputValue) => {
-  return {
-    type: UPDATE_USER_INPUT,
+export const handleChange = (inputField, inputValue) => dispatch => {
+  dispatch({ 
+    type: UPDATE_SIGNUP_INPUT, 
     payload: {
       type: inputField,
       value: inputValue
     }
-  };
+  })
 };
 
-export const getUserInfo = (userId) => {
-  return {
-    type: GET_USER_INFO,
-    payload: {
-      userId: userId
-    }
-  }
+export const handleUserLogin = (credentials) => dispatch => {
+  dispatch({ type: USER_LOGIN_START });
+  axios.post('', credentials)
 }

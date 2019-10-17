@@ -1,6 +1,6 @@
 export { 
   handleChange, 
-  handleSubmit,
+  handleUserSignup,
   getUserInfo
 } from './user.js';
 

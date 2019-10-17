@@ -1,7 +1,7 @@
-import axios from 'axios';
-
 import {
-  GET_USER_RECIPES
+  GET_USER_RECIPES_START,
+  GET_USER_RECIPES_SUCCESS,
+  GET_USER_RECIPES_FAIL
 } from '../actions/actionTypes.js';
 
 const initialState = {
@@ -12,20 +12,14 @@ const initialState = {
 const userRecipeReducer = (state = initialState, action) => {
   switch(action.type) {
     // get user's recipes
-    case GET_USER_RECIPES:
-      const { userId } = action.payload;
-      axios.get(
-        `https://backend-development-coffee.herokuapp.com/userrecipes/${userId}`
-        )
-        .then(res => {
-          return {
-            ...state,
-            userRecipes: res.data
-          }
-        })
-        .catch(err => {
+    case GET_USER_RECIPES_START:
+      console.log(action)
 
-        })
+    case GET_USER_RECIPES_SUCCESS:
+      console.log(action)
+
+    case GET_USER_RECIPES_FAIL:
+      console.log(action)
 
     default:
       return state;

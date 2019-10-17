@@ -1,7 +1,7 @@
-import axios from 'axios';
-
 import {
-  GET_SEEDED_RECIPES
+  GET_SEEDED_RECIPES_START,
+  GET_SEEDED_RECIPES_SUCCESS,
+  GET_SEEDED_RECIPES_FAIL
 } from '../actions/actionTypes.js';
 
 const initialState = {
@@ -12,18 +12,25 @@ const initialState = {
 const seededRecipeReducer = (state = initialState, action) => {
   switch(action.type) {
 // make get request to backend to get seeded recipes
-    case GET_SEEDED_RECIPES:
-      axios.get('https://backend-development-coffee.herokuapp.com/seededrecipes/all')
-        .then(res => {
-          // update the seededRecipes state with the data from backend
-          return {
-            ...state,
-            seededRecipes: res.data
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        })
+    case GET_SEEDED_RECIPES_START:
+      return {
+        ...state,
+        isLoading: true
+      }
+
+    case GET_SEEDED_RECIPES_SUCCESS: 
+    const recipes = action.payload;
+      return {
+        ...state,
+        seededRecipes: recipes,
+        isLoading: false
+      }
+
+    case GET_SEEDED_RECIPES_FAIL:
+      return {
+        ...state,
+        isLoading: false
+      }
 
     default:
       return state;

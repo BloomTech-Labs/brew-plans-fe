@@ -1,17 +1,21 @@
 import React from 'react';
-import Layout from './src/components/Layout/Layout';
-import DisplaySeededRecipes from './src/components/TestToDisplayData/DisplaySeededRecipes.js';
-import DisplayUserRecipes from './src/components/TestToDisplayData/DisplayUserRecipes.js';
-import DisplayUserData from './src/components/TestToDisplayData/DisplayUserData.js';
-import SignUpForm from './src/components/UserForms/SignUpForm.js';
 import { Text } from 'react-native-paper';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import Landing from './src/views/Landing';
+import SignUp from './src/views/SignUp';
+import Login from './src/views/Login';
 
-const App = () => {
-  return (
-    <Layout>
-      <DisplayUserData/>
-    </Layout>
-  );
-};
+const AppNavigator = createStackNavigator({
+  Landing: {
+    screen: Landing
+  },
+  SignUp: {
+    screen: SignUp
+  },
+  Login: {
+    screen: Login
+  }
+});
 
-export default App;
+export default createAppContainer(AppNavigator);

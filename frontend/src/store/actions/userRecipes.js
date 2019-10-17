@@ -5,8 +5,6 @@ import {
 export const getUserRecipes = (userId) => {
   return {
     type: GET_USER_RECIPES,
-    payload: {
-      userId: userId
-    }
+    payload: userId
   }
 }

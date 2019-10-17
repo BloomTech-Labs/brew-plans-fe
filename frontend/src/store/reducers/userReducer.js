@@ -1,8 +1,10 @@
 import axios from 'axios';
 import {
-  UPDATE_USER_INPUT,
-  SUBMIT_USER_INPUT,
-  GET_USER_INFO
+  UPDATE_SIGNUP_INPUT,
+  GET_USER_INFO,
+  USER_REGISTER_START,
+  USER_REGISTER_SUCCESS,
+  USER_REGISTER_FAIL
 } from '../actions/actionTypes.js'
 
 const initialState = {
@@ -14,7 +16,8 @@ const initialState = {
   currentUser: {
     username: '',
     email: '',
-    id: ''
+    id: '',
+    isLoading: false
   }
 }
 
@@ -23,7 +26,7 @@ const userReducer = (state = initialState, action) => {
   switch(action.type) {
 
     // update state when new user enters username/password/email
-    case UPDATE_USER_INPUT:
+    case UPDATE_SIGNUP_INPUT:
       console.log('state: ', state);
       console.log('update_user payload:', action.payload);
       // grab the type of input and the value of input from the payload
@@ -39,24 +42,35 @@ const userReducer = (state = initialState, action) => {
       }
 
     // submit user credential data from state to register
-    case SUBMIT_USER_INPUT:
-      // get the newUser object from state
-      const userCredentials = state.newUser;
-      // post request to register endpoint with newUser credentials
-      axios.post(
-        'https://backend-development-coffee.herokuapp.com/users/register', 
-        userCredentials
-        )
-        .then(res => {
-          console.log(res.data);
-        })
-        .catch(err => {
-          console.log(err);
-        })
+    case USER_REGISTER_START:
+      return {
+          ...state,
+          currentUser: {
+            ...state.currentUser,
+            isLoading: true
+          }
+        }
+
+    case USER_REGISTER_SUCCESS: 
+      const currentUser = action.payload;
+      return {
+        ...state,
+        currentUser: currentUser
+      }
+
+    case USER_REGISTER_FAIL:
+      console.log('error: ', action.payload)
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          isLoading: false
+        }
+      }
 
     case GET_USER_INFO:
       const { userId } = action.payload;
-      axios.get(`https://backend-development-coffee.herokuapp.com/users/${userId}`)
+      axios.get(`https://brewplans-production.herokuapp.com/users/${userId}`)
         .then(res => {
           console.log(res.data);
         })
