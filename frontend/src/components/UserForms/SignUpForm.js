@@ -49,7 +49,7 @@ const SignUpForm = props => {
               onBlur={props.handleBlur('email')}
               value={newUser.email}
               placeholder='Please enter email'
-              label='Username'
+              label='Email'
               mode='outlined'
             />
             <TextInput
@@ -58,7 +58,7 @@ const SignUpForm = props => {
               onBlur={props.handleBlur('password')}
               value={newUser.password}
               placeholder='Please enter password'
-              label='Username'
+              label='Password'
               mode='outlined'
             />
           </View>
