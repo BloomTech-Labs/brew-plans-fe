@@ -1,64 +1,65 @@
 import React from 'react';
-import { Button, TextInput, View } from 'react-native';
+import { TextInput, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Formik } from 'formik';
 import { withTheme } from 'react-native-paper';
 import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
 
+import {
+  handleUserSignup,
+  handleChange,
+} from '../../store/actions/index.js';
+
 const SignUpForm = props => {
   const theme = props.theme;
+  const newUser = props.newUser;
+  // console.log(props);
+  // console.log('newUser: ', newUser);
+
+  const submitSignup = () => {
+    props.handleUserSignup(newUser);
+  }
+
+  const handleChange = (inputType, inputValue) => {
+    props.handleChange(inputType, inputValue);
+  }
+
   return (
     <Formik
-      initialValues={{ username: '', email: '', password: '' }}
-      onSubmit={values => console.log(values)}
+      initialValues={{ 
+        username: newUser.username, 
+        email: newUser.email, 
+        password: newUser.password 
+      }}
     >
       {props => (
-        <View
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%'
-          }}
-        >
-          <View
-            style={{
-              width: '100%',
-              alignItems: 'center',
-              marginBottom: 48
-            }}
-          >
+        <View style={theme.formView}>
+          <View style={theme.formInputsContainer}>
             <TextInput
               style={theme.formInput}
-              onChangeText={props.handleChange('username')}
+              onChangeText={(value) => handleChange('username', value)}
               onBlur={props.handleBlur('username')}
-              value={props.values.username}
+              value={newUser.username}
               placeholder='Please enter username'
             />
             <TextInput
               style={theme.formInput}
-              onChangeText={props.handleChange('email')}
+              onChangeText={(value) => handleChange('email', value)}
               onBlur={props.handleBlur('email')}
-              value={props.values.email}
+              value={newUser.email}
               placeholder='Please enter email'
             />
             <TextInput
               style={theme.formInput}
-              onChangeText={props.handleChange('password')}
+              onChangeText={(value) => handleChange('password', value)}
               onBlur={props.handleBlur('password')}
-              value={props.values.password}
+              value={newUser.password}
               placeholder='Please enter password'
             />
           </View>
-          <SubmitButton onPress={props.handleSubmit} title='Sign Up' />
-          <View
-            style={{
-              flexDirection: 'row',
-              width: '50%',
-              justifyContent: 'space-between',
-              marginTop: 48
-            }}
-          >
+          <SubmitButton onPress={() => submitSignup()} title='Sign Up' />
+          <View style={theme.formSocialsContainer}>
             <SocialButton icon='book' />
             <SocialButton icon='book' />
           </View>
@@ -70,23 +71,18 @@ const SignUpForm = props => {
 
 const mapStateToProps = state => {
   return {
-    user: {
-      username: state.user.user.username,
-      password: state.user.user.password,
-      email: state.user.user.email
-    }
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onHandleChange: (inputField, inputValue) =>
-      dispatch(handleChange(inputField, inputValue)),
-    onHandleSubmit: user => dispatch(handleSubmit(user))
+    newUser: {
+      username: state.user.newUser.username,
+      password: state.user.newUser.password,
+      email: state.user.newUser.email
+    },
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  {
+    handleUserSignup,
+    handleChange
+  }
 )(withTheme(SignUpForm));

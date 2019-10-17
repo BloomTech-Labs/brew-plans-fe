@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import Theme from './Theme';
-import BottomNav from './BottomNav';
+import Navbar from './Navbar';
 
 // Layout
 const Layout = props => {
@@ -12,7 +12,8 @@ const Layout = props => {
           flex: 1,
           padding: 32,
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          backgroundColor: '#ece6cf'
         }}
       >
         {props.children}
