@@ -5,6 +5,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Landing from './src/views/Landing';
 import SignUp from './src/views/SignUp';
 import Login from './src/views/Login';
+import Dashboard from './src/views/Dashboard.js';
 import TestDataVisualization from './src/views/TestDataVisualization';
 
 const AppNavigator = createStackNavigator({
@@ -16,6 +17,9 @@ const AppNavigator = createStackNavigator({
   },
   Login: {
     screen: Login
+  },
+  Dashboard: {
+    screen: Dashboard
   }
 });
 

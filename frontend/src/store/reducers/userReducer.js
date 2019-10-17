@@ -7,7 +7,7 @@ import {
   USER_REGISTER_START,
   USER_REGISTER_SUCCESS,
   USER_REGISTER_FAIL
-} from '../actions/actionTypes.js'
+} from '../actions/actionTypes.js';
 
 const initialState = {
   newUser: {
@@ -22,13 +22,13 @@ const initialState = {
     isLoading: false
   },
   loadingError: '',
-  allUsers: []
-}
+  allUsers: [],
+  isLoggedIn: true
+};
 
 // reducer performs actions on/with user state
 const userReducer = (state = initialState, action) => {
-  switch(action.type) {
-
+  switch (action.type) {
     // update state when new user enters username/password/email
     case UPDATE_SIGNUP_INPUT:
       // console.log('state: ', state);
@@ -43,26 +43,27 @@ const userReducer = (state = initialState, action) => {
           ...state.newUser,
           [type]: value
         }
-      }
+      };
 
     // submit user credential data from state to register
     case USER_REGISTER_START:
       return {
-          ...state,
-          currentUser: {
-            ...state.currentUser,
-            isLoading: true
-          }
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          isLoading: true
         }
+      };
 
-    case USER_REGISTER_SUCCESS: 
+    case USER_REGISTER_SUCCESS:
       const currentUser = action.payload;
       return {
         ...state,
         currentUser: currentUser
-      }
+      };
 
     case USER_REGISTER_FAIL:
+      console.log('error: ', action.payload);
       return {
         ...state,
         currentUser: {
@@ -91,7 +92,7 @@ const userReducer = (state = initialState, action) => {
           isLoading: false,
           id: searchedUser.id
         }
-      }
+      };
 
     case GET_ALL_USER_INFO_SUCCESS:
       return {
