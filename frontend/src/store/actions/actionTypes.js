@@ -12,8 +12,10 @@ export const GET_SEEDED_RECIPES_FAIL = "GET_SEEDED_RECIPES_FAIL";
 // action types for getting user recipes
 export const GET_USER_RECIPES_START = "GET_USER_RECIPES";
 export const GET_USER_RECIPES_SUCCESS = "GET_USER_RECIPES_SUCCESS";
+export const GET_ALL_USER_INFO_SUCCESS = "GET_ALL_USER_INFO_SUCCESS";
 export const GET_USER_RECIPES_FAIL = "GET_USER_RECIPES_FAIL";
 
 // action type for getting user's info
-export const GET_USER_INFO = "GET_USER_INFO";
-
+export const GET_USER_INFO_START = "GET_USER_INFO_START";
+export const GET_USER_INFO_SUCCESS = "GET_USER_INFO_SUCCESS";
+export const GET_USER_INFO_FAIL = "GET_USER_INFO_FAIL";
