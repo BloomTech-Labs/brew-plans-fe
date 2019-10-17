@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, TextInput, View } from 'react-native';
+import { View } from 'react-native';
+import { TextInput, Text } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { Formik } from 'formik';
 import { withTheme } from 'react-native-paper';
@@ -21,27 +22,37 @@ const SignUpForm = props => {
               onChangeText={props.handleChange('username')}
               onBlur={props.handleBlur('username')}
               value={props.values.username}
-              placeholder='Please enter username'
+              label='Username'
+              mode='outlined'
             />
             <TextInput
               style={theme.formInput}
               onChangeText={props.handleChange('email')}
               onBlur={props.handleBlur('email')}
               value={props.values.email}
-              placeholder='Please enter email'
+              label='Email'
+              mode='outlined'
             />
             <TextInput
               style={theme.formInput}
               onChangeText={props.handleChange('password')}
               onBlur={props.handleBlur('password')}
               value={props.values.password}
-              placeholder='Please enter password'
+              label='Password'
+              mode='outlined'
             />
           </View>
           <SubmitButton onPress={props.handleSubmit} title='Sign Up' />
           <View style={theme.formSocialsContainer}>
-            <SocialButton icon='book' />
-            <SocialButton icon='book' />
+            <Text
+              style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}
+            >
+              Sign up with
+            </Text>
+            <View style={theme.formIcons}>
+              <SocialButton icon='zoom-in' />
+              <SocialButton icon='book' />
+            </View>
           </View>
         </View>
       )}

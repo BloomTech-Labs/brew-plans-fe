@@ -10,7 +10,7 @@ const Layout = props => {
       <View
         style={{
           flex: 1,
-          padding: 32,
+          padding: 16,
           alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: '#ece6cf'
