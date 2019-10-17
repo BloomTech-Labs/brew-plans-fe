@@ -1,40 +1,82 @@
+import axios from 'axios';
 import {
-  UPDATE_USER_INPUT,
-  SUBMIT_USER_INPUT
+  UPDATE_SIGNUP_INPUT,
+  GET_USER_INFO,
+  USER_REGISTER_START,
+  USER_REGISTER_SUCCESS,
+  USER_REGISTER_FAIL
 } from '../actions/actionTypes.js'
 
 const initialState = {
-  user: {
+  newUser: {
     username: '',
     password: '',
     email: ''
+  },
+  currentUser: {
+    username: '',
+    email: '',
+    id: '',
+    isLoading: false
   }
 }
 
+// reducer performs actions on/with user state
 const userReducer = (state = initialState, action) => {
   switch(action.type) {
-    case UPDATE_USER_INPUT:
+
+    // update state when new user enters username/password/email
+    case UPDATE_SIGNUP_INPUT:
+      console.log('state: ', state);
+      console.log('update_user payload:', action.payload);
+      // grab the type of input and the value of input from the payload
       const { type, value } = action.payload;
-      console.log(action.payload)
+      // return old state spread + new value entered from newUser
+      // immutability ensures this only affects newUser state
       return {
         ...state,
-        user: {
-          ...state.user,
+        newUser: {
+          ...state.newUser,
           [type]: value
         }
       }
 
-    case SUBMIT_USER_INPUT:
-      const userCredentials = action.payload;
-      // console.log(userCredentials)
+    // submit user credential data from state to register
+    case USER_REGISTER_START:
+      return {
+          ...state,
+          currentUser: {
+            ...state.currentUser,
+            isLoading: true
+          }
+        }
+
+    case USER_REGISTER_SUCCESS: 
+      const currentUser = action.payload;
       return {
         ...state,
-        user: {
-          username: action.payload.username,
-          password: action.payload.password,
-          email: action.payload.email
+        currentUser: currentUser
+      }
+
+    case USER_REGISTER_FAIL:
+      console.log('error: ', action.payload)
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          isLoading: false
         }
       }
+
+    case GET_USER_INFO:
+      const { userId } = action.payload;
+      axios.get(`https://brewplans-production.herokuapp.com/users/${userId}`)
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        })
 
     default:
       return state;

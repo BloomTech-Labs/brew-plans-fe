@@ -1,2 +1,19 @@
-export const UPDATE_USER_INPUT = "UPDATE_USER_INPUT";
-export const SUBMIT_USER_INPUT = "SUBMIT_USER_INPUT";
+// action types for user sign-up process
+export const UPDATE_SIGNUP_INPUT = "UPDATE_USER_INPUT";
+export const USER_REGISTER_START = "USER_REGISTER_START";
+export const USER_REGISTER_SUCCESS = "USER_REGISTER_SUCCESS";
+export const USER_REGISTER_FAIL = "USER_REGISTER_FAIL";
+
+// action types for getting seeded recipes
+export const GET_SEEDED_RECIPES_START = "GET_SEEDED_RECIPES_START";
+export const GET_SEEDED_RECIPES_SUCCESS = "GET_SEEDED_RECIPES_SUCCESS";
+export const GET_SEEDED_RECIPES_FAIL = "GET_SEEDED_RECIPES_FAIL";
+
+// action types for getting user recipes
+export const GET_USER_RECIPES_START = "GET_USER_RECIPES";
+export const GET_USER_RECIPES_SUCCESS = "GET_USER_RECIPES_SUCCESS";
+export const GET_USER_RECIPES_FAIL = "GET_USER_RECIPES_FAIL";
+
+// action type for getting user's info
+export const GET_USER_INFO = "GET_USER_INFO";
+

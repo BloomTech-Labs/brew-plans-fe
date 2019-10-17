@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Text, Button, withTheme } from 'react-native-paper';
 import Layout from '../components/Layout/Layout';
 import LandingButton from '../components/Landing/LandingButton';
 
