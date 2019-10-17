@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   UPDATE_SIGNUP_INPUT,
   GET_USER_INFO_START,
@@ -32,8 +31,8 @@ const userReducer = (state = initialState, action) => {
 
     // update state when new user enters username/password/email
     case UPDATE_SIGNUP_INPUT:
-      console.log('state: ', state);
-      console.log('update_user payload:', action.payload);
+      // console.log('state: ', state);
+      // console.log('update_user payload:', action.payload);
       // grab the type of input and the value of input from the payload
       const { type, value } = action.payload;
       // return old state spread + new value entered from newUser

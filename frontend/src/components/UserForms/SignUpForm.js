@@ -10,8 +10,7 @@ import SubmitButton from './SubmitButton';
 import { handleUserSignup, handleChange } from '../../store/actions/index.js';
 
 const SignUpForm = props => {
-  const theme = props.theme;
-  const newUser = props.newUser;
+  const { theme, newUser } = props;
   // console.log(props);
   // console.log('newUser: ', newUser);
 
