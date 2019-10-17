@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -7,13 +7,18 @@ import {
 } from '../../store/actions/index.js'
 
 const DisplayUserRecipes = props => {
-  const userRecipes = props.getUserRecipes(1);
-  console.log(userRecipes);
+  useEffect(() => {
+    props.getUserRecipes();
+  }, []);
   return (
     <View>
-      {props.userRecipes.map(recipe => {
+      <Text>USER_RECIPES</Text>
+      {props.userRecipes.map((recipe, index) => {
         return (
-          <Text>{recipe.title}</Text>
+          <View key={index}>
+            <Text>RECIPE_ID: {recipe.id}</Text>
+            <Text>RECIPE_COARSENESS: {recipe.coarseness}</Text>
+          </View>
         );
       })}
     </View>
@@ -22,17 +27,14 @@ const DisplayUserRecipes = props => {
 
 const mapStateToProps = state => {
   return {
-    userRecipes: state.userRecipes.userRecipes
+    userRecipes: state.userRecipes.userRecipes,
+    isLoading: state.userRecipes.isLoading
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getUserRecipes: (id) => dispatch(getUserRecipes(id))
-  };
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  {
+    getUserRecipes
+  }
 )(DisplayUserRecipes)

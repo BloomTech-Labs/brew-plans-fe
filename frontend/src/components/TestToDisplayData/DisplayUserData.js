@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -7,30 +7,32 @@ import {
 } from '../../store/actions/index.js';
 
 const DisplayUserData = (props) => {
-  const currentUser = props.getUserInfo(2);
-  console.log(props);
-  console.log('current user', currentUser)
+  const { currentUser, allUsers } = props;
+  useEffect(() => {
+    props.getUserInfo(3);
+  }, []);
+  console.log('current user', currentUser);
+  console.log('all users: ', allUsers);
 
   return (
     <View>
-      <Text></Text>
+      <Text>{currentUser.email}</Text>
+      <Text>{currentUser.id}</Text>
+      <Text>{currentUser.username}</Text>
     </View>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.user.currentUser
+    currentUser: state.user.currentUser,
+    allUsers: state.user.allUsers
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getUserInfo: (id) => dispatch(getUserInfo(id))
-  };
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  {
+    getUserInfo
+  }
 )(DisplayUserData)
