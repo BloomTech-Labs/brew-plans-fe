@@ -5,7 +5,7 @@ import {
   USER_REGISTER_START,
   USER_REGISTER_SUCCESS,
   USER_REGISTER_FAIL
-} from '../actions/actionTypes.js'
+} from '../actions/actionTypes.js';
 
 const initialState = {
   newUser: {
@@ -18,13 +18,13 @@ const initialState = {
     email: '',
     id: '',
     isLoading: false
-  }
-}
+  },
+  isLoggedIn: true
+};
 
 // reducer performs actions on/with user state
 const userReducer = (state = initialState, action) => {
-  switch(action.type) {
-
+  switch (action.type) {
     // update state when new user enters username/password/email
     case UPDATE_SIGNUP_INPUT:
       console.log('state: ', state);
@@ -39,44 +39,45 @@ const userReducer = (state = initialState, action) => {
           ...state.newUser,
           [type]: value
         }
-      }
+      };
 
     // submit user credential data from state to register
     case USER_REGISTER_START:
       return {
-          ...state,
-          currentUser: {
-            ...state.currentUser,
-            isLoading: true
-          }
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          isLoading: true
         }
+      };
 
-    case USER_REGISTER_SUCCESS: 
+    case USER_REGISTER_SUCCESS:
       const currentUser = action.payload;
       return {
         ...state,
         currentUser: currentUser
-      }
+      };
 
     case USER_REGISTER_FAIL:
-      console.log('error: ', action.payload)
+      console.log('error: ', action.payload);
       return {
         ...state,
         currentUser: {
           ...state.currentUser,
           isLoading: false
         }
-      }
+      };
 
     case GET_USER_INFO:
       const { userId } = action.payload;
-      axios.get(`https://brewplans-production.herokuapp.com/users/${userId}`)
+      axios
+        .get(`https://brewplans-production.herokuapp.com/users/${userId}`)
         .then(res => {
           console.log(res.data);
         })
         .catch(err => {
           console.log(err);
-        })
+        });
 
     default:
       return state;

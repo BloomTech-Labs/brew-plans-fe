@@ -1,20 +1,37 @@
 import React from 'react';
+import { View } from 'react-native';
 import Layout from '../components/Layout/Layout';
 import LandingButton from '../components/Landing/LandingButton';
+import TestDataVisualization from '../views/TestDataVisualization';
+import { connect } from 'react-redux';
 
 const Landing = props => {
+  const { isLoggedIn } = props;
+
   return (
     <Layout>
-      <LandingButton
-        title='Sign Up'
-        onPress={() => props.navigation.navigate('SignUp')}
-      />
-      <LandingButton
-        title='Login'
-        onPress={() => props.navigation.navigate('Login')}
-      />
+      {isLoggedIn ? (
+        <TestDataVisualization />
+      ) : (
+        <View>
+          <LandingButton
+            title='Sign Up'
+            onPress={() => props.navigation.navigate('SignUp')}
+          />
+          <LandingButton
+            title='Login'
+            onPress={() => props.navigation.navigate('Login')}
+          />
+        </View>
+      )}
     </Layout>
   );
 };
 
-export default Landing;
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: state.user.isLoggedIn
+  };
+};
+
+export default connect(mapStateToProps)(Landing);
