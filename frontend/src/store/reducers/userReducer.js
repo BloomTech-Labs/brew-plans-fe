@@ -1,10 +1,15 @@
-import axios from 'axios';
 import {
   UPDATE_SIGNUP_INPUT,
-  GET_USER_INFO,
+  GET_USER_INFO_START,
+  GET_USER_INFO_SUCCESS,
+  GET_ALL_USER_INFO_SUCCESS,
+  GET_USER_INFO_FAIL,
   USER_REGISTER_START,
   USER_REGISTER_SUCCESS,
-  USER_REGISTER_FAIL
+  USER_REGISTER_FAIL,
+  GOOGLE_SIGNIN_START,
+  GOOGLE_SIGNIN_SUCCESS,
+  GOOGLE_SIGNIN_FAIL
 } from '../actions/actionTypes.js';
 
 const initialState = {
@@ -17,9 +22,14 @@ const initialState = {
     username: '',
     email: '',
     id: '',
+    photoUrl: '',
+    firstName: '',
+    lastName: '',
     isLoading: false
   },
-  isLoggedIn: true
+  loadingError: '',
+  allUsers: [],
+  isLoggedIn: false
 };
 
 // reducer performs actions on/with user state
@@ -27,8 +37,8 @@ const userReducer = (state = initialState, action) => {
   switch (action.type) {
     // update state when new user enters username/password/email
     case UPDATE_SIGNUP_INPUT:
-      console.log('state: ', state);
-      console.log('update_user payload:', action.payload);
+      // console.log('state: ', state);
+      // console.log('update_user payload:', action.payload);
       // grab the type of input and the value of input from the payload
       const { type, value } = action.payload;
       // return old state spread + new value entered from newUser
@@ -65,19 +75,54 @@ const userReducer = (state = initialState, action) => {
         currentUser: {
           ...state.currentUser,
           isLoading: false
+        },
+        loadingError: action.payload
+      }
+
+    case GET_USER_INFO_START:
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          isLoading: true
+        }
+      }
+
+    case GET_USER_INFO_SUCCESS:
+      const searchedUser = action.payload;
+      return {
+        ...state,
+        currentUser: {
+          email: searchedUser.email,
+          username: searchedUser.username,
+          isLoading: false,
+          id: searchedUser.id
         }
       };
 
-    case GET_USER_INFO:
-      const { userId } = action.payload;
-      axios
-        .get(`https://brewplans-production.herokuapp.com/users/${userId}`)
-        .then(res => {
-          console.log(res.data);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+    case GET_ALL_USER_INFO_SUCCESS:
+      return {
+        ...state,
+        allUsers: action.payload
+      }
+
+    case GET_USER_INFO_FAIL:
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          isLoading: false
+        },
+        loadingError: action.payload
+      };
+
+    case GOOGLE_SIGNIN_START:
+      console.log(action)
+    case GOOGLE_SIGNIN_SUCCESS:
+      console.log('success payload: ', action.payload)
+      
+    case GOOGLE_SIGNIN_FAIL:
+      console.log(action)
 
     default:
       return state;

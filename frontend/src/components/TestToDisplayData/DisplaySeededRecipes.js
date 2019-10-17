@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -7,14 +7,19 @@ import {
 } from '../../store/actions/index.js';
 
 const DisplaySeededRecipes = (props) => {
-    console.log(props.getSeedRecipes());
-  
+  useEffect(() => {
+    props.getSeededRecipes();
+  }, []);
 
   return (
     <View>
-      {props.seededRecipes.map(recipe => {
+      <Text>SEEDED_RECIPES</Text>
+      {props.seededRecipes.map((recipe, index) => {
         return (
-          <Text>{recipe.instructions}</Text>
+          <View key={index}>
+            <Text>RECIPE_ID: {recipe.id}</Text>
+            <Text>RECIPE_INSTRUCTIONS: {recipe.instructions}</Text>
+          </View>
         );
       })}
     </View>
@@ -24,17 +29,13 @@ const DisplaySeededRecipes = (props) => {
 const mapStateToProps = state => {
   return {
     seededRecipes: state.seededRecipes.seededRecipes,
-    isLoading: state.seededRecipes.isLoadinng
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getSeedRecipes: () => dispatch(getSeededRecipes())
+    isLoading: state.seededRecipes.isLoading
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  {
+    getSeededRecipes
+  }
 )(DisplaySeededRecipes);

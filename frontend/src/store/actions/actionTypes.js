@@ -12,8 +12,20 @@ export const GET_SEEDED_RECIPES_FAIL = "GET_SEEDED_RECIPES_FAIL";
 // action types for getting user recipes
 export const GET_USER_RECIPES_START = "GET_USER_RECIPES";
 export const GET_USER_RECIPES_SUCCESS = "GET_USER_RECIPES_SUCCESS";
+export const GET_ALL_USER_INFO_SUCCESS = "GET_ALL_USER_INFO_SUCCESS";
 export const GET_USER_RECIPES_FAIL = "GET_USER_RECIPES_FAIL";
 
-// action type for getting user's info
-export const GET_USER_INFO = "GET_USER_INFO";
+// action types for getting user's info
+export const GET_USER_INFO_START = "GET_USER_INFO_START";
+export const GET_USER_INFO_SUCCESS = "GET_USER_INFO_SUCCESS";
+export const GET_USER_INFO_FAIL = "GET_USER_INFO_FAIL";
 
+// action types for getting ingredients
+export const GET_INGREDIENTS_START = "GET_INGREDIENTS_START";
+export const GET_INGREDIENTS_SUCCESS = "GET_INGREDIENTS_SUCCESS";
+export const GET_INGREDIENTS_FAIL = "GET_INGREDIENTS_FAIL";
+
+// action types for getting ingredients
+export const GOOGLE_SIGNIN_START = "GOOGLE_SIGNIN_START";
+export const GOOGLE_SIGNIN_SUCCESS = "GOOGLE_SIGNIN_SUCCESS";
+export const GOOGLE_SIGNIN_FAIL = "GOOGLE_SIGNIN_FAIL";
