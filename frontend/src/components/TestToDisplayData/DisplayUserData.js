@@ -8,9 +8,9 @@ import {
 
 const DisplayUserData = (props) => {
   const { currentUser, allUsers } = props;
-  useEffect(() => {
-    props.getUserInfo(3);
-  }, []);
+  // useEffect(() => {
+  //   props.getUserInfo(3);
+  // }, []);
   // console.log('current user', currentUser);
   // console.log('all users: ', allUsers);
 
@@ -18,7 +18,7 @@ const DisplayUserData = (props) => {
     <View>
       <Text>{currentUser.email}</Text>
       <Text>{currentUser.id}</Text>
-      <Text>{currentUser.username}</Text>
+      <Text>{currentUser.photoUrl}</Text>
     </View>
   );
 };

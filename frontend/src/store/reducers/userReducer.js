@@ -117,9 +117,27 @@ const userReducer = (state = initialState, action) => {
       };
 
     case GOOGLE_SIGNIN_START:
-      console.log(action)
+      console.log(action);
+      return {
+        ...state,
+        isLoading: true
+      }
+
     case GOOGLE_SIGNIN_SUCCESS:
-      console.log('success payload: ', action.payload)
+      console.log('type: ', action.type)
+      console.log('google payload: ', action.payload)
+      const { user } = action.payload;
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          id: user.id,
+          email: user.email,
+          photoUrl: user.photoUrl
+        },
+        isLoggedIn: true,
+        isLoading: false
+      }
       
     case GOOGLE_SIGNIN_FAIL:
       console.log(action)

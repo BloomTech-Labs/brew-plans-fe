@@ -76,7 +76,13 @@ export const googleSignIn = (config) => async dispatch => {
       // console.log('type: ', type);
       // console.log('accessToken: ', accessToken);
       // console.log('user: ', user);
-      await dispatch({ type: GOOGLE_SIGNIN_SUCCESS, payload: user })
+      dispatch({ 
+        type: GOOGLE_SIGNIN_SUCCESS, 
+        payload: {
+          user: user,
+          token: accessToken
+        }
+      })
     }
   } catch ({ message }) {
     dispatch({ type: GOOGLE_SIGNIN_FAIL, payload: message })
