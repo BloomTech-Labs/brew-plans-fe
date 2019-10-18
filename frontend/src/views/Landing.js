@@ -2,9 +2,9 @@ import React from 'react';
 import { View } from 'react-native';
 import Layout from '../components/Layout/Layout';
 import LandingButton from '../components/Landing/LandingButton';
-import TestDataVisualization from '../views/TestDataVisualization';
 import { connect } from 'react-redux';
 import Dashboard from './Dashboard';
+
 
 const Landing = props => {
   const { isLoggedIn } = props;
@@ -16,10 +16,7 @@ const Landing = props => {
         props.navigation.navigate('Dashboard')
       ) : (
         <View>
-          <LandingButton
-            title='Sign Up'
-            onPress={() => props.navigation.navigate('SignUp')}
-          />
+          <LandingButton title='Sign Up' onPress={() => props.navigation.navigate('SignUp')} />
           <LandingButton
             title='Login'
             onPress={() => props.navigation.navigate('Login')}

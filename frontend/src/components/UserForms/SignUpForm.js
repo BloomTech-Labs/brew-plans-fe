@@ -9,7 +9,15 @@ import SubmitButton from './SubmitButton';
 
 import { handleUserSignup, handleChange } from '../../store/actions/index.js';
 
+
+
 const SignUpForm = props => {
+  // console.log('signupformprops: ', props)
+  const loginConfig = {
+    androidClientId: "449923889220-pa3veecaq72o4tiairfrputrj7f0dp2n.apps.googleusercontent.com",
+    scopes: ['profile', 'email'],
+  }
+  
   const { theme, newUser } = props;
   // console.log(props);
   // console.log('newUser: ', newUser);
@@ -69,7 +77,7 @@ const SignUpForm = props => {
               Sign up with
             </Text>
             <View style={theme.formIcons}>
-              <SocialButton icon='zoom-in' />
+              <SocialButton icon='zoom-in' loginConfig={loginConfig}/>
               <SocialButton icon='book' />
             </View>
           </View>
@@ -93,6 +101,6 @@ export default connect(
   mapStateToProps,
   {
     handleUserSignup,
-    handleChange
+    handleChange,
   }
 )(withTheme(SignUpForm));
