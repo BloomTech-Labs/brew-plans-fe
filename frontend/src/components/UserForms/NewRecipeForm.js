@@ -4,21 +4,15 @@ import { TextInput, Text } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { Formik } from 'formik';
 import { withTheme } from 'react-native-paper';
-import SocialButton from './SocialButton';
-import SubmitButton from './SubmitButton';
 
 import { handleUserSignup, handleChange } from '../../store/actions/index.js';
 
 
 
-const SignUpForm = props => {
+const NewRecipeForm = props => {
   // console.log('signupformprops: ', props)
-  const loginConfig = {
-    androidClientId: "449923889220-pa3veecaq72o4tiairfrputrj7f0dp2n.apps.googleusercontent.com",
-    scopes: ['profile', 'email'],
-  }
-  
-  const { theme, newUser } = props;
+ 
+  const { theme, newRecipe } = props;
   // console.log(props);
   // console.log('newUser: ', newUser);
 
