@@ -4,6 +4,7 @@ import Layout from '../components/Layout/Layout';
 import LandingButton from '../components/Landing/LandingButton';
 import TestDataVisualization from '../views/TestDataVisualization';
 import { connect } from 'react-redux';
+import Dashboard from './Dashboard';
 
 const Landing = props => {
   const { isLoggedIn } = props;
