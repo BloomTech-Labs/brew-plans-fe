@@ -63,13 +63,16 @@ const userReducer = (state = initialState, action) => {
 
     case USER_REGISTER_SUCCESS:
       const currentUser = action.payload;
+      console.log(action.type)
       return {
         ...state,
-        currentUser: currentUser
+        currentUser: currentUser,
+        isLoggedIn: true,
       };
 
     case USER_REGISTER_FAIL:
       console.log('error: ', action.payload);
+      console.log(action.type)
       return {
         ...state,
         currentUser: {

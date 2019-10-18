@@ -17,12 +17,14 @@ import {
 
 export const handleUserSignup = (userCredentials) => dispatch => {
   dispatch({ type: USER_REGISTER_START });
+  console.log('user creds: ', userCredentials)
   axios.post(
     'https://brewplans-production.herokuapp.com/users/register',
     userCredentials
     )
     .then(res => {
       dispatch({ type: USER_REGISTER_SUCCESS, payload: res.data });
+      console.log(res.data)
     })
     .catch(err => {
       dispatch({ type: USER_REGISTER_FAIL, payload: err })
