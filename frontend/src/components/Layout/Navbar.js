@@ -55,6 +55,8 @@ const styles = StyleSheet.create({
   }
 });
 
+
+// My Recipes
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 

@@ -37,14 +37,9 @@ const SignUpForm = props => {
   // console.log('newUser: ', newUser);
 
   const submitSignup = () => {
-<<<<<<< HEAD
-    console.log('newUser', newUser)
-    props.handleUserSignup(newUser);
-=======
     // props.handleUserSignup(newUser);
     console.log('pressed button');
     _storeData(newUser);
->>>>>>> 16bbc85d2142845f44aa2e3065b7b94c16b222a4
   };
 
   const handleChange = (inputType, inputValue) => {
