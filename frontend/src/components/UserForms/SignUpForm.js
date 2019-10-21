@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, AsyncStorage } from 'react-native';
 import { TextInput, Text } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { Formik } from 'formik';
@@ -9,22 +9,42 @@ import SubmitButton from './SubmitButton';
 
 import { handleUserSignup, handleChange } from '../../store/actions/index.js';
 
-
-
 const SignUpForm = props => {
+  _storeData = async newUser => {
+    try {
+      await AsyncStorage.setItem(
+        'user',
+        JSON.stringify(newUser),
+        (err, result) => {
+          console.log('sign up result', result);
+        }
+      );
+    } catch (error) {
+      // Error saving data
+      console.log(error);
+    }
+  };
+
   // console.log('signupformprops: ', props)
   const loginConfig = {
-    androidClientId: "449923889220-pa3veecaq72o4tiairfrputrj7f0dp2n.apps.googleusercontent.com",
-    scopes: ['profile', 'email'],
-  }
-  
+    androidClientId:
+      '449923889220-pa3veecaq72o4tiairfrputrj7f0dp2n.apps.googleusercontent.com',
+    scopes: ['profile', 'email']
+  };
+
   const { theme, newUser } = props;
   // console.log(props);
   // console.log('newUser: ', newUser);
 
   const submitSignup = () => {
+<<<<<<< HEAD
     console.log('newUser', newUser)
     props.handleUserSignup(newUser);
+=======
+    // props.handleUserSignup(newUser);
+    console.log('pressed button');
+    _storeData(newUser);
+>>>>>>> 16bbc85d2142845f44aa2e3065b7b94c16b222a4
   };
 
   const handleChange = (inputType, inputValue) => {
@@ -78,7 +98,7 @@ const SignUpForm = props => {
               Sign up with
             </Text>
             <View style={theme.formIcons}>
-              <SocialButton icon='zoom-in' loginConfig={loginConfig}/>
+              <SocialButton icon='zoom-in' loginConfig={loginConfig} />
               <SocialButton icon='book' />
             </View>
           </View>
@@ -102,6 +122,6 @@ export default connect(
   mapStateToProps,
   {
     handleUserSignup,
-    handleChange,
+    handleChange
   }
 )(withTheme(SignUpForm));
