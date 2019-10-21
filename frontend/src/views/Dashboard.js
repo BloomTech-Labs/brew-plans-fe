@@ -8,12 +8,7 @@ import Navbar from '../components/Layout/Navbar';
 const Dashboard = props => {
   return (
     <Layout>
-<<<<<<< HEAD
-      <Navbar />
-      <TestDataVisualization/>
-=======
       <TestDataVisualization />
->>>>>>> 16bbc85d2142845f44aa2e3065b7b94c16b222a4
     </Layout>
   );
 };
