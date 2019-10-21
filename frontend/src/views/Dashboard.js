@@ -7,7 +7,7 @@ const Dashboard = props => {
   return (
     <Layout>
       {/* <TestDataVisualization /> */}
-      <Navbar />
+      <Navbar {...props} />
     </Layout>
   );
 };

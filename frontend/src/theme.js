@@ -43,5 +43,12 @@ export default {
     width: '100%',
     justifyContent: 'space-between',
     textAlign: 'center'
+  },
+
+  navbar: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
   }
 };
