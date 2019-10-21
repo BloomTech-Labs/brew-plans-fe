@@ -9,7 +9,7 @@ import Dashboard from './src/views/Dashboard.js';
 
 const AppNavigator = createStackNavigator({
   Landing: {
-    screen: Landing
+    screen: Dashboard
   },
   SignUp: {
     screen: SignUp
