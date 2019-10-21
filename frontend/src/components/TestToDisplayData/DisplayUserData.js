@@ -11,8 +11,8 @@ const DisplayUserData = (props) => {
   useEffect(() => {
     props.getUserInfo(3);
   }, []);
-  console.log('current user', currentUser);
-  console.log('all users: ', allUsers);
+  // console.log('current user', currentUser);
+  // console.log('all users: ', allUsers);
 
   return (
     <View>

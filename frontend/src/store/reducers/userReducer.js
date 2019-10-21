@@ -6,7 +6,10 @@ import {
   GET_USER_INFO_FAIL,
   USER_REGISTER_START,
   USER_REGISTER_SUCCESS,
-  USER_REGISTER_FAIL
+  USER_REGISTER_FAIL,
+  GOOGLE_SIGNIN_START,
+  GOOGLE_SIGNIN_SUCCESS,
+  GOOGLE_SIGNIN_FAIL
 } from '../actions/actionTypes.js';
 
 const initialState = {
@@ -19,11 +22,14 @@ const initialState = {
     username: '',
     email: '',
     id: '',
+    photoUrl: '',
+    firstName: '',
+    lastName: '',
     isLoading: false
   },
   loadingError: '',
   allUsers: [],
-  isLoggedIn: true
+  isLoggedIn: false
 };
 
 // reducer performs actions on/with user state
@@ -110,6 +116,13 @@ const userReducer = (state = initialState, action) => {
         loadingError: action.payload
       };
 
+    case GOOGLE_SIGNIN_START:
+      console.log(action)
+    case GOOGLE_SIGNIN_SUCCESS:
+      console.log('success payload: ', action.payload)
+      
+    case GOOGLE_SIGNIN_FAIL:
+      console.log(action)
 
     default:
       return state;

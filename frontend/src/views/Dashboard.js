@@ -1,14 +1,13 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { AsyncStorage } from 'react-native';
 import { DrawerActions } from 'react-navigation-drawer';
 import Layout from '../components/Layout/Layout';
+import TestDataVisualization from './TestDataVisualization.js';
 
 const Dashboard = props => {
-  console.log(props)
-  props.navigation.dispatch(DrawerActions.closeDrawer());
   return (
     <Layout>
-      <Text>Dashboard</Text>
+      <TestDataVisualization />
     </Layout>
   );
 };

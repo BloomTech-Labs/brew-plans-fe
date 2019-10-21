@@ -1,12 +1,30 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, AsyncStorage } from 'react-native';
 import Layout from '../components/Layout/Layout';
 import LandingButton from '../components/Landing/LandingButton';
-import TestDataVisualization from '../views/TestDataVisualization';
 import { connect } from 'react-redux';
 
 const Landing = props => {
   const { isLoggedIn } = props;
+
+  _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('user', (err, results) => {
+        console.log('results', results);
+      });
+      if (value !== null) {
+        // We have data!!
+        console.log('value', value);
+      }
+    } catch (error) {
+      // Error retrieving data
+      console.log('error', error);
+    }
+  };
+
+  useEffect(() => {
+    _retrieveData();
+  }, []);
 
   return (
     <Layout>
