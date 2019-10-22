@@ -77,7 +77,7 @@ const userReducer = (state = initialState, action) => {
           isLoading: false
         },
         loadingError: action.payload
-      }
+      };
 
     case GET_USER_INFO_START:
       return {
@@ -86,7 +86,7 @@ const userReducer = (state = initialState, action) => {
           ...state.currentUser,
           isLoading: true
         }
-      }
+      };
 
     case GET_USER_INFO_SUCCESS:
       const searchedUser = action.payload;
@@ -104,7 +104,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         allUsers: action.payload
-      }
+      };
 
     case GET_USER_INFO_FAIL:
       return {
@@ -117,12 +117,12 @@ const userReducer = (state = initialState, action) => {
       };
 
     case GOOGLE_SIGNIN_START:
-      console.log(action)
+      console.log(action);
     case GOOGLE_SIGNIN_SUCCESS:
-      console.log('success payload: ', action.payload)
-      
+      console.log('success payload: ', action.payload);
+
     case GOOGLE_SIGNIN_FAIL:
-      console.log(action)
+      console.log(action);
 
     default:
       return state;
