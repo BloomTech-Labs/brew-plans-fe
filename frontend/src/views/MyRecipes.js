@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Layout from '../components/Layout/Layout';
 
 const MyRecipes = () => {
@@ -28,6 +29,18 @@ const MyRecipes = () => {
           renderItem={({ item, index }) => (
             <View style={styles.recipeContainer}>
               <Text>{item.title}</Text>
+              <View style={styles.recipeInfoContainer}>
+                <View style={styles.recipeInfo}>
+                  <Text>85</Text>
+                  <MaterialCommunityIcons
+                    name={'temperature-fahrenheit'}
+                    size={16}
+                    color={'black'}
+                  />
+                </View>
+                <Text>Coarseness: fine</Text>
+                <Text>hello</Text>
+              </View>
             </View>
           )}
         ></FlatList>
@@ -50,14 +63,23 @@ const styles = StyleSheet.create({
     marginTop: 32
   },
   recipeContainer: {
-    height: 64,
     width: '100%',
     backgroundColor: '#ccc',
     marginVertical: 8,
     padding: 16,
     justifyContent: 'center',
     borderRadius: 5
-  }
+  },
+  recipeInfoContainer: {
+    width: '100%',
+    marginTop: 16,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  recipeInfo: {
+    flexDirection: 'row'
+  },
+  recipeIcon: {}
 });
 
 export default MyRecipes;
