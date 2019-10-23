@@ -10,11 +10,11 @@ import {
   TouchableOpacity
 } from 'react-native';
 // import { IconButton } from 'react-native-paper';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import Layout from '../components/Layout/Layout';
 import { connect } from 'react-redux';
 import { getUserRecipes } from '../store/actions/index.js';
-import Navbar from '../components/Layout/Navbar';
+import Navbar from '../components/Layout/NavBar/Navbar';
 
 const MyRecipes = props => {
   useEffect(() => {
@@ -22,13 +22,13 @@ const MyRecipes = props => {
   }, []);
 
   return (
-    <View style={styles.pageContainer}>
+    <Layout>
       <View style={styles.recipesHeader}>
         <Text style={styles.recipesHeaderText}>My Recipes</Text>
         <TouchableOpacity onPress={() => console.log('Button pressed!')}>
-          <MaterialCommunityIcons
-            name={'temperature-fahrenheit'}
-            size={16}
+          <MaterialIcons
+            name={'add-circle'}
+            size={36}
             color={'black'}
           />
         </TouchableOpacity>
@@ -61,7 +61,7 @@ const MyRecipes = props => {
           )}
         ></FlatList>
       </View>
-    </View>
+    </Layout>
   );
 };
 
