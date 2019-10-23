@@ -14,7 +14,7 @@ import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import Layout from '../components/Layout/Layout';
 import { connect } from 'react-redux';
 import { getUserRecipes } from '../store/actions/index.js';
-import Navbar from '../components/Layout/NavBar/Navbar';
+
 
 const MyRecipes = props => {
   useEffect(() => {
@@ -22,7 +22,7 @@ const MyRecipes = props => {
   }, []);
 
   return (
-    <Layout>
+    <View style={{flex: 1}}>
       <View style={styles.recipesHeader}>
         <Text style={styles.recipesHeaderText}>My Recipes</Text>
         <TouchableOpacity onPress={() => console.log('Button pressed!')}>
@@ -61,7 +61,7 @@ const MyRecipes = props => {
           )}
         ></FlatList>
       </View>
-    </Layout>
+      </View>
   );
 };
 

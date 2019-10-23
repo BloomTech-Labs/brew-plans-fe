@@ -9,19 +9,24 @@ import Dashboard from './src/views/Dashboard.js';
 import MyRecipes from './src/views/MyRecipes.js';
 
 const AppNavigator = createStackNavigator(
-  {
-    Landing: {
-      screen: MyRecipes
+  { 
+      Landing: {
+      screen: Landing
     },
+    Dashboard: {
+      screen: Dashboard
+    }, 
+
     SignUp: {
       screen: SignUp
     },
     Login: {
       screen: Login
     },
-    Dashboard: {
-      screen: Dashboard
+    MyRecipes: {
+      screen: MyRecipes
     }
+   
   },
   {
     defaultNavigationOptions: {

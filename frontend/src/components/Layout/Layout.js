@@ -1,12 +1,17 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import Theme from './Theme';
-import Navbar from './NavBar/Navbar';
+import NavBar from './NavBar/NavBar';
+import { connect } from 'react-redux';
+import MyRecipes from '../../views/MyRecipes';
 
 // Layout
 const Layout = props => {
+  const { isLoggedIn } = props;
   return (
     <Theme>
+      {isLoggedIn ? <NavBar {...props} /> : null}
+    
       <View
         style={{
           flex: 1,
@@ -16,10 +21,17 @@ const Layout = props => {
           backgroundColor: '#ece6cf'
         }}
       >
-        {props.children}
+
+        <MyRecipes />
       </View>
     </Theme>
   );
 };
 
-export default Layout;
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: state.user.isLoggedIn
+  };
+};
+
+export default connect(mapStateToProps)(Layout);

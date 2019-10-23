@@ -9,14 +9,14 @@ import NavTabs from './NavTabs';
 import NavDrawer from './NavDrawer';
 
 
-    const Navbar = props => {
+    const NavBar = props => {
 
       return (
-        <View style={{width: '100%', height: '100%'}}>
-          <NavTabs {...props} />
+        <View style={{width: '100%' }} >
+              <NavTabs {...props} />
         </View>
       );
 
     }
 
-export default Navbar;
+export default NavBar;

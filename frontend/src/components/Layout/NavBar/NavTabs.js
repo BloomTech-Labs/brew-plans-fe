@@ -33,7 +33,7 @@ class NavTabs extends React.Component {
           } 
           }/>
         </Appbar>
-        {this.state.open ? <DrawerNav /> : null}
+        {this.state.open ? <NavDrawer {...props} /> : null}
         </View>
       );
       }}
