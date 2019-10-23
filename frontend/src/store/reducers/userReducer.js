@@ -12,6 +12,11 @@ import {
   GOOGLE_SIGNIN_FAIL
 } from '../actions/actionTypes.js';
 
+import {
+getLocalData,
+storeLocalData
+} from '../actions/asyncStorage.js';
+
 const initialState = {
   newUser: {
     username: '',
@@ -120,30 +125,33 @@ const userReducer = (state = initialState, action) => {
       };
 
     case GOOGLE_SIGNIN_START:
-      console.log(action);
       return {
         ...state,
         isLoading: true
       }
 
     case GOOGLE_SIGNIN_SUCCESS:
-      console.log('type: ', action.type)
-      console.log('google payload: ', action.payload)
       const { user } = action.payload;
+      storeLocalData('signedIn', true);
+      storeLocalData('currentUser', user);
       return {
         ...state,
         currentUser: {
           ...state.currentUser,
           id: user.id,
           email: user.email,
-          photoUrl: user.photoUrl
+          photoUrl: user.photoUrl,
+          isLoading: false,
         },
-        isLoggedIn: true,
-        isLoading: false
-      }
+        // isLoggedIn: true
+      };
       
     case GOOGLE_SIGNIN_FAIL:
       console.log(action)
+      return {
+        ...state,
+        isLoading: false
+      }
 
     default:
       return state;
