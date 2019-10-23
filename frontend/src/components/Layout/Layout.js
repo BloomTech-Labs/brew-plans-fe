@@ -18,7 +18,8 @@ const Layout = props => {
           padding: 16,
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#ece6cf'
+          backgroundColor: '#ece6cf',
+          marginTop: 56
         }}
       >
 

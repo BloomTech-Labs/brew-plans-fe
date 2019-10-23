@@ -4,8 +4,11 @@
     import { Drawer } from 'react-native-paper';
     
     class NavDrawer extends React.Component {
-        state = {
-          active: 'first',
+        constructor(props){
+            super();
+            state = {
+                active: 'first',
+            };
         };
       
         render() {

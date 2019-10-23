@@ -13,7 +13,7 @@ import NavDrawer from './NavDrawer';
 
 class NavTabs extends React.Component {
     constructor(props) {
-      super();
+      super(props);
       const theme = props;
       this.state = {
         open: false
@@ -25,6 +25,8 @@ class NavTabs extends React.Component {
         <Appbar style={{ position: 'absolute', top: 0, left: 0, width: '100%' }} theme={theme}>
       
         <Appbar.Action icon="person" onPress={() => this.props.navigation.navigate('Login')} />
+        <Appbar.Action icon="home" onPress={() => this.props.navigation.navigate('Login')} />
+        <Appbar.Action icon="work" onPress={() => this.props.navigation.navigate('Login')} />
           <Appbar.Action icon="menu" onPress={() => {
             this.setState(state => {
               return { open: !state.open }

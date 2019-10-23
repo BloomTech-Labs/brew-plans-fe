@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     fontSize: 24
   },
   recipesContainer: {
-    marginTop: 24
+    paddingVertical: 24
   },
   recipeContainer: {
     width: '100%',
