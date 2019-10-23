@@ -37,7 +37,7 @@ const MyRecipes = props => {
               <Text style={styles.recipeTitle}>{item.title}</Text>
               <View style={styles.recipeInfoContainer}>
                 <View style={styles.recipeInfo}>
-                  <Text>Pour Over</Text>
+                  <Text>{item.brew_type}</Text>
                 </View>
                 <View style={styles.recipeInfo}>
                   <Text>{item.water_temp}</Text>

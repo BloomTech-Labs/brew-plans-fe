@@ -10,7 +10,9 @@ export const getUserRecipes = userId => dispatch => {
   dispatch({ type: GET_USER_RECIPES_START });
   if (userId) {
     axios
-      .get(`https://brewplans-production.herokuapp.com/userrecipes/${userId}`)
+      .get(
+        `https://backend-development-coffee.herokuapp.com/userrecipes/${userId}`
+      )
       .then(res => {
         dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
       })
@@ -19,7 +21,7 @@ export const getUserRecipes = userId => dispatch => {
       });
   } else {
     axios
-      .get(`https://brewplans-production.herokuapp.com/userrecipes/all`)
+      .get(`https://backend-development-coffee.herokuapp.com/userrecipes/all`)
       .then(res => {
         dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
       })
