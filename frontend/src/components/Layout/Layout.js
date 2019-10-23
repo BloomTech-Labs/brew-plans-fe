@@ -7,10 +7,10 @@ import MyRecipes from '../../views/MyRecipes';
 
 // Layout
 const Layout = props => {
-  const { isLoggedIn } = props;
+
   return (
     <Theme>
-      {isLoggedIn ? <NavBar {...props} /> : null}
+      {props.isLoggedIn ? <NavBar {...props} /> : null}
     
       <View
         style={{
