@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Button } from 'react-native';
+// import { IconButton } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Layout from '../components/Layout/Layout';
 import { connect } from 'react-redux';
@@ -10,23 +11,13 @@ const MyRecipes = props => {
   useEffect(() => {
     props.getUserRecipes();
   }, []);
-  // const [recipes, setRecipes] = useState([
-  //   {
-  //     id: 1,
-  //     title: 'Nitro Cold Brew'
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'Vanilla Latte'
-  //   },
-  //   {
-  //     id: 3,
-  //     title: 'Vanilla Cappuccino'
-  //   }
-  // ]);
+
   return (
     <View style={styles.pageContainer}>
-      <Text style={styles.recipesHeader}>My Recipes</Text>
+      <View style={styles.recipesHeader}>
+        <Text>My Recipes</Text>
+        <Button color={'orange'} title={'Add'} />
+      </View>
 
       <View style={styles.recipesContainer}>
         <FlatList
@@ -65,7 +56,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#ece6cf'
   },
   recipesHeader: {
-    fontSize: 24
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   recipesContainer: {
     marginTop: 24
