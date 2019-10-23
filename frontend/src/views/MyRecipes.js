@@ -1,5 +1,12 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, Button } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Button,
+  TouchableOpacity
+} from 'react-native';
 // import { IconButton } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Layout from '../components/Layout/Layout';
@@ -15,8 +22,14 @@ const MyRecipes = props => {
   return (
     <View style={styles.pageContainer}>
       <View style={styles.recipesHeader}>
-        <Text>My Recipes</Text>
-        <Button color={'orange'} title={'Add'} />
+        <Text style={styles.recipesHeaderText}>My Recipes</Text>
+        <TouchableOpacity onPress={() => console.log('Button pressed!')}>
+          <MaterialCommunityIcons
+            name={'temperature-fahrenheit'}
+            size={16}
+            color={'black'}
+          />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.recipesContainer}>
@@ -24,7 +37,10 @@ const MyRecipes = props => {
           keyExtractor={item => item.id.toString()}
           data={props.userRecipes}
           renderItem={({ item, index }) => (
-            <View style={styles.recipeContainer}>
+            <TouchableOpacity
+              onPress={() => console.log('Navigate to recipe page!')}
+              style={styles.recipeContainer}
+            >
               <Text style={styles.recipeTitle}>{item.title}</Text>
               <View style={styles.recipeInfoContainer}>
                 <View style={styles.recipeInfo}>
@@ -39,7 +55,7 @@ const MyRecipes = props => {
                   />
                 </View>
               </View>
-            </View>
+            </TouchableOpacity>
           )}
         ></FlatList>
       </View>
@@ -59,6 +75,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
+  },
+  recipesHeaderText: {
+    fontSize: 24
   },
   recipesContainer: {
     marginTop: 24
