@@ -15,15 +15,14 @@ const Layout = props => {
       <View
         style={{
           flex: 1,
+          width: '100%',
           padding: 16,
           alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: '#ece6cf',
-          marginTop: 56
         }}
       >
-
-        <MyRecipes />
+        {props.children}
       </View>
     </Theme>
   );

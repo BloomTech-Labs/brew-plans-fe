@@ -5,6 +5,8 @@ import { StyleSheet, View } from 'react-native';
 import theme from '../../../theme.js'
 import Layout from '../Layout'
 import Login from '../../../views/Login'
+import SignUp from '../../../views/SignUp'
+import MyRecipes from '../../../views/MyRecipes'
 // import NavDrawer from './NavDrawer';
 
 
@@ -13,11 +15,11 @@ const NavTabs = props => {
       const [open, setOpen] = useState(false);
   return (
         <View>
-        <Appbar style={{ position: 'absolute', top: 0, left: 0, width: '100%' }} theme={theme}>
+        <Appbar style={{ width: '100%' }} theme={theme}>
       
-        <Appbar.Action icon="person" onPress={() => props.navigation.navigate('Login')} />
+        <Appbar.Action icon="person" onPress={() => props.navigation.navigate('MyRecipes')} />
         <Appbar.Action icon="home" onPress={() => props.navigation.navigate('Login')} />
-        <Appbar.Action icon="work" onPress={() => props.navigation.navigate('Login')} />
+        <Appbar.Action icon="work" onPress={() => props.navigation.navigate('SignUp')} />
           <Appbar.Action icon="menu" onPress={() => {
             setOpen(!open)
             console.log(open)

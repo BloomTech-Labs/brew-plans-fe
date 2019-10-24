@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { Formik } from 'formik';
 import { withTheme, TextInput } from 'react-native-paper';
 import SocialButton from './SocialButton';
@@ -35,9 +35,16 @@ const LoginForm = props => {
             />
           </View>
           <SubmitButton onPress={props.handleSubmit} title='Login' />
-          <View style={theme.formSocialsContainer}>
-            <SocialButton icon='book' />
-            <SocialButton icon='book' />
+            <View style={theme.formSocialsContainer}>
+            <Text
+              style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}
+            >
+              Login with
+            </Text>
+            <View style={theme.formIcons}>
+              <SocialButton icon='zoom-in' />
+              <SocialButton icon='book' />
+            </View>
           </View>
         </View>
       )}

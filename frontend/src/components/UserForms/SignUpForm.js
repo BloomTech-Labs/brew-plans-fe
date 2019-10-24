@@ -72,8 +72,8 @@ const SignUpForm = props => {
               onBlur={props.handleBlur('email')}
               value={newUser.email}
               placeholder='Please enter email'
-              // label='Email'
-              // mode='outlined'
+              label='Email'
+              mode='outlined'
             />
             <TextInput
               style={theme.formInput}

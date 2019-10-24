@@ -9,7 +9,9 @@ const Dashboard = props => {
   return (
     <View style={{flex: 1}}>
       <NavBar {...props} />
-      <Layout />
+      <Layout>
+        {props.children}
+      </Layout>
     </View>
 
   );
