@@ -2,19 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71a7caf1-9840-412c-9565-64c901013d58" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/actions/asyncStorage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/NavBar/NavDrawer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/NavBar/NavTabs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/NavBar/Navbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/UserForms/RecipeForm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Navbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserForms/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserForms/LoginForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserForms/SignUpForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserForms/SignUpForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/ingredientsReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/ingredientsReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserForms/SocialButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserForms/SocialButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/userRecipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/userRecipes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/userReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Landing.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Landing.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/SignUp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/TestDataVisualization.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/TestDataVisualization.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/MyRecipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/MyRecipes.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

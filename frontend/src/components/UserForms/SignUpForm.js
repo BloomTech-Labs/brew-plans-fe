@@ -6,6 +6,7 @@ import { Formik } from 'formik';
 import { withTheme } from 'react-native-paper';
 import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
+import { Ionicons } from '@expo/vector-icons';
 
 import { handleUserSignup, handleChange } from '../../store/actions/index.js';
 
@@ -71,8 +72,8 @@ const SignUpForm = props => {
               onBlur={props.handleBlur('email')}
               value={newUser.email}
               placeholder='Please enter email'
-              // label='Email'
-              // mode='outlined'
+              label='Email'
+              mode='outlined'
             />
             <TextInput
               style={theme.formInput}
@@ -92,8 +93,8 @@ const SignUpForm = props => {
               Sign up with
             </Text>
             <View style={theme.formIcons}>
-              <SocialButton icon='zoom-in' loginConfig={loginConfig} />
-              <SocialButton icon='book' />
+              <SocialButton icon='logo-google' loginConfig={loginConfig} />
+              <SocialButton icon='logo-facebook' />
             </View>
           </View>
         </View>
