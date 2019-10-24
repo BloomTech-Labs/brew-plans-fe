@@ -9,7 +9,8 @@ import {
   USER_REGISTER_FAIL,
   GOOGLE_SIGNIN_START,
   GOOGLE_SIGNIN_SUCCESS,
-  GOOGLE_SIGNIN_FAIL
+  GOOGLE_SIGNIN_FAIL,
+  USER_LOGOUT
 } from '../actions/actionTypes.js';
 
 import {
@@ -85,7 +86,7 @@ const userReducer = (state = initialState, action) => {
           isLoading: false
         },
         loadingError: action.payload
-      }
+      };
 
     case GET_USER_INFO_START:
       return {
@@ -94,7 +95,7 @@ const userReducer = (state = initialState, action) => {
           ...state.currentUser,
           isLoading: true
         }
-      }
+      };
 
     case GET_USER_INFO_SUCCESS:
       const searchedUser = action.payload;
@@ -112,7 +113,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         allUsers: action.payload
-      }
+      };
 
     case GET_USER_INFO_FAIL:
       return {
@@ -141,9 +142,9 @@ const userReducer = (state = initialState, action) => {
           id: user.id,
           email: user.email,
           photoUrl: user.photoUrl,
-          isLoading: false,
+          isLoading: true,
         },
-        // isLoggedIn: true
+        isLoggedIn: true
       };
       
     case GOOGLE_SIGNIN_FAIL:
@@ -151,6 +152,16 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false
+      }
+
+    case USER_LOGOUT:
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          isLoading: false
+        },
+        isLoggedIn: false
       }
 
     default:

@@ -6,28 +6,25 @@ import {
 
 import axios from 'axios';
 
-export const getUserRecipes = (userId) => dispatch => {
-  dispatch({ type: GET_USER_RECIPES_START })
+export const getUserRecipes = userId => dispatch => {
+  dispatch({ type: GET_USER_RECIPES_START });
   if (userId) {
-    axios.get(
-      `https://brewplans-production.herokuapp.com/userrecipes/${userId}`
-      )
+    axios
+      .get(`https://brewplans-production.herokuapp.com/userrecipes/${userId}`)
       .then(res => {
         dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
       })
       .catch(err => {
         dispatch({ type: GET_USER_RECIPES_FAIL, payload: err });
-      })
+      });
   } else {
-    axios.get(
-      `https://brewplans-production.herokuapp.com/userrecipes/all`
-      )
+    axios
+      .get(`https://brewplans-production.herokuapp.com/userrecipes/all`)
       .then(res => {
         dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
       })
       .catch(err => {
         dispatch({ type: GET_USER_RECIPES_FAIL, payload: err });
-      })
+      });
   }
-  
-}
+};

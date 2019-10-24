@@ -29,3 +29,6 @@ export const GET_INGREDIENTS_FAIL = "GET_INGREDIENTS_FAIL";
 export const GOOGLE_SIGNIN_START = "GOOGLE_SIGNIN_START";
 export const GOOGLE_SIGNIN_SUCCESS = "GOOGLE_SIGNIN_SUCCESS";
 export const GOOGLE_SIGNIN_FAIL = "GOOGLE_SIGNIN_FAIL";
+
+// action type for user logging out
+export const USER_LOGOUT = "USER_LOGOUT";

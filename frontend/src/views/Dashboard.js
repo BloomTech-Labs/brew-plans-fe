@@ -3,10 +3,14 @@ import { AsyncStorage, Button } from 'react-native';
 import { DrawerActions } from 'react-navigation-drawer';
 import Layout from '../components/Layout/Layout';
 import TestDataVisualization from './TestDataVisualization.js';
+import { connect } from 'react-redux';
 import { getLocalData } from '../store/actions/asyncStorage.js';
+import Navbar from '../components/Layout/Navbar';
+import {
+  userLogout
+} from '../store/actions/index.js';
 
 const Dashboard = props => {
-  console.log('dashboard props: ', props);
   useEffect(() => {
     getLocalData('currentUser')
       .then(res => {
@@ -21,13 +25,26 @@ const Dashboard = props => {
       <Button 
       onPress={() => { 
         AsyncStorage.clear();
-        props.navigation.navigate('Landing')
+        props.userLogout();
+        props.navigation.navigate('Landing');
       }} 
       title='Logout'
       />
-      <TestDataVisualization />
+      {/* <TestDataVisualization /> */}
+      <Navbar {...props} />
     </Layout>
   );
 };
 
-export default Dashboard;
+const mapStateToProps = state => {
+  return {
+
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    userLogout
+  }
+)(Dashboard);

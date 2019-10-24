@@ -2,7 +2,8 @@ export {
   handleChange,
   handleUserSignup,
   getUserInfo,
-  googleSignIn
+  googleSignIn,
+  userLogout
 } from './user.js';
 
 export { getSeededRecipes } from './seededRecipes.js';

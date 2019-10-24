@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, AsyncStorage } from 'react-native';
+import { View } from 'react-native';
 import Layout from '../components/Layout/Layout';
 import LandingButton from '../components/Landing/LandingButton';
 import { connect } from 'react-redux';
@@ -11,7 +11,7 @@ const Landing = props => {
     getLocalData('signedIn')
       .then(res => {
         if (res == null) {
-          
+
         } else {
           props.navigation.navigate('Dashboard');
         }
@@ -39,7 +39,8 @@ const Landing = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.user.isLoggedIn
+    isLoggedIn: state.user.isLoggedIn,
+    isLoading: state.user.newUser.isLoading
   };
 };
 

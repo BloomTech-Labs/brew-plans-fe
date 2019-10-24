@@ -13,7 +13,8 @@ import {
   GET_USER_INFO_FAIL,
   GOOGLE_SIGNIN_START,
   GOOGLE_SIGNIN_SUCCESS,
-  GOOGLE_SIGNIN_FAIL
+  GOOGLE_SIGNIN_FAIL,
+  USER_LOGOUT
 } from './actionTypes.js';
 
 export const handleUserSignup = userCredentials => dispatch => {
@@ -98,3 +99,7 @@ export const googleSignIn = config => async dispatch => {
     dispatch({ type: GOOGLE_SIGNIN_FAIL, payload: message });
   }
 };
+
+export const userLogout = () => dispatch => {
+  dispatch({ type: USER_LOGOUT });
+}
