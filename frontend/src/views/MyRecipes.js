@@ -7,7 +7,6 @@ import {
   Button,
   TouchableOpacity
 } from 'react-native';
-// import { IconButton } from 'react-native-paper';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import Layout from '../components/Layout/Layout';
 import { connect } from 'react-redux';
@@ -54,10 +53,10 @@ const MyRecipes = props => {
                   </View>
                 </View>
                 <View style={styles.recipeInfoContainer}>
-                  <TouchableOpacity>
+                  <TouchableOpacity style={styles.recipeIcon}>
                     <MaterialIcons name={'edit'} size={20} color={'black'} />
                   </TouchableOpacity>
-                  <TouchableOpacity>
+                  <TouchableOpacity style={styles.recipeIcon}>
                     <MaterialIcons name={'delete'} size={20} color={'black'} />
                   </TouchableOpacity>
                 </View>
@@ -108,6 +107,9 @@ const styles = StyleSheet.create({
   },
   recipeInfo: {
     flexDirection: 'row'
+  },
+  recipeIcon: {
+    padding: 8
   }
 });
 
