@@ -43,7 +43,7 @@ export default {
     width: '100%',
     justifyContent: 'space-between',
     textAlign: 'center',
-    marginTop: space[1]
+    marginTop: space[0]
   },
 
   navbar: {

@@ -1,5 +1,3 @@
-
-
 import React, { useEffect } from 'react';
 import {
   View,
@@ -14,8 +12,7 @@ import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import Layout from '../components/Layout/Layout';
 import { connect } from 'react-redux';
 import { getUserRecipes } from '../store/actions/index.js';
-import NavBar from '../components/Layout/NavBar/NavBar'
-
+import NavBar from '../components/Layout/NavBar/NavBar';
 
 const MyRecipes = props => {
   useEffect(() => {
@@ -23,49 +20,53 @@ const MyRecipes = props => {
   }, []);
 
   return (
-    <View style={{flex: 1}}>
-    <NavBar {...props} />
-    <View style={styles.pageContainer}>
-      <View style={styles.recipesHeader}>
-        <Text style={styles.recipesHeaderText}>My Recipes</Text>
-        <TouchableOpacity onPress={() => console.log('Button pressed!')}>
-          <MaterialIcons
-            name={'add-circle'}
-            size={36}
-            color={'black'}
-          />
-        </TouchableOpacity>
-      </View>
+    <View style={{ flex: 1 }}>
+      <NavBar {...props} />
+      <View style={styles.pageContainer}>
+        <View style={styles.recipesHeader}>
+          <Text style={styles.recipesHeaderText}>My Recipes</Text>
+          <TouchableOpacity onPress={() => console.log('Button pressed!')}>
+            <MaterialIcons name={'add-circle'} size={36} color={'black'} />
+          </TouchableOpacity>
+        </View>
 
-      <View style={styles.recipesContainer}>
-        <FlatList
-          keyExtractor={item => item.id.toString()}
-          data={props.userRecipes}
-          renderItem={({ item, index }) => (
-            <TouchableOpacity
-              onPress={() => console.log('Navigate to recipe page!')}
-              style={styles.recipeContainer}
-            >
-              <Text style={styles.recipeTitle}>{item.title}</Text>
-              <View style={styles.recipeInfoContainer}>
-                <View style={styles.recipeInfo}>
-                  <Text>{item.brew_type}</Text>
+        <View style={styles.recipesContainer}>
+          <FlatList
+            keyExtractor={item => item.id.toString()}
+            data={props.userRecipes}
+            renderItem={({ item, index }) => (
+              <TouchableOpacity
+                onPress={() => console.log('Navigate to recipe page!')}
+                style={styles.recipeContainer}
+              >
+                <Text style={styles.recipeTitle}>{item.title}</Text>
+                <View style={styles.recipeInfoContainer}>
+                  <View style={styles.recipeInfo}>
+                    <Text>{item.brew_type}</Text>
+                  </View>
+                  <View style={styles.recipeInfo}>
+                    <Text>{item.water_temp}</Text>
+                    <MaterialCommunityIcons
+                      name={'temperature-fahrenheit'}
+                      size={16}
+                      color={'black'}
+                    />
+                  </View>
                 </View>
-                <View style={styles.recipeInfo}>
-                  <Text>{item.water_temp}</Text>
-                  <MaterialCommunityIcons
-                    name={'temperature-fahrenheit'}
-                    size={16}
-                    color={'black'}
-                  />
+                <View style={styles.recipeInfoContainer}>
+                  <TouchableOpacity>
+                    <MaterialIcons name={'edit'} size={20} color={'black'} />
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <MaterialIcons name={'delete'} size={20} color={'black'} />
+                  </TouchableOpacity>
                 </View>
-              </View>
-            </TouchableOpacity>
-          )}
-        ></FlatList>
+              </TouchableOpacity>
+            )}
+          ></FlatList>
+        </View>
       </View>
-      </View>
-      </View>
+    </View>
   );
 };
 
