@@ -10,4 +10,4 @@ const NavBar = props => {
     </View>
   )
 }
-export default NavBar
+export default NavBar;

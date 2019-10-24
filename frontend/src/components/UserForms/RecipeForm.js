@@ -81,10 +81,10 @@ const RecipeForm = props => {
 
           <SubmitButton onPress={() => submitRecipe()} title='Sign Up' />
           <View style={theme.formSocialsContainer}>
-            <Text
-              style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}
-            >
-              Sign up with
+            <Text style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}>
+            
+            Recipe Form!
+            
             </Text>
             <View style={theme.formIcons}>
               <SocialButton icon='zoom-in' loginConfig={loginConfig} />
@@ -100,9 +100,8 @@ const RecipeForm = props => {
 const mapStateToProps = state => {
   return {
     newRecipe: {
-      Recipename: state.Recipe.newRecipe.Recipename,
+      RecipeName: state.Recipe.newRecipe.RecipeName,
       password: state.Recipe.newRecipe.password,
-      email: state.Recipe.newRecipe.email
     }
   };
 };

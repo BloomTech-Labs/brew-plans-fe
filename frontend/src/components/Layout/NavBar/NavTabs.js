@@ -5,7 +5,7 @@ import { StyleSheet, View } from 'react-native';
 import theme from '../../../theme.js'
 import Layout from '../Layout'
 import Login from '../../../views/Login'
-import NavDrawer from './NavDrawer';
+// import NavDrawer from './NavDrawer';
 
 
 
@@ -20,10 +20,11 @@ const NavTabs = props => {
         <Appbar.Action icon="work" onPress={() => props.navigation.navigate('Login')} />
           <Appbar.Action icon="menu" onPress={() => {
             setOpen(!open)
+            console.log(open)
           } 
           }/>
         </Appbar>
-        {open ? <NavDrawer {...props} /> : null}
+        {/* {open ? <NavDrawer {...props} /> : null} */}
         </View>
       );
   

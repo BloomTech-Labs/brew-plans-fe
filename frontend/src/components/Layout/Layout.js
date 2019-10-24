@@ -10,7 +10,7 @@ const Layout = props => {
 
   return (
     <Theme>
-      {props.isLoggedIn ? <NavBar {...props} /> : null}
+      {/* {props.isLoggedIn ? <NavBar {...props} /> : null} */}
     
       <View
         style={{
