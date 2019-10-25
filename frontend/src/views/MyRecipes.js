@@ -5,7 +5,8 @@ import {
   StyleSheet,
   FlatList,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
 // import { IconButton } from 'react-native-paper';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
@@ -34,28 +35,46 @@ const MyRecipes = props => {
         </View>
 
         <View style={styles.recipesContainer}>
-          <FlatList
-            keyExtractor={item => item.id.toString()}
-            data={props.seededRecipes}
-            renderItem={({ item, index }) => (
+          <ScrollView>
+            {props.seededRecipes.map(recipe => (
               <SeededRecipe
-                title={item.title}
-                brew_type={item.brew_type}
-                water_temp={item.water_temp}
+                key={recipe.id}
+                title={recipe.title}
+                brew_type={recipe.brew_type}
+                water_temp={recipe.water_temp}
               />
-            )}
-          ></FlatList>
-          <FlatList
+            ))}
+            {props.userRecipes.map(recipe => (
+              <UserRecipe
+                key={recipe.id}
+                title={recipe.title}
+                brew_type={recipe.brew_type}
+                water_temp={recipe.water_temp}
+              />
+            ))}
+          </ScrollView>
+          {/* <FlatList
             keyExtractor={item => item.id.toString()}
             data={props.userRecipes}
+            ListHeaderComponent={}
             renderItem={({ item, index }) => (
-              <UserRecipe
-                title={item.title}
-                brew_type={item.brew_type}
-                water_temp={item.water_temp}
-              />
+              <View>
+                {props.seededRecipes.map(recipe => (
+                  <SeededRecipe
+                    key={recipe.id}
+                    title={recipe.title}
+                    brew_type={recipe.brew_type}
+                    water_temp={recipe.water_temp}
+                  />
+                ))}
+                <UserRecipe
+                  title={item.title}
+                  brew_type={item.brew_type}
+                  water_temp={item.water_temp}
+                />
+              </View>
             )}
-          ></FlatList>
+          ></FlatList> */}
         </View>
       </View>
     </View>
@@ -86,7 +105,7 @@ const mapStateToProps = state => {
   return {
     userRecipes: state.userRecipes.userRecipes,
     isLoading: state.userRecipes.isLoading,
-    seededRecipes: state.seededRecipes
+    seededRecipes: state.seededRecipes.seededRecipes
   };
 };
 
