@@ -10,22 +10,8 @@ import SubmitButton from './SubmitButton';
 // import { handleRecipeSignup , handleChange } from '../../store/actions/index.js';
 
 const RecipeForm = props => {
-  _storeData = async newRecipe => {
-    try {
-      await AsyncStorage.setItem(
-        'recipe',
-        JSON.stringify(newRecipe),
-        (err, result) => {
-          console.log('sign up result', result);
-        }
-      );
-    } catch (error) {
-      // Error saving data
-      console.log(error);
-    }
-  };
-
-  // console.log('signupformprops: ', props)
+ 
+    // console.log('signupformprops: ', props)
 //   const loginConfig = {
 //     androidClientId:
 //       '449923889220-pa3veecaq72o4tiairfrputrj7f0dp2n.apps.googleRecipecontent.com',
@@ -59,7 +45,7 @@ const RecipeForm = props => {
             <TextInput
               style={theme.formInput}
               onChangeText={value => handleChange('RecipeTitle', value)}
-              onBlur={props.handleBlur('recipeTitle')}
+              onBlur={props.handleBlur('RecipeTitle')}
               value={newRecipe.title}
               placeholder='Please enter Title'
               label='RecipeTitle'
@@ -83,7 +69,7 @@ const RecipeForm = props => {
           <View style={theme.formSocialsContainer}>
             <Text style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}>
             
-            Recipe Form!
+            Recipe Form!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             
             </Text>
             <View style={theme.formIcons}>
@@ -109,7 +95,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    handleRecipe,
-    handleChange
+    // handleRecipe,
+    // handleChange
   }
 )(withTheme(RecipeForm));
