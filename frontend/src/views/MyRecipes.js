@@ -11,7 +11,6 @@ import {
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import Layout from '../components/Layout/Layout';
 import { connect } from 'react-redux';
-<<<<<<< HEAD
 import NavBar from '../components/Layout/NavBar/NavBar.js';
 import { 
   getUserRecipes, 
@@ -19,17 +18,11 @@ import {
   handleRecipeEdit,
   handleRecipeUpdate
 } from '../store/actions/index.js';
-=======
-import { getUserRecipes, getSeededRecipes } from '../store/actions/index.js';
-import NavBar from '../components/Layout/NavBar/NavBar.js';
-import UserRecipe from '../components/Recipes/UserRecipe.js';
-import SeededRecipe from '../components/Recipes/SeededRecipe.js';
->>>>>>> 0bfe4c065ad8969f494ea4e50f973f711f46fe6f
 
 const MyRecipes = props => {
   useEffect(() => {
     props.getUserRecipes();
-    props.getSeededRecipes();
+    // props.getSeededRecipes();
   }, []);
 
   return (
@@ -59,7 +52,6 @@ const MyRecipes = props => {
             keyExtractor={item => item.id.toString()}
             data={props.userRecipes}
             renderItem={({ item, index }) => (
-<<<<<<< HEAD
               <TouchableOpacity
                 onPress={() => console.log('Navigate to recipe page!')}
                 style={styles.recipeContainer}
@@ -90,13 +82,6 @@ const MyRecipes = props => {
                   </TouchableOpacity>
                 </View>
               </TouchableOpacity>
-=======
-              <UserRecipe
-                title={item.title}
-                brew_type={item.brew_type}
-                water_temp={item.water_temp}
-              />
->>>>>>> 0bfe4c065ad8969f494ea4e50f973f711f46fe6f
             )}
           ></FlatList>
         </View>
@@ -122,7 +107,6 @@ const styles = StyleSheet.create({
   },
   recipesContainer: {
     paddingVertical: 24
-<<<<<<< HEAD
   },
   recipeContainer: {
     width: '100%',
@@ -147,8 +131,6 @@ const styles = StyleSheet.create({
   },
   coarseness: {
     position: 'absolute',
-=======
->>>>>>> 0bfe4c065ad8969f494ea4e50f973f711f46fe6f
   }
 });
 
@@ -162,14 +144,10 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-<<<<<<< HEAD
   { 
     getUserRecipes,
     deleteUserRecipe,
     handleRecipeEdit,
     handleRecipeUpdate
   }
-=======
-  { getUserRecipes, getSeededRecipes }
->>>>>>> 0bfe4c065ad8969f494ea4e50f973f711f46fe6f
 )(MyRecipes);
