@@ -70,6 +70,7 @@ const MyRecipes = props => {
                   )
                 }
                 delete={() => props.deleteUserRecipe(recipe.id)}
+                
               />
             ))}
           </ScrollView>
