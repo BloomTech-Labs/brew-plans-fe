@@ -7,6 +7,13 @@ import SubmitButton from './SubmitButton';
 
 const LoginForm = props => {
   const theme = props.theme;
+
+  const loginConfig = {
+    androidClientId:
+      '449923889220-pa3veecaq72o4tiairfrputrj7f0dp2n.apps.googleusercontent.com',
+    scopes: ['profile', 'email']
+  };
+
   return (
     <Formik
       initialValues={{ username: '', password: '' }}
@@ -42,7 +49,7 @@ const LoginForm = props => {
               Login with
             </Text>
             <View style={theme.formIcons}>
-              <SocialButton icon='logo-google' />
+              <SocialButton icon='logo-google' loginConfig={loginConfig}/>
               <SocialButton icon='logo-facebook' />
             </View>
           </View>

@@ -8,19 +8,23 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native';
-// import { IconButton } from 'react-native-paper';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import Layout from '../components/Layout/Layout';
 import { connect } from 'react-redux';
-import { getUserRecipes, getSeededRecipes } from '../store/actions/index.js';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
-import UserRecipe from '../components/Recipes/UserRecipe.js';
-import SeededRecipe from '../components/Recipes/SeededRecipe.js';
+import {
+  getUserRecipes,
+  deleteUserRecipe,
+  handleRecipeEdit,
+  handleRecipeUpdate
+} from '../store/actions/index.js';
+import UserRecipe from '../components/Recipes/UserRecipe';
+import SeededRecipe from '../components/Recipes/SeededRecipe';
 
 const MyRecipes = props => {
   useEffect(() => {
     props.getUserRecipes();
-    props.getSeededRecipes();
+    // props.getSeededRecipes();
   }, []);
 
   return (
@@ -30,7 +34,12 @@ const MyRecipes = props => {
         <View style={styles.recipesHeader}>
           <Text style={styles.recipesHeaderText}>My Recipes</Text>
           <TouchableOpacity onPress={() => console.log('Button pressed!')}>
-            <MaterialIcons name={'add-circle'} size={36} color={'black'} />
+            <MaterialIcons
+              onPress={() => {}}
+              name={'add-circle'}
+              size={36}
+              color={'black'}
+            />
           </TouchableOpacity>
         </View>
 
@@ -50,6 +59,17 @@ const MyRecipes = props => {
                 title={recipe.title}
                 brew_type={recipe.brew_type}
                 water_temp={recipe.water_temp}
+                edit={() =>
+                  props.handleRecipeUpdate(
+                    {
+                      water_temp: 450,
+                      coarseness: 'Rough',
+                      title: 'Updated this again'
+                    },
+                    recipe.id
+                  )
+                }
+                delete={() => props.deleteUserRecipe(recipe.id)}
               />
             ))}
           </ScrollView>
@@ -98,6 +118,30 @@ const styles = StyleSheet.create({
   },
   recipesContainer: {
     paddingVertical: 24
+  },
+  recipeContainer: {
+    width: '100%',
+    backgroundColor: 'white',
+    marginVertical: 8,
+    padding: 16,
+    justifyContent: 'center',
+    borderRadius: 5
+  },
+  recipeTitle: {
+    fontSize: 16,
+    fontWeight: 'bold'
+  },
+  recipeInfoContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 12
+  },
+  recipeInfo: {
+    flexDirection: 'row'
+  },
+  coarseness: {
+    position: 'absolute'
   }
 });
 
@@ -111,5 +155,10 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getUserRecipes, getSeededRecipes }
+  {
+    getUserRecipes,
+    deleteUserRecipe,
+    handleRecipeEdit,
+    handleRecipeUpdate
+  }
 )(MyRecipes);

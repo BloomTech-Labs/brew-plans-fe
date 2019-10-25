@@ -142,7 +142,7 @@ const userReducer = (state = initialState, action) => {
           id: user.id,
           email: user.email,
           photoUrl: user.photoUrl,
-          isLoading: true,
+          isLoading: false,
         },
         isLoggedIn: true
       };

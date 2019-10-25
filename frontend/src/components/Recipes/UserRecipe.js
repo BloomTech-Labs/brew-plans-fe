@@ -23,10 +23,10 @@ const UserRecipe = props => {
         </View>
       </View>
       <View style={styles.recipeInfoContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={props.edit}>
           <MaterialIcons name={'edit'} size={20} color={'black'} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={props.delete}>
           <MaterialIcons name={'delete'} size={20} color={'black'} />
         </TouchableOpacity>
       </View>
