@@ -11,8 +11,13 @@ import {
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import Layout from '../components/Layout/Layout';
 import { connect } from 'react-redux';
-import { getUserRecipes } from '../store/actions/index.js';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
+import { 
+  getUserRecipes, 
+  deleteUserRecipe,
+  handleRecipeEdit,
+  handleRecipeUpdate
+} from '../store/actions/index.js';
 
 const MyRecipes = props => {
   useEffect(() => {
@@ -26,7 +31,7 @@ const MyRecipes = props => {
         <View style={styles.recipesHeader}>
           <Text style={styles.recipesHeaderText}>My Recipes</Text>
           <TouchableOpacity onPress={() => console.log('Button pressed!')}>
-            <MaterialIcons name={'add-circle'} size={36} color={'black'} />
+            <MaterialIcons onPress={() => {}} name={'add-circle'} size={36} color={'black'} />
           </TouchableOpacity>
         </View>
 
@@ -44,6 +49,9 @@ const MyRecipes = props => {
                   <View style={styles.recipeInfo}>
                     <Text>{item.brew_type}</Text>
                   </View>
+                  <View style={styles.coarseness}>
+                  <Text>Coarseness: {item.coarseness}</Text>
+                  </View>
                   <View style={styles.recipeInfo}>
                     <Text>{item.water_temp}</Text>
                     <MaterialCommunityIcons
@@ -55,10 +63,10 @@ const MyRecipes = props => {
                 </View>
                 <View style={styles.recipeInfoContainer}>
                   <TouchableOpacity>
-                    <MaterialIcons name={'edit'} size={20} color={'black'} />
+                    <MaterialIcons onPress={() => props.handleRecipeUpdate({water_temp: 450, coarseness: 'Rough', title: 'Updated this again'}, item.id)} name={'edit'} size={20} color={'black'} />
                   </TouchableOpacity>
                   <TouchableOpacity>
-                    <MaterialIcons name={'delete'} size={20} color={'black'} />
+                    <MaterialIcons onPress={() => props.deleteUserRecipe(item.id)} name={'delete'} size={20} color={'black'} />
                   </TouchableOpacity>
                 </View>
               </TouchableOpacity>
@@ -108,6 +116,9 @@ const styles = StyleSheet.create({
   },
   recipeInfo: {
     flexDirection: 'row'
+  },
+  coarseness: {
+    position: 'absolute',
   }
 });
 
@@ -120,5 +131,10 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getUserRecipes }
+  { 
+    getUserRecipes,
+    deleteUserRecipe,
+    handleRecipeEdit,
+    handleRecipeUpdate
+  }
 )(MyRecipes);

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Layout from '../components/Layout/Layout';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
 import { View } from 'react-native';
+import { getLocalData } from '../store/actions/asyncStorage.js';
 
 const Dashboard = props => {
   useEffect(() => {
@@ -34,6 +35,6 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    
+
   }
 )(Dashboard);

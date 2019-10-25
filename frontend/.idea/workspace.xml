@@ -2,20 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71a7caf1-9840-412c-9565-64c901013d58" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/NavBar/NavDrawer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/NavBar/NavTabs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/NavBar/Navbar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/UserForms/RecipeForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Navbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserForms/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserForms/LoginForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserForms/SignUpForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserForms/SignUpForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserForms/SocialButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserForms/SocialButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/actionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/userRecipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/userRecipes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/userRecipeReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/userRecipeReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/userReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/MyRecipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/MyRecipes.js" afterDir="false" />
     </list>
@@ -46,28 +41,15 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
