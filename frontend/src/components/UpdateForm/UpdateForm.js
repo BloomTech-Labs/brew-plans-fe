@@ -2,17 +2,37 @@ import React from 'react';
 // import axiosWithAuth from '../axiosWithAuth';
 import { Formik } from 'formik';
 import getUserRecipes from '../../store/actions/index';
+import DeleteRecipe from './DeleteRecipe';
 
 const UpdateForm = props => {
 
     // const childID = localStorage.getItem('id')
 
     console.log(props); 
-    const title = null;
-    const ingredients = null;
-    const instructions = null;
+    const title = title;
+    const ingredients = ingred;
+    const instructions = instruct;
     // const description = ;
  
+    //for future use, working on function first
+    const displayModal = () => {
+        setShowModal(true)
+        console.log(showModal)
+    }
+
+    const handleClose = () => {
+        setShowModal(false)
+        console.log(showModal)
+    }
+
+    const editModal = modal => {
+        setModalEditing(true); 
+        setModalToEdit(modal); 
+    }
+
+    if(!logState) {
+        return (<h2>Loading...</h2>)
+    }
 
     // componentDidMount = () => {
     //     fetchPost(this.props.params.postId)
@@ -35,7 +55,6 @@ const UpdateForm = props => {
     //     .then(res => res.json())
     //     .catch(err => err);}
 
-    return ( 
     //     <>
     //         <div className="time-wrapper">
     //             <div className="title-field">{title}</div>
@@ -47,7 +66,8 @@ const UpdateForm = props => {
     // </div> */}
     //         </div>
     //     </>
-    
+        return ( 
+
 
     <Formik
       initialValues={{
@@ -88,6 +108,7 @@ const UpdateForm = props => {
             />
           </View>
           <SubmitButton onPress={() => submitUpdate()} title='Submit' />
+          <DeleteButton onPress={() => DeleteRecipe()} title ='Delete'/>
           <View style={theme.formSocialsContainer}>
             <Text
               style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}
