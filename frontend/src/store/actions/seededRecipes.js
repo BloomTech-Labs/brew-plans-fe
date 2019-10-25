@@ -8,11 +8,12 @@ import {
 
 export const getSeededRecipes = () => dispatch => {
   dispatch({ type: GET_SEEDED_RECIPES_START });
-  axios.get('https://brewplans-production.herokuapp.com/seededrecipes/all')
+  axios
+    .get('https://backend-development-coffee.herokuapp.com/seededrecipes/all')
     .then(res => {
-      dispatch({ type: GET_SEEDED_RECIPES_SUCCESS, payload: res.data })
+      dispatch({ type: GET_SEEDED_RECIPES_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_SEEDED_RECIPES_FAIL, payload: err })
-    })
-}
+      dispatch({ type: GET_SEEDED_RECIPES_FAIL, payload: err });
+    });
+};

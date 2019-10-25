@@ -5,17 +5,27 @@ import {
   StyleSheet,
   FlatList,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import Layout from '../components/Layout/Layout';
 import { connect } from 'react-redux';
-import { getUserRecipes } from '../store/actions/index.js';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
+import {
+  getUserRecipes,
+  deleteUserRecipe,
+  handleRecipeEdit,
+  handleRecipeUpdate,
+  createUserRecipe
+} from '../store/actions/index.js';
+import UserRecipe from '../components/Recipes/UserRecipe';
+import SeededRecipe from '../components/Recipes/SeededRecipe';
 
 const MyRecipes = props => {
   useEffect(() => {
     props.getUserRecipes();
+    // props.getSeededRecipes();
   }, []);
 
   return (
@@ -25,44 +35,46 @@ const MyRecipes = props => {
         <View style={styles.recipesHeader}>
           <Text style={styles.recipesHeaderText}>My Recipes</Text>
           <TouchableOpacity onPress={() => console.log('Button pressed!')}>
-            <MaterialIcons name={'add-circle'} size={36} color={'black'} />
+            <MaterialIcons
+              onPress={() => props.createUserRecipe(props.newRecipe)}
+              name={'add-circle'}
+              size={36}
+              color={'black'}
+            />
           </TouchableOpacity>
         </View>
 
         <View style={styles.recipesContainer}>
-          <FlatList
-            keyExtractor={item => item.id.toString()}
-            data={props.userRecipes}
-            renderItem={({ item, index }) => (
-              <TouchableOpacity
-                onPress={() => console.log('Navigate to recipe page!')}
-                style={styles.recipeContainer}
-              >
-                <Text style={styles.recipeTitle}>{item.title}</Text>
-                <View style={styles.recipeInfoContainer}>
-                  <View style={styles.recipeInfo}>
-                    <Text>{item.brew_type}</Text>
-                  </View>
-                  <View style={styles.recipeInfo}>
-                    <Text>{item.water_temp}</Text>
-                    <MaterialCommunityIcons
-                      name={'temperature-fahrenheit'}
-                      size={16}
-                      color={'black'}
-                    />
-                  </View>
-                </View>
-                <View style={styles.recipeInfoContainer}>
-                  <TouchableOpacity style={styles.recipeIcon}>
-                    <MaterialIcons name={'edit'} size={20} color={'black'} />
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.recipeIcon}>
-                    <MaterialIcons name={'delete'} size={20} color={'black'} />
-                  </TouchableOpacity>
-                </View>
-              </TouchableOpacity>
-            )}
-          ></FlatList>
+          <ScrollView>
+            {props.seededRecipes.map(recipe => (
+              <SeededRecipe
+                key={recipe.id}
+                title={recipe.title}
+                brew_type={recipe.brew_type}
+                water_temp={recipe.water_temp}
+              />
+            ))}
+            {props.userRecipes.map(recipe => (
+              <UserRecipe
+                key={recipe.id}
+                title={recipe.title}
+                brew_type={recipe.brew_type}
+                water_temp={recipe.water_temp}
+                coarseness={recipe.coarseness}
+                edit={() =>
+                  props.handleRecipeUpdate(
+                    {
+                      water_temp: 450,
+                      coarseness: 'Rough',
+                      title: 'Updated this again'
+                    },
+                    recipe.id
+                  )
+                }
+                delete={() => props.deleteUserRecipe(recipe.id)}
+              />
+            ))}
+          </ScrollView>
         </View>
       </View>
     </View>
@@ -87,40 +99,24 @@ const styles = StyleSheet.create({
   recipesContainer: {
     paddingVertical: 24
   },
-  recipeContainer: {
-    width: '100%',
-    backgroundColor: 'white',
-    marginVertical: 8,
-    padding: 16,
-    justifyContent: 'center',
-    borderRadius: 5
-  },
-  recipeTitle: {
-    fontSize: 16,
-    fontWeight: 'bold'
-  },
-  recipeInfoContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 12
-  },
-  recipeInfo: {
-    flexDirection: 'row'
-  },
-  recipeIcon: {
-    padding: 8
-  }
 });
 
 const mapStateToProps = state => {
   return {
     userRecipes: state.userRecipes.userRecipes,
-    isLoading: state.userRecipes.isLoading
+    isLoading: state.userRecipes.isLoading,
+    seededRecipes: state.seededRecipes.seededRecipes,
+    newRecipe: state.userRecipes.newRecipe
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getUserRecipes }
+  {
+    getUserRecipes,
+    deleteUserRecipe,
+    handleRecipeEdit,
+    handleRecipeUpdate,
+    createUserRecipe
+  }
 )(MyRecipes);

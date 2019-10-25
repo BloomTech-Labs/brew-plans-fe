@@ -11,20 +11,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { handleUserSignup, handleChange } from '../../store/actions/index.js';
 
 const SignUpForm = props => {
-  // _storeData = async newUser => {
-  //   try {
-  //     await AsyncStorage.setItem(
-  //       'user',
-  //       JSON.stringify(newUser),
-  //       (err, result) => {
-  //         console.log('sign up result', result);
-  //       }
-  //     );
-  //   } catch (error) {
-  //     // Error saving data
-  //     console.log(error);
-  //   }
-  // };
 
   // console.log('signupformprops: ', props)
   const loginConfig = {

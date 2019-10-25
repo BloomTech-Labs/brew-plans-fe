@@ -6,6 +6,14 @@ export {
   userLogout
 } from './user.js';
 
-export { getSeededRecipes } from './seededRecipes.js';
+export { 
+  getSeededRecipes 
+} from './seededRecipes.js';
 
-export { getUserRecipes } from './userRecipes.js';
+export { 
+  getUserRecipes, 
+  deleteUserRecipe,
+  handleRecipeEdit,
+  handleRecipeUpdate,
+  createUserRecipe
+} from './userRecipes.js';
