@@ -13,6 +13,8 @@ import {
   USER_LOGOUT
 } from '../actions/actionTypes.js';
 
+import { AsyncStorage } from 'react-native';
+
 import {
 getLocalData,
 storeLocalData
@@ -20,7 +22,6 @@ storeLocalData
 
 const initialState = {
   newUser: {
-    username: '',
     password: '',
     email: ''
   },
@@ -68,17 +69,20 @@ const userReducer = (state = initialState, action) => {
       };
 
     case USER_REGISTER_SUCCESS:
-      const currentUser = action.payload;
-      console.log(action.type)
+      // console.log('register_success action: ', action)
+      storeLocalData('token', action.payload.idToken)
       return {
         ...state,
-        currentUser: currentUser,
-        isLoggedIn: true,
+        currentUser: {
+          id: action.payload.localId,
+          isLoading: false
+        }
       };
 
     case USER_REGISTER_FAIL:
-      console.log('error: ', action.payload);
-      console.log(action.type)
+      // console.log('error: ', action.payload);
+      // console.log(action.type)
+      alert('Authorization failed.')
       return {
         ...state,
         currentUser: {
@@ -132,19 +136,14 @@ const userReducer = (state = initialState, action) => {
       }
 
     case GOOGLE_SIGNIN_SUCCESS:
-      const { user } = action.payload;
-      storeLocalData('signedIn', true);
-      storeLocalData('currentUser', user);
+      const { user, token } = action.payload;
+      storeLocalData('token', token);
       return {
         ...state,
         currentUser: {
-          ...state.currentUser,
           id: user.id,
-          email: user.email,
-          photoUrl: user.photoUrl,
-          isLoading: false,
-        },
-        isLoggedIn: true
+          isLoading: true,
+        }
       };
       
     case GOOGLE_SIGNIN_FAIL:
@@ -155,6 +154,7 @@ const userReducer = (state = initialState, action) => {
       }
 
     case USER_LOGOUT:
+      AsyncStorage.clear();
       return {
         ...state,
         currentUser: {

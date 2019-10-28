@@ -8,19 +8,19 @@ import { getLocalData } from '../store/actions/asyncStorage.js';
 const SignUp = props => {
 
   useEffect(() => {
-    getLocalData('currentUser')
+    getLocalData('token')
     .then(res => {
       if (res == null) {
-
+        console.log('null storage in signup: ', res)
       } else {
-        console.log('isLoading: ', props.isLoading)
+        console.log('token from storage in signup: ', res)
         props.navigation.navigate('Dashboard');
       }
     })
     .catch(err => {
       console.log(err);
     })
-  }, [props.isLoggedIn]);
+  }, [props.isLoading]);
 
   return props.isLoading ? (
     <Text>Loading...</Text>
@@ -33,7 +33,6 @@ const SignUp = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.user.isLoggedIn,
     isLoading: state.user.currentUser.isLoading
   };
 };

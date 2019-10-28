@@ -17,3 +17,7 @@ export {
   handleRecipeUpdate,
   createUserRecipe
 } from './userRecipes.js';
+
+export {
+  authSignup
+} from './auth.js'

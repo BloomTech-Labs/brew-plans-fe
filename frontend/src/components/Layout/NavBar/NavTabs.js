@@ -3,9 +3,11 @@ import { useState } from 'react';
 import { Appbar, withTheme, Drawer } from 'react-native-paper';
 import { StyleSheet, View } from 'react-native';
 import theme from '../../../theme.js';
+import { connect } from 'react-redux';
 import Layout from '../Layout';
 import Login from '../../../views/Login';
 import SignUp from '../../../views/SignUp';
+import { userLogout } from '../../../store/actions/user.js';
 // import NavDrawer from './NavDrawer';
 
 const NavTabs = props => {
@@ -23,7 +25,7 @@ const NavTabs = props => {
         />
         <Appbar.Action
           icon='work'
-          onPress={() => props.navigation.navigate('RecipeForm')}
+          onPress={() => {props.userLogout(); props.navigation.navigate('Landing')}}
         />
         <Appbar.Action
           icon='menu'
@@ -38,4 +40,15 @@ const NavTabs = props => {
   );
 };
 
-export default NavTabs;
+const mapStateToProps = state => {
+  return {
+
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    userLogout
+  }
+)(NavTabs);

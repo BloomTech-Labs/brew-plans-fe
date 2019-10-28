@@ -8,15 +8,6 @@ import { View } from 'react-native';
 import { getLocalData } from '../store/actions/asyncStorage.js';
 
 const Dashboard = props => {
-  useEffect(() => {
-    getLocalData('currentUser')
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        
-      })
-  }, []);
   
   return (
     <View style={{ flex: 1 }}>
