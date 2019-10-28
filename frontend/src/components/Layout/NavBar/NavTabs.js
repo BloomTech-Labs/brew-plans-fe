@@ -32,6 +32,10 @@ const NavTabs = props => {
             console.log(open);
           }}
         />
+         <Appbar.Action
+          icon='school'
+          onPress={() => props.navigation.navigate('RecipeForm')}
+        />
       </Appbar>
       {/* {open ? <NavDrawer {...props} /> : null} */}
     </View>
