@@ -6,20 +6,21 @@ import { connect } from 'react-redux';
 import { getLocalData } from '../store/actions/asyncStorage.js';
 
 const Landing = props => {
+  const { loggedIn } = props;
 
   useEffect(() => {
-    getLocalData('signedIn')
-      .then(res => {
-        if (res == null) {
-
-        } else {
-          props.navigation.navigate('Dashboard');
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }, []);
+    getLocalData('token')
+    .then(res => {
+      if (res == null) {
+        console.log('null storage in landing: ', res)
+      } else {
+        props.navigation.navigate('MyRecipes');
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }, [loggedIn]);
 
   return (
     <Layout>
@@ -39,8 +40,7 @@ const Landing = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.user.isLoggedIn,
-    isLoading: state.user.newUser.isLoading
+    loggedIn: state.user.currentUser.loggedIn
   };
 };
 

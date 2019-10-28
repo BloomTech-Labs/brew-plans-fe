@@ -13,6 +13,9 @@ const UserRecipe = props => {
         <View style={styles.recipeInfo}>
           <Text>{props.brew_type}</Text>
         </View>
+        <View style={styles.coarseness}>
+          <Text>Coarseness: {props.coarseness}</Text>
+        </View>
         <View style={styles.recipeInfo}>
           <Text>{props.water_temp}</Text>
           <MaterialCommunityIcons
@@ -55,6 +58,10 @@ const styles = StyleSheet.create({
   },
   recipeInfo: {
     flexDirection: 'row'
+  },
+  coarseness: {
+    position: 'absolute',
+    left: 0
   }
 });
 

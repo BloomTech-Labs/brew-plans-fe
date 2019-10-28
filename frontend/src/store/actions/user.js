@@ -4,9 +4,7 @@ import * as Google from 'expo-google-app-auth';
 
 import {
   UPDATE_SIGNUP_INPUT,
-  USER_REGISTER_START,
-  USER_REGISTER_SUCCESS,
-  USER_REGISTER_FAIL,
+  UPDATE_SIGNIN_INPUT,
   GET_USER_INFO_START,
   GET_USER_INFO_SUCCESS,
   GET_ALL_USER_INFO_SUCCESS,
@@ -16,22 +14,6 @@ import {
   GOOGLE_SIGNIN_FAIL,
   USER_LOGOUT
 } from './actionTypes.js';
-
-export const handleUserSignup = userCredentials => dispatch => {
-  dispatch({ type: USER_REGISTER_START });
-  console.log('user creds: ', userCredentials)
-  axios.post(
-    'https://brewplans-production.herokuapp.com/users/register',
-    userCredentials
-    )
-    .then(res => {
-      dispatch({ type: USER_REGISTER_SUCCESS, payload: res.data });
-      console.log(res.data)
-    })
-    .catch(err => {
-      dispatch({ type: USER_REGISTER_FAIL, payload: err });
-    });
-};
 
 export const handleChange = (inputField, inputValue) => dispatch => {
   dispatch({
@@ -43,9 +25,14 @@ export const handleChange = (inputField, inputValue) => dispatch => {
   });
 };
 
-export const handleUserLogin = credentials => dispatch => {
-  dispatch({ type: USER_LOGIN_START });
-  axios.post('', credentials);
+export const handleSignInChange = (inputField, inputValue) => dispatch => {
+  dispatch({
+    type: UPDATE_SIGNIN_INPUT,
+    payload: {
+      inputType: inputField,
+      inputValue: inputValue
+    }
+  });
 };
 
 export const getUserInfo = userId => dispatch => {

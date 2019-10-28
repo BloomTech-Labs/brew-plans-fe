@@ -9,7 +9,10 @@ import {
   UPDATE_USER_RECIPE_START,
   UPDATE_USER_RECIPE_SUCCESS,
   UPDATE_USER_RECIPE_FAIL,
-  NEW_RECIPE_INPUT_UPDATE
+  NEW_RECIPE_INPUT_UPDATE,
+  CREATE_USER_RECIPE_START,
+  CREATE_USER_RECIPE_SUCCESS,
+  CREATE_USER_RECIPE_FAIL
 } from './actionTypes.js';
 
 import axios from 'axios';
@@ -86,4 +89,15 @@ export const handleNewRecipeInput = (inputField, inputValue) => dispatch => {
       value: inputValue
     }
   });
+}
+
+export const createUserRecipe = (newRecipe) => dispatch => {
+  dispatch({ type: CREATE_USER_RECIPE_START })
+  axios.post(`https://brewplans-production.herokuapp.com/userrecipes/newrecipe`, newRecipe)
+    .then(res => {
+      dispatch({ type: CREATE_USER_RECIPE_SUCCESS, payload: res })
+    })
+    .catch(err => {
+      dispatch({ type: CREATE_USER_RECIPE_FAIL, payload: err })
+    })
 }
