@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
 import {
   getUserRecipes,
+  getSeededRecipes,
   deleteUserRecipe,
   handleRecipeEdit,
   handleRecipeUpdate,
@@ -25,7 +26,7 @@ import SeededRecipe from '../components/Recipes/SeededRecipe';
 const MyRecipes = props => {
   useEffect(() => {
     props.getUserRecipes();
-    // props.getSeededRecipes();
+    props.getSeededRecipes();
   }, []);
 
   return (
@@ -114,6 +115,7 @@ export default connect(
   mapStateToProps,
   {
     getUserRecipes,
+    getSeededRecipes,
     deleteUserRecipe,
     handleRecipeEdit,
     handleRecipeUpdate,

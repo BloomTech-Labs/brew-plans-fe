@@ -4,6 +4,7 @@ import * as Google from 'expo-google-app-auth';
 
 import {
   UPDATE_SIGNUP_INPUT,
+  UPDATE_SIGNIN_INPUT,
   GET_USER_INFO_START,
   GET_USER_INFO_SUCCESS,
   GET_ALL_USER_INFO_SUCCESS,
@@ -20,6 +21,16 @@ export const handleChange = (inputField, inputValue) => dispatch => {
     payload: {
       type: inputField,
       value: inputValue
+    }
+  });
+};
+
+export const handleSignInChange = (inputField, inputValue) => dispatch => {
+  dispatch({
+    type: UPDATE_SIGNIN_INPUT,
+    payload: {
+      inputType: inputField,
+      inputValue: inputValue
     }
   });
 };

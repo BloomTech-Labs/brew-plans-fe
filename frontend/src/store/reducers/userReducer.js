@@ -1,5 +1,6 @@
 import {
   UPDATE_SIGNUP_INPUT,
+  UPDATE_SIGNIN_INPUT,
   GET_USER_INFO_START,
   GET_USER_INFO_SUCCESS,
   GET_ALL_USER_INFO_SUCCESS,
@@ -7,6 +8,9 @@ import {
   USER_REGISTER_START,
   USER_REGISTER_SUCCESS,
   USER_REGISTER_FAIL,
+  USER_SIGNIN_START,
+  USER_SIGNIN_SUCCESS,
+  USER_SIGNIN_FAIL,
   GOOGLE_SIGNIN_START,
   GOOGLE_SIGNIN_SUCCESS,
   GOOGLE_SIGNIN_FAIL,
@@ -22,21 +26,20 @@ storeLocalData
 
 const initialState = {
   newUser: {
-    password: '',
-    email: ''
+    email: '',
+    password: ''
+  },
+  signInCredentials: {
+    email: '',
+    password: ''
   },
   currentUser: {
-    username: '',
     email: '',
     id: '',
-    photoUrl: '',
-    firstName: '',
-    lastName: '',
-    isLoading: false
+    loggedIn: false
   },
   loadingError: '',
   allUsers: [],
-  isLoggedIn: true
 };
 
 // reducer performs actions on/with user state
@@ -58,15 +61,21 @@ const userReducer = (state = initialState, action) => {
         }
       };
 
+    case UPDATE_SIGNIN_INPUT:
+      const { inputType, inputValue } = action.payload;
+      return {
+        ...state,
+        signInCredentials: {
+          ...state.signInCredentials,
+          [inputType]: inputValue
+        }
+      };
+
     // submit user credential data from state to register
     case USER_REGISTER_START:
       return {
         ...state,
-        currentUser: {
-          ...state.currentUser,
-          isLoading: true
-        }
-      };
+        };
 
     case USER_REGISTER_SUCCESS:
       // console.log('register_success action: ', action)
@@ -75,7 +84,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         currentUser: {
           id: action.payload.localId,
-          isLoading: false
+          loggedIn: true
         }
       };
 
@@ -92,12 +101,34 @@ const userReducer = (state = initialState, action) => {
         loadingError: action.payload
       };
 
+    case USER_SIGNIN_START:
+      console.log(action)
+      return {
+        ...state,
+        };
+
+    case USER_SIGNIN_SUCCESS:
+      console.log('user sign-in success: ', action)
+      storeLocalData('token', action.payload.idToken)
+      return {
+        ...state,
+        currentUser: {
+          id: action.payload.localId,
+          loggedIn: true
+        }
+      };
+
+    case USER_SIGNIN_FAIL:
+      console.log('user sign-in fail: ', action)
+      return {
+        ...state
+      }
+
     case GET_USER_INFO_START:
       return {
         ...state,
         currentUser: {
           ...state.currentUser,
-          isLoading: true
         }
       };
 
@@ -108,7 +139,6 @@ const userReducer = (state = initialState, action) => {
         currentUser: {
           email: searchedUser.email,
           username: searchedUser.username,
-          isLoading: false,
           id: searchedUser.id
         }
       };
@@ -124,7 +154,6 @@ const userReducer = (state = initialState, action) => {
         ...state,
         currentUser: {
           ...state.currentUser,
-          isLoading: false
         },
         loadingError: action.payload
       };
@@ -142,7 +171,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         currentUser: {
           id: user.id,
-          isLoading: true,
+          loggedIn: true,
         }
       };
       
@@ -159,9 +188,8 @@ const userReducer = (state = initialState, action) => {
         ...state,
         currentUser: {
           ...state.currentUser,
-          isLoading: false
+          loggedIn: false
         },
-        isLoggedIn: false
       }
 
     default:

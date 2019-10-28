@@ -8,7 +8,7 @@ import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
 import { Ionicons } from '@expo/vector-icons';
 
-import { handleUserSignup, handleChange, authSignup } from '../../store/actions/index.js';
+import { handleChange, authSignup } from '../../store/actions/index.js';
 
 const SignUpForm = props => {
 
@@ -81,7 +81,6 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    handleUserSignup,
     handleChange,
     authSignup
   }

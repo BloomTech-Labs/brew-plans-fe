@@ -6,23 +6,24 @@ import { connect } from 'react-redux';
 import { getLocalData } from '../store/actions/asyncStorage.js';
 
 const SignUp = props => {
+  const { loggedIn } = props;
 
   useEffect(() => {
     getLocalData('token')
     .then(res => {
       if (res == null) {
-        console.log('null storage in signup: ', res)
+        // console.log('null storage in signup: ', res)
       } else {
-        console.log('token from storage in signup: ', res)
+        // console.log('token from storage in signup: ', res)
         props.navigation.navigate('Dashboard');
       }
     })
     .catch(err => {
       console.log(err);
     })
-  }, [props.isLoading]);
+  }, [loggedIn]);
 
-  return props.isLoading ? (
+  return loggedIn ? (
     <Text>Loading...</Text>
   ) : (
     <Layout>
@@ -33,7 +34,7 @@ const SignUp = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.user.currentUser.isLoading
+    loggedIn: state.user.currentUser.loggedIn
   };
 };
 
