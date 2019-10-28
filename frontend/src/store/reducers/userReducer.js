@@ -20,7 +20,6 @@ import {
 import { AsyncStorage } from 'react-native';
 
 import {
-getLocalData,
 storeLocalData
 } from '../actions/asyncStorage.js';
 
@@ -36,7 +35,8 @@ const initialState = {
   currentUser: {
     email: '',
     id: '',
-    loggedIn: false
+    loggedIn: false,
+    token: null
   },
   loadingError: '',
   allUsers: [],
@@ -45,10 +45,7 @@ const initialState = {
 // reducer performs actions on/with user state
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    // update state when new user enters username/password/email
     case UPDATE_SIGNUP_INPUT:
-      // console.log('state: ', state);
-      // console.log('update_user payload:', action.payload);
       // grab the type of input and the value of input from the payload
       const { type, value } = action.payload;
       // return old state spread + new value entered from newUser
@@ -62,7 +59,10 @@ const userReducer = (state = initialState, action) => {
       };
 
     case UPDATE_SIGNIN_INPUT:
+      // grab the type of input and the value of input from the payload
       const { inputType, inputValue } = action.payload;
+      // return old state spread + new value entered from newUser
+      // immutability ensures this only affects newUser state
       return {
         ...state,
         signInCredentials: {
@@ -84,7 +84,8 @@ const userReducer = (state = initialState, action) => {
         ...state,
         currentUser: {
           id: action.payload.localId,
-          loggedIn: true
+          loggedIn: true,
+          token: action.payload.idToken
         }
       };
 
@@ -114,7 +115,8 @@ const userReducer = (state = initialState, action) => {
         ...state,
         currentUser: {
           id: action.payload.localId,
-          loggedIn: true
+          loggedIn: true,
+          token: action.payload.idToken
         }
       };
 
@@ -161,7 +163,6 @@ const userReducer = (state = initialState, action) => {
     case GOOGLE_SIGNIN_START:
       return {
         ...state,
-        isLoading: true
       }
 
     case GOOGLE_SIGNIN_SUCCESS:
@@ -172,6 +173,7 @@ const userReducer = (state = initialState, action) => {
         currentUser: {
           id: user.id,
           loggedIn: true,
+          token: token
         }
       };
       
@@ -179,7 +181,6 @@ const userReducer = (state = initialState, action) => {
       console.log(action)
       return {
         ...state,
-        isLoading: false
       }
 
     case USER_LOGOUT:
@@ -188,7 +189,8 @@ const userReducer = (state = initialState, action) => {
         ...state,
         currentUser: {
           ...state.currentUser,
-          loggedIn: false
+          loggedIn: false,
+          token: null
         },
       }
 

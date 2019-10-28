@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { getLocalData } from '../store/actions/asyncStorage.js';
 
 const Landing = props => {
+  const { loggedIn } = props;
 
   useEffect(() => {
     getLocalData('token')
@@ -19,7 +20,7 @@ const Landing = props => {
     .catch(err => {
       console.log(err);
     })
-  }, []);
+  }, [loggedIn]);
 
   return (
     <Layout>
@@ -39,7 +40,7 @@ const Landing = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.user.newUser.isLoading
+    loggedIn: state.user.currentUser.loggedIn
   };
 };
 
