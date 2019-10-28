@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { AsyncStorage, Button } from 'react-native';
-import { DrawerActions } from 'react-navigation-drawer';
+// import { AsyncStorage, Button } from 'react-native';
+// import { DrawerActions } from 'react-navigation-drawer';
 import { connect } from 'react-redux';
 import Layout from '../components/Layout/Layout';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
