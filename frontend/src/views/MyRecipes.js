@@ -14,9 +14,11 @@ import { connect } from 'react-redux';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
 import {
   getUserRecipes,
+  getSeededRecipes,
   deleteUserRecipe,
   handleRecipeEdit,
-  handleRecipeUpdate
+  handleRecipeUpdate,
+  createUserRecipe
 } from '../store/actions/index.js';
 import UserRecipe from '../components/Recipes/UserRecipe';
 import SeededRecipe from '../components/Recipes/SeededRecipe';
@@ -24,7 +26,7 @@ import SeededRecipe from '../components/Recipes/SeededRecipe';
 const MyRecipes = props => {
   useEffect(() => {
     props.getUserRecipes();
-    // props.getSeededRecipes();
+    props.getSeededRecipes();
   }, []);
 
   return (
@@ -35,7 +37,7 @@ const MyRecipes = props => {
           <Text style={styles.recipesHeaderText}>My Recipes</Text>
           <TouchableOpacity onPress={() => console.log('Button pressed!')}>
             <MaterialIcons
-              onPress={() => {}}
+              onPress={() => props.createUserRecipe(props.newRecipe)}
               name={'add-circle'}
               size={36}
               color={'black'}
@@ -59,6 +61,7 @@ const MyRecipes = props => {
                 title={recipe.title}
                 brew_type={recipe.brew_type}
                 water_temp={recipe.water_temp}
+                coarseness={recipe.coarseness}
                 edit={() =>
                   props.handleRecipeUpdate(
                     {
@@ -74,28 +77,6 @@ const MyRecipes = props => {
               />
             ))}
           </ScrollView>
-          {/* <FlatList
-            keyExtractor={item => item.id.toString()}
-            data={props.userRecipes}
-            ListHeaderComponent={}
-            renderItem={({ item, index }) => (
-              <View>
-                {props.seededRecipes.map(recipe => (
-                  <SeededRecipe
-                    key={recipe.id}
-                    title={recipe.title}
-                    brew_type={recipe.brew_type}
-                    water_temp={recipe.water_temp}
-                  />
-                ))}
-                <UserRecipe
-                  title={item.title}
-                  brew_type={item.brew_type}
-                  water_temp={item.water_temp}
-                />
-              </View>
-            )}
-          ></FlatList> */}
         </View>
       </View>
     </View>
@@ -120,37 +101,14 @@ const styles = StyleSheet.create({
   recipesContainer: {
     paddingVertical: 24
   },
-  recipeContainer: {
-    width: '100%',
-    backgroundColor: 'white',
-    marginVertical: 8,
-    padding: 16,
-    justifyContent: 'center',
-    borderRadius: 5
-  },
-  recipeTitle: {
-    fontSize: 16,
-    fontWeight: 'bold'
-  },
-  recipeInfoContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 12
-  },
-  recipeInfo: {
-    flexDirection: 'row'
-  },
-  coarseness: {
-    position: 'absolute'
-  }
 });
 
 const mapStateToProps = state => {
   return {
     userRecipes: state.userRecipes.userRecipes,
     isLoading: state.userRecipes.isLoading,
-    seededRecipes: state.seededRecipes.seededRecipes
+    seededRecipes: state.seededRecipes.seededRecipes,
+    newRecipe: state.userRecipes.newRecipe
   };
 };
 
@@ -158,8 +116,10 @@ export default connect(
   mapStateToProps,
   {
     getUserRecipes,
+    getSeededRecipes,
     deleteUserRecipe,
     handleRecipeEdit,
-    handleRecipeUpdate
+    handleRecipeUpdate,
+    createUserRecipe
   }
 )(MyRecipes);

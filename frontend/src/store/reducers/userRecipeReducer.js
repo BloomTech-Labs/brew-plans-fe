@@ -9,13 +9,21 @@ import {
   UPDATE_USER_RECIPE_START,
   UPDATE_USER_RECIPE_SUCCESS,
   UPDATE_USER_RECIPE_FAIL,
-  NEW_RECIPE_INPUT_UPDATE
+  NEW_RECIPE_INPUT_UPDATE,
+  CREATE_USER_RECIPE_START,
+  CREATE_USER_RECIPE_SUCCESS,
+  CREATE_USER_RECIPE_FAIL
 } from '../actions/actionTypes.js';
 
 const initialState = {
   userRecipes: [],
   edittedRecipe: {},
-  newRecipe: {},
+  newRecipe: {
+    water_temp: 150,
+    coarseness: 'Fine',
+    title: 'Createdd',
+    user_id: 1
+  },
   isLoading: false
 }
 
@@ -99,6 +107,18 @@ const userRecipeReducer = (state = initialState, action) => {
           [type]: value
         }
       }
+
+    case CREATE_USER_RECIPE_START:
+      console.log(action)
+      return state;
+
+    case CREATE_USER_RECIPE_SUCCESS:
+      console.log(action)
+      return state;
+
+    case CREATE_USER_RECIPE_FAIL:
+      console.log(action)
+      return state;
 
     default:
       return state;

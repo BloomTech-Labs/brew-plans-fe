@@ -18,6 +18,7 @@ const SignUpForm = props => {
   };
 
   const { theme, newUser } = props;
+  const { authSignup } = props;
   // console.log('newUser: ', newUser);
 
   // const submitSignup = () => {
@@ -43,25 +44,10 @@ const SignUpForm = props => {
   };
 
   return (
-    <Formik
-      initialValues={{
-        username: newUser.username,
-        email: newUser.email,
-        password: newUser.password
-      }}
-    >
+    <Formik>
       {props => (
         <View style={theme.formView}>
           <View style={theme.formInputsContainer}>
-            <TextInput
-              style={theme.formInput}
-              onChangeText={value => handleChange('username', value)}
-              onBlur={props.handleBlur('username')}
-              value={newUser.username}
-              placeholder='Please enter username'
-              label='Username'
-              mode='outlined'
-            />
             <TextInput
               style={theme.formInput}
               onChangeText={value => handleChange('email', value)}
@@ -81,7 +67,7 @@ const SignUpForm = props => {
               mode='outlined'
             />
           </View>
-          <SubmitButton onPress={() => submitSignup()} title='Sign Up' />
+          <SubmitButton onPress={() => authSignup(newUser)} title='Sign Up' />
           <View style={theme.formSocialsContainer}>
             <Text
               style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}
@@ -102,7 +88,6 @@ const SignUpForm = props => {
 const mapStateToProps = state => {
   return {
     newUser: {
-      username: state.user.newUser.username,
       password: state.user.newUser.password,
       email: state.user.newUser.email
     }
@@ -112,7 +97,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    handleUserSignup,
-    handleChange
+    handleChange,
+    authSignup
   }
 )(withTheme(SignUpForm));

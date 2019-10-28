@@ -26,7 +26,7 @@ firebase.initializeApp(firebaseConfig);
 const AppNavigator = createStackNavigator(
   {
     Landing: {
-      screen: MyRecipes
+      screen: Landing
     },
     Dashboard: {
       screen: Dashboard
