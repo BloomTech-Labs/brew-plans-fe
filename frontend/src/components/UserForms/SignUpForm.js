@@ -6,12 +6,10 @@ import { Formik } from 'formik';
 import { withTheme } from 'react-native-paper';
 import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
-import { Ionicons } from '@expo/vector-icons';
-
+import * as firebase from 'firebase';
 import { handleUserSignup, handleChange } from '../../store/actions/index.js';
 
 const SignUpForm = props => {
-
   // console.log('signupformprops: ', props)
   const loginConfig = {
     androidClientId:
@@ -22,11 +20,23 @@ const SignUpForm = props => {
   const { theme, newUser } = props;
   // console.log('newUser: ', newUser);
 
-  const submitSignup = () => {
-    // props.handleUserSignup(newUser);
-    console.log('pressed button');
-    _storeData(newUser);
-  };
+  // const submitSignup = () => {
+  //   // props.handleUserSignup(newUser);
+  //   console.log('pressed button');
+  //   _storeData(newUser);
+  // };
+
+  function submitSignup(email, password) {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        props.navigation.replace('Dashboard');
+      })
+      .catch(error => {
+        Alert.alert(error.message);
+      });
+  }
 
   const handleChange = (inputType, inputValue) => {
     props.handleChange(inputType, inputValue);
