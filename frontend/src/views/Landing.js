@@ -14,7 +14,7 @@ const Landing = props => {
       if (res == null) {
         console.log('null storage in landing: ', res)
       } else {
-        props.navigation.navigate('Dashboard');
+        props.navigation.navigate('MyRecipes');
       }
     })
     .catch(err => {

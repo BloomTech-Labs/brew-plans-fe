@@ -14,7 +14,7 @@ const Login = props => {
         // console.log('null storage in signup: ', res)
       } else {
         // console.log('token from storage in signup: ', res)
-        props.navigation.navigate('Dashboard');
+        props.navigation.navigate('MyRecipes');
       }
     })
     .catch(err => {

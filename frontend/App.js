@@ -12,7 +12,7 @@ import RecipeForm from './src/views/RecipeForm.js';
 const AppNavigator = createStackNavigator(
   {
     Landing: {
-      screen: MyRecipes
+      screen: Landing
     },
     Dashboard: {
       screen: Dashboard
