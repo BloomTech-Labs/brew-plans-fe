@@ -1,15 +1,26 @@
-export { 
-  handleChange, 
-  handleUserSignup,
-  getUserInfo
+export {
+  handleChange,
+  getUserInfo,
+  googleSignIn,
+  userLogout,
+  handleSignInChange,
+  setUserInState,
 } from './user.js';
 
-export {
-  getSeededRecipes
+export { 
+  getSeededRecipes 
 } from './seededRecipes.js';
 
-export {
-  getUserRecipes
+export { 
+  getUserRecipes, 
+  deleteUserRecipe,
+  handleRecipeEdit,
+  handleRecipeUpdate,
+  createUserRecipe
 } from './userRecipes.js';
 
-
+export {
+  authSignup,
+  authSignIn,
+  setTokenInState
+} from './auth.js'

@@ -1,47 +1,33 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, AsyncStorage } from 'react-native';
 import { TextInput, Text } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { Formik } from 'formik';
 import { withTheme } from 'react-native-paper';
 import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
+import * as firebase from 'firebase';
+import { Ionicons } from '@expo/vector-icons';
 
-import { handleUserSignup, handleChange } from '../../store/actions/index.js';
+import { handleChange, authSignup } from '../../store/actions/index.js';
 
 const SignUpForm = props => {
+
+  // console.log('signupformprops: ', props)
+  const loginConfig = {
+    androidClientId:
+      '449923889220-pa3veecaq72o4tiairfrputrj7f0dp2n.apps.googleusercontent.com',
+    scopes: ['profile', 'email']
+  };
+
   const { theme, newUser } = props;
-  // console.log(props);
-  // console.log('newUser: ', newUser);
-
-  const submitSignup = () => {
-    props.handleUserSignup(newUser);
-  };
-
-  const handleChange = (inputType, inputValue) => {
-    props.handleChange(inputType, inputValue);
-  };
+  const { authSignup, handleChange } = props;
 
   return (
-    <Formik
-      initialValues={{
-        username: newUser.username,
-        email: newUser.email,
-        password: newUser.password
-      }}
-    >
+    <Formik>
       {props => (
         <View style={theme.formView}>
           <View style={theme.formInputsContainer}>
-            <TextInput
-              style={theme.formInput}
-              onChangeText={value => handleChange('username', value)}
-              onBlur={props.handleBlur('username')}
-              value={newUser.username}
-              placeholder='Please enter username'
-              label='Username'
-              mode='outlined'
-            />
             <TextInput
               style={theme.formInput}
               onChangeText={value => handleChange('email', value)}
@@ -61,7 +47,9 @@ const SignUpForm = props => {
               mode='outlined'
             />
           </View>
-          <SubmitButton onPress={() => submitSignup()} title='Sign Up' />
+          <SubmitButton 
+          onPress={() => authSignup(newUser) } 
+          title='Sign Up' />
           <View style={theme.formSocialsContainer}>
             <Text
               style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}
@@ -69,8 +57,8 @@ const SignUpForm = props => {
               Sign up with
             </Text>
             <View style={theme.formIcons}>
-              <SocialButton icon='zoom-in' />
-              <SocialButton icon='book' />
+              <SocialButton icon='logo-google' loginConfig={loginConfig} />
+              <SocialButton icon='logo-facebook' />
             </View>
           </View>
         </View>
@@ -82,7 +70,6 @@ const SignUpForm = props => {
 const mapStateToProps = state => {
   return {
     newUser: {
-      username: state.user.newUser.username,
       password: state.user.newUser.password,
       email: state.user.newUser.email
     }
@@ -92,7 +79,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    handleUserSignup,
-    handleChange
+    handleChange,
+    authSignup
   }
 )(withTheme(SignUpForm));

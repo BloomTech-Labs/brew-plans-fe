@@ -33,7 +33,7 @@ export default {
   },
 
   formSocialsContainer: {
-    width: '50%',
+    width: '40%',
     marginTop: space[4],
     alignItems: 'center'
   },
@@ -42,6 +42,14 @@ export default {
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: space[0]
+  },
+
+  navbar: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0
   }
 };

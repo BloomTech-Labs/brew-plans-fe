@@ -6,13 +6,16 @@ import {
   GET_SEEDED_RECIPES_FAIL
 } from './actionTypes.js';
 
-export const getSeededRecipes = () => dispatch => {
+export const getSeededRecipes = () => (dispatch, getState) => {
+  const token = getState().user.currentUser.token;
+  console.log('token: ', token)
   dispatch({ type: GET_SEEDED_RECIPES_START });
-  axios.get('https://brewplans-production.herokuapp.com/seededrecipes/all')
+  axios
+    .get('https://backend-development-coffee.herokuapp.com/seededrecipes/all')
     .then(res => {
-      dispatch({ type: GET_SEEDED_RECIPES_SUCCESS, payload: res.data })
+      dispatch({ type: GET_SEEDED_RECIPES_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_SEEDED_RECIPES_FAIL, payload: err })
-    })
-}
+      dispatch({ type: GET_SEEDED_RECIPES_FAIL, payload: err });
+    });
+};

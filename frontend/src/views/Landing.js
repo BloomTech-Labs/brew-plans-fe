@@ -1,19 +1,47 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View } from 'react-native';
 import Layout from '../components/Layout/Layout';
 import LandingButton from '../components/Landing/LandingButton';
-import TestDataVisualization from '../views/TestDataVisualization';
 import { connect } from 'react-redux';
+import { getLocalData } from '../store/actions/asyncStorage.js';
+import { setUserInState, setTokenInState } from '../store/actions/index.js';
+import * as firebase from 'firebase';
 
 const Landing = props => {
-  const { isLoggedIn } = props;
+  const { loggedIn, setUserInState, setTokenInState } = props;
+
+  useEffect(() => {
+    getLocalData('user')
+    .then(res => {
+      if (res == null) {
+        console.log('null storage in landing: ', res)
+      } else {
+        setUserInState(res);
+        props.navigation.navigate('Dashboard');
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }, [loggedIn]);
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      props.navigation.navigate('Dashboard');
+      firebase.auth().currentUser.getIdToken(true)
+        .then(res => {
+          setTokenInState(res)
+        })
+        .catch(err => {
+          alert(err)
+        })
+    } else {
+      props.navigation.navigate('Landing');
+    }
+  });
 
   return (
     <Layout>
-      {isLoggedIn ? (
-        // navigate to dashboard component
-        props.navigation.navigate('Dashboard')
-      ) : (
         <View>
           <LandingButton
             title='Sign Up'
@@ -23,16 +51,22 @@ const Landing = props => {
             title='Login'
             onPress={() => props.navigation.navigate('Login')}
           />
+          
         </View>
-      )}
     </Layout>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.user.isLoggedIn
+    loggedIn: state.user.currentUser.loggedIn
   };
 };
 
-export default connect(mapStateToProps)(Landing);
+export default connect(
+  mapStateToProps,
+  {
+    setUserInState,
+    setTokenInState
+  }
+  )(Landing);

@@ -1,14 +1,26 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
 import Layout from '../components/Layout/Layout';
 import SignUpForm from '../components/UserForms/SignUpForm';
+import { connect } from 'react-redux';
 
 const SignUp = props => {
+
   return (
     <Layout>
-      <SignUpForm />
+      <SignUpForm navigate={props.navigation.navigate}/>
     </Layout>
   );
 };
 
-export default SignUp;
+const mapStateToProps = state => {
+  return {
+    
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {
+
+  }
+)(SignUp);
