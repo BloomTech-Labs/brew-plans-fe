@@ -21,7 +21,7 @@ const NavTabs = props => {
         />
         <Appbar.Action
           icon='home'
-          onPress={() => props.navigation.navigate('Login')}
+          onPress={() => props.navigation.navigate('Dashboard')}
         />
         <Appbar.Action
           icon='work'

@@ -3,7 +3,8 @@ export {
   getUserInfo,
   googleSignIn,
   userLogout,
-  handleSignInChange
+  handleSignInChange,
+  setUserInState
 } from './user.js';
 
 export { 
@@ -20,5 +21,5 @@ export {
 
 export {
   authSignup,
-  authSignIn
+  authSignIn,
 } from './auth.js'

@@ -1,10 +1,6 @@
 import {
   UPDATE_SIGNUP_INPUT,
   UPDATE_SIGNIN_INPUT,
-  GET_USER_INFO_START,
-  GET_USER_INFO_SUCCESS,
-  GET_ALL_USER_INFO_SUCCESS,
-  GET_USER_INFO_FAIL,
   USER_REGISTER_START,
   USER_REGISTER_SUCCESS,
   USER_REGISTER_FAIL,
@@ -14,7 +10,9 @@ import {
   GOOGLE_SIGNIN_START,
   GOOGLE_SIGNIN_SUCCESS,
   GOOGLE_SIGNIN_FAIL,
-  USER_LOGOUT
+  USER_LOGOUT,
+  SET_TOKEN,
+  SET_USER
 } from '../actions/actionTypes.js';
 
 import { AsyncStorage } from 'react-native';
@@ -78,14 +76,19 @@ const userReducer = (state = initialState, action) => {
         };
 
     case USER_REGISTER_SUCCESS:
-      // console.log('register_success action: ', action)
-      storeLocalData('token', action.payload.idToken)
+      console.log('register_success action payload: ', action.payload)
+      storeLocalData(
+        'user', 
+        { 
+          id: action.payload.uid, 
+          email: action.payload.email 
+        })
       return {
         ...state,
         currentUser: {
-          id: action.payload.localId,
+          id: action.payload.uid,
+          email: action.payload.email,
           loggedIn: true,
-          token: action.payload.idToken
         }
       };
 
@@ -97,7 +100,6 @@ const userReducer = (state = initialState, action) => {
         ...state,
         currentUser: {
           ...state.currentUser,
-          isLoading: false
         },
         loadingError: action.payload
       };
@@ -109,8 +111,14 @@ const userReducer = (state = initialState, action) => {
         };
 
     case USER_SIGNIN_SUCCESS:
-      console.log('user sign-in success: ', action)
+      console.log('user sign-in success: ', action.payload)
       storeLocalData('token', action.payload.idToken)
+      storeLocalData(
+        'user', 
+        { 
+          id: action.payload.localId, 
+          email: action.payload.email 
+        })
       return {
         ...state,
         currentUser: {
@@ -126,48 +134,19 @@ const userReducer = (state = initialState, action) => {
         ...state
       }
 
-    case GET_USER_INFO_START:
-      return {
-        ...state,
-        currentUser: {
-          ...state.currentUser,
-        }
-      };
-
-    case GET_USER_INFO_SUCCESS:
-      const searchedUser = action.payload;
-      return {
-        ...state,
-        currentUser: {
-          email: searchedUser.email,
-          username: searchedUser.username,
-          id: searchedUser.id
-        }
-      };
-
-    case GET_ALL_USER_INFO_SUCCESS:
-      return {
-        ...state,
-        allUsers: action.payload
-      };
-
-    case GET_USER_INFO_FAIL:
-      return {
-        ...state,
-        currentUser: {
-          ...state.currentUser,
-        },
-        loadingError: action.payload
-      };
-
     case GOOGLE_SIGNIN_START:
       return {
         ...state,
       }
 
     case GOOGLE_SIGNIN_SUCCESS:
+      console.log('google sign-in payload: ', action.payload);
       const { user, token } = action.payload;
       storeLocalData('token', token);
+      storeLocalData('user', {
+        id: user.id,
+        email: user.email,
+      })
       return {
         ...state,
         currentUser: {
@@ -192,6 +171,28 @@ const userReducer = (state = initialState, action) => {
           loggedIn: false,
           token: null
         },
+      }
+
+    case SET_TOKEN:
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          token: action.payload
+        }
+      }
+
+    case SET_USER:
+      // console.log('set user payload: ', action.payload)
+      const { id, email } = action.payload;
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          id: id,
+          email: email,
+          loggedIn: true
+        }
       }
 
     default:

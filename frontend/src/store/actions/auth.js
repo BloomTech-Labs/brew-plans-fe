@@ -4,10 +4,15 @@ import {
   USER_REGISTER_FAIL,
   USER_SIGNIN_START,
   USER_SIGNIN_SUCCESS,
-  USER_SIGNIN_FAIL
+  USER_SIGNIN_FAIL,
+  SET_TOKEN
 } from './actionTypes.js';
 
 import axios from 'axios';
+
+export const setTokenInState = token => dispatch => {
+  dispatch({ type: SET_TOKEN, payload: token })
+}
 
 export const authSignup = authData => dispatch => {
   dispatch({ type: USER_REGISTER_START })
@@ -15,7 +20,7 @@ export const authSignup = authData => dispatch => {
   console.log('authData: ', authData)
 
   axios.post(
-    'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDPkTN3fUIuclil3Z3Y6EOx4ek5B816KkI',
+    'https://backend-development-coffee.herokuapp.com/auth/signup',
     JSON.stringify({
       email: authData.email,
       password: authData.password,
@@ -28,7 +33,7 @@ export const authSignup = authData => dispatch => {
     }
     )
     .then(res => {
-      console.log('parsedRes: ', res.data)
+      console.log('res: ', res.data)
       dispatch({ type: USER_REGISTER_SUCCESS, payload: res.data })
     })
     .catch(err => {
@@ -52,7 +57,7 @@ export const authSignIn = authData => dispatch => {
     }
     )
     .then(res => {
-      console.log('sign-in res: ', res)
+      // console.log('sign-in res: ', res)
       dispatch({ type: USER_SIGNIN_SUCCESS, payload: res.data })
     })
     .catch(err => {

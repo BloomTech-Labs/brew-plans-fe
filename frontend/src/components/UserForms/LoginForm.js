@@ -11,8 +11,8 @@ import {
 } from '../../store/actions/index.js';
 
 const LoginForm = props => {
-  const theme = props.theme;
   const { 
+    theme,
     handleSignInChange, 
     authSignIn,
     signInCredentials 
@@ -23,7 +23,6 @@ const LoginForm = props => {
       '449923889220-pa3veecaq72o4tiairfrputrj7f0dp2n.apps.googleusercontent.com',
     scopes: ['profile', 'email']
   };
-  console.log(signInCredentials)
 
   return (
     <Formik>

@@ -9,7 +9,7 @@ const SignUp = props => {
   const { loggedIn } = props;
 
   useEffect(() => {
-    getLocalData('token')
+    getLocalData('user')
     .then(res => {
       if (res == null) {
         // console.log('null storage in signup: ', res)
@@ -23,9 +23,7 @@ const SignUp = props => {
     })
   }, [loggedIn]);
 
-  return loggedIn ? (
-    <Text>Loading...</Text>
-  ) : (
+  return (
     <Layout>
       <SignUpForm navigate={props.navigation.navigate}/>
     </Layout>

@@ -5,14 +5,11 @@ import * as Google from 'expo-google-app-auth';
 import {
   UPDATE_SIGNUP_INPUT,
   UPDATE_SIGNIN_INPUT,
-  GET_USER_INFO_START,
-  GET_USER_INFO_SUCCESS,
-  GET_ALL_USER_INFO_SUCCESS,
-  GET_USER_INFO_FAIL,
   GOOGLE_SIGNIN_START,
   GOOGLE_SIGNIN_SUCCESS,
   GOOGLE_SIGNIN_FAIL,
-  USER_LOGOUT
+  USER_LOGOUT,
+  SET_USER
 } from './actionTypes.js';
 
 export const handleChange = (inputField, inputValue) => dispatch => {
@@ -35,30 +32,9 @@ export const handleSignInChange = (inputField, inputValue) => dispatch => {
   });
 };
 
-export const getUserInfo = userId => dispatch => {
-  dispatch({ type: GET_USER_INFO_START });
-  // get specific user if an id is given
-  if (userId) {
-    axios
-      .get(`https://brewplans-production.herokuapp.com/users/${userId}`)
-      .then(res => {
-        dispatch({ type: GET_USER_INFO_SUCCESS, payload: res.data });
-      })
-      .catch(err => {
-        dispatch({ type: GET_USER_INFO_FAIL, payload: err });
-      });
-    // if no id is given, get all users
-  } else {
-    axios
-      .get(`https://brewplans-production.herokuapp.com/users/allusers`)
-      .then(res => {
-        dispatch({ type: GET_ALL_USER_INFO_SUCCESS, payload: res.data });
-      })
-      .catch(err => {
-        dispatch({ type: GET_USER_INFO_FAIL, payload: err });
-      });
-  }
-};
+export const setUserInState = (user) => dispatch => {
+  dispatch({ type: SET_USER, payload: user })
+}
 
 export const googleSignIn = config => async dispatch => {
   dispatch({ type: GOOGLE_SIGNIN_START });

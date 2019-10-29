@@ -3,6 +3,8 @@ export const UPDATE_SIGNUP_INPUT = "UPDATE_USER_INPUT";
 export const USER_REGISTER_START = "USER_REGISTER_START";
 export const USER_REGISTER_SUCCESS = "USER_REGISTER_SUCCESS";
 export const USER_REGISTER_FAIL = "USER_REGISTER_FAIL";
+export const SET_TOKEN = "SET_TOKEN";
+export const SET_USER = "SET_USER";
 
 // action type for user sign-in process
 export const UPDATE_SIGNIN_INPUT = "UPDATE_SIGNIN_INPUT";
@@ -18,13 +20,7 @@ export const GET_SEEDED_RECIPES_FAIL = "GET_SEEDED_RECIPES_FAIL";
 // action types for getting user recipes
 export const GET_USER_RECIPES_START = "GET_USER_RECIPES";
 export const GET_USER_RECIPES_SUCCESS = "GET_USER_RECIPES_SUCCESS";
-export const GET_ALL_USER_INFO_SUCCESS = "GET_ALL_USER_INFO_SUCCESS";
 export const GET_USER_RECIPES_FAIL = "GET_USER_RECIPES_FAIL";
-
-// action types for getting user's info
-export const GET_USER_INFO_START = "GET_USER_INFO_START";
-export const GET_USER_INFO_SUCCESS = "GET_USER_INFO_SUCCESS";
-export const GET_USER_INFO_FAIL = "GET_USER_INFO_FAIL";
 
 // action types for getting ingredients
 export const GET_INGREDIENTS_START = "GET_INGREDIENTS_START";
