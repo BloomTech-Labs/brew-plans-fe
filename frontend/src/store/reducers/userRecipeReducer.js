@@ -19,10 +19,11 @@ const initialState = {
   userRecipes: [],
   edittedRecipe: {},
   newRecipe: {
-    water_temp: 150,
-    coarseness: 'Fine',
-    title: 'Createdd',
-    user_id: 1
+    water_temp: null,
+    coarseness: '',
+    title: '',
+    brew_method: '',
+    ingredients: []
   },
   isLoading: false
 }

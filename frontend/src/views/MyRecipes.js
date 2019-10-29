@@ -25,6 +25,7 @@ import UserRecipe from '../components/Recipes/UserRecipe';
 import SeededRecipe from '../components/Recipes/SeededRecipe';
 
 const MyRecipes = props => {
+  const { currentUser, newRecipe, createUserRecipe } = props;
   useEffect(() => {
     props.getUserRecipes();
     props.getSeededRecipes();
@@ -38,7 +39,7 @@ const MyRecipes = props => {
           <Text style={styles.recipesHeaderText}>My Recipes</Text>
           <TouchableOpacity onPress={() => console.log('Button pressed!')}>
             <MaterialIcons
-              onPress={() => props.createUserRecipe(props.newRecipe)}
+              onPress={() => createUserRecipe(newRecipe, currentUser.id)}
               name={'add-circle'}
               size={36}
               color={'black'}
@@ -109,7 +110,8 @@ const mapStateToProps = state => {
     userRecipes: state.userRecipes.userRecipes,
     isLoading: state.userRecipes.isLoading,
     seededRecipes: state.seededRecipes.seededRecipes,
-    newRecipe: state.userRecipes.newRecipe
+    newRecipe: state.userRecipes.newRecipe,
+    currentUser: state.user.currentUser
   };
 };
 

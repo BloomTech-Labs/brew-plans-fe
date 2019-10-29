@@ -91,8 +91,10 @@ export const handleNewRecipeInput = (inputField, inputValue) => dispatch => {
   });
 }
 
-export const createUserRecipe = (newRecipe) => dispatch => {
+export const createUserRecipe = (newRecipe, userId) => dispatch => {
   dispatch({ type: CREATE_USER_RECIPE_START })
+  newRecipe.user_id = userId;
+  console.log(newRecipe)
   axios.post(`https://brewplans-production.herokuapp.com/userrecipes/newrecipe`, newRecipe)
     .then(res => {
       dispatch({ type: CREATE_USER_RECIPE_SUCCESS, payload: res })
