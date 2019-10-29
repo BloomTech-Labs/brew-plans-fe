@@ -16,7 +16,8 @@ export {
   deleteUserRecipe,
   handleRecipeEdit,
   handleRecipeUpdate,
-  createUserRecipe
+  createUserRecipe,
+  handleNewRecipeInput
 } from './userRecipes.js';
 
 export {

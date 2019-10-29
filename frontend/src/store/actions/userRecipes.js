@@ -85,8 +85,8 @@ export const handleNewRecipeInput = (inputField, inputValue) => dispatch => {
   dispatch({
     type: NEW_RECIPE_INPUT_UPDATE,
     payload: {
-      type: inputField,
-      value: inputValue
+      inputType: inputField,
+      inputValue: inputValue
     }
   });
 }
