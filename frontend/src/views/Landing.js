@@ -19,7 +19,6 @@ const Landing = props => {
         setUserInState(res);
         props.navigation.navigate('Dashboard');
       }
-
     })
     .catch(err => {
       console.log(err);
