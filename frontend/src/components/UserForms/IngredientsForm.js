@@ -6,10 +6,10 @@ import { connect } from 'react-redux';
 
 const IngredientsForm = props => {
     const { ingredients } = props;
+    console.log(ingredients)
     
     {ingredients.length > 0 ? (
-        ingredients.map((ingredient, index) => {
-        return (
+        ingredients.map((ingredient, index) => (
         <View style={styles.forView}>
             <TextInput
             style={styles.formInput}
@@ -22,7 +22,7 @@ const IngredientsForm = props => {
             /> 
             <IngredientButton title="Delete" onPress={ingredients -= value}/>
         </View>
-    )})
+    ))
     ) : (
         <View>
             <TextInput
@@ -68,4 +68,4 @@ export default connect(
     {
 
     }
-)(IngredientsForm);
+)(withTheme(IngredientsForm));
