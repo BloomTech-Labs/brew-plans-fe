@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { Formik } from 'formik';
 import { withTheme, TextInput } from 'react-native-paper';
 import SubmitButton from './SubmitButton';
+import { connect } from 'react-redux'
 
 const RecipeFormComponent = props => {
    const theme = props.theme;
@@ -44,10 +45,10 @@ const RecipeFormComponent = props => {
                 
                 <TextInput
                 style={theme.formInput}
-                onChangeText = {props.handleChange('Courseness')}
-                    nBlur={props.handleBlur('Grounds Courseness')}
+                onChangeText = {props.handleChange('Coarseness')}
+                    nBlur={props.handleBlur('Grounds Coarseness')}
                   value={props.values.username} // change this!
-                  label='Courseness'
+                  label='Coarseness'
                   mode='outlined'
                   placeholder='Please Describe your ground consistancy' />
               <View>
@@ -69,4 +70,13 @@ const RecipeFormComponent = props => {
   );
 };
 
-export default withTheme(RecipeFormComponent);
+const mapStateToProps = state => {
+  return {
+    newUser: {
+      password: state.user.newUser.password,
+      email: state.user.newUser.email
+    }
+  };
+};
+
+export default connect(mapStateToProps, withTheme(RecipeFormComponent));
