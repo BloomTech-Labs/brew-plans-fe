@@ -19,6 +19,7 @@ const Landing = props => {
         setUserInState(res);
         props.navigation.navigate('Dashboard');
       }
+
     })
     .catch(err => {
       console.log(err);
@@ -51,6 +52,7 @@ const Landing = props => {
             title='Login'
             onPress={() => props.navigation.navigate('Login')}
           />
+          
         </View>
     </Layout>
   );
