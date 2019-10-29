@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { Formik } from 'formik';
 import { withTheme, TextInput } from 'react-native-paper';
-import SubmitButton from './SubmitButton';
+import OurButton from './SubmitButton';
 import { connect } from 'react-redux';
 import { 
   handleNewRecipeInput, 
@@ -64,7 +64,7 @@ const RecipeFormComponent = props => {
                 </View>
 
           </View>
-          <SubmitButton onPress={() => createUserRecipe(recipe)} title='Submit' />
+          <OurButton onPress={() => createUserRecipe(recipe)} title='Submit' />
           </View>
       )}
     </Formik>
