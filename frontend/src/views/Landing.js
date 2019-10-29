@@ -16,7 +16,7 @@ const Landing = props => {
       } else {
         props.navigation.navigate('MyRecipes');
       }
-      
+
     })
     .catch(err => {
       console.log(err);
@@ -34,6 +34,7 @@ const Landing = props => {
             title='Login'
             onPress={() => props.navigation.navigate('Login')}
           />
+          
         </View>
     </Layout>
   );
