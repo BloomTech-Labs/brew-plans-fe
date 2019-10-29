@@ -40,7 +40,7 @@ const Dashboard = props => {
   const test7 = () => {
     firebase.auth().currentUser.sendEmailVerification()
       .then(res => {
-        alert(res)
+        alert('Verification email sent.')
       })
       .catch(err => {
         alert(err)
