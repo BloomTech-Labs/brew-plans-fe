@@ -1,60 +1,65 @@
-import React, { useEffect } from 'react';
-// import { AsyncStorage, Button } from 'react-native';
-// import { DrawerActions } from 'react-navigation-drawer';
+import React from 'react';
 import { connect } from 'react-redux';
 import Layout from '../components/Layout/Layout';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
 import { View, Text, Button } from 'react-native';
-import { getLocalData } from '../store/actions/asyncStorage.js';
-import { setUserInState } from '../store/actions/index.js';
+import { setTokenInState, userLogout } from '../store/actions/index.js';
 import * as firebase from 'firebase';
 import axios from 'axios';
-import { getMaxListeners } from 'cluster';
 
 const Dashboard = props => {
-  const { currentUser, setUserInState } = props;
+  const { currentUser } = props;
 
-  useEffect(() => {
-    getLocalData('user')
+  const test3 = () => {
+    const user = firebase.auth().currentUser;
+    console.log('currentUser: ', user);
+  }
+
+  const test5 = (token) => {
+    axios.get('https://backend-development-coffee.herokuapp.com/master',
+    { headers: { authorization: `Bearer ${token}` } }
+    )
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  const test6 = () => {
+    firebase.auth().currentUser.delete()
       .then(res => {
-        // console.log('user in storage: ', res)
-        setUserInState(res)
-        console.log(res.id)
+        alert('Successfully deleted account!')
       })
       .catch(err => {
-        console.log(err)
+        alert(err)
       })
-  }, [])
+  }
 
-  console.log(firebase.auth())
+  const test7 = () => {
+    firebase.auth().currentUser.sendEmailVerification()
+      .then(res => {
+        alert(res)
+      })
+      .catch(err => {
+        alert(err)
+      })
+  }
 
-  // const test = (currentUser) => {
-  //   axios.get(`https://backend-development-coffee.herokuapp.com/master`,
-  //   {
-  //     headers: {
-  //       authorization: `${currentUser.token}`,
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-  //   .then(res => {
-  //     console.log(res)
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //     console.log(currentUser.token)
-  //   })
-  // }
-
-  console.log('current user: ', currentUser)
   
   return (
     <View style={{ flex: 1 }}>
       <NavBar {...props} />
       <Layout>
-        <Button title="Please Work" onPress={() => test(currentUser)}></Button>
+        <Button title="Show me the User" onPress={() => test3()}></Button>
+        <Button title="Test Request" onPress={() => test5(currentUser.token)}></Button>
+        <Button title="Delete my account" onPress={() => test6()}></Button>
+        <Button title="Send email verification" onPress={() => test7()}></Button>
       <Text>email: {currentUser.email}</Text>
       <Text>token: {currentUser.token}</Text>
       <Text>id: {currentUser.id}</Text>
+      <Text>Currently logged in: {`${currentUser.loggedIn}`}</Text>
       {props.children}
       </Layout>
     </View>
@@ -70,6 +75,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    setUserInState
+    userLogout,
+    setTokenInState
   }
 )(Dashboard);

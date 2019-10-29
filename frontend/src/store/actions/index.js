@@ -4,7 +4,7 @@ export {
   googleSignIn,
   userLogout,
   handleSignInChange,
-  setUserInState
+  setUserInState,
 } from './user.js';
 
 export { 
@@ -22,4 +22,5 @@ export {
 export {
   authSignup,
   authSignIn,
+  setTokenInState
 } from './auth.js'

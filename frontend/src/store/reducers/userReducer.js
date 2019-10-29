@@ -80,28 +80,22 @@ const userReducer = (state = initialState, action) => {
       storeLocalData(
         'user', 
         { 
-          id: action.payload.uid, 
-          email: action.payload.email 
+          id: action.payload.user.uid, 
+          email: action.payload.user.email 
         })
       return {
         ...state,
         currentUser: {
-          id: action.payload.uid,
-          email: action.payload.email,
+          id: action.payload.user.uid,
+          email: action.payload.user.email,
           loggedIn: true,
         }
       };
 
     case USER_REGISTER_FAIL:
-      // console.log('error: ', action.payload);
-      // console.log(action.type)
-      alert('Authorization failed.')
+      alert(action.payload)
       return {
         ...state,
-        currentUser: {
-          ...state.currentUser,
-        },
-        loadingError: action.payload
       };
 
     case USER_SIGNIN_START:
@@ -112,24 +106,24 @@ const userReducer = (state = initialState, action) => {
 
     case USER_SIGNIN_SUCCESS:
       console.log('user sign-in success: ', action.payload)
-      storeLocalData('token', action.payload.idToken)
       storeLocalData(
         'user', 
         { 
-          id: action.payload.localId, 
-          email: action.payload.email 
+          id: action.payload.user.uid, 
+          email: action.payload.user.email
         })
       return {
         ...state,
         currentUser: {
-          id: action.payload.localId,
+          id: action.payload.user.uid,
+          email: action.payload.user.email,
           loggedIn: true,
-          token: action.payload.idToken
         }
       };
 
     case USER_SIGNIN_FAIL:
       console.log('user sign-in fail: ', action)
+      alert(action.payload);
       return {
         ...state
       }
@@ -183,14 +177,11 @@ const userReducer = (state = initialState, action) => {
       }
 
     case SET_USER:
-      // console.log('set user payload: ', action.payload)
-      const { id, email } = action.payload;
       return {
         ...state,
         currentUser: {
-          ...state.currentUser,
-          id: id,
-          email: email,
+          email: action.payload.email,
+          id: action.payload.id,
           loggedIn: true
         }
       }

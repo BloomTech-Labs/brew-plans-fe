@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as Google from 'expo-google-app-auth';
+import * as firebase from 'firebase';
 
 
 import {

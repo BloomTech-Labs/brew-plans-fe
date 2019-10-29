@@ -8,6 +8,7 @@ import Layout from '../Layout';
 import Login from '../../../views/Login';
 import SignUp from '../../../views/SignUp';
 import { userLogout } from '../../../store/actions/user.js';
+import * as firebase from 'firebase';
 // import NavDrawer from './NavDrawer';
 
 const NavTabs = props => {
@@ -25,7 +26,11 @@ const NavTabs = props => {
         />
         <Appbar.Action
           icon='work'
-          onPress={() => {props.userLogout(); props.navigation.navigate('Landing')}}
+          onPress={() => {
+            firebase.auth().signOut();
+            props.userLogout(); 
+            props.navigation.navigate('Landing')
+          }}
         />
         <Appbar.Action
           icon='menu'

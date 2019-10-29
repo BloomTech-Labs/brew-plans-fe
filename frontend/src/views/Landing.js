@@ -4,10 +4,11 @@ import Layout from '../components/Layout/Layout';
 import LandingButton from '../components/Landing/LandingButton';
 import { connect } from 'react-redux';
 import { getLocalData } from '../store/actions/asyncStorage.js';
-import { setTokenInState } from '../store/actions/auth.js';
+import { setUserInState, setTokenInState } from '../store/actions/index.js';
+import * as firebase from 'firebase';
 
 const Landing = props => {
-  const { loggedIn, setTokenInState } = props;
+  const { loggedIn, setUserInState, setTokenInState } = props;
 
   useEffect(() => {
     getLocalData('user')
@@ -15,6 +16,7 @@ const Landing = props => {
       if (res == null) {
         console.log('null storage in landing: ', res)
       } else {
+        setUserInState(res);
         props.navigation.navigate('Dashboard');
       }
     })
@@ -22,6 +24,21 @@ const Landing = props => {
       console.log(err);
     })
   }, [loggedIn]);
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      props.navigation.navigate('Dashboard');
+      firebase.auth().currentUser.getIdToken(true)
+        .then(res => {
+          setTokenInState(res)
+        })
+        .catch(err => {
+          alert(err)
+        })
+    } else {
+      props.navigation.navigate('Landing');
+    }
+  });
 
   return (
     <Layout>
@@ -48,6 +65,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
+    setUserInState,
     setTokenInState
   }
   )(Landing);

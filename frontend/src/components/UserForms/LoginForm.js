@@ -9,6 +9,7 @@ import {
   handleSignInChange,
   authSignIn
 } from '../../store/actions/index.js';
+import * as firebase from 'firebase';
 
 const LoginForm = props => {
   const { 
@@ -48,7 +49,9 @@ const LoginForm = props => {
               placeholder='Please enter password'
             />
           </View>
-          <SubmitButton onPress={() => authSignIn(signInCredentials)} title='Login' />
+          <SubmitButton 
+          onPress={() => authSignIn(signInCredentials)} 
+          title='Login' />
           <View style={theme.formSocialsContainer}>
             <Text
               style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}
