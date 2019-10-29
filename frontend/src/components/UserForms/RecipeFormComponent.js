@@ -60,8 +60,8 @@ const RecipeFormComponent = props => {
               placeholder='Please Describe your ground consistancy' />
 
               <View>
-               <IngredientsForm {...props} />
-                </View>
+               <IngredientsForm />
+              </View>
 
           </View>
           <OurButton onPress={() => createUserRecipe(recipe)} title='Submit' />

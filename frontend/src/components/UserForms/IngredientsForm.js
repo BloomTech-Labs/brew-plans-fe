@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import {OurButton as IngredientButton} from './SubmitButton';
+import { withTheme, TextInput } from 'react-native-paper';
+import { connect } from 'react-redux';
 
 const IngredientsForm = props => {
-    const { ingredients } = props.recipe;
+    const { ingredients } = props;
     
     {ingredients.length > 0 ? (
-    ingredients.map((ingredient, index) => {
+        ingredients.map((ingredient, index) => {
         return (
-        <View>
+        <View style={styles.forView}>
             <TextInput
-            //style={styles.formInput}
+            style={styles.formInput}
             onChangeText = {(value) => handleNewRecipeInput('Ingredients', value)}
-            onBlur={props.handleBlur('Ingredients')}
+            // onBlur={props.handleBlur('Ingredients')}
             value={ingredient} // cha[index]nge this!
             label='Ingredients'
             mode='outlined'
@@ -25,13 +27,45 @@ const IngredientsForm = props => {
         <View>
             <TextInput
             style={styles.formInput}
-            onChangeText = {(value)=> handleNewRecipeInput('Ingredient', value)}
-            onBlur={props.handleBlur('Additional Ingredient?')}
-            value={recipe.ingredients.ingredient} // change this!
+            onChangeText = {() => {}}
+            // onBlur={props.handleBlur('Additional Ingredient?')}
+            value={ingredients} // change this!
             label='Additional Ingredient?'
             mode='outlined'
             placeholder='Anything Else you would like to Add?' />
         </View>
     )}
 }
-export default IngredientsForm;
+
+const styles = {
+      formView: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%'
+  },
+
+  formInputsContainer: {
+    width: '100%',
+    alignItems: 'center',
+    marginBottom: 32
+  },
+
+  formInput: {
+    marginBottom: 16,
+    width: '90%',
+    fontSize: 3
+  },
+}
+
+const mapStateToProps = state => {
+    return {
+        ingredients: state.userRecipes.newRecipe.ingredients
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    {
+
+    }
+)(IngredientsForm);
