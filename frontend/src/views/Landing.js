@@ -12,29 +12,31 @@ const Landing = props => {
 
   useEffect(() => {
     getLocalData('user')
-    .then(res => {
-      if (res == null) {
-        console.log('null storage in landing: ', res)
-      } else {
-        setUserInState(res);
-        props.navigation.navigate('Dashboard');
-      }
-    })
-    .catch(err => {
-      console.log(err);
-    })
+      .then(res => {
+        if (res == null) {
+          console.log('null storage in landing: ', res);
+        } else {
+          setUserInState(res);
+          props.navigation.navigate('MyRecipes');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }, [loggedIn]);
 
-  firebase.auth().onAuthStateChanged((user) => {
+  firebase.auth().onAuthStateChanged(user => {
     if (user) {
-      props.navigation.navigate('Dashboard');
-      firebase.auth().currentUser.getIdToken(true)
+      props.navigation.navigate('MyRecipes');
+      firebase
+        .auth()
+        .currentUser.getIdToken(true)
         .then(res => {
-          setTokenInState(res)
+          setTokenInState(res);
         })
         .catch(err => {
-          alert(err)
-        })
+          alert(err);
+        });
     } else {
       props.navigation.navigate('Landing');
     }
@@ -42,17 +44,16 @@ const Landing = props => {
 
   return (
     <Layout>
-        <View>
-          <LandingButton
-            title='Sign Up'
-            onPress={() => props.navigation.navigate('SignUp')}
-          />
-          <LandingButton
-            title='Login'
-            onPress={() => props.navigation.navigate('Login')}
-          />
-          
-        </View>
+      <View>
+        <LandingButton
+          title='Sign Up'
+          onPress={() => props.navigation.navigate('SignUp')}
+        />
+        <LandingButton
+          title='Login'
+          onPress={() => props.navigation.navigate('Login')}
+        />
+      </View>
     </Layout>
   );
 };
@@ -69,4 +70,4 @@ export default connect(
     setUserInState,
     setTokenInState
   }
-  )(Landing);
+)(Landing);
