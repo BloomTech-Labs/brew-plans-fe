@@ -7,6 +7,8 @@ import { getLocalData } from '../store/actions/asyncStorage.js';
 import { setUserInState, setTokenInState } from '../store/actions/index.js';
 import * as firebase from 'firebase';
 
+//LANDING SCREEN
+
 const Landing = props => {
   const { loggedIn, setUserInState, setTokenInState } = props;
 
