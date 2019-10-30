@@ -8,7 +8,7 @@ import {
   handleNewRecipeInput,
   createUserRecipe
 } from '../../store/actions/index.js';
-import IngredientsForm from './IngredientsForm';
+// import IngredientsForm from './IngredientsForm';
 
 const RecipeFormComponent = props => {
   const { recipe, theme } = props;
@@ -61,11 +61,8 @@ const RecipeFormComponent = props => {
               mode='outlined'
               placeholder='Please Describe your ground consistancy'
             />
-
-            <View>
-              <IngredientsForm />
-            </View>
           </View>
+          {/* <IngredientsForm /> */}
           <OurButton onPress={() => createUserRecipe(recipe)} title='Submit' />
         </View>
       )}
