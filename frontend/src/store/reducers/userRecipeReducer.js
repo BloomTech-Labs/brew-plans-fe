@@ -101,7 +101,7 @@ const userRecipeReducer = (state = initialState, action) => {
       }
 
     case NEW_RECIPE_INPUT_UPDATE:
-      console.log(action.payload)
+      console.log('NEWRECIPEINPUTUPDATE', action.payload)
       const { inputType, inputValue } = action.payload;
       return {
         ...state,
