@@ -1,9 +1,10 @@
 export {
   handleChange,
-  handleUserSignup,
   getUserInfo,
   googleSignIn,
-  userLogout
+  userLogout,
+  handleSignInChange,
+  setUserInState,
 } from './user.js';
 
 export { 
@@ -14,5 +15,13 @@ export {
   getUserRecipes, 
   deleteUserRecipe,
   handleRecipeEdit,
-  handleRecipeUpdate
+  handleRecipeUpdate,
+  createUserRecipe,
+  handleNewRecipeInput
 } from './userRecipes.js';
+
+export {
+  authSignup,
+  authSignIn,
+  setTokenInState
+} from './auth.js'

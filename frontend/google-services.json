@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "632231611378",
+    "firebase_url": "https://brew-plans-backend.firebaseio.com",
+    "project_id": "brew-plans-backend",
+    "storage_bucket": "brew-plans-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632231611378:android:e27f6ad3d9cd1f3d8bb96b",
+        "android_client_info": {
+          "package_name": "com.brew.plans"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632231611378-3oh6mau9884ho4st02m456kpe5m9io6m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBZwKfj8CZ5j7GRQazGe9hTFOw0jVc5ek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632231611378-3oh6mau9884ho4st02m456kpe5m9io6m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

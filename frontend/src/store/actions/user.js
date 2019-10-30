@@ -1,37 +1,17 @@
 import axios from 'axios';
 import * as Google from 'expo-google-app-auth';
+import * as firebase from 'firebase';
 
 
 import {
   UPDATE_SIGNUP_INPUT,
-  USER_REGISTER_START,
-  USER_REGISTER_SUCCESS,
-  USER_REGISTER_FAIL,
-  GET_USER_INFO_START,
-  GET_USER_INFO_SUCCESS,
-  GET_ALL_USER_INFO_SUCCESS,
-  GET_USER_INFO_FAIL,
+  UPDATE_SIGNIN_INPUT,
   GOOGLE_SIGNIN_START,
   GOOGLE_SIGNIN_SUCCESS,
   GOOGLE_SIGNIN_FAIL,
-  USER_LOGOUT
+  USER_LOGOUT,
+  SET_USER
 } from './actionTypes.js';
-
-export const handleUserSignup = userCredentials => dispatch => {
-  dispatch({ type: USER_REGISTER_START });
-  console.log('user creds: ', userCredentials)
-  axios.post(
-    'https://brewplans-production.herokuapp.com/users/register',
-    userCredentials
-    )
-    .then(res => {
-      dispatch({ type: USER_REGISTER_SUCCESS, payload: res.data });
-      console.log(res.data)
-    })
-    .catch(err => {
-      dispatch({ type: USER_REGISTER_FAIL, payload: err });
-    });
-};
 
 export const handleChange = (inputField, inputValue) => dispatch => {
   dispatch({
@@ -43,35 +23,19 @@ export const handleChange = (inputField, inputValue) => dispatch => {
   });
 };
 
-export const handleUserLogin = credentials => dispatch => {
-  dispatch({ type: USER_LOGIN_START });
-  axios.post('', credentials);
+export const handleSignInChange = (inputField, inputValue) => dispatch => {
+  dispatch({
+    type: UPDATE_SIGNIN_INPUT,
+    payload: {
+      inputType: inputField,
+      inputValue: inputValue
+    }
+  });
 };
 
-export const getUserInfo = userId => dispatch => {
-  dispatch({ type: GET_USER_INFO_START });
-  // get specific user if an id is given
-  if (userId) {
-    axios
-      .get(`https://brewplans-production.herokuapp.com/users/${userId}`)
-      .then(res => {
-        dispatch({ type: GET_USER_INFO_SUCCESS, payload: res.data });
-      })
-      .catch(err => {
-        dispatch({ type: GET_USER_INFO_FAIL, payload: err });
-      });
-    // if no id is given, get all users
-  } else {
-    axios
-      .get(`https://brewplans-production.herokuapp.com/users/allusers`)
-      .then(res => {
-        dispatch({ type: GET_ALL_USER_INFO_SUCCESS, payload: res.data });
-      })
-      .catch(err => {
-        dispatch({ type: GET_USER_INFO_FAIL, payload: err });
-      });
-  }
-};
+export const setUserInState = (user) => dispatch => {
+  dispatch({ type: SET_USER, payload: user })
+}
 
 export const googleSignIn = config => async dispatch => {
   dispatch({ type: GOOGLE_SIGNIN_START });

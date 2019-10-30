@@ -1,50 +1,49 @@
 import {
   UPDATE_SIGNUP_INPUT,
-  GET_USER_INFO_START,
-  GET_USER_INFO_SUCCESS,
-  GET_ALL_USER_INFO_SUCCESS,
-  GET_USER_INFO_FAIL,
+  UPDATE_SIGNIN_INPUT,
   USER_REGISTER_START,
   USER_REGISTER_SUCCESS,
   USER_REGISTER_FAIL,
+  USER_SIGNIN_START,
+  USER_SIGNIN_SUCCESS,
+  USER_SIGNIN_FAIL,
   GOOGLE_SIGNIN_START,
   GOOGLE_SIGNIN_SUCCESS,
   GOOGLE_SIGNIN_FAIL,
-  USER_LOGOUT
+  USER_LOGOUT,
+  SET_TOKEN,
+  SET_USER
 } from '../actions/actionTypes.js';
 
+import { AsyncStorage } from 'react-native';
+
 import {
-getLocalData,
 storeLocalData
 } from '../actions/asyncStorage.js';
 
 const initialState = {
   newUser: {
-    username: '',
-    password: '',
-    email: ''
+    email: '',
+    password: ''
+  },
+  signInCredentials: {
+    email: '',
+    password: ''
   },
   currentUser: {
-    username: '',
     email: '',
     id: '',
-    photoUrl: '',
-    firstName: '',
-    lastName: '',
-    isLoading: false
+    loggedIn: false,
+    token: null
   },
   loadingError: '',
   allUsers: [],
-  isLoggedIn: true
 };
 
 // reducer performs actions on/with user state
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    // update state when new user enters username/password/email
     case UPDATE_SIGNUP_INPUT:
-      // console.log('state: ', state);
-      // console.log('update_user payload:', action.payload);
       // grab the type of input and the value of input from the payload
       const { type, value } = action.payload;
       // return old state spread + new value entered from newUser
@@ -57,111 +56,134 @@ const userReducer = (state = initialState, action) => {
         }
       };
 
+    case UPDATE_SIGNIN_INPUT:
+      // grab the type of input and the value of input from the payload
+      const { inputType, inputValue } = action.payload;
+      // return old state spread + new value entered from newUser
+      // immutability ensures this only affects newUser state
+      return {
+        ...state,
+        signInCredentials: {
+          ...state.signInCredentials,
+          [inputType]: inputValue
+        }
+      };
+
     // submit user credential data from state to register
     case USER_REGISTER_START:
       return {
         ...state,
-        currentUser: {
-          ...state.currentUser,
-          isLoading: true
-        }
-      };
+        };
 
     case USER_REGISTER_SUCCESS:
-      const currentUser = action.payload;
-      console.log(action.type)
+      console.log('register_success action payload: ', action.payload)
+      storeLocalData(
+        'user', 
+        { 
+          id: action.payload.user.uid, 
+          email: action.payload.user.email 
+        })
       return {
         ...state,
-        currentUser: currentUser,
-        isLoggedIn: true,
+        currentUser: {
+          id: action.payload.user.uid,
+          email: action.payload.user.email,
+          loggedIn: true,
+        }
       };
 
     case USER_REGISTER_FAIL:
-      console.log('error: ', action.payload);
-      console.log(action.type)
+      alert(action.payload)
       return {
         ...state,
-        currentUser: {
-          ...state.currentUser,
-          isLoading: false
-        },
-        loadingError: action.payload
       };
 
-    case GET_USER_INFO_START:
+    case USER_SIGNIN_START:
+      console.log(action)
+      return {
+        ...state,
+        };
+
+    case USER_SIGNIN_SUCCESS:
+      console.log('user sign-in success: ', action.payload)
+      storeLocalData(
+        'user', 
+        { 
+          id: action.payload.user.uid, 
+          email: action.payload.user.email
+        })
       return {
         ...state,
         currentUser: {
-          ...state.currentUser,
-          isLoading: true
+          id: action.payload.user.uid,
+          email: action.payload.user.email,
+          loggedIn: true,
         }
       };
 
-    case GET_USER_INFO_SUCCESS:
-      const searchedUser = action.payload;
+    case USER_SIGNIN_FAIL:
+      console.log('user sign-in fail: ', action)
+      alert(action.payload);
       return {
-        ...state,
-        currentUser: {
-          email: searchedUser.email,
-          username: searchedUser.username,
-          isLoading: false,
-          id: searchedUser.id
-        }
-      };
-
-    case GET_ALL_USER_INFO_SUCCESS:
-      return {
-        ...state,
-        allUsers: action.payload
-      };
-
-    case GET_USER_INFO_FAIL:
-      return {
-        ...state,
-        currentUser: {
-          ...state.currentUser,
-          isLoading: false
-        },
-        loadingError: action.payload
-      };
+        ...state
+      }
 
     case GOOGLE_SIGNIN_START:
       return {
         ...state,
-        isLoading: true
       }
 
     case GOOGLE_SIGNIN_SUCCESS:
-      const { user } = action.payload;
-      storeLocalData('signedIn', true);
-      storeLocalData('currentUser', user);
+      console.log('google sign-in payload: ', action.payload);
+      const { user, token } = action.payload;
+      storeLocalData('token', token);
+      storeLocalData('user', {
+        id: user.id,
+        email: user.email,
+      })
       return {
         ...state,
         currentUser: {
-          ...state.currentUser,
           id: user.id,
-          email: user.email,
-          photoUrl: user.photoUrl,
-          isLoading: false,
-        },
-        isLoggedIn: true
+          loggedIn: true,
+          token: token
+        }
       };
       
     case GOOGLE_SIGNIN_FAIL:
       console.log(action)
       return {
         ...state,
-        isLoading: false
       }
 
     case USER_LOGOUT:
+      AsyncStorage.clear();
       return {
         ...state,
         currentUser: {
           ...state.currentUser,
-          isLoading: false
+          loggedIn: false,
+          token: null
         },
-        isLoggedIn: false
+      }
+
+    case SET_TOKEN:
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          token: action.payload
+        }
+      }
+
+    case SET_USER:
+      return {
+        ...state,
+        currentUser: {
+          email: action.payload.email,
+          id: action.payload.id,
+          loggedIn: true
+        }
       }
 
     default:
