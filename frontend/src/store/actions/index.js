@@ -3,7 +3,8 @@ export {
   getUserInfo,
   googleSignIn,
   userLogout,
-  handleSignInChange
+  handleSignInChange,
+  setUserInState,
 } from './user.js';
 
 export { 
@@ -15,10 +16,12 @@ export {
   deleteUserRecipe,
   handleRecipeEdit,
   handleRecipeUpdate,
-  createUserRecipe
+  createUserRecipe,
+  handleNewRecipeInput
 } from './userRecipes.js';
 
 export {
   authSignup,
-  authSignIn
+  authSignIn,
+  setTokenInState
 } from './auth.js'

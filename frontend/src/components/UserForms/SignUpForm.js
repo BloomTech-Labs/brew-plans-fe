@@ -6,6 +6,7 @@ import { Formik } from 'formik';
 import { withTheme } from 'react-native-paper';
 import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
+import * as firebase from 'firebase';
 import { Ionicons } from '@expo/vector-icons';
 
 import { handleChange, authSignup } from '../../store/actions/index.js';
@@ -20,12 +21,7 @@ const SignUpForm = props => {
   };
 
   const { theme, newUser } = props;
-  const { authSignup } = props;
-  // console.log('newUser: ', newUser);
-
-  const handleChange = (inputType, inputValue) => {
-    props.handleChange(inputType, inputValue);
-  };
+  const { authSignup, handleChange } = props;
 
   return (
     <Formik>
@@ -51,7 +47,9 @@ const SignUpForm = props => {
               mode='outlined'
             />
           </View>
-          <SubmitButton onPress={() => authSignup(newUser)} title='Sign Up' />
+          <SubmitButton 
+          onPress={() => authSignup(newUser) } 
+          title='Sign Up' />
           <View style={theme.formSocialsContainer}>
             <Text
               style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}
