@@ -8,6 +8,8 @@ import * as firebase from 'firebase';
 import axios from 'axios';
 import { getSeededRecipes } from '../store/actions/index.js';
 
+// Seeded Recipe page
+
 const SeededRecipe = props => {
   useEffect(() => {
     props.getSeededRecipes();
