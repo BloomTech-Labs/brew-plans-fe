@@ -6,55 +6,55 @@ import OurButton from './SubmitButton';
 import { connect } from 'react-redux';
 import { 
   handleNewRecipeInput, 
-  createUserRecipe 
+  createUserRecipe, 
+  handleChange
 } from '../../store/actions/index.js';
 
 const AddRecipeForm = props => {
     const {newRecipe} = props;
-console.log('props', props)
+console.log('propssssss', props.recipe)
   return (
-    <Formik
-      onSubmit={values => console.log('Formik submit Values: ', values) } /// Add props.handlesubmt or equivelent.
-    >
+    <Formik> 
       {props => (
         <View style={styles.formView}>
           <View style={styles.formInputsContainer}>
 
             <TextInput
               style={styles.formInput}
-              onChange={(value) => handleNewRecipeInput('title', value)}
-              onBlur={props.handleBlur('title')}
+              onChange={(value) => handleChange('title', value)}
+              //onBlur={props.handleBlur('title')}
              
-              label='Title'
-              mode='outlined'
-              placeholder='Please enter title' />
-
+            //   label='Title'
+            //   mode='outlined'
+               placeholder='Please enter title' />
+                
             
             {/* could use picker */}
             <TextInput
               style={styles.formInput}
-              onChange = {(value) => handleNewRecipeInput('brew_type', value)}
-              onBlur={props.handleBlur('Brew Method')}
+              onChange = {(value) => handleChange('brew_type', value)}
+              //onBlur={props.handleBlur('Brew Method')}
            
-              label='Brew Method'
-              mode='outlined'
+            //   label='Brew Method'
+            //   mode='outlined'
               placeholder='Please Select A Brew Method' />
               
+            
             <TextInput
               style={styles.formInput}
-              onChangeText = {(value) => handleNewRecipeInput('water_temp', value)}
-              onBlur={props.handleBlur('Temperature')}
+              onChangeText = {(value) => handleChange('water_temp', value)}
+             // onBlur={props.handleBlur('Temperature')}
             
-              label='Brew Temperature'
-              mode='outlined'
-              placeholder='Please Input your Brew Temperature' />
+             // label='Brew Temperature'
+            //   mode='outlined'
+               placeholder='Please Input your Brew Temperature' />
                 
             <TextInput
               style={styles.formInput}
-              onChange = {value => handleNewRecipeInput('coarseness', value)}
-              onBlur={props.handleBlur('Grounds Coarseness')}
-              
-               />
+              onChange = {value => handleChange('coarseness', value)}
+              //onBlur={props.handleBlur('Grounds Coarseness')}
+                
+               placeholder='Please Input your ground courseness' />
 
               
 
