@@ -5,25 +5,18 @@ import { withTheme, TextInput } from 'react-native-paper';
 import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
 import { connect } from 'react-redux';
-import {
-  handleSignInChange,
-  authSignIn
-} from '../../store/actions/index.js';
+import { handleSignInChange, authSignIn } from '../../store/actions/index.js';
 
 const LoginForm = props => {
   const theme = props.theme;
-  const { 
-    handleSignInChange, 
-    authSignIn,
-    signInCredentials 
-  } = props;
+  const { handleSignInChange, authSignIn, signInCredentials } = props;
 
   const loginConfig = {
     androidClientId:
       '449923889220-pa3veecaq72o4tiairfrputrj7f0dp2n.apps.googleusercontent.com',
     scopes: ['profile', 'email']
   };
-  console.log(signInCredentials)
+  console.log(signInCredentials);
 
   function userSignin(email, password) {
     firebase
@@ -44,7 +37,7 @@ const LoginForm = props => {
           <View style={theme.formInputsContainer}>
             <TextInput
               style={theme.formInput}
-              onChangeText={(value) => handleSignInChange('email', value)}
+              onChangeText={value => handleSignInChange('email', value)}
               onBlur={props.handleBlur('email')}
               value={signInCredentials.email}
               label='Email'
@@ -53,7 +46,7 @@ const LoginForm = props => {
             />
             <TextInput
               style={theme.formInput}
-              onChangeText={(value) => handleSignInChange('password', value)}
+              onChangeText={value => handleSignInChange('password', value)}
               onBlur={props.handleBlur('password')}
               value={signInCredentials.password}
               label='Password'
@@ -61,7 +54,10 @@ const LoginForm = props => {
               placeholder='Please enter password'
             />
           </View>
-          <SubmitButton onPress={() => authSignIn(signInCredentials)} title='Login' />
+          <SubmitButton
+            onPress={() => authSignIn(signInCredentials)}
+            title='Login'
+          />
           <View style={theme.formSocialsContainer}>
             <Text
               style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}

@@ -7,7 +7,7 @@ import { withTheme } from 'react-native-paper';
 import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
 import * as firebase from 'firebase';
-import { handleUserSignup, handleChange } from '../../store/actions/index.js';
+import { authSignup, handleChange } from '../../store/actions/index.js';
 
 const SignUpForm = props => {
   // console.log('signupformprops: ', props)
