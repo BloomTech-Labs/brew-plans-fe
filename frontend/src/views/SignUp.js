@@ -1,15 +1,46 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, Button } from 'react-native';
 import Layout from '../components/Layout/Layout';
 import SignUpForm from '../components/UserForms/SignUpForm';
+import { connect } from 'react-redux';
+import { getLocalData } from '../store/actions/asyncStorage.js';
 
 const SignUp = props => {
-  // console.log('signup view: ', props)
-  return (
+  const { loggedIn } = props;
+
+  useEffect(() => {
+    getLocalData('token')
+    .then(res => {
+      if (res == null) {
+        // console.log('null storage in signup: ', res)
+      } else {
+        // console.log('token from storage in signup: ', res)
+        props.navigation.navigate('MyRecipes');
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }, [loggedIn]);
+
+  return loggedIn ? (
+    <Text>Loading...</Text>
+  ) : (
     <Layout>
       <SignUpForm navigate={props.navigation.navigate}/>
     </Layout>
   );
 };
 
-export default SignUp;
+const mapStateToProps = state => {
+  return {
+    loggedIn: state.user.currentUser.loggedIn
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {
+
+  }
+)(SignUp);

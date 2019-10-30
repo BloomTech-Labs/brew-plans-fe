@@ -1,37 +1,29 @@
 import React, { useEffect } from 'react';
-import { View, AsyncStorage } from 'react-native';
+import { View } from 'react-native';
 import Layout from '../components/Layout/Layout';
 import LandingButton from '../components/Landing/LandingButton';
 import { connect } from 'react-redux';
+import { getLocalData } from '../store/actions/asyncStorage.js';
 
 const Landing = props => {
-  const { isLoggedIn } = props;
-
-  _retrieveData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('user', (err, results) => {
-        console.log('results', results);
-      });
-      if (value !== null) {
-        // We have data!!
-        console.log('value', value);
-      }
-    } catch (error) {
-      // Error retrieving data
-      console.log('error', error);
-    }
-  };
+  const { loggedIn } = props;
 
   useEffect(() => {
-    _retrieveData();
-  }, []);
+    getLocalData('token')
+    .then(res => {
+      if (res == null) {
+        console.log('null storage in landing: ', res)
+      } else {
+        props.navigation.navigate('MyRecipes');
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }, [loggedIn]);
 
   return (
     <Layout>
-      {isLoggedIn ? (
-        // navigate to dashboard component
-        props.navigation.navigate('Dashboard')
-      ) : (
         <View>
           <LandingButton
             title='Sign Up'
@@ -42,14 +34,13 @@ const Landing = props => {
             onPress={() => props.navigation.navigate('Login')}
           />
         </View>
-      )}
     </Layout>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.user.isLoggedIn
+    loggedIn: state.user.currentUser.loggedIn
   };
 };
 
