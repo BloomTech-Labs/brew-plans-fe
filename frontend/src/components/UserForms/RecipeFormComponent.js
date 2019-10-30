@@ -32,6 +32,8 @@ const RecipeFormComponent = props => {
               mode='outlined'
               placeholder='Please enter title' />
 
+            
+            {/* could use picker */}
             <TextInput
               style={styles.formInput}
               onChangeText = {(value) => handleNewRecipeInput('brew_type', value)}
@@ -62,6 +64,12 @@ const RecipeFormComponent = props => {
               <View>
                <IngredientsForm />
               </View>
+
+              {/* for new recipes its fine sending as one object
+
+              for ud - handle ingredients seperately, check to see if ingredients were updated, if they were send it to a seperate endpoint for ingredients
+              if the ingredients arent being changed, update it as one object..
+                  they have to deal with the ingredient database so well have to send the ud to multiple endpoints- shannons got em coming */}
 
           </View>
           <OurButton onPress={() => createUserRecipe(recipe)} title='Submit' />

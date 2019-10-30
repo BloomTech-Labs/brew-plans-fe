@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 const IngredientsForm = props => {
     const { ingredients } = props;
     
-    // {ingredients.length > 0 ? (
-       // ingredients.map((ingredient, index) => {
+    {ingredients.length > 0 ? (
+        ingredients.map((ingredient, index) => {
         return (
         <View style={styles.forView}>
             <TextInput
@@ -21,23 +21,22 @@ const IngredientsForm = props => {
             placeholder='What goes into the recipe?'
             /> 
             <IngredientButton title="Delete" onPress={ingredients -= value}/>
-        </View> )
-    // )})
-    // ) : (
-    //     <View>
-    //         <TextInput
-    //         style={styles.formInput}
-    //         onChangeText = {() => {}}
-    //         // onBlur={props.handleBlur('Additional Ingredient?')}
-    //         value={ingredients} // change this!
-    //         label='Additional Ingredient?'
-    //         mode='outlined'
-    //         placeholder='Anything Else you would like to Add?' />
-    //     </View>
-    // )}
-//
+        </View>
+    )})
+    ) : (
+        <View>
+            <TextInput
+            style={styles.formInput}
+            onChangeText = {() => {}}
+            // onBlur={props.handleBlur('Additional Ingredient?')}
+            value={ingredients} // change this!
+            label='Additional Ingredient?'
+            mode='outlined'
+            placeholder='Anything Else you would like to Add?' />
+        </View>
+    )}
+}
 
-        }
 const styles = {
       formView: {
     alignItems: 'center',
