@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import {
   View,
@@ -54,6 +53,7 @@ const MyRecipes = props => {
                 title={recipe.title}
                 brew_type={recipe.brew_type}
                 water_temp={recipe.water_temp}
+                press={() => props.navigation.navigate('SeededRecipe')}
               />
             ))}
             {props.userRecipes.map(recipe => (
@@ -74,7 +74,6 @@ const MyRecipes = props => {
                   )
                 }
                 delete={() => props.deleteUserRecipe(recipe.id)}
-                
               />
             ))}
           </ScrollView>
@@ -101,7 +100,7 @@ const styles = StyleSheet.create({
   },
   recipesContainer: {
     paddingVertical: 24
-  },
+  }
 });
 
 const mapStateToProps = state => {

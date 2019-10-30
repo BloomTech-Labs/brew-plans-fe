@@ -8,7 +8,7 @@ import Login from './src/views/Login';
 import Dashboard from './src/views/Dashboard.js';
 import MyRecipes from './src/views/MyRecipes.js';
 import RecipeForm from './src/views/RecipeForm.js';
-import Recipe from './src/views/Recipe.js';
+import SeededRecipe from './src/views/SeededRecipe.js';
 import * as firebase from 'firebase';
 
 const firebaseConfig = {
@@ -44,8 +44,8 @@ const AppNavigator = createStackNavigator(
     RecipeForm: {
       screen: RecipeForm
     },
-    Recipe: {
-      screen: Recipe
+    SeededRecipe: {
+      screen: SeededRecipe
     }
   },
   {
