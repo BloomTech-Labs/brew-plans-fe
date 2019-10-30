@@ -5,14 +5,13 @@ import { withTheme, TextInput } from 'react-native-paper';
 import OurButton from './SubmitButton';
 import { connect } from 'react-redux';
 import { 
-  handleNewRecipeInput, 
   createUserRecipe, 
   handleChange
 } from '../../store/actions/index.js';
 
 const AddRecipeForm = props => {
-    const {newRecipe} = props;
-console.log('propssssss', props.recipe)
+    const {recipe} = props;
+console.log('propssssss.recipe',recipe)
   return (
     <Formik> 
       {props => (
@@ -22,10 +21,10 @@ console.log('propssssss', props.recipe)
             <TextInput
               style={styles.formInput}
               onChange={(value) => handleChange('title', value)}
-              //onBlur={props.handleBlur('title')}
-             
-            //   label='Title'
-            //   mode='outlined'
+              onBlur={props.handleBlur('title')}
+           
+              // label='Title'
+               mode='outlined'
                placeholder='Please enter title' />
                 
             
@@ -33,26 +32,27 @@ console.log('propssssss', props.recipe)
             <TextInput
               style={styles.formInput}
               onChange = {(value) => handleChange('brew_type', value)}
-              //onBlur={props.handleBlur('Brew Method')}
+              onBlur={props.handleBlur('Brew Method')}
            
             //   label='Brew Method'
-            //   mode='outlined'
+              mode='outlined'
               placeholder='Please Select A Brew Method' />
               
             
             <TextInput
               style={styles.formInput}
               onChangeText = {(value) => handleChange('water_temp', value)}
-             // onBlur={props.handleBlur('Temperature')}
+              onBlur={props.handleBlur('Temperature')}
             
              // label='Brew Temperature'
-            //   mode='outlined'
+               mode='outlined'
                placeholder='Please Input your Brew Temperature' />
                 
             <TextInput
               style={styles.formInput}
               onChange = {value => handleChange('coarseness', value)}
-              //onBlur={props.handleBlur('Grounds Coarseness')}
+              onBlur={props.handleBlur('Grounds Coarseness')}
+               mode='outlined'
                 
                placeholder='Please Input your ground courseness' />
 
@@ -65,7 +65,7 @@ console.log('propssssss', props.recipe)
                   they have to deal with the ingredient database so well have to send the ud to multiple endpoints- shannons got em coming */}
 
           </View>
-          <OurButton onPress={() => createUserRecipe(newRecipe),  console.log('newRecipe', newRecipe)} title='Submit' />
+          <OurButton onPress={() => createUserRecipe(recipe)} title='Submit' />
           
           </View>
       )}
@@ -103,6 +103,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    createUserRecipe
+    createUserRecipe,
+    handleChange
   }
 )(withTheme(AddRecipeForm));
