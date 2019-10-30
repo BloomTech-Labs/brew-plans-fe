@@ -5,12 +5,11 @@ import { withTheme, TextInput } from 'react-native-paper';
 import OurButton from './SubmitButton';
 import { connect } from 'react-redux';
 import { 
-  handleNewRecipeInput, 
+  handleChange, 
   createUserRecipe 
 } from '../../store/actions/index.js';
-import IngredientsForm from '../UserForms/IngredientsForm';
 
-const RecipeFormComponent = props => {
+const AddRecipeForm = props => {
    const { recipe, theme } = props;
    const { createUserRecipe } = props;
 
@@ -25,7 +24,7 @@ const RecipeFormComponent = props => {
 
             <TextInput
               style={styles.formInput}
-              onChangeText={(value) => handleNewRecipeInput('title', value)}
+              onChangeText={(value) => handleChange('title', value)}
               onBlur={props.handleBlur('title')}
               value={recipe.title}
               label='Title'
@@ -110,4 +109,4 @@ export default connect(
     handleNewRecipeInput,
     createUserRecipe
   }
-)(withTheme(RecipeFormComponent));
+)(withTheme(AddRecipeForm));
