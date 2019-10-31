@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native';
+import { TextInput } from 'react-native-paper';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import Layout from '../components/Layout/Layout';
 import { connect } from 'react-redux';
@@ -22,6 +23,7 @@ import {
 } from '../store/actions/index.js';
 import UserRecipe from '../components/Recipes/UserRecipe';
 import SeededRecipe from '../components/Recipes/SeededRecipe';
+import RecipeFormComponent from '../components/UserForms/RecipeFormComponent';
 
 const MyRecipes = props => {
   useEffect(() => {
@@ -29,15 +31,20 @@ const MyRecipes = props => {
     props.getSeededRecipes();
   }, []);
 
+  const [formModal, setFormModal] = useState(false);
+
   return (
     <View style={{ flex: 1 }}>
       <NavBar {...props} />
       <View style={styles.pageContainer}>
+        {formModal ? (
+          <RecipeFormComponent cancel={() => setFormModal(!formModal)} />
+        ) : null}
         <View style={styles.recipesHeader}>
           <Text style={styles.recipesHeaderText}>My Recipes</Text>
-          <TouchableOpacity onPress={() => console.log('Button pressed!')}>
+          <TouchableOpacity onPress={() => setFormModal(!formModal)}>
             <MaterialIcons
-              onPress={() => props.createUserRecipe(props.newRecipe)}
+              // onPress={() => props.createUserRecipe(props.newRecipe)}
               name={'add-circle'}
               size={36}
               color={'black'}
@@ -108,7 +115,7 @@ const mapStateToProps = state => {
     userRecipes: state.userRecipes.userRecipes,
     isLoading: state.userRecipes.isLoading,
     seededRecipes: state.seededRecipes.seededRecipes,
-    newRecipe: state.userRecipes.newRecipe
+    recipe: state.userRecipes.newRecipe
   };
 };
 
