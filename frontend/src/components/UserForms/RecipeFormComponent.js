@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, ScrollView, Button } from 'react-native';
+import { View, Text, ScrollView, Button, TouchableOpacity } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 import { Formik } from 'formik';
 import { withTheme, TextInput } from 'react-native-paper';
 import OurButton from './SubmitButton';
@@ -12,100 +13,83 @@ import {
 import { vw, vh } from 'react-native-expo-viewport-units';
 
 const RecipeFormComponent = props => {
-  const { recipe, theme, cancel } = props;
+  const { recipe, theme, cancel, numberIngredients } = props;
   const { createUserRecipe, handleNewRecipeUpdate } = props;
 
   return (
     <Formik
-      initialValues={{ title: '' }}
+      initialValues={{
+        title: '',
+        brew_type: '',
+        water_temp: '',
+        coarseness: '',
+        ingredients: []
+      }}
       onSubmit={values => console.log(values)} /// Add props.handlesubmt or equivelent.
     >
       {props => (
         <View style={styles.backgroundOverlay}>
           <View style={styles.formView}>
-            <Button title='Cancel' onPress={cancel} />
+            <TouchableOpacity onPress={cancel}>
+              <MaterialIcons name={'cancel'} size={36} color={'black'} />
+            </TouchableOpacity>
             <Text style={styles.formHeader}>Create Your Own Recipe</Text>
             <ScrollView style={styles.formInputsContainer}>
               <TextInput
                 style={styles.formInput}
-                onChangeText={value => handleNewRecipeInput('title', value)}
+                onChangeText={props.handleChange('title')}
                 onBlur={props.handleBlur('title')}
-                value={recipe.title}
-                label='Title'
+                value={props.values.title}
+                // label='Title'
                 mode='outlined'
-                placeholder='Please enter title'
+                placeholder='Title'
               />
 
               <TextInput
                 style={styles.formInput}
-                onChangeText={value => handleNewRecipeInput('brew_type', value)}
+                onChangeText={props.handleChange('brew_type')}
                 onBlur={props.handleBlur('Brew Method')}
-                value={recipe.brew_type} // change this!
-                label='Brew Method'
+                value={props.values.brew_type}
+                // label='Brew Method'
                 mode='outlined'
-                placeholder='Please Select A Brew Method'
+                placeholder='Brew Type'
               />
 
               <TextInput
                 style={styles.formInput}
-                onChangeText={value =>
-                  handleNewRecipeInput('water_temp', value)
-                }
+                onChangeText={props.handleChange('water_temp')}
                 onBlur={props.handleBlur('Temperature')}
-                value={recipe.water_temp} // change this!
-                label='Brew Temperature'
+                value={props.values.water_temp} // change this!
+                // label='Brew Temperature'
                 mode='outlined'
-                placeholder='Please Input your Brew Temperature'
+                placeholder='Brew Temperature'
               />
 
               <TextInput
                 style={styles.formInput}
-                onChangeText={value =>
-                  handleNewRecipeInput('coarseness', value)
-                }
+                onChangeText={props.handleChange('coarseness')}
                 onBlur={props.handleBlur('Grounds Coarseness')}
-                value={recipe.coarseness} // change this!
-                label='Coarseness'
+                value={props.values.coarseness} // change this!
+                // label='Coarseness'
                 mode='outlined'
-                placeholder='Please Describe your ground consistancy'
+                placeholder='Coarseness'
               />
-              <TextInput
-                style={styles.formInput}
-                onChangeText={value =>
-                  handleNewRecipeInput('coarseness', value)
-                }
-                onBlur={props.handleBlur('Grounds Coarseness')}
-                value={recipe.coarseness} // change this!
-                label='Coarseness'
-                mode='outlined'
-                placeholder='Please Describe your ground consistancy'
-              />
-              <TextInput
-                style={styles.formInput}
-                onChangeText={value =>
-                  handleNewRecipeInput('coarseness', value)
-                }
-                onBlur={props.handleBlur('Grounds Coarseness')}
-                value={recipe.coarseness} // change this!
-                label='Coarseness'
-                mode='outlined'
-                placeholder='Please Describe your ground consistancy'
-              />
-              <TextInput
-                style={styles.formInput}
-                onChangeText={value =>
-                  handleNewRecipeInput('coarseness', value)
-                }
-                onBlur={props.handleBlur('Grounds Coarseness')}
-                value={recipe.coarseness} // change this!
-                label='Coarseness'
-                mode='outlined'
-                placeholder='Please Describe your ground consistancy'
-              />
+              {numberIngredients.map((ingredient, index) => (
+                <TextInput
+                  style={styles.formInput}
+                  onChangeText={props.handleChange('ingredients')}
+                  onBlur={props.handleBlur('Ingredient')}
+                  value={props.values.ingredients[index]} // change this!
+                  // label='Ingredient'
+                  mode='outlined'
+                  placeholder='Add ingredient'
+                />
+              ))}
             </ScrollView>
             {/* <IngredientsForm /> */}
             <OurButton
-              onPress={() => createUserRecipe(recipe)}
+              // onPress={() => createUserRecipe(recipe)}
+              onPress={console.log(props.values)}
               title='Submit'
             />
           </View>

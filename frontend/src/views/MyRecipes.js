@@ -32,13 +32,17 @@ const MyRecipes = props => {
   }, []);
 
   const [formModal, setFormModal] = useState(false);
+  const [numberIngredients, setNumberIngredients] = useState(['', '']);
 
   return (
     <View style={{ flex: 1 }}>
       <NavBar {...props} />
       <View style={styles.pageContainer}>
         {formModal ? (
-          <RecipeFormComponent cancel={() => setFormModal(!formModal)} />
+          <RecipeFormComponent
+            numberIngredients={numberIngredients}
+            cancel={() => setFormModal(!formModal)}
+          />
         ) : null}
         <View style={styles.recipesHeader}>
           <Text style={styles.recipesHeaderText}>My Recipes</Text>
