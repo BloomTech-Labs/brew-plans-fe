@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, ScrollView, Button, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Formik } from 'formik';
-import { withTheme, TextInput } from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 import OurButton from './SubmitButton';
 import { connect } from 'react-redux';
 import {
@@ -76,6 +76,7 @@ const RecipeFormComponent = props => {
               />
               {numberIngredients.map((ingredient, index) => (
                 <TextInput
+                  key={index}
                   style={styles.formInput}
                   onChangeText={props.handleChange('ingredients')}
                   onBlur={props.handleBlur('Ingredient')}
@@ -148,4 +149,4 @@ export default connect(
     handleNewRecipeInput,
     createUserRecipe
   }
-)(withTheme(RecipeFormComponent));
+)(RecipeFormComponent);
