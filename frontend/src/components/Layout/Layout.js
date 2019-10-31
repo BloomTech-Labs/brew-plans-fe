@@ -7,11 +7,10 @@ import MyRecipes from '../../views/MyRecipes';
 
 // Layout
 const Layout = props => {
-
   return (
     <Theme>
       {/* {props.isLoggedIn ? <NavBar {...props} /> : null} */}
-    
+
       <View
         style={{
           flex: 1,
@@ -20,6 +19,7 @@ const Layout = props => {
           alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: '#ece6cf',
+          padding: 24
         }}
       >
         {props.children}

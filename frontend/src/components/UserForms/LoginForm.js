@@ -25,6 +25,18 @@ const LoginForm = props => {
     scopes: ['profile', 'email']
   };
 
+  function userSignin(email, password) {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        props.navigation.replace('Dashboard');
+      })
+      .catch(error => {
+        Alert.alert(error.message);
+      });
+  }
+
   return (
     <Formik>
       {props => (
@@ -59,7 +71,7 @@ const LoginForm = props => {
               Login with
             </Text>
             <View style={theme.formIcons}>
-              <SocialButton icon='logo-google' loginConfig={loginConfig}/>
+              <SocialButton icon='logo-google' loginConfig={loginConfig} />
               <SocialButton icon='logo-facebook' />
             </View>
           </View>

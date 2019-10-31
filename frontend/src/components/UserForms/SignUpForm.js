@@ -12,7 +12,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { handleChange, authSignup } from '../../store/actions/index.js';
 
 const SignUpForm = props => {
-
   // console.log('signupformprops: ', props)
   const loginConfig = {
     androidClientId:
@@ -47,9 +46,7 @@ const SignUpForm = props => {
               mode='outlined'
             />
           </View>
-          <SubmitButton 
-          onPress={() => authSignup(newUser) } 
-          title='Sign Up' />
+          <SubmitButton onPress={() => authSignup(newUser)} title='Sign Up' />
           <View style={theme.formSocialsContainer}>
             <Text
               style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}
