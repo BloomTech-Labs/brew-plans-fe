@@ -1,16 +1,12 @@
-
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  FlatList,
-  Button,
   TouchableOpacity,
   ScrollView
 } from 'react-native';
-import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
-import Layout from '../components/Layout/Layout';
+import { MaterialIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
 import {
@@ -26,15 +22,75 @@ import SeededRecipe from '../components/Recipes/SeededRecipe';
 
 const MyRecipes = props => {
   const { currentUser, newRecipe, createUserRecipe } = props;
+  const [ view, setView ] = useState('Default Recipes');
+  
   useEffect(() => {
     props.getUserRecipes();
     props.getSeededRecipes();
   }, []);
 
-  return (
-    <View style={{ flex: 1 }}>
+  if (view == 'Default Recipes') {
+    return (
+      <View style={{ flex: 1, backgroundColor: '#ece6cf'}}>
+        <NavBar {...props} />
+        <View style={styles.navbar}>
+
+        <TouchableOpacity onPress={() => setView('Default Recipes')} style={styles.navbarButton}>
+          <Text 
+            style={styles.navbarText}>Default Recipes
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => setView('My Recipes')} style={styles.navbarButton}>
+          <Text 
+            style={styles.navbarText}>My Recipes
+          </Text>
+        </TouchableOpacity>
+
+        </View>
+
+        <View style={styles.pageContainer}>
+
+          <View style={styles.recipesHeader}>
+            <Text style={styles.recipesHeaderText}>Default Recipes</Text>
+          </View>
+
+          <View style={styles.recipesContainer}>
+            <ScrollView>
+              {props.seededRecipes.map(recipe => (
+                <SeededRecipe
+                  key={recipe.id}
+                  title={recipe.title}
+                  brew_type={recipe.brew_type}
+                  water_temp={recipe.water_temp}
+                />
+              ))}
+            </ScrollView>
+          </View>
+
+        </View>
+      </View>
+    );
+  } else if (view == 'My Recipes') {
+    return (
+    <View style={{ flex: 1, backgroundColor: '#ece6cf'}}>
       <NavBar {...props} />
+
+      <View style={styles.navbar}>
+        <TouchableOpacity onPress={() => setView('Default Recipes')} style={styles.navbarButton}>
+          <Text 
+            style={styles.navbarText}>Default Recipes
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setView('My Recipes')} style={styles.navbarButton}>
+          <Text 
+            style={styles.navbarText}>My Recipes
+          </Text>
+        </TouchableOpacity>
+      </View>
+
       <View style={styles.pageContainer}>
+
         <View style={styles.recipesHeader}>
           <Text style={styles.recipesHeaderText}>My Recipes</Text>
           <TouchableOpacity onPress={() => console.log('Button pressed!')}>
@@ -49,14 +105,6 @@ const MyRecipes = props => {
 
         <View style={styles.recipesContainer}>
           <ScrollView>
-            {props.seededRecipes.map(recipe => (
-              <SeededRecipe
-                key={recipe.id}
-                title={recipe.title}
-                brew_type={recipe.brew_type}
-                water_temp={recipe.water_temp}
-              />
-            ))}
             {props.userRecipes.map(recipe => (
               <UserRecipe
                 key={recipe.id}
@@ -75,14 +123,15 @@ const MyRecipes = props => {
                   )
                 }
                 delete={() => props.deleteUserRecipe(recipe.id)}
-                
               />
             ))}
           </ScrollView>
         </View>
-      </View>
+
+      </View> 
     </View>
-  );
+    );
+  }
 };
 
 const styles = StyleSheet.create({
@@ -103,6 +152,26 @@ const styles = StyleSheet.create({
   recipesContainer: {
     paddingVertical: 24
   },
+  navbar: {
+    width:'100%',
+    height: 60,
+    flexDirection: 'row',
+    alignSelf: 'center',
+    marginTop: 10,
+    justifyContent: 'space-evenly'
+  },
+  navbarButton: {
+    width: '45%',
+    backgroundColor: 'purple',
+    borderRadius: 2
+  },  
+  navbarText: {
+    textAlign: 'center',
+    padding: 17,
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16
+  }
 });
 
 const mapStateToProps = state => {
