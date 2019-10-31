@@ -135,7 +135,8 @@ const styles = {
     width: '90%',
     marginTop: 24,
     paddingVertical: 16,
-    borderRadius: 5
+    borderRadius: 5,
+    height: 450
   },
 
   formInputsContainer: {
