@@ -8,9 +8,8 @@
 
 1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
 
-## 4️⃣ Contributors
+##  Contributors
 
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
 
 |                                       [Colin](https://github.com/dvcolin)                                        |                                       [Justin](https://github.com/VulpineReynard)                                        |                                       [Eli](https://github.com/ebcitron)                                        |                                       [Preston](https://github.com/Garuda27)                                        |                                       [Student 5](https://github.com/)                                        |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
