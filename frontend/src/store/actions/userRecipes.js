@@ -22,7 +22,7 @@ export const getUserRecipes = userId => dispatch => {
   if (userId) {
     axios
       .get(
-        `https://brewplans-production.herokuapp.com/${userId}`
+        `https://brewplans-production.herokuapp.com/userrecipes/${userId}`
       )
       .then(res => {
         dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
@@ -32,7 +32,7 @@ export const getUserRecipes = userId => dispatch => {
       });
   } else {
     axios
-      .get(`https://brewplans-production.herokuapp.com/all`)
+      .get(`https://brewplans-production.herokuapp.com/userrecipes/all`)
       .then(res => {
         dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
       })

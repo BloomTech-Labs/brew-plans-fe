@@ -106,6 +106,7 @@ const MyRecipes = props => {
             // numberIngredients={numberIngredients}
             form={'edit'}
             recipe={recipeToEdit}
+            titleText={'Change Your Recipe'}
             cancel={() => setEditRecipeModal(!editRecipeModal)}
           />
         ) : null}
