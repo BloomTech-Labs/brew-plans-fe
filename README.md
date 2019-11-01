@@ -1,19 +1,49 @@
+<<<<<<< HEAD
 # Brew-plans(Front-end)
 
 <!-- 1️You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here). -->
+=======
+🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
 
-##  Contributors
+🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
+
+🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
+
+# Brew Plans
+
+You can find the deployed project at 
+>>>>>>> fe8c19cdc42d488d58957a4e83db7423abfb73dd
+
+## Contributors
 
 
+<<<<<<< HEAD
 |                                       [Colin](https://github.com/dvcolin)                                        |                                       [Justin](https://github.com/VulpineReynard)                                        |                                       [Eli](https://github.com/ebcitron)                                        |                                       [Preston](https://github.com/Garuda27)                                        |                                                                               |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
 |                      [<img src="https://avatars3.githubusercontent.com/u/46186956" width = "200" />](https://github.com/dvcolin)                       |                      [<img src="https://avatars1.githubusercontent.com/u/10450837" width = "200" />](https://github.com/VulpineReynard)                       |                      [<img src="https://avatars0.githubusercontent.com/u/45603390" width = "200" />](https://github.com/ebcitron)                       |                      [<img src="https://avatars0.githubusercontent.com/u/51134692" width = "200" />](https://github.com/Garuda27)                       |                                             |
 |                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |                         |
 | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
+=======
+|                                                      [Colin de Vries](https://github.com/dvcolin)                                                       |                                                       [Justin Renninger](https://github.com/VulpineReynard)                                                        |                                                      [Eli Citron](https://github.com/ebcitron)                                                       |                                                       [Preston Middleton](https://github.com/Garuda27)                                                        |
+| :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | 
+| [<img src="https://avatars3.githubusercontent.com/u/46186956" width = "200" />](https://github.com/dvcolin) | [<img src="https://avatars1.githubusercontent.com/u/10450837" width = "200" />](https://github.com/VulpineReynard) | [<img src="https://avatars0.githubusercontent.com/u/45603390" width = "200" />](https://github.com/ebcitron) | [<img src="https://avatars0.githubusercontent.com/u/51134692" width = "200" />](https://github.com/Garuda27) | 
+|                                [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/dvcolin)                                |                            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/VulpineReynard)                             |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ebcitron)                           |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Garuda27)                           |
+|               [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |         
+<br>
+<br>
+
+
+|                                                      [Shannon Yoshikawa](https://github.com/shannonyoshi)                                                       |                                                       [Jeff Butler](https://github.com/jeffbutlerspringdale)                                                        |                                                      [Luis Villafranca](https://www.linkedin.com/in/luisdoesux/)                                                       |                                                       [Student](https://github.com/.....)                                                        |
+| :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | 
+| [<img src="https://avatars0.githubusercontent.com/u/49451907" width = "200" />](https://github.com/shannonyoshi) | [<img src="https://avatars2.githubusercontent.com/u/48844462" width = "200" />](https://github.com/jeffbutlerspringdale) | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UEREV82G7-8977f69d863b-512" width = "200" />](https://www.linkedin.com/in/luisdoesux/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/.....) | 
+|                                [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/shannonyoshi)                                |                            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jeffbutlerspringdale)                             |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                           |                          [<img src="https://github.com/favicon.ico" width="15"> ]                           |
+|                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |               [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/luisdoesux/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |         
+>>>>>>> fe8c19cdc42d488d58957a4e83db7423abfb73dd
 
 <br>
 <br>
 
+<<<<<<< HEAD
 <!-- 🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project -->
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
@@ -41,6 +71,27 @@ The most intuitive and snappiest brewing assistant for the best cup of coffee. O
 -    Provide a way for coffee connoisseurs to improve their ability to create coffee and be more exact with the help of a timer
 -    Enable easy modification of the recipe based on experience.
 -    Streamline discovery of new recipes and sharing of ones that you create.
+=======
+<!--🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project-->
+
+![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
+![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
+![Redux](https://img.shields.io/badge/redux-v4.0.4-blueviolet)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
+<!--🚫 more info on using badges [here](https://github.com/badges/shields)-->
+
+## Project Overview
+
+ [Trello Board](https://trello.com/b/85OKFr9A/labs17-brew-plans)
+
+ [Product Canvas](https://www.notion.so/Brew-Plans-84229482fc5d43db823089c26b0e1882)
+
+ [UX Design files](https://.....)
+ 
+Brew Plans is a coffee instructional app.
+>>>>>>> fe8c19cdc42d488d58957a4e83db7423abfb73dd
 
 ## Tech Stack
 
