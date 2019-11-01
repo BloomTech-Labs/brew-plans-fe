@@ -11,14 +11,14 @@ const SeededRecipe = props => {
         <View style={styles.recipeInfo}>
           <Text>
             Brew Type: {recipe.brew_type}
-            {"\n"}
+            {'\n'}
             Brewing Temperature: {recipe.water_temp}
             <MaterialCommunityIcons
-            name={'temperature-fahrenheit'}
-            size={16}
-            color={'black'}
+              name={'temperature-fahrenheit'}
+              size={16}
+              color={'black'}
             />
-            {"\n"}
+            {'\n'}
             Coarseness: {recipe.coarseness}
           </Text>
         </View>
