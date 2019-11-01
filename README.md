@@ -4,11 +4,11 @@
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
-# Brew-plans(Front-end)
+# Brew Plans
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+You can find the deployed project at 
 
-##  Contributors
+## Contributors
 
 
 |                                       [Colin](https://github.com/dvcolin)                                        |                                       [Justin](https://github.com/VulpineReynard)                                        |                                       [Eli](https://github.com/ebcitron)                                        |                                       [Preston](https://github.com/Garuda27)                                        |                                       [Shannon](https://github.com/shannonyoshi)                                        |                                      [Jeff](https://github.com/jeffbutlerspringdale)                                        |
@@ -19,6 +19,7 @@
 
 <br>
 <br>
+
 
 🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
 
