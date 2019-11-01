@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import { setRecipeToEdit } from '../../store/actions/userRecipes.js'
+import styles from '../../styling/UserRecipeStyling';
 
 const UserRecipe = props => {
   const { recipe } = props;
@@ -44,33 +45,6 @@ const UserRecipe = props => {
   );
 };
 
-const styles = StyleSheet.create({
-  recipeContainer: {
-    width: '100%',
-    backgroundColor: 'white',
-    marginVertical: 8,
-    padding: 16,
-    justifyContent: 'center',
-    borderRadius: 5
-  },
-  recipeTitle: {
-    fontSize: 16,
-    fontWeight: 'bold'
-  },
-  recipeInfoContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 12
-  },
-  recipeInfo: {
-    flexDirection: 'row'
-  },
-  coarseness: {
-    position: 'absolute',
-    left: 0
-  }
-});
 
 const mapStateToProps = state => {
   return {

@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Layout from '../components/Layout/Layout';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
-import { View, ScrollView, Text, Button } from 'react-native';
+import styles from '../styling/SeededRecipesStyling';
+import { View, ScrollView, Text, Button, TouchableOpacity } from 'react-native';
 import { setTokenInState, userLogout } from '../store/actions/index.js';
 import * as firebase from 'firebase';
 import axios from 'axios';
@@ -22,7 +23,7 @@ const SeededRecipe = props => {
       <Layout>
         <ScrollView>
           {props.seededRecipes.map(recipe => (
-            <View key={recipe.id}>
+            <TouchableOpacity key={recipe.id}>
               <Text style={styles.recipeTitle}>{recipe.title}</Text>
               <View style={styles.recipeDetails}>
                 <Text style={styles.recipeDetailItem}>
@@ -34,7 +35,7 @@ const SeededRecipe = props => {
 
                 <Text>{recipe.instructions}</Text>
               </View>
-            </View>
+            </TouchableOpacity>
           ))}
         </ScrollView>
       </Layout>
@@ -42,19 +43,7 @@ const SeededRecipe = props => {
   );
 };
 
-const styles = {
-  recipeTitle: {
-    fontSize: 24,
-    fontWeight: 'bold'
-  },
-  recipeDetails: {
-    marginTop: 16
-  },
-  recipeDetailItem: {
-    fontSize: 16,
-    marginBottom: 8
-  }
-};
+
 
 const mapStateToProps = state => {
   return {
