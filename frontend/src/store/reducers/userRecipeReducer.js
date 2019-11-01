@@ -116,8 +116,19 @@ const userRecipeReducer = (state = initialState, action) => {
       return state;
 
     case CREATE_USER_RECIPE_SUCCESS:
-      console.log(action)
-      return state;
+      console.log('create success action: ', action)
+      const newRecipe = action.payload.recipe;
+      state.userRecipes.unshift(newRecipe)
+      return {
+        ...state,
+        newRecipe: {
+            water_temp: null,
+            coarseness: '',
+            title: '',
+            brew_method: '',
+            // ingredients: []
+        },
+      }
 
     case CREATE_USER_RECIPE_FAIL:
       console.log(action)

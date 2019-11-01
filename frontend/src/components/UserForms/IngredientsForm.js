@@ -54,7 +54,6 @@ const styles = {
     alignItems: 'center',
     marginBottom: 32
   },
-
   formInput: {
     marginBottom: 16,
     width: '90%',

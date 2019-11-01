@@ -99,13 +99,11 @@ const userReducer = (state = initialState, action) => {
       };
 
     case USER_SIGNIN_START:
-      console.log(action)
       return {
         ...state,
         };
 
     case USER_SIGNIN_SUCCESS:
-      console.log('user sign-in success: ', action.payload)
       storeLocalData(
         'user', 
         { 
@@ -122,7 +120,6 @@ const userReducer = (state = initialState, action) => {
       };
 
     case USER_SIGNIN_FAIL:
-      console.log('user sign-in fail: ', action)
       alert(action.payload);
       return {
         ...state

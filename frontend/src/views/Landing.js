@@ -19,7 +19,7 @@ const Landing = props => {
           console.log('null storage in landing: ', res);
         } else {
           setUserInState(res);
-          props.navigation.navigate('MyRecipes');
+          props.navigation.navigate('Dashboard');
         }
       })
       .catch(err => {
@@ -29,7 +29,7 @@ const Landing = props => {
 
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
-      props.navigation.navigate('MyRecipes');
+      props.navigation.navigate('Dashboard');
       firebase
         .auth()
         .currentUser.getIdToken(true)
