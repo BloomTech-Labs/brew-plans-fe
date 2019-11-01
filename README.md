@@ -33,12 +33,12 @@ You can find the deployed project at
 
 ## Project Overview
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+ [Trello Board](https://trello.com/b/85OKFr9A/labs17-brew-plans)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+ [Product Canvas](https://www.notion.so/Brew-Plans-84229482fc5d43db823089c26b0e1882)
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
-
+ [UX Design files](https://.....)
+ 
 🚫 Replace lorem ipsum with a description of your project
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
