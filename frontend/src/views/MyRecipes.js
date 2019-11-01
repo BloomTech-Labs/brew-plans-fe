@@ -54,7 +54,7 @@ const MyRecipes = props => {
                 title={recipe.title}
                 brew_type={recipe.brew_type}
                 water_temp={recipe.water_temp}
-                press={() => {
+                pressed={() => {
                   setCurrentRecipe(recipe);
                   props.navigation.navigate('SeededRecipe');
                 }}

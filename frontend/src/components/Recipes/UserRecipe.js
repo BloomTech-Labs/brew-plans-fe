@@ -4,10 +4,7 @@ import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const UserRecipe = props => {
   return (
-    <TouchableOpacity
-      onPress={() => console.log('Navigate to recipe page!')}
-      style={styles.recipeContainer}
-    >
+    <TouchableOpacity onPress={props.pressed} style={styles.recipeContainer}>
       <Text style={styles.recipeTitle}>{props.title}</Text>
       <View style={styles.recipeInfoContainer}>
         <View style={styles.recipeInfo}>
