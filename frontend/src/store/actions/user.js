@@ -41,16 +41,16 @@ export const googleSignIn = config => async dispatch => {
   dispatch({ type: GOOGLE_SIGNIN_START });
   try {
     const { type, accessToken, user } = await Google.logInAsync(config);
-    console.log('<-------------Google sign-in Handler------------>');
-    console.log('type: ', type);
-    console.log('accessToken: ', accessToken);
-    console.log('user: ', user);
+    // console.log('<-------------Google sign-in Handler------------>');
+    // console.log('type: ', type);
+    // console.log('accessToken: ', accessToken);
+    // console.log('user: ', user);
     if (type === 'success') {
       /* `accessToken` is now valid and can be used to get data from the Google API with HTTP requests */
       // console.log('type: ', type);
       // console.log('accessToken: ', accessToken);
       // console.log('user: ', user);
-      console.log('<-------------Google sign-in Handler------------>');
+      // console.log('<-------------Google sign-in Handler------------>');
       dispatch({
         type: GOOGLE_SIGNIN_SUCCESS,
         payload: {

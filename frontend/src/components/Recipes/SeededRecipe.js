@@ -4,6 +4,8 @@ import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const SeededRecipe = props => {
   const { recipe } = props;
+  console.log("recipe", recipe)
+  console.log("props", props)
   return (
     <TouchableOpacity onPress={props.pressed} style={styles.recipeContainer}>
       <Text style={styles.recipeTitle}>{recipe.title}</Text>

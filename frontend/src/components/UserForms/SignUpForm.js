@@ -37,6 +37,7 @@ const SignUpForm = props => {
               mode='outlined'
             />
             <TextInput
+              type='password'
               style={theme.formInput}
               onChangeText={value => handleChange('password', value)}
               onBlur={props.handleBlur('password')}
