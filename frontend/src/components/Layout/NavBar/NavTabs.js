@@ -6,6 +6,7 @@ import theme from '../../../theme.js';
 import { connect } from 'react-redux';
 import Layout from '../Layout';
 import { userLogout } from '../../../store/actions/user.js';
+import { MaterialCommunityIcons }
 import * as firebase from 'firebase';
 // import NavDrawer from './NavDrawer';
 
@@ -15,13 +16,14 @@ const NavTabs = props => {
     <View>
       <Appbar style={{ width: '100%' }} theme={theme}>
         <Appbar.Action
+          icon='home'
+          onPress={() => props.navigation.navigate('Dashboard')}
+        /> 
+        <Appbar.Action
           icon='person'
           onPress={() => props.navigation.navigate('MyRecipes')}
         />
-        <Appbar.Action
-          icon='home'
-          onPress={() => props.navigation.navigate('Dashboard')}
-        />
+       
         <Appbar.Action
           icon='work'
           onPress={() => {
