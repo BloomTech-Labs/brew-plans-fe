@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Text } from 'react-native-paper';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { getLocalData } from './src/store/actions/asyncStorage.js';
+import GreetingView from './src/views/GreetingView.js';
 import Landing from './src/views/Landing';
 import SignUp from './src/views/SignUp';
 import Login from './src/views/Login';
@@ -10,6 +12,21 @@ import MyRecipes from './src/views/MyRecipes.js';
 import RecipeForm from './src/views/RecipeForm.js';
 import SeededRecipe from './src/views/SeededRecipe.js';
 import * as firebase from 'firebase';
+let initialRoute = '';
+
+getLocalData('previouslyLoaded')
+.then(res => {
+  if (res == null) {
+    initialRoute = 'GreetingView'
+    console.log(initialRoute)
+  } else {
+    initialRoute = 'Dashboard'
+    console.log(initialRoute)
+  }
+})
+.catch(err => {
+  console.log(err);
+});
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDZKLP2FGiOx0aMXeDjAc3MOWSQa9pvJQg',
@@ -26,6 +43,9 @@ firebase.initializeApp(firebaseConfig);
 
 const AppNavigator = createStackNavigator(
   {
+    // GreetingView: {
+    //   screen: GreetingView
+    // },
     Landing: {
       screen: Landing
     },
@@ -49,9 +69,11 @@ const AppNavigator = createStackNavigator(
     }
   },
   {
+    initialRouteName: initialRoute,
     defaultNavigationOptions: {
       header: null
-    }
+    },
+    
   }
 );
 
