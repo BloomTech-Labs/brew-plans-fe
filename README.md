@@ -11,9 +11,9 @@
 ##  Contributors
 
 
-|                                       [Colin](https://github.com/dvcolin)                                        |                                       [Justin](https://github.com/VulpineReynard)                                        |                                       [Eli](https://github.com/ebcitron)                                        |                                       [Preston](https://github.com/Garuda27)                                        |                                       [Shannon](https://github.com/shannonyoshi)                                        |
+|                                       [Colin](https://github.com/dvcolin)                                        |                                       [Justin](https://github.com/VulpineReynard)                                        |                                       [Eli](https://github.com/ebcitron)                                        |                                       [Preston](https://github.com/Garuda27)                                        |                                       [Student 5](https://github.com/)                                        |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                      [<img src="https://avatars3.githubusercontent.com/u/46186956" width = "200" />](https://github.com/dvcolin)                       |                      [<img src="https://avatars1.githubusercontent.com/u/10450837" width = "200" />](https://github.com/VulpineReynard)                       |                      [<img src="https://avatars0.githubusercontent.com/u/45603390" width = "200" />](https://github.com/ebcitron)                       |                      [<img src="https://avatars0.githubusercontent.com/u/51134692" width = "200" />](https://github.com/Garuda27)                       |                      [<img src="https://avatars0.githubusercontent.com/u/49451907" width = "200" />](https://github.com/shannonyoshi)                       |
+|                      [<img src="https://avatars3.githubusercontent.com/u/46186956" width = "200" />](https://github.com/dvcolin)                       |                      [<img src="https://avatars1.githubusercontent.com/u/10450837" width = "200" />](https://github.com/VulpineReynard)                       |                      [<img src="https://avatars0.githubusercontent.com/u/45603390" width = "200" />](https://github.com/ebcitron)                       |                      [<img src="https://avatars0.githubusercontent.com/u/51134692" width = "200" />](https://github.com/Garuda27)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
 |                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
 | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
 
@@ -32,53 +32,51 @@
 
 ## Project Overview
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+1️⃣ [Trello Board](https://trello.com/b/85OKFr9A/labs17-brew-plans)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+1️⃣ [Product Canvas](https://www.notion.so/Brew-Plans-84229482fc5d43db823089c26b0e1882)
 
 1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
 
-🚫 Replace lorem ipsum with a description of your project
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The most intuitive and snappiest brewing assistant for the best cup of coffee. Our app will enable home coffee brewers to reliably brew the perfect cup of coffee, and track their coffee brews over time. Record and edit recipes, determine the perfect temperature, and get the timing just right with Brew Plans.
 
 
 ### 4️⃣ Key Features
 
--    feature one
--    feature two
--    feature three
--    feature four
--    feature five
+-    Provide a way for coffee connoisseurs to create and keep track of their own recipes.
+-    Provide a way for coffee connoisseurs to improve their ability to create coffee and be more exact with the help of a timer
+-    Enable easy modification of the recipe based on experience.
+-    Streamline discovery of new recipes and sharing of ones that you create.
 
 ## 1️⃣ Tech Stack
 
 ### Front end built using:
 
-#### _Front end framework goes here_
+#### React Native
 
 🚫 Why did you choose this framework?
 
--    point one
--    point two
--    point three
--    point four
+- Developers have extensive experience with React
+- Large community, widely used
+- Code can be easily reused for desktop applications
 
 🚫List the rest of the front end features and libraries in the same format as the framework above.
 
 #### Front end deployed to `🚫insert service here`
 
-#### [Back end](🚫link to back end repo here) built using:
+#### [Back end](https://github.com/Lambda-School-Labs/brew-plans-be) built using:
 
-#### 🚫 back end framework goes here
+#### NodeJS / Express / Knex
 
--    point one
--    point two
--    point three
+- PostgreSQL is widely used and large enough to use as a production database.
+
+- Almost all developers have experience with NodeJs, Express, and Knex for creating APIs and database schema.
 
 🚫 List the rest of the back end end features and libraries in the same format as the framework above
+
+#### PostgreSQL / SQLite3
+
+- SQLite3 is lightweight and is perfect to use locally for testing the back end.
 
 # APIs
 
@@ -118,7 +116,7 @@ In order for the app to function correctly, the user must set up their own envir
 
 🚫These are just examples, replace them with the specifics for your app
 
-    *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
+    *  REACT_APP_apiKey - AIzaSyBBZwKfj8CZ5j7GRQazGe9hTFOw0jVc5ek
     *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
     *  REACT_APP_databaseURL - in the Firebase dashboard
     *  REACT_APP_projectID - in the Firebase dashboard
