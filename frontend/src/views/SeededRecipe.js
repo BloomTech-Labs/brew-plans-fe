@@ -23,7 +23,7 @@ const SeededRecipe = props => {
       <Layout>
         <ScrollView>
           {props.seededRecipes.map(recipe => (
-            <TouchableOpacity key={recipe.id} onPress={pressed}>
+            <TouchableOpacity key={recipe.id}>
               <Text style={styles.recipeTitle}>{recipe.title}</Text>
               <View style={styles.recipeDetails}>
                 <Text style={styles.recipeDetailItem}>

@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../../styling/RecipeFormComponentStyling';
 import { View, Text, ScrollView, Button, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Formik } from 'formik';
@@ -107,42 +108,6 @@ const RecipeFormComponent = props => {
   );
 };
 
-const styles = {
-  backgroundOverlay: {
-    position: 'absolute',
-    zIndex: 150,
-    width: vw(100),
-    height: vh(100),
-    backgroundColor: 'rgba(0,0,0,0.6)',
-    alignItems: 'center'
-  },
-  formHeader: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginVertical: 16
-  },
-  formView: {
-    alignItems: 'center',
-    backgroundColor: '#ece6cf',
-    width: '90%',
-    marginTop: 24,
-    paddingVertical: 16,
-    borderRadius: 5,
-    height: 450
-  },
-
-  formInputsContainer: {
-    width: '100%',
-    paddingHorizontal: 24
-  },
-
-  formInput: {
-    marginHorizontal: 'auto',
-    marginBottom: 16,
-    width: '100%',
-    fontSize: 3
-  }
-};
 
 const mapStateToProps = state => {
   return {
