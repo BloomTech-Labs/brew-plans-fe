@@ -10,7 +10,7 @@ const UserRecipe = props => {
   
   return (
     <TouchableOpacity
-      onPress={() => console.log('Navigate to recipe page!')}
+      onPress={props.pressed}
       style={styles.recipeContainer}>
 
       <Text style={styles.recipeTitle}>{recipe.title}</Text>

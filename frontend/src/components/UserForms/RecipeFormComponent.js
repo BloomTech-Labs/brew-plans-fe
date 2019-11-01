@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../../styling/RecipeFormComponentStyling';
-import { View, Text, ScrollView, Button, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Animated } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Formik } from 'formik';
 import { TextInput } from 'react-native-paper';
@@ -12,24 +12,43 @@ import {
   handleRecipeUpdate,
   handleRecipeEdit
 } from '../../store/actions/index.js';
-// import IngredientsForm from './IngredientsForm';
 
 const RecipeFormComponent = props => {
-  const { recipe, theme, cancel, form, titleText, newRecipe, recipeToEdit, currentUser } = props;
-  // const { numberIngredients } = props;
-  const { createUserRecipe, handleNewRecipeInput, handleRecipeEdit, handleRecipeUpdate } = props;
-  // console.log("new recipe: ", newRecipe)
-  console.log('recipe to edit in form: ', recipeToEdit.water_temp)
+  const [slideUpValue] = useState(new Animated.Value(500))
+  console.log(new Animated.Value(500))
+
+  const slideUpAnimation = () => {
+    Animated.timing(
+      slideUpValue,
+      {
+        toValue: 200,
+        duration: 1000
+      }).start()
+  }
+
+  const { 
+    cancel, 
+    form, 
+    titleText, 
+    newRecipe, 
+    recipeToEdit, 
+    currentUser,
+    createUserRecipe, 
+    handleNewRecipeInput, 
+    handleRecipeEdit, 
+    handleRecipeUpdate
+  } = props;
 
   if(form == 'add') {
     return (
-<Formik
+      
+    <Formik
       initialValues={{}}
       onSubmit={values => console.log(values)} /// Add props.handlesubmt or equivelent.
     >
       {props => (
         <View style={styles.backgroundOverlay}>
-          <View style={styles.formView}>
+          <View style={{...styles.formView, marginTop: 75}}>
             <TouchableOpacity onPress={cancel}>
               <MaterialIcons name={'cancel'} size={36} color={'black'} />
             </TouchableOpacity>
@@ -78,8 +97,9 @@ const RecipeFormComponent = props => {
             <OurButton
               // onPress={() => createUserRecipe(recipe)}
               onPress={() => {
-                if (form == 'add') { createUserRecipe(newRecipe, currentUser.id); cancel(); }}
-              }
+                  createUserRecipe(newRecipe, currentUser.id); 
+                  cancel(); 
+              }}
               title='Submit'
             />
           </View>
@@ -92,7 +112,7 @@ const RecipeFormComponent = props => {
       <Formik
       initialValues={{}}
       onSubmit={values => console.log(values)} /// Add props.handlesubmt or equivelent.
-    >
+      >
       {props => (
         <View style={styles.backgroundOverlay}>
           <View style={styles.formView}>
@@ -143,7 +163,9 @@ const RecipeFormComponent = props => {
             </ScrollView>
             <OurButton
               // onPress={() => createUserRecipe(recipe)}
-              onPress={() => {console.log('form values: ', recipeToEdit); handleRecipeUpdate(recipeToEdit, recipeToEdit.id)
+              onPress={() => {
+                handleRecipeUpdate(recipeToEdit, recipeToEdit.id);
+                cancel();
               }}
               title='Submit'
             />

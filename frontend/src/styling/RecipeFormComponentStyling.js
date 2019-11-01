@@ -24,7 +24,7 @@ export default StyleSheet.create({
     marginTop: 24,
     paddingVertical: 16,
     borderRadius: 5,
-    height: 450
+    height: 550
   },
 
   formInputsContainer: {
@@ -34,7 +34,7 @@ export default StyleSheet.create({
 
   formInput: {
     marginHorizontal: 'auto',
-    marginBottom: 16,
+    marginVertical: 8,
     width: '100%',
     fontSize: 3
   }

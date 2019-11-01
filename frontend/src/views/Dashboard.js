@@ -8,56 +8,12 @@ import * as firebase from 'firebase';
 import axios from 'axios';
 
 const Dashboard = props => {
-  const { currentUser } = props;
-
-  const test3 = () => {
-    const user = firebase.auth().currentUser;
-    console.log('currentUser: ', user);
-  };
-
-  const test5 = token => {
-    axios
-      .get('https://backend-development-coffee.herokuapp.com/master', {
-        headers: { authorization: `Bearer ${token}` }
-      })
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  const test6 = () => {
-    firebase
-      .auth()
-      .currentUser.delete()
-      .then(res => {
-        alert('Successfully deleted account!');
-      })
-      .catch(err => {
-        alert(err);
-      });
-  };
-
-  const test7 = () => {
-    firebase
-      .auth()
-      .currentUser.sendEmailVerification()
-      .then(res => {
-        alert('Verification email sent.');
-      })
-      .catch(err => {
-        alert(err);
-      });
-  };
 
   return (
     <View style={{ flex: 1 }}>
       <NavBar {...props} />
       <Layout>
           <Text style={styles.title}>My Dashboard</Text>
-        {props.children}
       </Layout>
     </View>
   );

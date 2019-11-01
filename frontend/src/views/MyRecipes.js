@@ -5,7 +5,8 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  Modal
 } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
@@ -65,7 +66,7 @@ const MyRecipes = props => {
                 <SeededRecipe
                   key={recipe.id}
                   recipe={recipe}
-                  pressed={() => props.navigation.navigate('SeededRecipe')}
+                  pressed={() => console.log(recipe)}
                 />
               ))}
             </ScrollView>
@@ -94,21 +95,37 @@ const MyRecipes = props => {
         </View>
 
         {addRecipeModal ? (
-          <RecipeFormComponent
-            // numberIngredients={numberIngredients}
-            form={'add'}
-            titleText={'Create Your Own Recipe'}
-            cancel={() => setAddRecipeModal(!addRecipeModal)}
-          />
+          <Modal 
+          visible={addRecipeModal}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.')
+          }}
+          transparent={false}
+          animationType="fade">
+            <RecipeFormComponent
+              // numberIngredients={numberIngredients}
+              form={'add'}
+              titleText={'Create Your Own Recipe'}
+              cancel={() => setAddRecipeModal(!addRecipeModal)}
+            />
+          </Modal>
         ) : null}
 
         {editRecipeModal ? (
-          <RecipeFormComponent
-            // numberIngredients={numberIngredients}
-            form={'edit'}
-            titleText={'Change Your Recipe'}
-            cancel={() => setEditRecipeModal(!editRecipeModal)}
-          />
+          <Modal 
+          visible={editRecipeModal}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.')
+          }}
+          transparent={false}
+          animationType="fade">
+            <RecipeFormComponent
+              // numberIngredients={numberIngredients}
+              form={'edit'}
+              titleText={'Change Your Recipe'}
+              cancel={() => setEditRecipeModal(!editRecipeModal)}
+            />
+          </Modal>
         ) : null}
 
         <View style={styles.recipesHeader}>
@@ -131,7 +148,8 @@ const MyRecipes = props => {
                 edit={() => {
                   setEditRecipeModal(!editRecipeModal);
                 }}
-                delete={() => props.deleteUserRecipe(recipe.id)}
+                delete={() => {props.deleteUserRecipe(recipe.id)}}
+                pressed={() => console.log(recipe)}
               />
             ))}
           </ScrollView>
