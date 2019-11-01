@@ -12,7 +12,8 @@ import {
   NEW_RECIPE_INPUT_UPDATE,
   CREATE_USER_RECIPE_START,
   CREATE_USER_RECIPE_SUCCESS,
-  CREATE_USER_RECIPE_FAIL
+  CREATE_USER_RECIPE_FAIL,
+  SET_RECIPE_TO_EDIT
 } from './actionTypes.js';
 
 import axios from 'axios';
@@ -22,7 +23,7 @@ export const getUserRecipes = userId => dispatch => {
   if (userId) {
     axios
       .get(
-        `https://brewplans-production.herokuapp.com/userrecipes/${userId}`
+        `https://backend-development-coffee.herokuapp.com/userrecipes/user/${userId}`
       )
       .then(res => {
         dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
@@ -32,7 +33,7 @@ export const getUserRecipes = userId => dispatch => {
       });
   } else {
     axios
-      .get(`https://brewplans-production.herokuapp.com/userrecipes/all`)
+      .get(`https://backend-development-coffee.herokuapp.com/userrecipes/all`)
       .then(res => {
         dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
       })
@@ -46,7 +47,7 @@ export const getUserRecipes = userId => dispatch => {
 export const deleteUserRecipe = recipeId => dispatch => {
   dispatch({ type: DELETE_USER_RECIPE_START })
   axios
-    .delete(`https://brewplans-production.herokuapp.com/userrecipes/${recipeId}`)
+    .delete(`https://backend-development-coffee.herokuapp.com/userrecipes/${recipeId}`)
     .then(res => {
       dispatch({ type: DELETE_USER_RECIPE_SUCCESS, payload: recipeId })
     })
@@ -65,10 +66,14 @@ export const handleRecipeEdit = (inputField, inputValue) => dispatch => {
   });
 };
 
+export const setRecipeToEdit = (recipe) => dispatch => {
+  dispatch({ type: SET_RECIPE_TO_EDIT, payload: recipe })
+}
+
 export const handleRecipeUpdate = (updatedRecipe, recipeId) => dispatch => {
   dispatch({ type: UPDATE_USER_RECIPE_START })
   axios.put(
-      `https://brewplans-production.herokuapp.com/userrecipes/${recipeId}`, 
+      `https://backend-development-coffee.herokuapp.com/userrecipes/${recipeId}`,
       updatedRecipe
       )
   .then(res => {
@@ -94,7 +99,8 @@ export const handleNewRecipeInput = (inputField, inputValue) => dispatch => {
 export const createUserRecipe = (newRecipe, userId) => dispatch => {
   dispatch({ type: CREATE_USER_RECIPE_START })
   newRecipe.user_id = userId;
-  axios.post(`https://brewplans-production.herokuapp.com/userrecipes/newrecipe`, newRecipe)
+  console.log('new recipe: ', newRecipe)
+  axios.post(`https://backend-development-coffee.herokuapp.com/userrecipes/newrecipe`, newRecipe)
     .then(res => {
       dispatch({ type: CREATE_USER_RECIPE_SUCCESS, payload: res.data })
     })

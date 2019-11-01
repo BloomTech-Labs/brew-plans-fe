@@ -17,7 +17,8 @@ export {
   handleRecipeEdit,
   handleRecipeUpdate,
   createUserRecipe,
-  handleNewRecipeInput
+  handleNewRecipeInput,
+  setRecipeToEdit
 } from './userRecipes.js';
 
 export {
