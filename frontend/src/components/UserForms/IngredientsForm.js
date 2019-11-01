@@ -4,6 +4,7 @@ import { OurButton as IngredientButton } from './SubmitButton';
 import { withTheme, TextInput } from 'react-native-paper';
 import { connect } from 'react-redux';
 import { handleNewRecipeInput } from '../../store/actions/index';
+import styles from '../../styling/IngredientsFormStyling';
 
 const IngredientsForm = props => {
   const { ingredients } = props;
@@ -42,25 +43,7 @@ const IngredientsForm = props => {
   // )}
   //
 };
-const styles = {
-  formView: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%'
-  },
 
-  formInputsContainer: {
-    width: '100%',
-    alignItems: 'center',
-    marginBottom: 32
-  },
-
-  formInput: {
-    marginBottom: 16,
-    width: '90%',
-    fontSize: 3
-  }
-};
 
 const mapStateToProps = state => {
   return {

@@ -16,7 +16,8 @@ export {
   handleRecipeUpdate,
   createUserRecipe,
   handleNewRecipeInput,
-  setCurrentRecipe
+  setCurrentRecipe,
+  setRecipeToEdit
 } from './userRecipes.js';
 
 export { authSignup, authSignIn, setTokenInState } from './auth.js';

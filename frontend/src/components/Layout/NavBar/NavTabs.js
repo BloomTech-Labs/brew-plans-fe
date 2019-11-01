@@ -15,13 +15,14 @@ const NavTabs = props => {
     <View>
       <Appbar style={{ width: '100%' }} theme={theme}>
         <Appbar.Action
+          icon='home'
+          onPress={() => props.navigation.navigate('Dashboard')}
+        /> 
+        <Appbar.Action
           icon='person'
           onPress={() => props.navigation.navigate('MyRecipes')}
         />
-        <Appbar.Action
-          icon='home'
-          onPress={() => props.navigation.navigate('Dashboard')}
-        />
+       
         <Appbar.Action
           icon='work'
           onPress={() => {
@@ -30,17 +31,13 @@ const NavTabs = props => {
             props.navigation.navigate('Landing');
           }}
         />
-        <Appbar.Action
+        {/* <Appbar.Action
           icon='menu'
           onPress={() => {
             setOpen(!open);
             console.log(open);
           }}
-        />
-        <Appbar.Action
-          icon='school'
-          onPress={() => props.navigation.navigate('RecipeForm')}
-        />
+        /> */}
       </Appbar>
       {/* {open ? <NavDrawer {...props} /> : null} */}
     </View>

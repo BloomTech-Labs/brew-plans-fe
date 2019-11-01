@@ -65,5 +65,6 @@ export const googleSignIn = config => async dispatch => {
 };
 
 export const userLogout = () => dispatch => {
+  firebase.auth().signOut()
   dispatch({ type: USER_LOGOUT });
 }
