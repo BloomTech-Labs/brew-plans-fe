@@ -38,7 +38,6 @@ const userRecipeReducer = (state = initialState, action) => {
       }
 
     case GET_USER_RECIPES_SUCCESS:
-      // console.log('user recipes payload: ', action.payload)
       return {
         ...state,
         userRecipes: action.payload,

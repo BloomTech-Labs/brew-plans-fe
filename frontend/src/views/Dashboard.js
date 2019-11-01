@@ -65,7 +65,9 @@ const Dashboard = props => {
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 30
+    fontSize: 30,
+    position: 'absolute',
+    top: 20
   }
 })
 
