@@ -2,7 +2,6 @@ import axios from 'axios';
 import * as Google from 'expo-google-app-auth';
 import * as firebase from 'firebase';
 
-
 import {
   UPDATE_SIGNUP_INPUT,
   UPDATE_SIGNIN_INPUT,
@@ -10,7 +9,8 @@ import {
   GOOGLE_SIGNIN_SUCCESS,
   GOOGLE_SIGNIN_FAIL,
   USER_LOGOUT,
-  SET_USER
+  SET_USER,
+  SET_CURRENT_RECIPE
 } from './actionTypes.js';
 
 export const handleChange = (inputField, inputValue) => dispatch => {
@@ -33,9 +33,9 @@ export const handleSignInChange = (inputField, inputValue) => dispatch => {
   });
 };
 
-export const setUserInState = (user) => dispatch => {
-  dispatch({ type: SET_USER, payload: user })
-}
+export const setUserInState = user => dispatch => {
+  dispatch({ type: SET_USER, payload: user });
+};
 
 export const googleSignIn = config => async dispatch => {
   dispatch({ type: GOOGLE_SIGNIN_START });
@@ -51,13 +51,13 @@ export const googleSignIn = config => async dispatch => {
       // console.log('accessToken: ', accessToken);
       // console.log('user: ', user);
       console.log('<-------------Google sign-in Handler------------>');
-      dispatch({ 
-        type: GOOGLE_SIGNIN_SUCCESS, 
+      dispatch({
+        type: GOOGLE_SIGNIN_SUCCESS,
         payload: {
           user: user,
           token: accessToken
         }
-      })
+      });
     }
   } catch ({ message }) {
     dispatch({ type: GOOGLE_SIGNIN_FAIL, payload: message });
@@ -65,6 +65,10 @@ export const googleSignIn = config => async dispatch => {
 };
 
 export const userLogout = () => dispatch => {
-  firebase.auth().signOut()
+  firebase.auth().signOut();
   dispatch({ type: USER_LOGOUT });
-}
+};
+
+export const setCurrentRecipe = recipe => dispatch => {
+  dispatch({ type: SET_CURRENT_RECIPE, payload: recipe });
+};

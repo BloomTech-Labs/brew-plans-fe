@@ -112,7 +112,3 @@ export const createUserRecipe = (newRecipe, userId) => dispatch => {
       dispatch({ type: CREATE_USER_RECIPE_FAIL, payload: err });
     });
 };
-
-export const setCurrentRecipe = recipe => dispatch => {
-  dispatch({ type: SET_CURRENT_RECIPE, payload: recipe });
-};

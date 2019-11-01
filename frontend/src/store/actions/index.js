@@ -4,7 +4,8 @@ export {
   googleSignIn,
   userLogout,
   handleSignInChange,
-  setUserInState
+  setUserInState,
+  setCurrentRecipe
 } from './user.js';
 
 export { getSeededRecipes } from './seededRecipes.js';
@@ -16,7 +17,6 @@ export {
   handleRecipeUpdate,
   createUserRecipe,
   handleNewRecipeInput,
-  setCurrentRecipe,
   setRecipeToEdit
 } from './userRecipes.js';
 
