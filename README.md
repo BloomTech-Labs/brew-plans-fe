@@ -1,29 +1,10 @@
-<<<<<<< HEAD
 # Brew-plans(Front-end)
 
 <!-- 1️You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here). -->
-=======
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
-
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
-
-# Brew Plans
-
-You can find the deployed project at 
->>>>>>> fe8c19cdc42d488d58957a4e83db7423abfb73dd
 
 ## Contributors
 
 
-<<<<<<< HEAD
-|                                       [Colin](https://github.com/dvcolin)                                        |                                       [Justin](https://github.com/VulpineReynard)                                        |                                       [Eli](https://github.com/ebcitron)                                        |                                       [Preston](https://github.com/Garuda27)                                        |                                                                               |
-| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                      [<img src="https://avatars3.githubusercontent.com/u/46186956" width = "200" />](https://github.com/dvcolin)                       |                      [<img src="https://avatars1.githubusercontent.com/u/10450837" width = "200" />](https://github.com/VulpineReynard)                       |                      [<img src="https://avatars0.githubusercontent.com/u/45603390" width = "200" />](https://github.com/ebcitron)                       |                      [<img src="https://avatars0.githubusercontent.com/u/51134692" width = "200" />](https://github.com/Garuda27)                       |                                             |
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |                         |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
-=======
 |                                                      [Colin de Vries](https://github.com/dvcolin)                                                       |                                                       [Justin Renninger](https://github.com/VulpineReynard)                                                        |                                                      [Eli Citron](https://github.com/ebcitron)                                                       |                                                       [Preston Middleton](https://github.com/Garuda27)                                                        |
 | :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | 
 | [<img src="https://avatars3.githubusercontent.com/u/46186956" width = "200" />](https://github.com/dvcolin) | [<img src="https://avatars1.githubusercontent.com/u/10450837" width = "200" />](https://github.com/VulpineReynard) | [<img src="https://avatars0.githubusercontent.com/u/45603390" width = "200" />](https://github.com/ebcitron) | [<img src="https://avatars0.githubusercontent.com/u/51134692" width = "200" />](https://github.com/Garuda27) | 
@@ -38,12 +19,11 @@ You can find the deployed project at
 | [<img src="https://avatars0.githubusercontent.com/u/49451907" width = "200" />](https://github.com/shannonyoshi) | [<img src="https://avatars2.githubusercontent.com/u/48844462" width = "200" />](https://github.com/jeffbutlerspringdale) | [<img src="https://ca.slack-edge.com/T4JUEB3ME-UEREV82G7-8977f69d863b-512" width = "200" />](https://www.linkedin.com/in/luisdoesux/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/.....) | 
 |                                [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/shannonyoshi)                                |                            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jeffbutlerspringdale)                             |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                           |                          [<img src="https://github.com/favicon.ico" width="15"> ]                           |
 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |               [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/luisdoesux/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |         
->>>>>>> fe8c19cdc42d488d58957a4e83db7423abfb73dd
 
 <br>
 <br>
 
-<<<<<<< HEAD
+
 <!-- 🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project -->
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
@@ -71,27 +51,6 @@ The most intuitive and snappiest brewing assistant for the best cup of coffee. O
 -    Provide a way for coffee connoisseurs to improve their ability to create coffee and be more exact with the help of a timer
 -    Enable easy modification of the recipe based on experience.
 -    Streamline discovery of new recipes and sharing of ones that you create.
-=======
-<!--🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project-->
-
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
-![Redux](https://img.shields.io/badge/redux-v4.0.4-blueviolet)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
-<!--🚫 more info on using badges [here](https://github.com/badges/shields)-->
-
-## Project Overview
-
- [Trello Board](https://trello.com/b/85OKFr9A/labs17-brew-plans)
-
- [Product Canvas](https://www.notion.so/Brew-Plans-84229482fc5d43db823089c26b0e1882)
-
- [UX Design files](https://.....)
- 
-Brew Plans is a coffee instructional app.
->>>>>>> fe8c19cdc42d488d58957a4e83db7423abfb73dd
 
 ## Tech Stack
 
@@ -125,37 +84,37 @@ Brew Plans is a coffee instructional app.
 
 # APIs
 
-##  Authentication API here
+##  React Native Sharing API 
 
 <!-- 🚫Replace text below with a description of the API -->
 
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
-
-## Payment API here
-
-<!-- 🚫Replace text below with a description of the API -->
-
-This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
-
-##  Misc API here
+This API is part of react native, so it is well supported and does not require additional installation, allows users to share using the major social media platforms.
+<!-- 
+## Payment API here -->
 
 <!-- 🚫Replace text below with a description of the API -->
 
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
+<!-- This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it. -->
 
-##  Misc API here
-
-<!-- 🚫Replace text below with a description of the API -->
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-##  Misc API here
+<!-- ##  Misc API here -->
 
 <!-- 🚫Replace text below with a description of the API -->
 
+<!-- You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
+
+##  Misc API here -->
+
+<!-- 🚫Replace text below with a description of the API -->
+<!-- 
+When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good. -->
+<!-- 
+##  Misc API here -->
+
+<!-- 🚫Replace text below with a description of the API -->
+<!-- 
 Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
 
-#  Environment Variables
+#  Environment Variables -->
 
 <!-- In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following: -->
 
