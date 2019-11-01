@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Layout from '../components/Layout/Layout';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import { setTokenInState, userLogout } from '../store/actions/index.js';
 import * as firebase from 'firebase';
 import axios from 'axios';
@@ -56,27 +56,18 @@ const Dashboard = props => {
     <View style={{ flex: 1 }}>
       <NavBar {...props} />
       <Layout>
-        <View style={{ paddingTop: 128 }}>
-          <Button title='Show me the User' onPress={() => test3()}></Button>
-          <Button
-            title='Test Request'
-            onPress={() => test5(currentUser.token)}
-          ></Button>
-          <Button title='Delete my account' onPress={() => test6()}></Button>
-          <Button
-            title='Send email verification'
-            onPress={() => test7()}
-          ></Button>
-        </View>
-        <Text>email: {currentUser.email}</Text>
-        <Text>token: {currentUser.token}</Text>
-        <Text>id: {currentUser.id}</Text>
-        <Text>Currently logged in: {`${currentUser.loggedIn}`}</Text>
+          <Text style={styles.title}>My Dashboard</Text>
         {props.children}
       </Layout>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 30
+  }
+})
 
 const mapStateToProps = state => {
   return {

@@ -6,7 +6,9 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { TextInput } from 'react-native-paper';
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import Layout from '../components/Layout/Layout';
 import { connect } from 'react-redux';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
 import {
@@ -19,10 +21,15 @@ import {
 } from '../store/actions/index.js';
 import UserRecipe from '../components/Recipes/UserRecipe';
 import SeededRecipe from '../components/Recipes/SeededRecipe';
+import RecipeFormComponent from '../components/UserForms/RecipeFormComponent';
 
 const MyRecipes = props => {
   const { currentUser, newRecipe, createUserRecipe } = props;
   const [ view, setView ] = useState('Default Recipes');
+  const [ addRecipeModal, setAddRecipeModal ] = useState(false);
+  const [ editRecipeModal, setEditRecipeModal ] = useState(false);
+  const [ recipeToEdit, setRecipeToEdit ] = useState({});
+  // const [numberIngredients, setNumberIngredients] = useState(['', '']);
   
   useEffect(() => {
     props.getUserRecipes();
@@ -33,26 +40,23 @@ const MyRecipes = props => {
     return (
       <View style={{ flex: 1, backgroundColor: '#ece6cf'}}>
         <NavBar {...props} />
-        <View style={styles.navbar}>
-
-        <TouchableOpacity onPress={() => setView('Default Recipes')} style={styles.navbarButton}>
-          <Text 
-            style={styles.navbarText}>Default Recipes
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => setView('My Recipes')} style={styles.navbarButton}>
-          <Text 
-            style={styles.navbarText}>My Recipes
-          </Text>
-        </TouchableOpacity>
-
-        </View>
-
         <View style={styles.pageContainer}>
 
+          <View style={styles.navbar}>
+            <TouchableOpacity onPress={() => setView('Default Recipes')} style={styles.navbarButton}>
+              <Text 
+                style={styles.navbarText}>Brew Plan's Recipes
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setView('My Recipes')} style={styles.navbarButton}>
+              <Text 
+                style={styles.navbarText}>My Recipes
+              </Text>
+            </TouchableOpacity>
+          </View>
+
           <View style={styles.recipesHeader}>
-            <Text style={styles.recipesHeaderText}>Default Recipes</Text>
+            <Text style={styles.recipesHeaderText}>Brew Plan's Recipes</Text>
           </View>
 
           <View style={styles.recipesContainer}>
@@ -60,9 +64,7 @@ const MyRecipes = props => {
               {props.seededRecipes.map(recipe => (
                 <SeededRecipe
                   key={recipe.id}
-                  title={recipe.title}
-                  brew_type={recipe.brew_type}
-                  water_temp={recipe.water_temp}
+                  recipe={recipe}
                 />
               ))}
             </ScrollView>
@@ -76,26 +78,42 @@ const MyRecipes = props => {
     <View style={{ flex: 1, backgroundColor: '#ece6cf'}}>
       <NavBar {...props} />
 
-      <View style={styles.navbar}>
-        <TouchableOpacity onPress={() => setView('Default Recipes')} style={styles.navbarButton}>
-          <Text 
-            style={styles.navbarText}>Default Recipes
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => setView('My Recipes')} style={styles.navbarButton}>
-          <Text 
-            style={styles.navbarText}>My Recipes
-          </Text>
-        </TouchableOpacity>
-      </View>
-
       <View style={styles.pageContainer}>
+        <View style={styles.navbar}>
+          <TouchableOpacity onPress={() => setView('Default Recipes')} style={styles.navbarButton}>
+            <Text 
+              style={styles.navbarText}>Brew Plan's Recipes
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => setView('My Recipes')} style={styles.navbarButton}>
+            <Text 
+              style={styles.navbarText}>My Recipes
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        {addRecipeModal ? (
+          <RecipeFormComponent
+            // numberIngredients={numberIngredients}
+            form={'add'}
+            titleText={'Create Your Own Recipe'}
+            cancel={() => setAddRecipeModal(!addRecipeModal)}
+          />
+        ) : null}
+
+        {editRecipeModal ? (
+          <RecipeFormComponent
+            // numberIngredients={numberIngredients}
+            form={'edit'}
+            recipe={recipeToEdit}
+            cancel={() => setEditRecipeModal(!editRecipeModal)}
+          />
+        ) : null}
 
         <View style={styles.recipesHeader}>
           <Text style={styles.recipesHeaderText}>My Recipes</Text>
-          <TouchableOpacity onPress={() => console.log('Button pressed!')}>
+          <TouchableOpacity onPress={() => setAddRecipeModal(!addRecipeModal)}>
             <MaterialIcons
-              onPress={() => createUserRecipe(newRecipe, currentUser.id)}
               name={'add-circle'}
               size={36}
               color={'black'}
@@ -105,23 +123,15 @@ const MyRecipes = props => {
 
         <View style={styles.recipesContainer}>
           <ScrollView>
-            {props.userRecipes.map(recipe => (
+            {props.userRecipes.map((recipe, index) => (
               <UserRecipe
-                key={recipe.id}
-                title={recipe.title}
-                brew_type={recipe.brew_type}
-                water_temp={recipe.water_temp}
-                coarseness={recipe.coarseness}
-                edit={() =>
-                  props.handleRecipeUpdate(
-                    {
-                      water_temp: 450,
-                      coarseness: 'Rough',
-                      title: 'Updated this again'
-                    },
-                    recipe.id
-                  )
-                }
+                key={index}
+                recipe={recipe}
+                setRecipeToEdit={setRecipeToEdit}
+                edit={() => {
+                  setEditRecipeModal(!editRecipeModal);
+                  console.log(recipeToEdit)
+                }}
                 delete={() => props.deleteUserRecipe(recipe.id)}
               />
             ))}
@@ -136,10 +146,10 @@ const MyRecipes = props => {
 
 const styles = StyleSheet.create({
   pageContainer: {
-    flex: 1,
+    flex: .85,
     justifyContent: 'flex-start',
     padding: 24,
-    backgroundColor: '#ece6cf'
+    backgroundColor: '#ece6cf',
   },
   recipesHeader: {
     flexDirection: 'row',
@@ -153,15 +163,15 @@ const styles = StyleSheet.create({
     paddingVertical: 24
   },
   navbar: {
-    width:'100%',
+    width:'105%',
     height: 60,
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignSelf: 'center',
-    marginTop: 10,
-    justifyContent: 'space-evenly'
+    marginBottom: 20
   },
   navbarButton: {
-    width: '45%',
+    width: '48%',
     backgroundColor: 'purple',
     borderRadius: 2
   },  
@@ -180,7 +190,8 @@ const mapStateToProps = state => {
     isLoading: state.userRecipes.isLoading,
     seededRecipes: state.seededRecipes.seededRecipes,
     newRecipe: state.userRecipes.newRecipe,
-    currentUser: state.user.currentUser
+    currentUser: state.user.currentUser,
+    recipe: state.userRecipes.newRecipe
   };
 };
 

@@ -13,7 +13,7 @@ export const getSeededRecipes = () => (dispatch, getState) => {
   dispatch({ type: GET_SEEDED_RECIPES_START });
   
   axios
-    .get('https://backend-development-coffee.herokuapp.com/seededrecipes/all')
+    .get('https://brewplans-production.herokuapp.com/seededRecipes/all')
     .then(res => {
       dispatch({ type: GET_SEEDED_RECIPES_SUCCESS, payload: res.data });
     })

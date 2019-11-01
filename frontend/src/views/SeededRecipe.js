@@ -11,6 +11,7 @@ import { getSeededRecipes } from '../store/actions/index.js';
 // Seeded Recipe page
 
 const SeededRecipe = props => {
+  const { recipe } = props;
   useEffect(() => {
     props.getSeededRecipes();
   }, []);
