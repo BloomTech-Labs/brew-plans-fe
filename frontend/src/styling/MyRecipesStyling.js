@@ -28,9 +28,9 @@ export default StyleSheet.create({
     },
     navbarButton: {
       width: '48%',
-      backgroundColor: 'grey',
-      margin: 2,
-      borderRadius: 6
+      backgroundColor: '#ffa537',
+      borderRadius: 6,
+      justifyContent: 'center'
     },  
     navbarText: {
       textAlign: 'center',

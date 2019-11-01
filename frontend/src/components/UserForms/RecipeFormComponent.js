@@ -12,7 +12,6 @@ import {
   handleRecipeUpdate
 } from '../../store/actions/index.js';
 // import IngredientsForm from './IngredientsForm';
-import { vw, vh } from 'react-native-expo-viewport-units';
 
 const RecipeFormComponent = props => {
   const { recipe, theme, cancel, form, titleText } = props;
