@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -18,7 +18,8 @@ import {
   deleteUserRecipe,
   handleRecipeEdit,
   handleRecipeUpdate,
-  createUserRecipe
+  createUserRecipe,
+  setCurrentRecipe
 } from '../store/actions/index.js';
 import UserRecipe from '../components/Recipes/UserRecipe';
 import SeededRecipe from '../components/Recipes/SeededRecipe';
@@ -53,7 +54,10 @@ const MyRecipes = props => {
                 title={recipe.title}
                 brew_type={recipe.brew_type}
                 water_temp={recipe.water_temp}
-                press={() => props.navigation.navigate('SeededRecipe')}
+                press={() => {
+                  setCurrentRecipe(recipe);
+                  props.navigation.navigate('SeededRecipe');
+                }}
               />
             ))}
             {props.userRecipes.map(recipe => (

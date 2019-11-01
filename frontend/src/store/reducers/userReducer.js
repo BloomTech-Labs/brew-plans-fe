@@ -12,14 +12,13 @@ import {
   GOOGLE_SIGNIN_FAIL,
   USER_LOGOUT,
   SET_TOKEN,
-  SET_USER
+  SET_USER,
+  SET_CURRENT_RECIPE
 } from '../actions/actionTypes.js';
 
 import { AsyncStorage } from 'react-native';
 
-import {
-storeLocalData
-} from '../actions/asyncStorage.js';
+import { storeLocalData } from '../actions/asyncStorage.js';
 
 const initialState = {
   newUser: {
@@ -36,8 +35,9 @@ const initialState = {
     loggedIn: false,
     token: null
   },
+  currentRecipe: {},
   loadingError: '',
-  allUsers: [],
+  allUsers: []
 };
 
 // reducer performs actions on/with user state
@@ -72,66 +72,62 @@ const userReducer = (state = initialState, action) => {
     // submit user credential data from state to register
     case USER_REGISTER_START:
       return {
-        ...state,
-        };
+        ...state
+      };
 
     case USER_REGISTER_SUCCESS:
-      console.log('register_success action payload: ', action.payload)
-      storeLocalData(
-        'user', 
-        { 
-          id: action.payload.user.uid, 
-          email: action.payload.user.email 
-        })
+      console.log('register_success action payload: ', action.payload);
+      storeLocalData('user', {
+        id: action.payload.user.uid,
+        email: action.payload.user.email
+      });
       return {
         ...state,
         currentUser: {
           id: action.payload.user.uid,
           email: action.payload.user.email,
-          loggedIn: true,
+          loggedIn: true
         }
       };
 
     case USER_REGISTER_FAIL:
-      alert(action.payload)
+      alert(action.payload);
       return {
-        ...state,
+        ...state
       };
 
     case USER_SIGNIN_START:
-      console.log(action)
+      console.log(action);
       return {
-        ...state,
-        };
+        ...state
+      };
 
     case USER_SIGNIN_SUCCESS:
-      console.log('user sign-in success: ', action.payload)
-      storeLocalData(
-        'user', 
-        { 
-          id: action.payload.user.uid, 
-          email: action.payload.user.email
-        })
+      console.log('user sign-in success: ', action.payload);
+      storeLocalData('user', {
+        id: action.payload.user.uid,
+        email: action.payload.user.email
+      });
       return {
         ...state,
         currentUser: {
           id: action.payload.user.uid,
           email: action.payload.user.email,
-          loggedIn: true,
+          loggedIn: true
         }
       };
 
     case USER_SIGNIN_FAIL:
-      console.log('user sign-in fail: ', action)
+      console.log('user sign-in fail: ', action);
       alert(action.payload);
       return {
         ...state
-      }
+      };
 
     case GOOGLE_SIGNIN_START:
       return {
-        ...state,
-      }
+        ...state
+      };
 
     case GOOGLE_SIGNIN_SUCCESS:
       console.log('google sign-in payload: ', action.payload);
@@ -139,8 +135,8 @@ const userReducer = (state = initialState, action) => {
       storeLocalData('token', token);
       storeLocalData('user', {
         id: user.id,
-        email: user.email,
-      })
+        email: user.email
+      });
       return {
         ...state,
         currentUser: {
@@ -149,12 +145,12 @@ const userReducer = (state = initialState, action) => {
           token: token
         }
       };
-      
+
     case GOOGLE_SIGNIN_FAIL:
-      console.log(action)
+      console.log(action);
       return {
-        ...state,
-      }
+        ...state
+      };
 
     case USER_LOGOUT:
       AsyncStorage.clear();
@@ -164,8 +160,8 @@ const userReducer = (state = initialState, action) => {
           ...state.currentUser,
           loggedIn: false,
           token: null
-        },
-      }
+        }
+      };
 
     case SET_TOKEN:
       return {
@@ -174,7 +170,7 @@ const userReducer = (state = initialState, action) => {
           ...state.currentUser,
           token: action.payload
         }
-      }
+      };
 
     case SET_USER:
       return {
@@ -184,7 +180,20 @@ const userReducer = (state = initialState, action) => {
           id: action.payload.id,
           loggedIn: true
         }
-      }
+      };
+
+    case SET_CURRENT_RECIPE: {
+      return {
+        ...state,
+        currentRecipe: {
+          title: action.payload.title,
+          brew_type: action.payload.brew_type,
+          water_temp: action.payload.water_temp,
+          coarseness: action.payload.coarseness,
+          instructions: action.payload.instructions
+        }
+      };
+    }
 
     default:
       return state;
