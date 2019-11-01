@@ -1,10 +1,13 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { connect } from 'react-redux';
+import { setRecipeToEdit } from '../../store/actions/userRecipes.js'
 import styles from '../../styling/UserRecipeStyling';
 
 const UserRecipe = props => {
   const { recipe } = props;
+  
   return (
     <TouchableOpacity
       onPress={() => console.log('Navigate to recipe page!')}
@@ -30,7 +33,7 @@ const UserRecipe = props => {
       </View>
 
       <View style={styles.recipeInfoContainer}>
-        <TouchableOpacity onPress={() => {props.edit(); props.setRecipeToEdit(recipe)}}>
+        <TouchableOpacity onPress={() => { props.edit(); props.setRecipeToEdit(recipe) }}>
           <MaterialIcons name={'edit'} size={20} color={'black'} />
         </TouchableOpacity>
         <TouchableOpacity onPress={props.delete}>
@@ -43,4 +46,15 @@ const UserRecipe = props => {
 };
 
 
-export default UserRecipe;
+const mapStateToProps = state => {
+  return {
+    recipeToEdit: state.userRecipes.recipeToEdit
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    setRecipeToEdit
+  }
+)(UserRecipe)

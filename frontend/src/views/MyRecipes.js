@@ -29,11 +29,10 @@ const MyRecipes = props => {
   const [ view, setView ] = useState('Default Recipes');
   const [ addRecipeModal, setAddRecipeModal ] = useState(false);
   const [ editRecipeModal, setEditRecipeModal ] = useState(false);
-  const [ recipeToEdit, setRecipeToEdit ] = useState({});
   // const [numberIngredients, setNumberIngredients] = useState(['', '']);
   
   useEffect(() => {
-    props.getUserRecipes();
+    props.getUserRecipes(currentUser.id);
     props.getSeededRecipes();
   }, []);
 
@@ -107,7 +106,6 @@ const MyRecipes = props => {
           <RecipeFormComponent
             // numberIngredients={numberIngredients}
             form={'edit'}
-            recipe={recipeToEdit}
             titleText={'Change Your Recipe'}
             cancel={() => setEditRecipeModal(!editRecipeModal)}
           />
@@ -130,10 +128,8 @@ const MyRecipes = props => {
               <UserRecipe
                 key={index}
                 recipe={recipe}
-                setRecipeToEdit={setRecipeToEdit}
                 edit={() => {
                   setEditRecipeModal(!editRecipeModal);
-                  console.log(recipeToEdit)
                 }}
                 delete={() => props.deleteUserRecipe(recipe.id)}
               />
