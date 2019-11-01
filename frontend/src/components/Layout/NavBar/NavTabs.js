@@ -6,7 +6,6 @@ import theme from '../../../theme.js';
 import { connect } from 'react-redux';
 import Layout from '../Layout';
 import { userLogout } from '../../../store/actions/user.js';
-import { MaterialCommunityIcons }
 import * as firebase from 'firebase';
 // import NavDrawer from './NavDrawer';
 
@@ -40,7 +39,7 @@ const NavTabs = props => {
           }}
         />
         <Appbar.Action
-          icon='school'
+          icon='coffee'
           onPress={() => props.navigation.navigate('RecipeForm')}
         />
       </Appbar>
