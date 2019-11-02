@@ -5,7 +5,16 @@ import styles from './GreetingStyles.js'
 const GreetingPage3 = (props) => {
   return (
     <View style={{}}>
-      <Text style={styles.title}>Greeting Page 3</Text>
+
+<View style={styles.header}>
+      <Text style={styles.title}>Brew {"\n"}Plans</Text>
+      <TouchableOpacity
+        onPress={() => props.navigation.navigate('Landing')}
+        style={styles.skipButton}>
+        <Text style={styles.skipText}>Skip</Text>
+      </TouchableOpacity>
+      </View>
+
       <TouchableOpacity
       style={styles.button}
       onPress={() => props.navigation.navigate('GreetingPage4')}

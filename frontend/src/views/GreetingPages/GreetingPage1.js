@@ -1,11 +1,22 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import styles from './GreetingStyles.js'
 
 const GreetingPage1 = (props) => {
   return (
-    <View style={{}}>
-      <Text style={styles.title}>Greeting Page 1</Text>
+    <View style={styles.pageContainer}>
+
+      <View style={styles.header}>
+      <Text style={styles.title}>Brew {"\n"}Plans</Text>
+      <TouchableOpacity
+        onPress={() => props.navigation.navigate('Landing')}
+        style={styles.skipButton}>
+        <Text style={styles.skipText}>Skip</Text>
+      </TouchableOpacity>
+      </View>
+
+      <Image style={styles.introImage} source={require('../../../assets/IntroImage.png')}/>
+
       <TouchableOpacity
       style={styles.button}
       onPress={() => props.navigation.navigate('GreetingPage2')}

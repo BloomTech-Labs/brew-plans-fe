@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native-paper';
-import { fromRight, fromLeft, zoomIn, zoomOut, fromBottom } from "react-navigation-transition-config";
+import { fromRight, fromLeft, zoomIn, zoomOut, fromBottom, flipX, flipY, fromTop } from "react-navigation-transition-config";
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { getLocalData } from './src/store/actions/asyncStorage.js';
@@ -40,7 +40,7 @@ const handleCustomTransition = ({ scenes }) => {
     && nextScene.route.routeName === 'GreetingPage2'
     || nextScene.route.routeName === 'GreetingPage3'
     || nextScene.route.routeName === 'GreetingPage4') {
-    return fromRight();
+    return fromRight(1000);
   }
   
   if(prevScene
@@ -52,7 +52,7 @@ const handleCustomTransition = ({ scenes }) => {
   if(prevScene
     && prevScene.route.routeName === 'Login' || 'Signup'
     && nextScene.route.routeName === 'Dashboard') {
-      return zoomIn();
+      return fromTop(1000);
     }
 }
 

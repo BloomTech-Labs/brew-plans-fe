@@ -9,7 +9,6 @@ import {
 export const getSeededRecipes = () => (dispatch, getState) => {
   // Grabs current token from state...
   const token = getState().user.currentUser.token;
-  console.log('token: ', token);
   dispatch({ type: GET_SEEDED_RECIPES_START });
   
   axios
