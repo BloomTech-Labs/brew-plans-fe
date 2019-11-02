@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native-paper';
-import { fromRight } from "react-navigation-transition-config";
+import { fromRight, fromLeft, zoomIn, zoomOut, fromBottom } from "react-navigation-transition-config";
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { getLocalData } from './src/store/actions/asyncStorage.js';
@@ -29,6 +29,32 @@ getLocalData('previouslyLoaded')
 .catch(err => {
   console.log(err);
 });
+
+const handleCustomTransition = ({ scenes }) => {
+  const prevScene = scenes[scenes.length - 2];
+  const nextScene = scenes[scenes.length - 1];
+ 
+  // Custom transitions go there
+  if (prevScene
+    && prevScene.route.routeName === 'GreetingPage1'
+    && nextScene.route.routeName === 'GreetingPage2'
+    || nextScene.route.routeName === 'GreetingPage3'
+    || nextScene.route.routeName === 'GreetingPage4') {
+    return fromRight();
+  }
+  
+  if(prevScene
+    && prevScene.route.routeName === 'GreetingPage4'
+    && nextScene.route.routeName === 'Landing') {
+      return fromBottom();
+    }
+
+  if(prevScene
+    && prevScene.route.routeName === 'Login' || 'Signup'
+    && nextScene.route.routeName === 'Dashboard') {
+      return zoomIn();
+    }
+}
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDZKLP2FGiOx0aMXeDjAc3MOWSQa9pvJQg',
@@ -80,7 +106,7 @@ const AppNavigator = createStackNavigator(
     }
   },
   {
-    transitionConfig: () => fromRight(),
+    transitionConfig: (nav) => handleCustomTransition(nav),
     defaultNavigationOptions: {
       header: null
     },

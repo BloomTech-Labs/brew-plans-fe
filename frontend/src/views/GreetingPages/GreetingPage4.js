@@ -10,7 +10,7 @@ const GreetingPage4 = (props) => {
       style={styles.button}
       onPress={() => props.navigation.navigate('Landing')}
       >
-        <Text style={styles.buttonText}>Next</Text>
+        <Text style={styles.buttonText}>Done</Text>
       </TouchableOpacity>
     </View>
   );
