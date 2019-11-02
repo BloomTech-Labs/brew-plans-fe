@@ -20,22 +20,12 @@ import {
 } from '../../store/actions/index.js';
 
 const RecipeFormComponent = props => {
-  const [slideUpValue] = useState(new Animated.Value(500));
-  console.log(new Animated.Value(500));
-
-  const slideUpAnimation = () => {
-    Animated.timing(slideUpValue, {
-      toValue: 200,
-      duration: 1000
-    }).start();
-  };
-
-  const {
-    cancel,
-    form,
-    titleText,
-    newRecipe,
-    recipeToEdit,
+  const { 
+    cancel, 
+    form, 
+    titleText, 
+    newRecipe, 
+    recipeToEdit, 
     currentUser,
     createUserRecipe,
     handleNewRecipeInput,

@@ -2,8 +2,10 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
     recipeTitle: {
-      fontSize: 24,
-      fontWeight: 'bold'
+      width: '100%',
+      fontSize: 30,
+      fontWeight: 'bold',
+      textAlign: 'left'
     },
     recipeDetails: {
       marginTop: 16

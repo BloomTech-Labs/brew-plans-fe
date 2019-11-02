@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import Layout from '../components/Layout/Layout';
 import LandingButton from '../components/Landing/LandingButton';
 import { connect } from 'react-redux';
-import { getLocalData } from '../store/actions/asyncStorage.js';
+import { getLocalData, storeLocalData } from '../store/actions/asyncStorage.js';
 import { setUserInState, setTokenInState } from '../store/actions/index.js';
 import * as firebase from 'firebase';
 
@@ -13,6 +13,7 @@ const Landing = props => {
   const { loggedIn, setUserInState, setTokenInState } = props;
 
   useEffect(() => {
+    storeLocalData('previouslyLoaded', true)
     getLocalData('user')
       .then(res => {
         if (res == null) {

@@ -4,24 +4,35 @@ import Layout from '../components/Layout/Layout';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
 import styles from '../styling/SeededRecipesStyling';
 import { View, ScrollView, Text, Button, TouchableOpacity } from 'react-native';
-import { setTokenInState, userLogout } from '../store/actions/index.js';
-import * as firebase from 'firebase';
-import axios from 'axios';
-import { getSeededRecipes } from '../store/actions/index.js';
 
-// Seeded Recipe page
-
-const SeededRecipe = props => {
+const Recipe = props => {
+  const [ sortedInstructions, setSortedInstructions ] = useState([]);
   const { currentRecipe } = props;
+  const { instructions } = currentRecipe;
 
-  console.log(currentRecipe);
+  console.log('recipe: ', currentRecipe);
+
+  useEffect(() => {
+    if (instructions) {
+      const instructionsArray = instructions.split("////");
+
+      setSortedInstructions(
+      instructionsArray.map((instruction, index) => {
+        let step = `Step ${index + 1}: `
+        let res = step.concat(instruction);
+        return res;
+      }
+    ))
+    }
+  }, [])
+
+  console.log(sortedInstructions)
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, width: '100%' }}>
       <NavBar {...props} />
       <Layout>
         <ScrollView>
-          <TouchableOpacity key={currentRecipe.id}>
             <Text style={styles.recipeTitle}>{currentRecipe.title}</Text>
             <View style={styles.recipeDetails}>
               <Text style={styles.recipeDetailItem}>
@@ -31,9 +42,10 @@ const SeededRecipe = props => {
                 Water Temperature: {currentRecipe.water_temp}
               </Text>
 
-              <Text>{currentRecipe.instructions}</Text>
+              <ScrollView>
+                {sortedInstructions.map((instruction, index) => <Text style={{ marginVertical: 5 }} key={index}>{instruction}</Text>)}
+              </ScrollView>
             </View>
-          </TouchableOpacity>
         </ScrollView>
       </Layout>
     </View>
@@ -46,4 +58,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(SeededRecipe);
+export default connect(mapStateToProps)(Recipe);
