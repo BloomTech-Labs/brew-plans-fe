@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native-paper';
+import { fromRight } from "react-navigation-transition-config";
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { getLocalData } from './src/store/actions/asyncStorage.js';
-import GreetingView from './src/views/GreetingView.js';
+import GreetingPage1 from './src/views/GreetingPages/GreetingPage1.js';
+import GreetingPage2 from './src/views/GreetingPages/GreetingPage2.js';
+import GreetingPage3 from './src/views/GreetingPages/GreetingPage3.js';
+import GreetingPage4 from './src/views/GreetingPages/GreetingPage4.js';
 import Landing from './src/views/Landing';
 import SignUp from './src/views/SignUp';
 import Login from './src/views/Login';
 import Dashboard from './src/views/Dashboard.js';
 import MyRecipes from './src/views/MyRecipes.js';
 import RecipeForm from './src/views/RecipeForm.js';
-import SeededRecipe from './src/views/SeededRecipe.js';
+import Recipe from './src/views/Recipe.js';
 import * as firebase from 'firebase';
 let initialRoute = '';
 
 getLocalData('previouslyLoaded')
 .then(res => {
   if (res == null) {
-    initialRoute = 'GreetingView'
     console.log(initialRoute)
   } else {
-    initialRoute = 'Dashboard'
     console.log(initialRoute)
   }
 })
@@ -43,9 +45,18 @@ firebase.initializeApp(firebaseConfig);
 
 const AppNavigator = createStackNavigator(
   {
-    // GreetingView: {
-    //   screen: GreetingView
-    // },
+    GreetingPage1: {
+      screen: GreetingPage1
+    },
+    GreetingPage2: {
+      screen: GreetingPage2
+    },
+    GreetingPage3: {
+      screen: GreetingPage3
+    },
+    GreetingPage4: {
+      screen: GreetingPage4
+    },
     Landing: {
       screen: Landing
     },
@@ -64,16 +75,16 @@ const AppNavigator = createStackNavigator(
     RecipeForm: {
       screen: RecipeForm
     },
-    SeededRecipe: {
-      screen: SeededRecipe
+    Recipe: {
+      screen: Recipe
     }
   },
   {
-    initialRouteName: initialRoute,
+    transitionConfig: () => fromRight(),
     defaultNavigationOptions: {
       header: null
     },
-    
+    initialRouteName: initialRoute
   }
 );
 

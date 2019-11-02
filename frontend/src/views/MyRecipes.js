@@ -68,7 +68,10 @@ const MyRecipes = props => {
                 <SeededRecipe
                   key={recipe.id}
                   recipe={recipe}
-                  pressed={() => console.log(recipe)}
+                  pressed={() => {
+                    props.setCurrentRecipe(recipe);
+                    props.navigation.navigate('Recipe');
+                  }}
                 />
               ))}
             </ScrollView>
@@ -154,7 +157,10 @@ const MyRecipes = props => {
                   delete={() => {
                     props.deleteUserRecipe(recipe.id);
                   }}
-                  pressed={() => console.log(recipe)}
+                  pressed={() => {
+                    props.setCurrentRecipe(recipe);
+                    props.navigation.navigate('Recipe');
+                  }}
                 />
               ))}
             </ScrollView>
@@ -184,6 +190,7 @@ export default connect(
     deleteUserRecipe,
     handleRecipeEdit,
     handleRecipeUpdate,
-    createUserRecipe
+    createUserRecipe,
+    setCurrentRecipe
   }
 )(MyRecipes);

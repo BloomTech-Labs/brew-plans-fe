@@ -1,9 +1,7 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 import { vw, vh } from 'react-native-expo-viewport-units';
 
-
 export default StyleSheet.create({
-  
   backgroundOverlay: {
     position: 'absolute',
     zIndex: 150,
@@ -24,7 +22,7 @@ export default StyleSheet.create({
     marginTop: 24,
     paddingVertical: 16,
     borderRadius: 5,
-    height: 550
+    height: 450
   },
 
   formInputsContainer: {
@@ -38,4 +36,4 @@ export default StyleSheet.create({
     width: '100%',
     fontSize: 3
   }
-})
+});
