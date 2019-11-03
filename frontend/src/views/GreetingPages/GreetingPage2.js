@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import styles from './GreetingStyles.js'
 
 const GreetingPage2 = (props) => {
@@ -15,7 +15,7 @@ const GreetingPage2 = (props) => {
         </TouchableOpacity>
       </View>
 
-      <Image style={styles.introImage} source={require('../../../assets/greetingpage2image.png')}/>
+        <Image style={styles.introImage} source={require('../../../assets/greetingpage2image.png')}/>
 
       <View style={styles.textContainer}>
         <Text style={styles.introText}>
