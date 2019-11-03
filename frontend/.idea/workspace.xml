@@ -4,23 +4,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71a7caf1-9840-412c-9565-64c901013d58" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/yarn-error.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Recipes/SeededRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Recipes/SeededRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Recipes/UserRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Recipes/UserRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserForms/RecipeFormComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserForms/RecipeFormComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserForms/SubmitButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserForms/SubmitButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/seededRecipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/seededRecipes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/userRecipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/userRecipes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/userRecipeReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/userRecipeReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Landing.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Landing.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/MyRecipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/MyRecipes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/SeededRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/SeededRecipe.js" afterDir="false" />
-    </list>
+    <list default="true" id="71a7caf1-9840-412c-9565-64c901013d58" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,9 +39,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -69,6 +52,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -124,8 +108,8 @@
       <window_info id="Build Variants" order="8" side_tool="true" weight="0.32985073" />
       <window_info anchor="bottom" id="Version Control" order="0" sideWeight="0.49626866" weight="0.3298731" />
       <window_info anchor="bottom" id="TODO" order="1" sideWeight="0.49850747" weight="0.3298731" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="2" sideWeight="0.4902985" visible="true" weight="0.2283737" />
-      <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5097015" side_tool="true" visible="true" weight="0.2283737" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="2" sideWeight="0.48955223" visible="true" weight="0.2283737" />
+      <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.51044774" side_tool="true" visible="true" weight="0.2283737" />
       <window_info anchor="bottom" id="Run" order="4" />
       <window_info anchor="bottom" id="Logcat" order="5" sideWeight="0.4977612" weight="0.3298731" />
       <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />

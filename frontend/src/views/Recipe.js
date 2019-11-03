@@ -43,7 +43,7 @@ const Recipe = props => {
               </Text>
 
               <ScrollView>
-                {sortedInstructions.map((instruction, index) => <Text style={{ marginVertical: 5 }} key={index}>{instruction}</Text>)}
+                {sortedInstructions.map((instruction, index) => <Text style={{ marginVertical: 5, backgroundColor: 'white', padding: 6, fontSize: 16 }} key={index}>{instruction}</Text>)}
               </ScrollView>
             </View>
         </ScrollView>
