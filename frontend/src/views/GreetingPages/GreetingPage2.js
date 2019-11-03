@@ -15,7 +15,7 @@ const GreetingPage2 = (props) => {
         </TouchableOpacity>
       </View>
 
-        <Image style={styles.introImage} source={require('../../../assets/greetingpage2image.png')}/>
+      <Image style={styles.introImage} source={require('../../../assets/greetingpage2image.png')}/>
 
       <View style={styles.textContainer}>
         <Text style={styles.introText}>
