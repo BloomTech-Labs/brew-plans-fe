@@ -5,7 +5,7 @@ export default StyleSheet.create({
       flex: .85,
       justifyContent: 'flex-start',
       padding: 24,
-      backgroundColor: '#ece6cf',
+      backgroundColor: 'white',
     },
     recipesHeader: {
       flexDirection: 'row',

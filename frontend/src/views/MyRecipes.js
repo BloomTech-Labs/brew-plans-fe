@@ -40,7 +40,7 @@ const MyRecipes = props => {
 
   if (view == 'Default Recipes') {
     return (
-      <View style={{ flex: 1, backgroundColor: '#ece6cf' }}>
+      <View style={{ flex: 1 }}>
         <NavBar {...props} />
         <View style={styles.pageContainer}>
           <View style={styles.navbar}>
@@ -81,7 +81,7 @@ const MyRecipes = props => {
     );
   } else if (view == 'My Recipes') {
     return (
-      <View style={{ flex: 1, backgroundColor: '#ece6cf' }}>
+      <View style={{ flex: 1 }}>
         <NavBar {...props} />
 
         <View style={styles.pageContainer}>

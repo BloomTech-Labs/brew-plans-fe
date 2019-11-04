@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Appbar, withTheme, Drawer } from 'react-native-paper';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import theme from '../../../theme.js';
 import { connect } from 'react-redux';
 import Layout from '../Layout';
@@ -14,7 +14,9 @@ const NavTabs = props => {
   return (
     <View>
       <Appbar style={{ width: '100%' }} theme={theme}>
-        <Appbar.Action
+        <Image source= {require("../../../../assets/BrewPlansLogo.png")} />
+          
+          <Appbar.Action
           icon='home'
           onPress={() => props.navigation.navigate('Dashboard')}
         /> 
