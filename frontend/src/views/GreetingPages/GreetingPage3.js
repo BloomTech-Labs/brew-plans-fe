@@ -25,7 +25,7 @@ const GreetingPage3 = (props) => {
 
       <TouchableOpacity
       style={styles.button}
-      onPress={() => props.navigation.navigate('GreetingPage4')}
+      onPress={() => props.navigation.navigate('Landing')}
       >
         <Text style={styles.buttonText}>Next</Text>
       </TouchableOpacity>

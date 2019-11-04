@@ -64,7 +64,7 @@ const LoginForm = props => {
           <SubmitButton 
           onPress={() => authSignIn(signInCredentials)} 
           title='Login' />
-          <View style={theme.formSocialsContainer}>
+          {/* <View style={theme.formSocialsContainer}>
             <Text
               style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}
             >
@@ -74,7 +74,7 @@ const LoginForm = props => {
               <SocialButton icon='logo-google' loginConfig={loginConfig} />
               <SocialButton icon='logo-facebook' />
             </View>
-          </View>
+          </View> */}
         </View>
       )}
     </Formik>
