@@ -48,7 +48,7 @@ const SignUpForm = props => {
             />
           </View>
           <SubmitButton onPress={() => authSignup(newUser)} title='Sign Up' />
-          <View style={theme.formSocialsContainer}>
+          {/* <View style={theme.formSocialsContainer}>
             <Text
               style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}
             >
@@ -58,7 +58,7 @@ const SignUpForm = props => {
               <SocialButton icon='logo-google' loginConfig={loginConfig} />
               <SocialButton icon='logo-facebook' />
             </View>
-          </View>
+          </View> */}
         </View>
       )}
     </Formik>

@@ -63,13 +63,13 @@ const LoginForm = props => {
     labelHeight={24}
     labelStyle={{ color: '#ac83c4' }}
     value={signInCredentials.password}
-    onChangeText={(value) => handleSignInChange('email', value)}
+    onChangeText={(value) => handleSignInChange('password', value)}
   />
           </View>
           <SubmitButton 
           onPress={() => authSignIn(signInCredentials)} 
           title='Login' />
-          <View style={theme.formSocialsContainer}>
+          {/* <View style={theme.formSocialsContainer}>
             <Text
               style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}
             >
@@ -79,7 +79,7 @@ const LoginForm = props => {
               <SocialButton icon='logo-google' loginConfig={loginConfig} />
               <SocialButton icon='logo-facebook' />
             </View>
-          </View>
+          </View> */}
         </View>
       )}
     </Formik>

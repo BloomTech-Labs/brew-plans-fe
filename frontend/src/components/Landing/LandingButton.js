@@ -1,14 +1,14 @@
 import React from 'react';
-import { Button } from 'react-native-paper';
+import { Button, Text } from 'react-native-paper';
 
 const LandingButton = props => {
   return (
     <Button
-      style={{ marginBottom: 32 }}
+      style={{ backgroundColor: props.buttonBackground, marginVertical: 10, width: 200 }}
       mode='contained'
       onPress={props.onPress}
     >
-      {props.title}
+      <Text style={{ color: props.buttonText, fontSize: 28 }}>{props.title}</Text>
     </Button>
   );
 };

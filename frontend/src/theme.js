@@ -10,7 +10,7 @@ export default {
   colors: {
     ...DefaultTheme.colors,
     primary: '#ffa537',
-    background: '#ece6cf',
+    background: 'white',
     surface: '#0f1f40'
   },
 

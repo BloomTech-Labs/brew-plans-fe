@@ -24,7 +24,8 @@ export default StyleSheet.create({
   introImage: {
     alignSelf: 'center',
     marginTop: 40,
-    width: '90%',
+    marginBottom: 20,
+    width: '95%',
     height: '50%',
     borderRadius: 10,
     resizeMode: 'contain'
