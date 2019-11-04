@@ -3,11 +3,13 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   recipeContainer: {
     width: '100%',
-    backgroundColor: 'white',
+    backgroundColor: '#f7f7f7',
     marginVertical: 8,
     padding: 16,
     justifyContent: 'center',
-    borderRadius: 5
+    borderRadius: 5,
+    borderWidth: 2,
+    borderColor: 'lightgray'
   },
   recipeTitle: {
     fontSize: 16,
