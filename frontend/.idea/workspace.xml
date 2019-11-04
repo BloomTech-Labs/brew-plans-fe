@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71a7caf1-9840-412c-9565-64c901013d58" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/views/GreetingPages/GreetingStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/GreetingPages/GreetingStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Landing/LandingButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Landing/LandingButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Recipes/SeededRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Recipes/SeededRecipe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/seededRecipeReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/seededRecipeReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Landing.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Landing.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,8 +45,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -111,8 +114,8 @@
       <window_info id="Build Variants" order="8" side_tool="true" weight="0.32985073" />
       <window_info anchor="bottom" id="Version Control" order="0" sideWeight="0.49626866" weight="0.3298731" />
       <window_info anchor="bottom" id="TODO" order="1" sideWeight="0.49850747" weight="0.3298731" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="2" sideWeight="0.4880597" visible="true" weight="0.2283737" />
-      <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5119403" side_tool="true" visible="true" weight="0.2283737" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="2" sideWeight="0.48731342" visible="true" weight="0.2283737" />
+      <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.51268655" side_tool="true" visible="true" weight="0.2283737" />
       <window_info anchor="bottom" id="Run" order="4" />
       <window_info anchor="bottom" id="Logcat" order="5" sideWeight="0.4977612" weight="0.3298731" />
       <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />

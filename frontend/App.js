@@ -7,7 +7,6 @@ import InitialLoad from './src/views/InitialLoad.js';
 import GreetingPage1 from './src/views/GreetingPages/GreetingPage1.js';
 import GreetingPage2 from './src/views/GreetingPages/GreetingPage2.js';
 import GreetingPage3 from './src/views/GreetingPages/GreetingPage3.js';
-import GreetingPage4 from './src/views/GreetingPages/GreetingPage4.js';
 import Landing from './src/views/Landing';
 import SignUp from './src/views/SignUp';
 import Login from './src/views/Login';
@@ -26,8 +25,7 @@ const handleCustomTransition = ({ scenes }) => {
   if (prevScene
     && prevScene.route.routeName === 'GreetingPage1'
     && nextScene.route.routeName === 'GreetingPage2'
-    || nextScene.route.routeName === 'GreetingPage3'
-    || nextScene.route.routeName === 'GreetingPage4') {
+    || nextScene.route.routeName === 'GreetingPage3') {
     return fromRight(700);
   }
   
@@ -91,9 +89,6 @@ const AppNavigator = createStackNavigator(
     },
     GreetingPage3: {
       screen: GreetingPage3
-    },
-    GreetingPage4: {
-      screen: GreetingPage4
     },
     Landing: {
       screen: Landing
