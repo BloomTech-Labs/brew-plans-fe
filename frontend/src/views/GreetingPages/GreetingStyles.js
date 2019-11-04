@@ -26,7 +26,7 @@ export default StyleSheet.create({
     marginTop: 40,
     marginBottom: 20,
     width: '95%',
-    height: 400,
+    height: '50%',
     borderRadius: 10,
     resizeMode: 'contain'
   },
@@ -40,7 +40,7 @@ export default StyleSheet.create({
   },
   button: {
     position: 'absolute',
-    top: 700,
+    top: '90%',
     alignSelf: 'center',
     padding: 10,
     borderRadius: 3
