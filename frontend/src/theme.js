@@ -29,7 +29,7 @@ export default {
   formInput: {
     marginBottom: space[1],
     width: '90%',
-    fontSize: 3
+    fontSize: 3,
   },
 
   formSocialsContainer: {

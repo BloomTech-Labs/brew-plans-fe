@@ -24,14 +24,16 @@ export default StyleSheet.create({
   introImage: {
     alignSelf: 'center',
     marginTop: 40,
-    marginBottom: 20,
     width: '90%',
-    height: 400,
-    borderRadius: 10
+    height: '50%',
+    borderRadius: 10,
+    resizeMode: 'contain'
   },
   textContainer: {
     width: '90%',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    top: '70%',
+    position: 'absolute',
   },
   introText: {
     textAlign: 'center',
@@ -39,7 +41,7 @@ export default StyleSheet.create({
   },
   button: {
     position: 'absolute',
-    top: 700,
+    top: '90%',
     alignSelf: 'center',
     padding: 10,
     borderRadius: 3

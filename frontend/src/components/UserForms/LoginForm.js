@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { Formik } from 'formik';
 import { withTheme, TextInput } from 'react-native-paper';
+import { Akira } from 'react-native-textinput-effects';
 import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
 import { connect } from 'react-redux';
@@ -42,24 +43,28 @@ const LoginForm = props => {
       {props => (
         <View style={theme.formView}>
           <View style={theme.formInputsContainer}>
-            <TextInput
-              style={theme.formInput}
-              onChangeText={(value) => handleSignInChange('email', value)}
-              onBlur={props.handleBlur('email')}
-              value={signInCredentials.email}
-              label='Email'
-              mode='outlined'
-              placeholder='Please enter username'
-            />
-            <TextInput
-              style={theme.formInput}
-              onChangeText={(value) => handleSignInChange('password', value)}
-              onBlur={props.handleBlur('password')}
-              value={signInCredentials.password}
-              label='Password'
-              mode='outlined'
-              placeholder='Please enter password'
-            />
+              <Akira
+    style={theme.formInput}
+    label={'Email'}
+    // this is used as active and passive border color
+    borderColor={'#a5d1cc'}
+    inputPadding={16}
+    labelHeight={24}
+    labelStyle={{ color: '#ac83c4' }}
+    value={signInCredentials.email}
+    onChangeText={(value) => handleSignInChange('email', value)}
+  />
+              <Akira
+    style={theme.formInput}
+    label={'Password'}
+    // this is used as active and passive border color
+    borderColor={'#a5d1cc'}
+    inputPadding={16}
+    labelHeight={24}
+    labelStyle={{ color: '#ac83c4' }}
+    value={signInCredentials.password}
+    onChangeText={(value) => handleSignInChange('email', value)}
+  />
           </View>
           <SubmitButton 
           onPress={() => authSignIn(signInCredentials)} 
