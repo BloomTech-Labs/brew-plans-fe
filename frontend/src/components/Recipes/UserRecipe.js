@@ -1,32 +1,41 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { connect } from 'react-redux';
+import { setRecipeToEdit } from '../../store/actions/userRecipes.js';
+import styles from '../../styling/UserRecipeStyling';
 
 const UserRecipe = props => {
+  const { recipe } = props;
+
   return (
-    <TouchableOpacity
-      onPress={() => console.log('Navigate to recipe page!')}
-      style={styles.recipeContainer}
-    >
-      <Text style={styles.recipeTitle}>{props.title}</Text>
+    <TouchableOpacity onPress={props.pressed} style={styles.recipeContainer}>
+      <Text style={styles.recipeTitle}>{recipe.title}</Text>
+
       <View style={styles.recipeInfoContainer}>
         <View style={styles.recipeInfo}>
-          <Text>{props.brew_type}</Text>
-        </View>
-        <View style={styles.coarseness}>
-          <Text>Coarseness: {props.coarseness}</Text>
-        </View>
-        <View style={styles.recipeInfo}>
-          <Text>{props.water_temp}</Text>
-          <MaterialCommunityIcons
-            name={'temperature-fahrenheit'}
-            size={16}
-            color={'black'}
-          />
+          <Text>
+            Brew Type: {recipe.brew_type}
+            {'\n'}
+            Brewing Temperature: {recipe.water_temp}
+            <MaterialCommunityIcons
+              name={'temperature-fahrenheit'}
+              size={16}
+              color={'black'}
+            />
+            {'\n'}
+            Coarseness: {recipe.coarseness}
+          </Text>
         </View>
       </View>
+
       <View style={styles.recipeInfoContainer}>
-        <TouchableOpacity onPress={props.edit}>
+        <TouchableOpacity
+          onPress={() => {
+            props.edit();
+            props.setRecipeToEdit(recipe);
+          }}
+        >
           <MaterialIcons name={'edit'} size={20} color={'black'} />
         </TouchableOpacity>
         <TouchableOpacity onPress={props.delete}>
@@ -37,32 +46,15 @@ const UserRecipe = props => {
   );
 };
 
-const styles = StyleSheet.create({
-  recipeContainer: {
-    width: '100%',
-    backgroundColor: 'white',
-    marginVertical: 8,
-    padding: 16,
-    justifyContent: 'center',
-    borderRadius: 5
-  },
-  recipeTitle: {
-    fontSize: 16,
-    fontWeight: 'bold'
-  },
-  recipeInfoContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 12
-  },
-  recipeInfo: {
-    flexDirection: 'row'
-  },
-  coarseness: {
-    position: 'absolute',
-    left: 0
-  }
-});
+const mapStateToProps = state => {
+  return {
+    recipeToEdit: state.userRecipes.recipeToEdit
+  };
+};
 
-export default UserRecipe;
+export default connect(
+  mapStateToProps,
+  {
+    setRecipeToEdit
+  }
+)(UserRecipe);

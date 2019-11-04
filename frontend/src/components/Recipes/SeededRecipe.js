@@ -3,23 +3,24 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const SeededRecipe = props => {
+  const { recipe } = props;
   return (
-    <TouchableOpacity
-      onPress={() => console.log('Navigate to recipe page!')}
-      style={styles.recipeContainer}
-    >
-      <Text style={styles.recipeTitle}>{props.title}</Text>
+    <TouchableOpacity onPress={props.pressed} style={styles.recipeContainer}>
+      <Text style={styles.recipeTitle}>{recipe.title}</Text>
       <View style={styles.recipeInfoContainer}>
         <View style={styles.recipeInfo}>
-          <Text>{props.brew_type}</Text>
-        </View>
-        <View style={styles.recipeInfo}>
-          <Text>{props.water_temp}</Text>
-          <MaterialCommunityIcons
-            name={'temperature-fahrenheit'}
-            size={16}
-            color={'black'}
-          />
+          <Text>
+            Brew Type: {recipe.brew_type}
+            {'\n'}
+            Brewing Temperature: {recipe.water_temp}
+            <MaterialCommunityIcons
+              name={'temperature-fahrenheit'}
+              size={16}
+              color={'black'}
+            />
+            {'\n'}
+            Coarseness: {recipe.coarseness}
+          </Text>
         </View>
       </View>
     </TouchableOpacity>

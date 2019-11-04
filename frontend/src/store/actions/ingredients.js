@@ -7,6 +7,6 @@ import {
 } from './actionTypes.js';
 
 export const getRequiredIngredients = () => dispatch => {
-  dispatch({ type: GET_INGREDIENTS_START })
-  axios.get()
-}
+  dispatch({ type: GET_INGREDIENTS_START });
+  axios.get();
+};
