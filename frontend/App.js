@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native-paper';
-import { fromRight, fromLeft, zoomIn, zoomOut, fromBottom, flipX, flipY, fromTop } from "react-navigation-transition-config";
+import { fadeIn, fromRight, fromLeft, zoomIn, zoomOut, fromBottom, flipX, flipY, fromTop } from "react-navigation-transition-config";
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { getLocalData } from './src/store/actions/asyncStorage.js';
+import InitialLoad from './src/views/InitialLoad.js';
 import GreetingPage1 from './src/views/GreetingPages/GreetingPage1.js';
 import GreetingPage2 from './src/views/GreetingPages/GreetingPage2.js';
 import GreetingPage3 from './src/views/GreetingPages/GreetingPage3.js';
@@ -16,19 +16,7 @@ import MyRecipes from './src/views/MyRecipes.js';
 import RecipeForm from './src/views/RecipeForm.js';
 import Recipe from './src/views/Recipe.js';
 import * as firebase from 'firebase';
-let initialRoute = '';
 
-getLocalData('previouslyLoaded')
-.then(res => {
-  if (res == null) {
-    console.log(initialRoute)
-  } else {
-    console.log(initialRoute)
-  }
-})
-.catch(err => {
-  console.log(err);
-});
 
 const handleCustomTransition = ({ scenes }) => {
   const prevScene = scenes[scenes.length - 2];
@@ -40,7 +28,7 @@ const handleCustomTransition = ({ scenes }) => {
     && nextScene.route.routeName === 'GreetingPage2'
     || nextScene.route.routeName === 'GreetingPage3'
     || nextScene.route.routeName === 'GreetingPage4') {
-    return fromRight(1000);
+    return fromRight(700);
   }
   
   if(prevScene
@@ -52,9 +40,30 @@ const handleCustomTransition = ({ scenes }) => {
   if(prevScene
     && prevScene.route.routeName === 'Login' || 'Signup'
     && nextScene.route.routeName === 'Dashboard') {
-      return fromTop(1000);
+      return fromTop(700);
     }
+
+  if(prevScene
+    && prevScene.route.routeName === 'Landing'
+    && nextScene.route.routeName === 'Login' || 'SignUp') {
+      return fromRight(500)
+    }
+
+  if(prevScene
+    && nextScene.route.routeName === 'Dashboard' || 'MyRecipes') {
+      return fadeIn(500)
+    }
+
+  if(prevScene
+    && prevScene.route.routeName === 'InitialLoad'
+    && nextScene.route.routeName === 'Landing') {
+      return fadeIn(1000)
+    }
+
+  
 }
+
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDZKLP2FGiOx0aMXeDjAc3MOWSQa9pvJQg',
@@ -71,6 +80,9 @@ firebase.initializeApp(firebaseConfig);
 
 const AppNavigator = createStackNavigator(
   {
+    InitialLoad: {
+      screen: InitialLoad
+    },
     GreetingPage1: {
       screen: GreetingPage1
     },
@@ -110,7 +122,6 @@ const AppNavigator = createStackNavigator(
     defaultNavigationOptions: {
       header: null
     },
-    initialRouteName: initialRoute
   }
 );
 

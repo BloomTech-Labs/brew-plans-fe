@@ -17,7 +17,6 @@ const Landing = props => {
     getLocalData('user')
       .then(res => {
         if (res == null) {
-          console.log('null storage in landing: ', res);
         } else {
           setUserInState(res);
           props.navigation.navigate('Dashboard');

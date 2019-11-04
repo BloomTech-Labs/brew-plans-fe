@@ -25,9 +25,10 @@ export default StyleSheet.create({
     alignSelf: 'center',
     marginTop: 40,
     marginBottom: 20,
-    width: '90%',
+    width: '95%',
     height: 400,
-    borderRadius: 10
+    borderRadius: 10,
+    resizeMode: 'contain'
   },
   textContainer: {
     width: '90%',

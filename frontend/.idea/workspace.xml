@@ -39,8 +39,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -52,7 +50,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -108,8 +108,8 @@
       <window_info id="Build Variants" order="8" side_tool="true" weight="0.32985073" />
       <window_info anchor="bottom" id="Version Control" order="0" sideWeight="0.49626866" weight="0.3298731" />
       <window_info anchor="bottom" id="TODO" order="1" sideWeight="0.49850747" weight="0.3298731" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="2" sideWeight="0.48955223" visible="true" weight="0.2283737" />
-      <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.51044774" side_tool="true" visible="true" weight="0.2283737" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="2" sideWeight="0.48880598" visible="true" weight="0.2283737" />
+      <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.51119405" side_tool="true" visible="true" weight="0.2283737" />
       <window_info anchor="bottom" id="Run" order="4" />
       <window_info anchor="bottom" id="Logcat" order="5" sideWeight="0.4977612" weight="0.3298731" />
       <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />
