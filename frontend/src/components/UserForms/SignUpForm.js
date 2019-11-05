@@ -37,32 +37,32 @@ const SignUpForm = props => {
               label='Email'
               mode='outlined'
             /> */}
-                          <Akira
-    style={theme.formInput}
-    label={'Email'}
-    // this is used as active and passive border color
-    borderColor={'lightgray'}
-    inputPadding={16}
-    labelHeight={24}
-    labelStyle={{ color: '#870c27' }}
-    value={newUser.email}
-    textContentType={'emailAddress'}
-    onChangeText={(value) => handleChange('email', value)}
-        autoCapitalize={'none'}
-  />
-                          <Akira
-    style={theme.formInput}
-    label={'Password'}
-    // this is used as active and passive border color
-    borderColor={'lightgray'}
-    inputPadding={16}
-    labelHeight={24}
-    labelStyle={{ color: '#870c27' }}
-    value={newUser.password}
-    textContentType={'password'}
-    secureTextEntry={true}
-    onChangeText={(value) => handleChange('password', value)}
-  />
+            <Akira
+              style={theme.formInput}
+              label={'Email'}
+              // this is used as active and passive border color
+              borderColor={'lightgray'}
+              inputPadding={16}
+              labelHeight={24}
+              labelStyle={{ color: '#870c27' }}
+              value={newUser.email}
+              textContentType={'emailAddress'}
+              onChangeText={value => handleChange('email', value)}
+              autoCapitalize={'none'}
+            />
+            <Akira
+              style={theme.formInput}
+              label={'Password'}
+              // this is used as active and passive border color
+              borderColor={'lightgray'}
+              inputPadding={16}
+              labelHeight={24}
+              labelStyle={{ color: '#870c27' }}
+              value={newUser.password}
+              textContentType={'password'}
+              secureTextEntry={true}
+              onChangeText={value => handleChange('password', value)}
+            />
           </View>
           <SubmitButton onPress={() => authSignup(newUser)} title='Sign Up' />
           {/* <View style={theme.formSocialsContainer}>

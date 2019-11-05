@@ -6,19 +6,11 @@ import { Akira } from 'react-native-textinput-effects';
 import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
 import { connect } from 'react-redux';
-import {
-  handleSignInChange,
-  authSignIn
-} from '../../store/actions/index.js';
+import { handleSignInChange, authSignIn } from '../../store/actions/index.js';
 import * as firebase from 'firebase';
 
 const LoginForm = props => {
-  const { 
-    theme,
-    handleSignInChange, 
-    authSignIn,
-    signInCredentials 
-  } = props;
+  const { theme, handleSignInChange, authSignIn, signInCredentials } = props;
 
   const loginConfig = {
     androidClientId:
@@ -43,36 +35,37 @@ const LoginForm = props => {
       {props => (
         <View style={theme.formView}>
           <View style={theme.formInputsContainer}>
-              <Akira
-    style={theme.formInput}
-    label={'Email'}
-    // this is used as active and passive border color
-    borderColor={'lightgray'}
-    inputPadding={16}
-    labelHeight={24}
-    labelStyle={{ color: '#870c27' }}
-    value={signInCredentials.email}
-    textContentType={'emailAddress'}
-    onChangeText={(value) => handleSignInChange('email', value)}
-    autoCapitalize={'none'}
-  />
-              <Akira
-    style={theme.formInput}
-    label={'Password'}
-    // this is used as active and passive border color
-    borderColor={'lightgray'}
-    inputPadding={16}
-    labelHeight={24}
-    labelStyle={{ color: '#870c27' }}
-    value={signInCredentials.password}
-    onChangeText={(value) => handleSignInChange('password', value)}
-    textContentType={'password'}
-    secureTextEntry={true}
-  />
+            <Akira
+              style={theme.formInput}
+              label={'Email'}
+              // this is used as active and passive border color
+              borderColor={'lightgray'}
+              inputPadding={16}
+              labelHeight={24}
+              labelStyle={{ color: '#870c27' }}
+              value={signInCredentials.email}
+              textContentType={'emailAddress'}
+              onChangeText={value => handleSignInChange('email', value)}
+              autoCapitalize={'none'}
+            />
+            <Akira
+              style={theme.formInput}
+              label={'Password'}
+              // this is used as active and passive border color
+              borderColor={'lightgray'}
+              inputPadding={16}
+              labelHeight={24}
+              labelStyle={{ color: '#870c27' }}
+              value={signInCredentials.password}
+              onChangeText={value => handleSignInChange('password', value)}
+              textContentType={'password'}
+              secureTextEntry={true}
+            />
           </View>
-          <SubmitButton 
-          onPress={() => authSignIn(signInCredentials)} 
-          title='Login' />
+          <SubmitButton
+            onPress={() => authSignIn(signInCredentials)}
+            title='Login'
+          />
           {/* <View style={theme.formSocialsContainer}>
             <Text
               style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}
