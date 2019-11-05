@@ -9,8 +9,8 @@ export default {
 
   colors: {
     ...DefaultTheme.colors,
-    primary: '#ffa537',
-    background: '#ece6cf',
+    primary: '#870c27',
+    background: 'white',
     surface: '#0f1f40'
   },
 
@@ -29,7 +29,7 @@ export default {
   formInput: {
     marginBottom: space[1],
     width: '90%',
-    fontSize: 3
+    fontSize: 3,
   },
 
   formSocialsContainer: {

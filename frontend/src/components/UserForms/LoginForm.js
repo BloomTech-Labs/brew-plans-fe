@@ -2,21 +2,21 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { Formik } from 'formik';
 import { withTheme, TextInput } from 'react-native-paper';
+import { Akira } from 'react-native-textinput-effects';
 import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
 import { connect } from 'react-redux';
 import { handleSignInChange, authSignIn } from '../../store/actions/index.js';
+import * as firebase from 'firebase';
 
 const LoginForm = props => {
-  const theme = props.theme;
-  const { handleSignInChange, authSignIn, signInCredentials } = props;
+  const { theme, handleSignInChange, authSignIn, signInCredentials } = props;
 
   const loginConfig = {
     androidClientId:
       '449923889220-pa3veecaq72o4tiairfrputrj7f0dp2n.apps.googleusercontent.com',
     scopes: ['profile', 'email']
   };
-  console.log(signInCredentials);
 
   function userSignin(email, password) {
     firebase
@@ -35,30 +35,38 @@ const LoginForm = props => {
       {props => (
         <View style={theme.formView}>
           <View style={theme.formInputsContainer}>
-            <TextInput
+            <Akira
               style={theme.formInput}
-              onChangeText={value => handleSignInChange('email', value)}
-              onBlur={props.handleBlur('email')}
+              label={'Email'}
+              // this is used as active and passive border color
+              borderColor={'lightgray'}
+              inputPadding={16}
+              labelHeight={24}
+              labelStyle={{ color: '#870c27' }}
               value={signInCredentials.email}
-              label='Email'
-              mode='outlined'
-              placeholder='Please enter username'
+              textContentType={'emailAddress'}
+              onChangeText={value => handleSignInChange('email', value)}
+              autoCapitalize={'none'}
             />
-            <TextInput
+            <Akira
               style={theme.formInput}
-              onChangeText={value => handleSignInChange('password', value)}
-              onBlur={props.handleBlur('password')}
+              label={'Password'}
+              // this is used as active and passive border color
+              borderColor={'lightgray'}
+              inputPadding={16}
+              labelHeight={24}
+              labelStyle={{ color: '#870c27' }}
               value={signInCredentials.password}
-              label='Password'
-              mode='outlined'
-              placeholder='Please enter password'
+              onChangeText={value => handleSignInChange('password', value)}
+              textContentType={'password'}
+              secureTextEntry={true}
             />
           </View>
           <SubmitButton
             onPress={() => authSignIn(signInCredentials)}
             title='Login'
           />
-          <View style={theme.formSocialsContainer}>
+          {/* <View style={theme.formSocialsContainer}>
             <Text
               style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}
             >
@@ -68,7 +76,7 @@ const LoginForm = props => {
               <SocialButton icon='logo-google' loginConfig={loginConfig} />
               <SocialButton icon='logo-facebook' />
             </View>
-          </View>
+          </View> */}
         </View>
       )}
     </Formik>

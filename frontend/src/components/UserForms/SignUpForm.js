@@ -7,7 +7,10 @@ import { withTheme } from 'react-native-paper';
 import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
 import * as firebase from 'firebase';
-import { authSignup, handleChange } from '../../store/actions/index.js';
+import { Ionicons } from '@expo/vector-icons';
+import { Akira } from 'react-native-textinput-effects';
+
+import { handleChange, authSignup } from '../../store/actions/index.js';
 
 const SignUpForm = props => {
   // console.log('signupformprops: ', props)
@@ -18,37 +21,14 @@ const SignUpForm = props => {
   };
 
   const { theme, newUser } = props;
-  const { authSignup } = props;
-  // console.log('newUser: ', newUser);
-
-  // const submitSignup = () => {
-  //   // props.handleUserSignup(newUser);
-  //   console.log('pressed button');
-  //   _storeData(newUser);
-  // };
-
-  function submitSignup(email, password) {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        props.navigation.replace('Dashboard');
-      })
-      .catch(error => {
-        Alert.alert(error.message);
-      });
-  }
-
-  const handleChange = (inputType, inputValue) => {
-    props.handleChange(inputType, inputValue);
-  };
+  const { authSignup, handleChange } = props;
 
   return (
     <Formik>
       {props => (
         <View style={theme.formView}>
           <View style={theme.formInputsContainer}>
-            <TextInput
+            {/* <TextInput
               style={theme.formInput}
               onChangeText={value => handleChange('email', value)}
               onBlur={props.handleBlur('email')}
@@ -56,19 +36,36 @@ const SignUpForm = props => {
               placeholder='Please enter email'
               label='Email'
               mode='outlined'
-            />
-            <TextInput
+            /> */}
+            <Akira
               style={theme.formInput}
-              onChangeText={value => handleChange('password', value)}
-              onBlur={props.handleBlur('password')}
+              label={'Email'}
+              // this is used as active and passive border color
+              borderColor={'lightgray'}
+              inputPadding={16}
+              labelHeight={24}
+              labelStyle={{ color: '#870c27' }}
+              value={newUser.email}
+              textContentType={'emailAddress'}
+              onChangeText={value => handleChange('email', value)}
+              autoCapitalize={'none'}
+            />
+            <Akira
+              style={theme.formInput}
+              label={'Password'}
+              // this is used as active and passive border color
+              borderColor={'lightgray'}
+              inputPadding={16}
+              labelHeight={24}
+              labelStyle={{ color: '#870c27' }}
               value={newUser.password}
-              placeholder='Please enter password'
-              label='Password'
-              mode='outlined'
+              textContentType={'password'}
+              secureTextEntry={true}
+              onChangeText={value => handleChange('password', value)}
             />
           </View>
           <SubmitButton onPress={() => authSignup(newUser)} title='Sign Up' />
-          <View style={theme.formSocialsContainer}>
+          {/* <View style={theme.formSocialsContainer}>
             <Text
               style={{ marginBottom: 8, fontSize: 18, fontStyle: 'italic' }}
             >
@@ -78,7 +75,7 @@ const SignUpForm = props => {
               <SocialButton icon='logo-google' loginConfig={loginConfig} />
               <SocialButton icon='logo-facebook' />
             </View>
-          </View>
+          </View> */}
         </View>
       )}
     </Formik>

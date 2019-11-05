@@ -1,0 +1,62 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-native-expo-viewport-units
+
+PATH: 
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\colin\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\QuickTime\QTSystem;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Users\colin\AppData\Local\Microsoft\WindowsApps;C:\Users\colin\AppData\Local\Programs\Microsoft VS Code\bin;C:\tools\dart-sdk\bin;C:\Users\colin\AppData\Roaming\Pub\Cache\bin;C:\Users\colin\AppData\Roaming\npm;C:\Users\colin\AppData\Local\Yarn\bin;C:\Users\colin\AppData\Local\Microsoft\WindowsApps
+
+Yarn version: 
+  1.16.0
+
+Node version: 
+  10.16.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'C:\Users\colin\Desktop\brew-plans-fe\frontend\node_modules\anymatch\node_modules\arr-diff'
+
+npm manifest: 
+  {
+    "main": "index.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject",
+      "react-devtools": "react-devtools"
+    },
+    "dependencies": {
+      "@react-native-community/async-storage": "^1.6.2",
+      "axios": "^0.19.0",
+      "expo": "^35.0.0",
+      "expo-app-auth": "~7.0.0",
+      "expo-google-app-auth": "^7.0.0",
+      "firebase": "^7.2.2",
+      "formik": "^1.5.8",
+      "react": "16.8.3",
+      "react-dom": "16.8.3",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+      "react-native-gesture-handler": "~1.3.0",
+      "react-native-paper": "^2.16.0",
+      "react-native-reanimated": "~1.2.0",
+      "react-native-web": "^0.11.7",
+      "react-navigation": "^4.0.10",
+      "react-navigation-drawer": "^2.2.2",
+      "react-navigation-stack": "^1.9.4",
+      "react-redux": "^7.1.1",
+      "redux": "^4.0.4",
+      "redux-thunk": "^2.3.0"
+    },
+    "devDependencies": {
+      "babel-preset-expo": "^7.0.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

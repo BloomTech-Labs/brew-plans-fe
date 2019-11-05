@@ -3,22 +3,21 @@ export {
   getUserInfo,
   googleSignIn,
   userLogout,
-  handleSignInChange
+  handleSignInChange,
+  setUserInState,
+  setCurrentRecipe
 } from './user.js';
 
-export { 
-  getSeededRecipes 
-} from './seededRecipes.js';
+export { getSeededRecipes } from './seededRecipes.js';
 
-export { 
-  getUserRecipes, 
+export {
+  getUserRecipes,
   deleteUserRecipe,
   handleRecipeEdit,
   handleRecipeUpdate,
-  createUserRecipe
+  createUserRecipe,
+  handleNewRecipeInput,
+  setRecipeToEdit
 } from './userRecipes.js';
 
-export {
-  authSignup,
-  authSignIn
-} from './auth.js'
+export { authSignup, authSignIn, setTokenInState } from './auth.js';
