@@ -7,15 +7,16 @@ import { connect } from 'react-redux';
 import Layout from '../Layout';
 import { userLogout } from '../../../store/actions/user.js';
 import * as firebase from 'firebase';
-// import NavDrawer from './NavDrawer';
+import styles from '../../../styling/NavStyling';
 
 const NavTabs = props => {
   const [open, setOpen] = useState(false);
   return (
     <View>
-      <Appbar style={{ width: '100%' }} theme={theme}>
+      <Appbar style={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }} theme={theme}>
         <Image source= {require("../../../../assets/BrewPlansLogo.png")} />
           
+          <View style={{flexDirection: 'row'}}>
           <Appbar.Action
           icon='home'
           onPress={() => props.navigation.navigate('Dashboard')}
@@ -33,6 +34,7 @@ const NavTabs = props => {
             props.navigation.navigate('Landing');
           }}
         />
+        </View>
         {/* <Appbar.Action
           icon='menu'
           onPress={() => {

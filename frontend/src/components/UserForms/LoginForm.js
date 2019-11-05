@@ -54,6 +54,7 @@ const LoginForm = props => {
     value={signInCredentials.email}
     textContentType={'emailAddress'}
     onChangeText={(value) => handleSignInChange('email', value)}
+    autoCapitalize={'none'}
   />
               <Akira
     style={theme.formInput}

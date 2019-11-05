@@ -48,6 +48,7 @@ const SignUpForm = props => {
     value={newUser.email}
     textContentType={'emailAddress'}
     onChangeText={(value) => handleChange('email', value)}
+        autoCapitalize={'none'}
   />
                           <Akira
     style={theme.formInput}
