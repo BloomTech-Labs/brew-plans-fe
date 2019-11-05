@@ -11,20 +11,7 @@ import * as firebase from 'firebase';
 
 const Landing = props => {
   const { loggedIn, setUserInState, setTokenInState } = props;
-
-  useEffect(() => {
-    storeLocalData('previouslyLoaded', true)
-    getLocalData('user')
-      .then(res => {
-        if (res == null) {
-        } else {
-          setUserInState(res);
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, [loggedIn]);
+  storeLocalData('previouslyLoaded', true)
 
   firebase.auth().onAuthStateChanged(user => {
     if (user) {

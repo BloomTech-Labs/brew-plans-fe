@@ -32,8 +32,9 @@ const MyRecipes = props => {
   const [addRecipeModal, setAddRecipeModal] = useState(false);
   const [editRecipeModal, setEditRecipeModal] = useState(false);
   // const [numberIngredients, setNumberIngredients] = useState(['', '']);
-
+  
   useEffect(() => {
+    
     props.getUserRecipes(currentUser.id);
     props.getSeededRecipes();
   }, []);

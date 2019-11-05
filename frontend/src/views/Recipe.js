@@ -26,7 +26,6 @@ const Recipe = props => {
     }
   }, [])
 
-  console.log(sortedInstructions)
 
   return (
     <View style={{ flex: 1, width: '100%' }}>

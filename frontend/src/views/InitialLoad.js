@@ -1,8 +1,11 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { getLocalData } from '../store/actions/asyncStorage.js';
+import { setUserInState } from '../store/actions/index.js';
+import { connect } from 'react-redux';
 
 const InitialLoad = (props) => {
+  const { setUserInState } = props;
 
   getLocalData('previouslyLoaded')
     .then(res => {
@@ -10,6 +13,7 @@ const InitialLoad = (props) => {
         getLocalData('user')
         .then(res => { 
           if(res !== null) {
+            setUserInState(res);
             setTimeout(() => props.navigation.navigate('Dashboard'), 2000)
           } else {
             setTimeout(() => props.navigation.navigate('Landing'), 2000)
@@ -33,4 +37,15 @@ const InitialLoad = (props) => {
   );
 };
 
-export default InitialLoad;
+const mapStateToProps = state => {
+  return {
+
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    setUserInState
+  }
+)(InitialLoad);
