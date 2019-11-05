@@ -13,27 +13,33 @@ const NavTabs = props => {
   const [open, setOpen] = useState(false);
   return (
     <View>
-      <Appbar style={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }} theme={theme}>
-        <Image source= {require("../../../../assets/BrewPlansLogo.png")} />
-          
-          <View style={{flexDirection: 'row'}}>
+      <Appbar
+        style={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between'
+        }}
+        theme={theme}
+      >
+        <Image source={require('../../../../assets/BrewPlansLogo.png')} />
+
+        <View style={{ flexDirection: 'row' }}>
           <Appbar.Action
-          icon='home'
-          onPress={() => props.navigation.navigate('Dashboard')}
-        /> 
-        <Appbar.Action
-          icon='person'
-          onPress={() => props.navigation.navigate('MyRecipes')}
-        />
-       
-        <Appbar.Action
-          icon='work'
-          onPress={() => {
-            firebase.auth().signOut();
-            props.userLogout();
-            props.navigation.navigate('Landing');
-          }}
-        />
+            icon='person'
+            onPress={() => props.navigation.navigate('MyRecipes')}
+            color='white'
+          />
+
+          <Appbar.Action
+            icon='work'
+            onPress={() => {
+              firebase.auth().signOut();
+              props.userLogout();
+              props.navigation.navigate('Landing');
+            }}
+            color='white'
+          />
         </View>
         {/* <Appbar.Action
           icon='menu'
