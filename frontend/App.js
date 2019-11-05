@@ -93,10 +93,12 @@ const AppNavigator = createStackNavigator(
     Landing: {
       screen: Landing
     },
-     MyRecipes: {
+    MyRecipes: {
       screen: MyRecipes
     },
-    
+    Dashboard: {
+      screen: Dashboard
+    },
     SignUp: {
       screen: SignUp
     },

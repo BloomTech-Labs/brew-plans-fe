@@ -10,9 +10,9 @@ const InitialLoad = (props) => {
         getLocalData('user')
         .then(res => { 
           if(res !== null) {
-            setTimeout(() => props.navigation.navigate('MyRecipes'), 1500)
+            setTimeout(() => props.navigation.navigate('Dashboard'), 2000)
           } else {
-            setTimeout(() => props.navigation.navigate('Landing'), 1500)
+            setTimeout(() => props.navigation.navigate('Landing'), 2000)
           }
         })
       } else {
