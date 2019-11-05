@@ -15,8 +15,12 @@ const NavTabs = props => {
   return (
     <View>
       <Appbar style={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }} theme={theme}>
-        <Image style={{ resizeMode: 'contain', height: '95%' }} source={require("../../../../assets/BrewPlansLogo.png")} />
-          
+     
+        <Image source={require('../../assets/BrewPlansLogo.png')} style={{ resizeMode: 'contain', height: '95%' }}>
+
+      </Image>
+
+
           <View style={{flexDirection: 'row'}}>
           <Appbar.Action 
           icon='home'
