@@ -4,6 +4,7 @@ import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import { setRecipeToEdit } from '../../store/actions/userRecipes.js';
 import styles from '../../styling/UserRecipeStyling';
+import { IconButton } from 'react-native-paper';
 
 const UserRecipe = props => {
   const { recipe } = props;
@@ -38,7 +39,7 @@ const UserRecipe = props => {
         >
           <MaterialIcons name={'edit'} size={20} color={'black'} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={props.delete}>
+        <TouchableOpacity style={styles.iconButton} onPress={props.delete}>
           <MaterialIcons name={'delete'} size={20} color={'black'} />
         </TouchableOpacity>
       </View>
