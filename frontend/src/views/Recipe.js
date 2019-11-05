@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Layout from '../components/Layout/Layout';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
 import styles from '../styling/SeededRecipesStyling';
-import { View, ScrollView, Text, Button, TouchableOpacity } from 'react-native';
+import { View, ScrollView, Text, Image } from 'react-native';
 
 const Recipe = props => {
   const [ sortedInstructions, setSortedInstructions ] = useState([]);
@@ -31,6 +31,7 @@ const Recipe = props => {
   return (
     <View style={{ flex: 1, width: '100%' }}>
       <NavBar {...props} />
+      <Image source={require('../../assets/RecipeImage.png')} style={{ width: '100%', height: '25%', }}/>
       <Layout>
         <ScrollView>
             <Text style={styles.recipeTitle}>{currentRecipe.title}</Text>
