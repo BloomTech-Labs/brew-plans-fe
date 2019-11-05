@@ -13,13 +13,12 @@ const Landing = props => {
   const { loggedIn, setUserInState, setTokenInState } = props;
 
   useEffect(() => {
-    // storeLocalData('previouslyLoaded', true)
+    storeLocalData('previouslyLoaded', true)
     getLocalData('user')
       .then(res => {
         if (res == null) {
         } else {
           setUserInState(res);
-          props.navigation.navigate('MyRecipes');
         }
       })
       .catch(err => {
@@ -29,7 +28,7 @@ const Landing = props => {
 
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
-      props.navigation.navigate('MyRecipes');
+      props.navigation.navigate('Dashboard');
       firebase
         .auth()
         .currentUser.getIdToken(true)
