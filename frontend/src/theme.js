@@ -29,18 +29,18 @@ export default {
   formInput: {
     marginBottom: space[1],
     width: '90%',
-    fontSize: 3,
+    fontSize: 3
   },
 
   formSocialsContainer: {
-    width: '40%',
+    width: '80%',
     marginTop: space[4],
     alignItems: 'center'
   },
 
   formIcons: {
     flexDirection: 'row',
-    width: '100%',
+    width: '40%',
     justifyContent: 'space-between',
     textAlign: 'center',
     marginTop: space[0]

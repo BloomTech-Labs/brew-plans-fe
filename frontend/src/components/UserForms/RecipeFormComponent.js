@@ -20,12 +20,12 @@ import {
 } from '../../store/actions/index.js';
 
 const RecipeFormComponent = props => {
-  const { 
-    cancel, 
-    form, 
-    titleText, 
-    newRecipe, 
-    recipeToEdit, 
+  const {
+    cancel,
+    form,
+    titleText,
+    newRecipe,
+    recipeToEdit,
     currentUser,
     createUserRecipe,
     handleNewRecipeInput,

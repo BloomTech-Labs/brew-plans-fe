@@ -17,23 +17,27 @@ const NavTabs = props => {
         <Image style={{ resizeMode: 'contain', height: '95%' }} source={require("../../../../assets/BrewPlansLogo.png")} />
           
           <View style={{flexDirection: 'row'}}>
-          <Appbar.Action
+          <Appbar.Action 
           icon='home'
           onPress={() => props.navigation.navigate('Dashboard')}
-        /> 
-        <Appbar.Action
-          icon='person'
-          onPress={() => props.navigation.navigate('MyRecipes')}
-        />
-       
-        <Appbar.Action
-          icon='work'
-          onPress={() => {
-            firebase.auth().signOut();
-            props.userLogout();
-            props.navigation.navigate('Landing');
-          }}
-        />
+          color={'white'}
+          />
+
+          <Appbar.Action
+            icon='person'
+            onPress={() => props.navigation.navigate('MyRecipes')}
+            color='white'
+          />
+
+          <Appbar.Action
+            icon='work'
+            onPress={() => {
+              firebase.auth().signOut();
+              props.userLogout();
+              props.navigation.navigate('Landing');
+            }}
+            color='white'
+          />
         </View>
         {/* <Appbar.Action
           icon='menu'

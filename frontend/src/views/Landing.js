@@ -45,9 +45,21 @@ const Landing = props => {
 
   return (
     <Layout custom={'white'}>
-      <Image style={{ position: 'absolute', top: '5%', left: '5%' }} source={require('../../assets/BrewPlansLogo.png')}/>
-      <Image style={{ borderRadius: 5, top: '10%' }} source={require('../../assets/IntroImage.png')}/>
-      <View style={{ marginTop: '35%' }}>
+      <Image
+        style={{ position: 'absolute', top: '5%', left: '5%', zIndex: 50 }}
+        source={require('../../assets/BrewPlansLogo.png')}
+      />
+      <Image
+        style={{
+          borderRadius: 5,
+          top: '10%',
+          height: '50%',
+          maxHeight: 360,
+          marginTop: 32
+        }}
+        source={require('../../assets/IntroImage.png')}
+      />
+      <View style={{ marginTop: 86 }}>
         <LandingButton
           buttonBackground={'#870c27'}
           buttonText={'white'}

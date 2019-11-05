@@ -26,7 +26,7 @@ export default StyleSheet.create({
     marginTop: 40,
     marginBottom: 20,
     width: '95%',
-    height: '50%',
+    height: '40%',
     borderRadius: 10,
     resizeMode: 'contain'
   },
@@ -34,7 +34,7 @@ export default StyleSheet.create({
     width: '90%',
     alignSelf: 'center',
     top: '70%',
-    position: 'absolute',
+    position: 'absolute'
   },
   introText: {
     textAlign: 'center',
@@ -50,4 +50,4 @@ export default StyleSheet.create({
   buttonText: {
     fontSize: 28
   }
-})
+});
