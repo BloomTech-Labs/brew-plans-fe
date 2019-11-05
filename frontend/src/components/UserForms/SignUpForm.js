@@ -8,6 +8,7 @@ import SocialButton from './SocialButton';
 import SubmitButton from './SubmitButton';
 import * as firebase from 'firebase';
 import { Ionicons } from '@expo/vector-icons';
+import { Akira } from 'react-native-textinput-effects';
 
 import { handleChange, authSignup } from '../../store/actions/index.js';
 
@@ -27,7 +28,7 @@ const SignUpForm = props => {
       {props => (
         <View style={theme.formView}>
           <View style={theme.formInputsContainer}>
-            <TextInput
+            {/* <TextInput
               style={theme.formInput}
               onChangeText={value => handleChange('email', value)}
               onBlur={props.handleBlur('email')}
@@ -35,17 +36,32 @@ const SignUpForm = props => {
               placeholder='Please enter email'
               label='Email'
               mode='outlined'
-            />
-            <TextInput
-              type='password'
-              style={theme.formInput}
-              onChangeText={value => handleChange('password', value)}
-              onBlur={props.handleBlur('password')}
-              value={newUser.password}
-              placeholder='Please enter password'
-              label='Password'
-              mode='outlined'
-            />
+            /> */}
+                          <Akira
+    style={theme.formInput}
+    label={'Email'}
+    // this is used as active and passive border color
+    borderColor={'lightgray'}
+    inputPadding={16}
+    labelHeight={24}
+    labelStyle={{ color: '#870c27' }}
+    value={newUser.email}
+    textContentType={'emailAddress'}
+    onChangeText={(value) => handleChange('email', value)}
+  />
+                          <Akira
+    style={theme.formInput}
+    label={'Password'}
+    // this is used as active and passive border color
+    borderColor={'lightgray'}
+    inputPadding={16}
+    labelHeight={24}
+    labelStyle={{ color: '#870c27' }}
+    value={newUser.password}
+    textContentType={'password'}
+    secureTextEntry={true}
+    onChangeText={(value) => handleChange('password', value)}
+  />
           </View>
           <SubmitButton onPress={() => authSignup(newUser)} title='Sign Up' />
           {/* <View style={theme.formSocialsContainer}>

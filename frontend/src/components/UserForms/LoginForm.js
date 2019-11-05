@@ -47,23 +47,26 @@ const LoginForm = props => {
     style={theme.formInput}
     label={'Email'}
     // this is used as active and passive border color
-    borderColor={'#a5d1cc'}
+    borderColor={'lightgray'}
     inputPadding={16}
     labelHeight={24}
-    labelStyle={{ color: '#ac83c4' }}
+    labelStyle={{ color: '#870c27' }}
     value={signInCredentials.email}
+    textContentType={'emailAddress'}
     onChangeText={(value) => handleSignInChange('email', value)}
   />
               <Akira
     style={theme.formInput}
     label={'Password'}
     // this is used as active and passive border color
-    borderColor={'#a5d1cc'}
+    borderColor={'lightgray'}
     inputPadding={16}
     labelHeight={24}
-    labelStyle={{ color: '#ac83c4' }}
+    labelStyle={{ color: '#870c27' }}
     value={signInCredentials.password}
     onChangeText={(value) => handleSignInChange('password', value)}
+    textContentType={'password'}
+    secureTextEntry={true}
   />
           </View>
           <SubmitButton 
