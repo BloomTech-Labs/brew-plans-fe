@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Appbar, withTheme, Drawer } from 'react-native-paper';
-import { StyleSheet, View,  } from 'react-native';
+import { StyleSheet, View,  Image } from 'react-native';
 import theme from '../../../theme.js';
 import { connect } from 'react-redux';
 import Layout from '../Layout';
@@ -9,6 +9,7 @@ import { userLogout } from '../../../store/actions/user.js';
 import * as firebase from 'firebase';
 import styles from '../../../styling/NavStyling';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import image from '../../../../assets/BrewPlansLogo.png';
 
 const NavTabs = props => {
   const [open, setOpen] = useState(false);
@@ -16,9 +17,7 @@ const NavTabs = props => {
     <View>
       <Appbar style={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }} theme={theme}>
      
-        <Image source={require('../../assets/BrewPlansLogo.png')} style={{ resizeMode: 'contain', height: '95%' }}>
-
-      </Image>
+        <Image source={require('../../../../assets/BrewPlansLogo.png')} style={{ resizeMode: 'contain', height: '95%' }} />
 
 
           <View style={{flexDirection: 'row'}}>
