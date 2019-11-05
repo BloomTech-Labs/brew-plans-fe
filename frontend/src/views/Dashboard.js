@@ -13,7 +13,7 @@ const Dashboard = props => {
     <View style={{ flex: 1 }}>
       <NavBar {...props} />
         <ImageBackground source={require('../../assets/DashboardImage.jpeg')} style={{ height: '100%', width: '100%' }}>
-          <Text style={styles.title}>Welcome</Text>
+          <Text style={styles.title}>Welcome Arshak</Text>
           <TouchableOpacity onPress={() => props.navigation.navigate('MyRecipes')} style={{ marginTop: '45%', alignSelf: 'center', width: '40%', padding: 8, backgroundColor: '#870c27', borderRadius: 10 }}>
             <Text style={{ color:  'white', alignSelf: 'center', fontSize: 30 }}>Start</Text>
           </TouchableOpacity>
