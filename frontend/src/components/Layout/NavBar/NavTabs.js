@@ -8,6 +8,7 @@ import Layout from '../Layout';
 import { userLogout } from '../../../store/actions/user.js';
 import * as firebase from 'firebase';
 import styles from '../../../styling/NavStyling';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const NavTabs = props => {
   const [open, setOpen] = useState(false);
@@ -26,19 +27,19 @@ const NavTabs = props => {
 
         <View style={{ flexDirection: 'row' }}>
           <Appbar.Action
-            icon='person'
+            icon={require('../../../../assets/coffee.png')}
             onPress={() => props.navigation.navigate('MyRecipes')}
             color='white'
           />
 
           <Appbar.Action
-            icon='work'
             onPress={() => {
               firebase.auth().signOut();
               props.userLogout();
               props.navigation.navigate('Landing');
             }}
             color='white'
+            icon={require('../../../../assets/logout.png')}
           />
         </View>
         {/* <Appbar.Action
