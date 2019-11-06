@@ -3,7 +3,6 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import RecipeFormComponent from '../components/UserForms/RecipeFormComponent';
-import AddRecipeForm from '../components/UserForms/AddRecipeForm';
 
 const RecipeForm = props => {
   console.log('props', props);
@@ -30,7 +29,7 @@ const RecipeForm = props => {
     //   }
     // }
 
-    <AddRecipeForm {...props} />
+    <RecipeFormComponent {...props} />
   );
 };
 

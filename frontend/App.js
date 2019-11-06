@@ -91,7 +91,7 @@ const AppNavigator = createStackNavigator(
       screen: GreetingPage3
     },
     Landing: {
-      screen: RecipeForm
+      screen: Landing
     },
     Dashboard: {
       screen: Dashboard
