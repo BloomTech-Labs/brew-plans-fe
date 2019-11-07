@@ -9,6 +9,7 @@ import { userLogout } from '../../../store/actions/user.js';
 import * as firebase from 'firebase';
 import styles from '../../../styling/NavStyling';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import image from '../../../../assets/BrewPlansLogo.png';
 
 const NavTabs = props => {
   const [open, setOpen] = useState(false);

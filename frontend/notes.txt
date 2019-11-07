@@ -1,0 +1,20 @@
+Things To Fix
+
+
+Brew Plans and Skip pg 2 more padding around perimeter. margin
+
+
+Change Logo color, so its more visible,
+
+
+recipe list - user/seeded  make delete button larger ( hard to hit) 
+
+Set it so intro screen doesnt show up every time.
+
+fix the WEL- in dashboard ( along with all the text being cut off)
+
+make My-recipes the homepage
+
+Create key-pressed effects
+
+redirect to recipes page(homepage) after google sign in.

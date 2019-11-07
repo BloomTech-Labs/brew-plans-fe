@@ -38,7 +38,7 @@ const UserRecipe = props => {
         >
           <MaterialIcons name={'edit'} size={20} color={'black'} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={props.delete}>
+        <TouchableOpacity style={styles.iconButton} onPress={props.delete}>
           <MaterialIcons name={'delete'} size={20} color={'black'} />
         </TouchableOpacity>
       </View>
