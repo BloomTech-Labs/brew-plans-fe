@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import { setRecipeToEdit } from '../../store/actions/userRecipes.js';
-import styles from '../../styling/UserRecipeStyling';
+// import styles from '../../styling/UserRecipeStyling';
 
 const UserRecipe = props => {
   const { recipe } = props;
@@ -45,6 +45,32 @@ const UserRecipe = props => {
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  recipeContainer: {
+    width: '100%',
+    backgroundColor: '#f7f7f7',
+    marginVertical: 8,
+    padding: 16,
+    justifyContent: 'center',
+    borderRadius: 5,
+    borderWidth: 2,
+    borderColor: 'lightgray'
+  },
+  recipeTitle: {
+    fontSize: 16,
+    fontWeight: 'bold'
+  },
+  recipeInfoContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 12
+  },
+  recipeInfo: {
+    flexDirection: 'row'
+  }
+});
 
 const mapStateToProps = state => {
   return {

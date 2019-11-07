@@ -14,14 +14,25 @@ const NavTabs = props => {
   const [open, setOpen] = useState(false);
   return (
     <View>
-      <Appbar style={{ width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }} theme={theme}>
-        <Image style={{ resizeMode: 'contain', height: '95%' }} source={require("../../../../assets/BrewPlansLogo.png")} />
-          
-          <View style={{flexDirection: 'row'}}>
-          <Appbar.Action 
-          icon='home'
-          onPress={() => props.navigation.navigate('Dashboard')}
-          color={'white'}
+      <Appbar
+        style={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between'
+        }}
+        theme={theme}
+      >
+        <Image
+          style={{ resizeMode: 'contain', height: '95%' }}
+          source={require('../../../../assets/BrewPlansLogo.png')}
+        />
+
+        <View style={{ flexDirection: 'row' }}>
+          <Appbar.Action
+            icon='home'
+            onPress={() => props.navigation.navigate('Dashboard')}
+            color={'white'}
           />
 
           <Appbar.Action
@@ -37,18 +48,18 @@ const NavTabs = props => {
               props.navigation.navigate('Landing');
             }}
             color='white'
-            icon={require('../../../../assets/logout.png')}
+            icon='work'
+          />
+          <Appbar.Action
+            icon='menu'
+            color='white'
+            onPress={() => {
+              setOpen(!open);
+              console.log(open);
+            }}
           />
         </View>
-        {/* <Appbar.Action
-          icon='menu'
-          onPress={() => {
-            setOpen(!open);
-            console.log(open);
-          }}
-        /> */}
       </Appbar>
-      {/* {open ? <NavDrawer {...props} /> : null} */}
     </View>
   );
 };
