@@ -1,6 +1,8 @@
 import React from 'react';
+import {Text} from "react-native"
 import Layout from '../components/Layout/Layout';
 import LandingButton from '../components/Landing/LandingButton';
+import Timer from "../components/timer"
 
 const Landing = props => {
   return (
