@@ -10,9 +10,9 @@ import * as firebase from 'firebase';
 import styles from '../../../styling/NavStyling';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import image from '../../../../assets/BrewPlansLogo.png';
+import NavDrawer from './NavDrawer';
 
 const NavTabs = props => {
-  const [open, setOpen] = useState(false);
   return (
     <View>
       <Appbar
@@ -30,7 +30,7 @@ const NavTabs = props => {
         />
 
         <View style={{ flexDirection: 'row' }}>
-          <Appbar.Action
+          {/* <Appbar.Action
             icon='home'
             onPress={() => props.navigation.navigate('Dashboard')}
             color={'white'}
@@ -50,14 +50,11 @@ const NavTabs = props => {
             }}
             color='white'
             icon='work'
-          />
+          /> */}
           <Appbar.Action
             icon='menu'
             color='white'
-            onPress={() => {
-              setOpen(!open);
-              console.log(open);
-            }}
+            onPress={props.toggleDrawer}
           />
         </View>
       </Appbar>
