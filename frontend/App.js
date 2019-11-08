@@ -17,6 +17,7 @@ import Recipe from './src/views/Recipe.js';
 import * as firebase from 'firebase';
 
 
+
 const handleCustomTransition = ({ scenes }) => {
   const prevScene = scenes[scenes.length - 2];
   const nextScene = scenes[scenes.length - 1];
