@@ -37,6 +37,7 @@ const NavDrawer = props => {
           onPress={() => {
             // setActive("dashboard");
             props.navigation.navigate("Dashboard");
+            props.closeDrawer();
           }}
           style={{
             marginVertical: 8
@@ -48,6 +49,7 @@ const NavDrawer = props => {
           onPress={() => {
             // setActive("recipes");
             props.navigation.navigate("MyRecipes");
+            props.closeDrawer();
           }}
           style={{
             marginVertical: 8,

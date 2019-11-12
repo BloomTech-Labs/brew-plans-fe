@@ -8,9 +8,13 @@ const NavBar = props => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <View sty style={styles.navbarContainer}>
+    <View style={styles.navbarContainer}>
       <NavTabs toggleDrawer={() => setIsOpen(!isOpen)} {...props} />
-      <NavDrawer drawerOpen={isOpen} {...props} />
+      <NavDrawer
+        drawerOpen={isOpen}
+        closeDrawer={() => setIsOpen(false)}
+        {...props}
+      />
     </View>
   );
 };
