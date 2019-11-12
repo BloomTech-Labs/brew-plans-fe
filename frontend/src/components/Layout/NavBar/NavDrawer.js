@@ -1,20 +1,29 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Animated } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { Drawer } from "react-native-paper";
 import theme from "../../../theme.js";
 
 const NavDrawer = props => {
-  // const [open, setOpen] = useState('false')
-  const [active, setActive] = useState("dashboard");
+  // const [active, setActive] = useState("dashboard");
+
+  const [slideAnimation] = useState(new Animated.Value(300));
+
+  if (props.drawerOpen) {
+    Animated.timing(slideAnimation, {
+      toValue: 0,
+      duration: 800
+    }).start();
+  } else {
+    Animated.timing(slideAnimation, {
+      toValue: 300,
+      duration: 800
+    }).start();
+  }
 
   return (
-    <Animatable.View
-      duration={200}
-      transition="right"
-      style={[styles.content, props.drawerOpen ? styles.open : styles.closed]}
-    >
+    <Animated.View style={{ ...styles.navDrawer, translateX: slideAnimation }}>
       <Drawer.Section
         theme={theme}
         style={{
@@ -24,9 +33,9 @@ const NavDrawer = props => {
       >
         <Drawer.Item
           label="Dashboard"
-          active={active === "dashboard"}
+          active={props.navigation.state.routeName === "Dashboard"}
           onPress={() => {
-            setActive("dashboard");
+            // setActive("dashboard");
             props.navigation.navigate("Dashboard");
           }}
           style={{
@@ -35,9 +44,9 @@ const NavDrawer = props => {
         />
         <Drawer.Item
           label="Recipes"
-          active={active === "recipes"}
+          active={props.navigation.state.routeName === "MyRecipes"}
           onPress={() => {
-            setActive("recipes");
+            // setActive("recipes");
             props.navigation.navigate("MyRecipes");
           }}
           style={{
@@ -46,28 +55,20 @@ const NavDrawer = props => {
           }}
         />
       </Drawer.Section>
-    </Animatable.View>
+    </Animated.View>
   );
 };
 
 const styles = StyleSheet.create({
-  closed: {
+  navDrawer: {
     height: 460,
-    width: "65%",
+    width: 300,
     position: "absolute",
     backgroundColor: "#e8e8e8",
     zIndex: 150,
     top: 80,
-    right: "-65%"
-  },
-  open: {
-    height: 460,
-    width: "65%",
-    position: "absolute",
-    backgroundColor: "#e8e8e8",
-    zIndex: 150,
-    top: 80,
-    right: 0
+    right: 0,
+    borderBottomLeftRadius: 5
   }
 });
 
