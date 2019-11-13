@@ -14,16 +14,16 @@ import {
   CREATE_USER_RECIPE_SUCCESS,
   CREATE_USER_RECIPE_FAIL,
   SET_RECIPE_TO_EDIT
-} from './actionTypes.js';
+} from "./actionTypes.js";
 
-import axios from 'axios';
+import axios from "axios";
 
 export const getUserRecipes = userId => dispatch => {
   dispatch({ type: GET_USER_RECIPES_START });
   if (userId) {
     axios
       .get(
-        `https://brewplans-production.herokuapp.com/userrecipes/user/${userId}`
+        `https://backend-development-coffee.herokuapp.com/userrecipes/${userId}`
       )
       .then(res => {
         dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
@@ -33,7 +33,7 @@ export const getUserRecipes = userId => dispatch => {
       });
   } else {
     axios
-      .get(`https://brewplans-production.herokuapp.com/userrecipes/all`)
+      .get(`https://backend-development-coffee.herokuapp.com/userrecipes/all`)
       .then(res => {
         dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
       })
@@ -99,7 +99,7 @@ export const handleNewRecipeInput = (inputField, inputValue) => dispatch => {
 export const createUserRecipe = (newRecipe, userId) => dispatch => {
   dispatch({ type: CREATE_USER_RECIPE_START });
   newRecipe.user_id = userId;
-  console.log('new recipe: ', newRecipe);
+  console.log("new recipe: ", newRecipe);
   axios
     .post(
       `https://brewplans-production.herokuapp.com/userrecipes/newrecipe`,
