@@ -5,6 +5,7 @@ import NavBar from '../components/Layout/NavBar/NavBar.js';
 import styles from '../styling/SeededRecipesStyling';
 import { View, ScrollView, Text, Image } from 'react-native';
 
+//Recipe
 const Recipe = props => {
   const [ sortedInstructions, setSortedInstructions ] = useState([]);
   const { currentRecipe } = props;
