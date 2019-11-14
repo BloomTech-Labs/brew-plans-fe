@@ -54,7 +54,9 @@ const NavTabs = props => {
           <Appbar.Action
             icon='menu'
             color='white'
+
             onPress={props.toggleDrawer}
+
           />
         </View>
       </Appbar>

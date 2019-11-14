@@ -3,6 +3,8 @@ import Layout from '../components/Layout/Layout';
 import LoginForm from '../components/UserForms/LoginForm';
 import { getLocalData } from '../store/actions/asyncStorage.js';
 import { connect } from 'react-redux';
+import TestDataVisualization from './TestDataVisualization';
+
 
 const Login = props => {
   const { loggedIn } = props;
@@ -24,6 +26,7 @@ const Login = props => {
 
   return (
     <Layout>
+      {/* <TestDataVisualization/> */}
       <LoginForm />
     </Layout>
   );

@@ -9,6 +9,7 @@ const InitialLoad = (props) => {
       if (res == true) {
         getLocalData('user')
         .then(res => { 
+          // console.log("res", res)
           if(res !== null) {
             setTimeout(() => props.navigation.navigate('Dashboard'), 2000)
           } else {

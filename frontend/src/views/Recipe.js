@@ -1,34 +1,53 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+
+import { View, ScrollView, Text, Image } from "react-native";
+
 import Layout from "../components/Layout/Layout";
 import NavBar from "../components/Layout/NavBar/NavBar.js";
 import styles from "../styling/SeededRecipesStyling";
-import { View, ScrollView, Text, Image } from "react-native";
+import Timer from "../components/timer";
 
 //Recipe
 const Recipe = props => {
   const [sortedInstructions, setSortedInstructions] = useState([]);
+
+  const [timerArray, setTimerArray] = useState([]);
+
   const { currentRecipe } = props;
   // const { instructions } = currentRecipe;
 
-  console.log("recipe: ", currentRecipe);
-  console.log("instructions", currentRecipe.instructions);
 
-  // useEffect(() => {
-  //   if (instructions) {
-  //     const instructionsArray = instructions.split("////");
+  //captures strings starting with integers
+  const regex = new RegExp(/^\d+/g);
 
-  //     setSortedInstructions(
-  //     instructionsArray.map((instruction, index) => {
-  //       let step = `Step ${index + 1}: `
-  //       let res = step.concat(instruction);
-  //       return res;
-  //     }
-  //   ))
-  //   }
-  // }, [])
 
-  console.log("SortedInstructions: ", sortedInstructions);
+  useEffect(() => {
+    if (instructions) {
+      const instructionsArray = instructions.split("////");
+      let localTimerArray = [];
+      let localInstructions = [];
+
+      instructionsArray.map((instruction, index) => {
+        let step = `Step ${index + 1}: `;
+
+        const result = instruction.match(regex);
+
+        if (result) {
+          localTimerArray.push(parseInt(result[0]));
+          instruction = instruction.substr(instruction.indexOf(" ") + 1);
+        } else {
+          localTimerArray.push(0);
+        }
+
+        let res = step.concat(instruction);
+        localInstructions.push(res);
+      });
+
+      setSortedInstructions([...localInstructions]);
+      setTimerArray([...localTimerArray]);
+    }
+  }, []);
 
   return (
     <View style={{ flex: 1, width: "100%" }}>
@@ -49,24 +68,45 @@ const Recipe = props => {
             </Text>
 
             <ScrollView>
-              {/* {sortedInstructions.map((instruction, index) => <Text style={{ marginVertical: 5, backgroundColor: 'white', padding: 6, fontSize: 16, borderBottomWidth: .8, borderBottomColor: 'black' }} key={index}>{instruction}</Text>)} */}
-              {currentRecipe.instructions.length
-                ? currentRecipe.instructions.map((inst, index) => (
+
+              {sortedInstructions.map((instruction, index) => (
+                <View
+                  key={index}
+                  style={{ borderBottomWidth: 0.8, borderBottomColor: "black" }}
+                >
+                  {timerArray[index] ? (
+                    <View key={index}>
+                      <Text
+                        style={{
+                          marginVertical: 5,
+                          backgroundColor: "white",
+                          padding: 6,
+                          fontSize: 16
+                        }}
+                        key={index}
+                      >
+                        {instruction}
+                      </Text>
+                      <Timer stepLength={timerArray[index]} />
+                    </View>
+                  ) : (
+
                     <Text
                       style={{
                         marginVertical: 5,
                         backgroundColor: "white",
                         padding: 6,
-                        fontSize: 16,
-                        borderBottomWidth: 0.8,
-                        borderBottomColor: "black"
+                        fontSize: 16
+                        // borderBottomWidth: 0.8,
+                        // borderBottomColor: "black"
                       }}
                       key={index}
                     >
-                      {inst}
+                      {instruction}
                     </Text>
-                  ))
-                : null}
+                  )}
+                </View>
+              ))}
             </ScrollView>
           </View>
         </ScrollView>

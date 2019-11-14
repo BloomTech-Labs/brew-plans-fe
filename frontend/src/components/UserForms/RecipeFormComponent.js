@@ -39,7 +39,7 @@ const RecipeFormComponent = props => {
     return (
       <Formik
         initialValues={{}}
-        onSubmit={values => console.log(values)} /// Add props.handlesubmt or equivelent.
+        // onSubmit={values => console.log(values)} /// Add props.handlesubmt or equivelent.
       >
         {props => (
           <View style={styles.backgroundOverlay}>
@@ -136,7 +136,7 @@ const RecipeFormComponent = props => {
     return (
       <Formik
         initialValues={{}}
-        onSubmit={values => console.log(values)} /// Add props.handlesubmt or equivelent.
+        // onSubmit={values => console.log(values)} /// Add props.handlesubmt or equivelent.
       >
         {props => (
           <View style={styles.backgroundOverlay}>
