@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import { View, ScrollView, Text, Image } from "react-native";
-
+import { FontAwesome } from "@expo/vector-icons";
 import Layout from "../components/Layout/Layout";
 import NavBar from "../components/Layout/NavBar/NavBar.js";
 import styles from "../styling/SeededRecipesStyling";
@@ -17,10 +17,8 @@ const Recipe = props => {
   const { currentRecipe } = props;
   const { instructions } = currentRecipe;
 
-
   //captures strings starting with integers
   const regex = new RegExp(/^\d+/g);
-
 
   useEffect(() => {
     if (instructions) {
@@ -60,15 +58,24 @@ const Recipe = props => {
         <ScrollView>
           <Text style={styles.recipeTitle}>{currentRecipe.title}</Text>
           <View style={styles.recipeDetails}>
-            <Text style={styles.recipeDetailItem}>
-              Brew Type: {currentRecipe.brew_type}
-            </Text>
-            <Text style={styles.recipeDetailItem}>
-              Water Temperature: {currentRecipe.water_temp}
-            </Text>
-
+            <View style={styles.topInfo}>
+            <View style={styles.iconWrapper}>
+              <Image
+                style={{ resizeMode: "contain", width: 40, padding: 0 }}
+                source={require("../../assets/grinder.png")}
+              />
+              <Text style={styles.recipeDetailItem}>
+                {currentRecipe.coarseness}
+              </Text>
+            </View>
+            <View style={styles.iconWrapper}>
+              <FontAwesome name="thermometer" size={36} color="black" padding="5"/>
+              <Text style={styles.recipeDetailItem}>
+                {currentRecipe.water_temp}
+              </Text>
+            </View>
+            </View>
             <ScrollView>
-
               {sortedInstructions.map((instruction, index) => (
                 <View
                   key={index}
@@ -90,7 +97,6 @@ const Recipe = props => {
                       <Timer stepLength={timerArray[index]} />
                     </View>
                   ) : (
-
                     <Text
                       style={{
                         marginVertical: 5,
