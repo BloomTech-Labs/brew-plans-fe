@@ -16,9 +16,9 @@ class Timer extends React.Component {
   timer = {};
 
   countdown() {
-    console.log("pressed button in function ");
+    // console.log("pressed button in function ");
     timer = setInterval(() => {
-      console.log("min", this.state.min, "sec", this.state.sec);
+      // console.log("min", this.state.min, "sec", this.state.sec);
       var num = this.state.sec - 1,
         count = this.state.min;
 

@@ -49,12 +49,6 @@ const Landing = props => {
         style={{ position: 'absolute', top: '5%', left: '5%', zIndex: 50 }}
         source={require('../../assets/BrewPlansLogo.png')}
       />
-<<<<<<< HEAD
-
-      <LandingButton
-        title='Login'
-        onPress={() => props.navigation.navigate('Login')}
-=======
       <Image
         style={{
           borderRadius: 5,
@@ -64,7 +58,6 @@ const Landing = props => {
           marginTop: 32
         }}
         source={require('../../assets/IntroImage.png')}
->>>>>>> 805737f6315307fe17679e23981dacc1e52e621d
       />
       <View style={{ marginTop: 86 }}>
         <LandingButton

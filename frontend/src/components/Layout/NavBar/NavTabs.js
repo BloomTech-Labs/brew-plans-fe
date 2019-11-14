@@ -56,7 +56,7 @@ const NavTabs = props => {
             color='white'
             onPress={() => {
               setOpen(!open);
-              console.log(open);
+              // console.log(open);
             }}
           />
         </View>

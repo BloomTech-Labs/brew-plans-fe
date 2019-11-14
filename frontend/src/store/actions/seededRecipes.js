@@ -12,13 +12,14 @@ export const getSeededRecipes = () => (dispatch, getState) => {
   dispatch({ type: GET_SEEDED_RECIPES_START });
   
   axios
-    .get('https://brewplans-production.herokuapp.com/seededRecipes/all')
+    // .get('https://brewplans-production.herokuapp.com/seededRecipes/all')
+    .get('https://backend-development-coffee.herokuapp.com/seededrecipes/all')
     .then(res => {
       console.log('res', res);
       dispatch({ type: GET_SEEDED_RECIPES_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log('err', err);
+      // console.log('err', err);
       dispatch({ type: GET_SEEDED_RECIPES_FAIL, payload: err });
     });
 };

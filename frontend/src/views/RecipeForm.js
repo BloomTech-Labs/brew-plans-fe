@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import RecipeFormComponent from '../components/UserForms/RecipeFormComponent';
 
 const RecipeForm = props => {
-  console.log('props', props);
+  // console.log('props', props);
   return (
     // when you add ingredient it checks ingrediant table to see if its there, if not it will add it
     // create addMore component to add aditional steps.

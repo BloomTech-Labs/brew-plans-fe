@@ -6,12 +6,15 @@ import DisplayUserRecipes from '../../src/components/TestToDisplayData/DisplayUs
 import DisplayUserData from '../../src/components/TestToDisplayData/DisplayUserData.js';
 import { connect } from 'react-redux';
 
+import LogForm from "../components/UserForms/LogForm"
+
 const TestDataVisualization = (props) => {
   return (
     <Layout>
-      <DisplaySeededRecipes />
+      <LogForm/>
+      {/* <DisplaySeededRecipes />
       <DisplayUserRecipes />
-      <DisplayUserData />
+      <DisplayUserData /> */}
     </Layout>
   );
 };
