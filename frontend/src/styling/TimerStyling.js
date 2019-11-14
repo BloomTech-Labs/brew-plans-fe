@@ -11,7 +11,7 @@ export default StyleSheet.create({
 
   },
   icons: {
-    padding: 10
+    padding: 10,
   },
   textWrapper: {
       display: "flex",

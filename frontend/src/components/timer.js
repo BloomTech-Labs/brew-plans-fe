@@ -1,7 +1,9 @@
 import React from "react";
-import { View, Button, TouchableOpacity, Text } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import {Audio} from "expo-av";
+
 import styles from "../styling/TimerStyling";
 
 class Timer extends React.Component {
@@ -11,15 +13,24 @@ class Timer extends React.Component {
       min: (Math.floor((props.stepLength) / 60))
       || 0,
       sec: (props.stepLength % 60).toString() || 0,
-      startDisabled: false
+      startDisabled: false,
     };
   }
 
   timer = {};
+  soundObject = new Audio.Sound()
+  
+  async componentDidMount() {
+    try {
+       await this.soundObject.loadAsync(require("../../assets/coffee-song.mp3"))
+    } catch(error) {
+      console.log("error", error)
+    }
+  }
 
   countdown() {
     // console.log("pressed button in function ");
-    timer = setInterval(() => {
+    timer = setInterval(async() => {
       // console.log("min", this.state.min, "sec", this.state.sec);
       var seconds = Number(this.state.sec) - 1,
         minutes = Number(this.state.min)
@@ -33,8 +44,9 @@ class Timer extends React.Component {
       this.setState({ startDisabled: true });
       if (seconds === 0 && minutes === 0) {
         clearInterval(timer);
+        await this.soundObject.playAsync()
       }
-    }, 1000);
+    }, 100);
   }
 
   reset() {
@@ -54,7 +66,7 @@ class Timer extends React.Component {
       <View style={styles.timerWrapper}>
         <View style={styles.textWrapper}>
           <Text style={styles.timerText}>
-            {console.log("state.min", this.state.min, Math.floor(this.props.stepLength))}
+            {/* {console.log("state.min", this.state.min, Math.floor(this.props.stepLength))} */}
             {this.state.min}:{" "}
 
             {this.state.sec.length === 1
@@ -76,7 +88,7 @@ class Timer extends React.Component {
               />
             ) : (
               <Ionicons
-                name="md-play"
+                name="md-play-circle"
                 size={32}
                 color="#720A13"
                 style={styles.icons}
@@ -96,7 +108,7 @@ class Timer extends React.Component {
           <TouchableOpacity>
             <MaterialCommunityIcons
               name="restore"
-              size={32}
+              size={24}
               color="#720A13"
               style={styles.icons}
               onPress={() => {
