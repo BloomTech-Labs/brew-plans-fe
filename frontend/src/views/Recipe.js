@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+
 import { View, ScrollView, Text, Image } from "react-native";
 
 import Layout from "../components/Layout/Layout";
@@ -7,11 +8,15 @@ import NavBar from "../components/Layout/NavBar/NavBar.js";
 import styles from "../styling/SeededRecipesStyling";
 import Timer from "../components/timer";
 
+//Recipe
 const Recipe = props => {
   const [sortedInstructions, setSortedInstructions] = useState([]);
+
   const [timerArray, setTimerArray] = useState([]);
+
   const { currentRecipe } = props;
-  const { instructions } = currentRecipe;
+  // const { instructions } = currentRecipe;
+
 
   //captures strings starting with integers
   const regex = new RegExp(/^\d+/g);
@@ -63,6 +68,7 @@ const Recipe = props => {
             </Text>
 
             <ScrollView>
+
               {sortedInstructions.map((instruction, index) => (
                 <View
                   key={index}
@@ -84,6 +90,7 @@ const Recipe = props => {
                       <Timer stepLength={timerArray[index]} />
                     </View>
                   ) : (
+
                     <Text
                       style={{
                         marginVertical: 5,
