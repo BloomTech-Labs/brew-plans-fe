@@ -3,7 +3,9 @@ import { useState } from "react";
 import { View, StyleSheet, Animated } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { Drawer } from "react-native-paper";
+import * as firebase from 'firebase';
 import theme from "../../../theme.js";
+import { userLogout } from '../../../store/actions/user.js';
 
 const NavDrawer = props => {
   // const [active, setActive] = useState("dashboard");
@@ -56,6 +58,21 @@ const NavDrawer = props => {
             paddingVertical: 4
           }}
         />
+                <Drawer.Item
+            icon={require('../../../../assets/coffee.png')}
+            onPress={() => props.navigation.navigate('MyRecipes')}
+            color='white'
+          />
+
+          <Drawer.Item
+            onPress={() => {
+              firebase.auth().signOut();
+              props.userLogout();
+              props.navigation.navigate('Landing');
+            }}
+            color='white'
+            icon='work'
+          /> 
       </Drawer.Section>
     </Animated.View>
   );

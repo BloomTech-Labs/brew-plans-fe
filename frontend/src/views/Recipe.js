@@ -15,7 +15,7 @@ const Recipe = props => {
   const [timerArray, setTimerArray] = useState([]);
 
   const { currentRecipe } = props;
-  // const { instructions } = currentRecipe;
+  const { instructions } = currentRecipe;
 
 
   //captures strings starting with integers
