@@ -19,7 +19,7 @@ class Timer extends React.Component {
 
   timer = {};
   soundObject = new Audio.Sound()
-  
+
   async componentDidMount() {
     try {
        await this.soundObject.loadAsync(require("../../assets/coffee-song.mp3"))
@@ -46,7 +46,7 @@ class Timer extends React.Component {
         clearInterval(timer);
         await this.soundObject.playAsync()
       }
-    }, 100);
+    }, 1000);
   }
 
   reset() {
