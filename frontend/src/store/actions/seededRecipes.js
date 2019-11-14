@@ -15,7 +15,7 @@ export const getSeededRecipes = () => (dispatch, getState) => {
     // .get('https://brewplans-production.herokuapp.com/seededRecipes/all')
     .get('https://backend-development-coffee.herokuapp.com/seededrecipes/all')
     .then(res => {
-      console.log('res', res);
+      // console.log('res', res);
       dispatch({ type: GET_SEEDED_RECIPES_SUCCESS, payload: res.data });
     })
     .catch(err => {

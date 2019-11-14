@@ -15,42 +15,32 @@ const Recipe = props => {
 
   //captures strings starting with integers
   const regex = new RegExp(/^\d+/g);
-  console.log("recipe: ", currentRecipe);
+
 
   useEffect(() => {
     if (instructions) {
       const instructionsArray = instructions.split("////");
       let localTimerArray = [];
       let localInstructions = [];
-      // setSortedInstructions(
+
       instructionsArray.map((instruction, index) => {
         let step = `Step ${index + 1}: `;
 
         const result = instruction.match(regex);
-        // console.log("result", result);
-        // console.log("istruction", instruction);
 
         if (result) {
-          // setTimerArray([...timerArray, parseInt(result[0])])
-          // console.log("IF", timerArray)
           localTimerArray.push(parseInt(result[0]));
+          instruction = instruction.substr(instruction.indexOf(" ") + 1);
         } else {
           localTimerArray.push(0);
-          // setTimerArray([...timerArray, 0])
-          // console.log("ELSE", timerArray)
         }
 
         let res = step.concat(instruction);
         localInstructions.push(res);
-        // setSortedInstructions([...sortedInstructions, res])
-        // return res;
       });
-      // );
-      console.log("localtimerArray", localTimerArray);
+
       setSortedInstructions([...localInstructions]);
-      console.log("Instructions", sortedInstructions);
       setTimerArray([...localTimerArray]);
-      console.log("TimerArray", timerArray);
     }
   }, []);
 
@@ -74,7 +64,10 @@ const Recipe = props => {
 
             <ScrollView>
               {sortedInstructions.map((instruction, index) => (
-                <View key={index}>
+                <View
+                  key={index}
+                  style={{ borderBottomWidth: 0.8, borderBottomColor: "black" }}
+                >
                   {timerArray[index] ? (
                     <View key={index}>
                       <Text
@@ -82,9 +75,7 @@ const Recipe = props => {
                           marginVertical: 5,
                           backgroundColor: "white",
                           padding: 6,
-                          fontSize: 16,
-                          borderBottomWidth: 0.8,
-                          borderBottomColor: "black"
+                          fontSize: 16
                         }}
                         key={index}
                       >
@@ -98,9 +89,9 @@ const Recipe = props => {
                         marginVertical: 5,
                         backgroundColor: "white",
                         padding: 6,
-                        fontSize: 16,
-                        borderBottomWidth: 0.8,
-                        borderBottomColor: "black"
+                        fontSize: 16
+                        // borderBottomWidth: 0.8,
+                        // borderBottomColor: "black"
                       }}
                       key={index}
                     >
