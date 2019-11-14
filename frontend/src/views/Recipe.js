@@ -9,41 +9,50 @@ import Timer from "../components/timer";
 
 const Recipe = props => {
   const [sortedInstructions, setSortedInstructions] = useState([]);
+  const [timerArray, setTimerArray] = useState([]);
   const { currentRecipe } = props;
   const { instructions } = currentRecipe;
-  let timerArray = [];
+
   //captures strings starting with integers
-  // const regex =^/[0-9]/d
-  // ^([0-9])\d+
   const regex = new RegExp(/^\d+/g);
   console.log("recipe: ", currentRecipe);
 
   useEffect(() => {
     if (instructions) {
       const instructionsArray = instructions.split("////");
+      let localTimerArray = [];
+      let localInstructions = [];
+      // setSortedInstructions(
+      instructionsArray.map((instruction, index) => {
+        let step = `Step ${index + 1}: `;
 
-      setSortedInstructions(
-        instructionsArray.map((instruction, index) => {
-          let step = `Step ${index + 1}: `;
-          const result = instruction.match(regex);
-          console.log("result", result);
-          console.log("istruction", instruction);
+        const result = instruction.match(regex);
+        // console.log("result", result);
+        // console.log("istruction", instruction);
 
-          if (result) {
-            timerArray.push(parseInt(result[0]));
-          } else {
-            timerArray.push(0);
-          }
+        if (result) {
+          // setTimerArray([...timerArray, parseInt(result[0])])
+          // console.log("IF", timerArray)
+          localTimerArray.push(parseInt(result[0]));
+        } else {
+          localTimerArray.push(0);
+          // setTimerArray([...timerArray, 0])
+          // console.log("ELSE", timerArray)
+        }
 
-          let res = step.concat(instruction);
-          return res;
-        })
-      );
-      console.log("timerArray", timerArray);
+        let res = step.concat(instruction);
+        localInstructions.push(res);
+        // setSortedInstructions([...sortedInstructions, res])
+        // return res;
+      });
+      // );
+      console.log("localtimerArray", localTimerArray);
+      setSortedInstructions([...localInstructions]);
+      console.log("Instructions", sortedInstructions);
+      setTimerArray([...localTimerArray]);
+      console.log("TimerArray", timerArray);
     }
   }, []);
-
-  // console.log("SortedInstructions: ", sortedInstructions)
 
   return (
     <View style={{ flex: 1, width: "100%" }}>
@@ -64,24 +73,26 @@ const Recipe = props => {
             </Text>
 
             <ScrollView>
-              {sortedInstructions.map((instruction, index) =>
-
-                timerArray[index] == 0 ? (
-                  <Text
-                    style={{
-                      marginVertical: 5,
-                      backgroundColor: "white",
-                      padding: 6,
-                      fontSize: 16,
-                      borderBottomWidth: 0.8,
-                      borderBottomColor: "black"
-                    }}
-                    key={index}
-                  >
-                    {instruction}
-                  </Text>
-                ) : (
-                  <View key={index}>
+              {sortedInstructions.map((instruction, index) => (
+                <View key={index}>
+                  {timerArray[index] ? (
+                    <View key={index}>
+                      <Text
+                        style={{
+                          marginVertical: 5,
+                          backgroundColor: "white",
+                          padding: 6,
+                          fontSize: 16,
+                          borderBottomWidth: 0.8,
+                          borderBottomColor: "black"
+                        }}
+                        key={index}
+                      >
+                        {instruction}
+                      </Text>
+                      <Timer stepLength={timerArray[index]} />
+                    </View>
+                  ) : (
                     <Text
                       style={{
                         marginVertical: 5,
@@ -95,10 +106,9 @@ const Recipe = props => {
                     >
                       {instruction}
                     </Text>
-                    <Timer stepLength={timerArray[index]} />
-                  </View>
-                )
-              )}
+                  )}
+                </View>
+              ))}
             </ScrollView>
           </View>
         </ScrollView>

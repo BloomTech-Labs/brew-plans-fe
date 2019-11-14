@@ -7,8 +7,8 @@ class Timer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      min: Math.floor(props.stepLength / 60),
-      sec: props.stepLength % 60,
+      min: Math.floor(parseInt(props.stepLength) / 60)||0,
+      sec: parseInt(props.stepLength) % 60||0,
       startDisabled: false
     };
   }
