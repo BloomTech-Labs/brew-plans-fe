@@ -47,7 +47,7 @@ export const deleteUserRecipe = recipeId => dispatch => {
   dispatch({ type: DELETE_USER_RECIPE_START });
   axios
     .delete(
-      `https://brewplans-production.herokuapp.com/userrecipes/${recipeId}`
+      `https://backend-development-coffee.herokuapp.com/userrecipes/${recipeId}`
     )
     .then(res => {
       dispatch({ type: DELETE_USER_RECIPE_SUCCESS, payload: recipeId });
@@ -73,7 +73,7 @@ export const handleRecipeUpdate = (updatedRecipe, recipeId) => dispatch => {
   dispatch({ type: UPDATE_USER_RECIPE_START });
   axios
     .put(
-      `https://brewplans-production.herokuapp.com/userrecipes/${recipeId}`,
+      `https://backend-development-coffee.herokuapp.com/userrecipes/${recipeId}`,
       updatedRecipe
     )
     .then(res => {
@@ -104,7 +104,7 @@ export const createUserRecipe = (newRecipe, userId) => dispatch => {
 
   axios
     .post(
-      `https://brewplans-production.herokuapp.com/userrecipes/newrecipe`,
+      `https://backend-development-coffee.herokuapp.com/userrecipes/newrecipe`,
       newRecipe
     )
     .then(res => {
