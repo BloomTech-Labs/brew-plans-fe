@@ -38,6 +38,23 @@ const RecipeFormComponent = props => {
     newRecipe.instructions
   );
 
+  // addDuration() {
+  //   return <TextInput onChangeText/>
+  // }
+
+  handleInstructionChange=(index, text)=>{
+      const thisInstruction = localInstructions
+                      thisInstruction.splice(index, 1, {order: [index+1], text: text
+                      // (localInstructions[index].text).concat(text)
+                      })
+                      setLocalInstructions([
+                        ...thisInstruction
+                        // ...localInstructions,
+                        // {order: [index+1], text: value}
+                        //  (localInstructions[index] = {order: [index+1], text: (localInstructions[index].text).concat( value)})
+                      ])
+  }
+
   if (form == 'add') {
     return (
       <Formik
@@ -98,31 +115,32 @@ const RecipeFormComponent = props => {
                   placeholder='Coarseness'
                 />
                 {localInstructions.map((inst, index) => (
+                  <View key={115+index}>
                   <TextInput
                     key={index}
                     style={styles.formInput}
                     // onChangeText={value =>
                     //   handleNewRecipeInput('instructions', value)
                     // }
-                    onChangeText={value =>
-                      setLocalInstructions([
-                        ...localInstructions,
-                        (localInstructions[index] = value)
-                      ])
+                    onChangeText={value =>this.handleInstructionChange(index,value)
+   
+                    
                     }
-                    value={localInstructions[index]}
+                    value={localInstructions[index].text}
                     onBlur={props.handleBlur('Instructions')} // change this!
                     // label='Coarseness'
                     mode='outlined'
                     placeholder='Add step'
                   />
+                  <MaterialIcons key={9594+index}name="timer" size={24} color="#720A13" onPress={()=> {this.addDuration(index)}}/>
+                  </View>
                 ))}
 
                 <Button
                   // onPress={() => createUserRecipe(recipe)}\
                   style={{ width: '100%' }}
                   onPress={() =>
-                    setLocalInstructions([...localInstructions, ''])
+                    setLocalInstructions([...localInstructions, {}])
                   }
                   title='Add Instructions'
                 />
