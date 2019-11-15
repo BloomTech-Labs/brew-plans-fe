@@ -9,7 +9,8 @@ import { userLogout } from '../../../store/actions/user.js';
 import * as firebase from 'firebase';
 import styles from '../../../styling/NavStyling';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import image from '../../../../assets/BrewPlansLogo.png';
+import { Svg } from 'expo';
+import Logo from '../../../../assets/brewplans.svg';
 import NavDrawer from './NavDrawer';
 
 const NavTabs = props => {
@@ -19,38 +20,23 @@ const NavTabs = props => {
         style={{
           width: '100%',
           display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between'
+          flexDirection: 'row'
         }}
         theme={theme}
       >
-        <Image
-          style={{ resizeMode: 'contain', height: '95%' }}
-          source={require('../../../../assets/BrewPlansLogo.png')}
-        />
-
-        <View style={{ flexDirection: 'row' }}>
-          {/* <Appbar.Action
-            icon='home'
-            onPress={() => props.navigation.navigate('Dashboard')}
-            color={'white'}
-          />
-
-          <Appbar.Action
-            icon={require('../../../../assets/coffee.png')}
-            onPress={() => props.navigation.navigate('MyRecipes')}
-            color='white'
-          />
-
-          <Appbar.Action
-            onPress={() => {
-              firebase.auth().signOut();
-              props.userLogout();
-              props.navigation.navigate('Landing');
-            }}
-            color='white'
-            icon='work'
-          /> */}
+        <View
+          style={{
+            flexDirection: 'row',
+            width: '100%',
+            height: '100%',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingHorizontal: 6
+          }}
+        >
+          <View>
+            <Logo width={60} height={'100%'} />
+          </View>
           <Appbar.Action
             icon='menu'
             color='white'
