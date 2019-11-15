@@ -15,7 +15,7 @@ const UserRecipe = props => {
   const [timerArray, setTimerArray] = useState([]);
 
   const { currentRecipe } = props;
-  console.log('currentRecipe', currentRecipe);
+  // console.log('currentRecipe', currentRecipe);
   //   const { instructions } = currentRecipe;
 
   //captures strings starting with integers
