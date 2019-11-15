@@ -78,7 +78,7 @@ const NavDrawer = props => {
 
 const styles = StyleSheet.create({
   navDrawer: {
-    height: 460,
+    height: 300,
     width: 300,
     position: 'absolute',
     backgroundColor: '#e8e8e8',
