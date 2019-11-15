@@ -14,9 +14,9 @@ import {
   CREATE_USER_RECIPE_SUCCESS,
   CREATE_USER_RECIPE_FAIL,
   SET_RECIPE_TO_EDIT
-} from "./actionTypes.js";
+} from './actionTypes.js';
 
-import axios from "axios";
+import axios from 'axios';
 
 export const getUserRecipes = userId => dispatch => {
   dispatch({ type: GET_USER_RECIPES_START });
@@ -33,7 +33,7 @@ export const getUserRecipes = userId => dispatch => {
       });
   } else {
     axios
-      .get(`https://backend-development-coffee.herokuapp.com/userrecipes/all`)
+      .get(`https://backend-development-coffee.herokuapp.com/userrecipes/1`)
       .then(res => {
         dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
       })

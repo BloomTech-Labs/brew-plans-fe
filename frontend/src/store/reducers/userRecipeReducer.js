@@ -14,24 +14,24 @@ import {
   CREATE_USER_RECIPE_SUCCESS,
   CREATE_USER_RECIPE_FAIL,
   SET_RECIPE_TO_EDIT
-} from "../actions/actionTypes.js";
+} from '../actions/actionTypes.js';
 
 const initialState = {
-  userRecipes: [],
+  userRecipes: {},
   edittedRecipe: {},
   newRecipe: {
     water_temp: null,
-    coarseness: "",
-    title: "",
-    brew_type: "",
+    coarseness: '',
+    title: '',
+    brew_type: '',
     ingredients: [],
     instructions: []
   },
   recipeToEdit: {
     water_temp: null,
-    coarseness: "",
-    title: "",
-    brew_type: "",
+    coarseness: '',
+    title: '',
+    brew_type: '',
     id: null,
     ingredients: [],
     instructions: []
@@ -51,7 +51,7 @@ const userRecipeReducer = (state = initialState, action) => {
     case GET_USER_RECIPES_SUCCESS:
       return {
         ...state,
-        userRecipes: action.payload.reverse(),
+        userRecipes: action.payload,
         isLoading: false
       };
 
@@ -75,15 +75,13 @@ const userRecipeReducer = (state = initialState, action) => {
       };
 
     case DELETE_USER_RECIPE_START:
-
-        // console.log(action)
+      // console.log(action)
 
       return {
         ...state
       };
 
     case DELETE_USER_RECIPE_SUCCESS:
-
       // console.log('delete success payload: ', action.payload)
       return {
         ...state,
@@ -93,15 +91,13 @@ const userRecipeReducer = (state = initialState, action) => {
       };
 
     case DELETE_USER_RECIPE_FAIL:
-
-        // console.log(action)
+      // console.log(action)
 
       return {
         ...state
       };
 
     case UPDATE_USER_RECIPE_START:
-
       // console.log('update user recipe start: ', action)
 
       return {
@@ -109,17 +105,17 @@ const userRecipeReducer = (state = initialState, action) => {
       };
 
     case UPDATE_USER_RECIPE_SUCCESS:
-
       // console.log('update user recipe success: ', action.payload.updated)
-      state.userRecipes = state.userRecipes.filter(recipe => recipe.id !== action.payload.updated.id)
-      state.userRecipes.unshift(action.payload.updated)
+      state.userRecipes = state.userRecipes.filter(
+        recipe => recipe.id !== action.payload.updated.id
+      );
+      state.userRecipes.unshift(action.payload.updated);
 
       return {
         ...state
       };
 
     case UPDATE_USER_RECIPE_FAIL:
-
       // console.log('update user recipe fail: ', action)
       return {
         ...state
@@ -151,28 +147,25 @@ const userRecipeReducer = (state = initialState, action) => {
       };
 
     case CREATE_USER_RECIPE_START:
-
       // console.log(action)
       return state;
 
     case CREATE_USER_RECIPE_SUCCESS:
-      
       const newRecipe = action.payload.recipe;
       state.userRecipes.unshift(newRecipe);
       return {
         ...state,
         newRecipe: {
           water_temp: null,
-          coarseness: "",
-          title: "",
-          brew_type: "",
+          coarseness: '',
+          title: '',
+          brew_type: '',
           instructions: [],
           ingredients: []
         }
       };
 
     case CREATE_USER_RECIPE_FAIL:
-
       // console.log(action)
 
       return state;

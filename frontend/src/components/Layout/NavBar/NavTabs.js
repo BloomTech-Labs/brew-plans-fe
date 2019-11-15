@@ -54,9 +54,7 @@ const NavTabs = props => {
           <Appbar.Action
             icon='menu'
             color='white'
-
             onPress={props.toggleDrawer}
-
           />
         </View>
       </Appbar>
@@ -68,9 +66,6 @@ const mapStateToProps = state => {
   return {};
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    userLogout
-  }
-)(NavTabs);
+export default connect(mapStateToProps, {
+  userLogout
+})(NavTabs);

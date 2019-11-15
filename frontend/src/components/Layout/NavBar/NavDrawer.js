@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { View, StyleSheet, Animated } from "react-native";
-import * as Animatable from "react-native-animatable";
-import { Drawer } from "react-native-paper";
-import theme from "../../../theme.js";
-
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+import { View, StyleSheet, Animated } from 'react-native';
+import * as Animatable from 'react-native-animatable';
+import { Drawer } from 'react-native-paper';
+import theme from '../../../theme.js';
+import { userLogout } from '../../../store/actions/user.js';
+import * as firebase from 'firebase';
+import { connect } from 'react-redux';
 const NavDrawer = props => {
   // const [active, setActive] = useState("dashboard");
 
@@ -32,11 +34,11 @@ const NavDrawer = props => {
         // title='Some title'
       >
         <Drawer.Item
-          label="Dashboard"
-          active={props.navigation.state.routeName === "Dashboard"}
+          label='Dashboard'
+          active={props.navigation.state.routeName === 'Dashboard'}
           onPress={() => {
             // setActive("dashboard");
-            props.navigation.navigate("Dashboard");
+            props.navigation.navigate('Dashboard');
             props.closeDrawer();
           }}
           style={{
@@ -44,12 +46,25 @@ const NavDrawer = props => {
           }}
         />
         <Drawer.Item
-          label="Recipes"
-          active={props.navigation.state.routeName === "MyRecipes"}
+          label='Recipes'
+          active={props.navigation.state.routeName === 'MyRecipes'}
           onPress={() => {
             // setActive("recipes");
-            props.navigation.navigate("MyRecipes");
+            props.navigation.navigate('MyRecipes');
             props.closeDrawer();
+          }}
+          style={{
+            marginVertical: 8,
+            paddingVertical: 4
+          }}
+        />
+        <Drawer.Item
+          label='Logout'
+          onPress={() => {
+            firebase.auth().signOut();
+            props.userLogout();
+            props.closeDrawer();
+            props.navigation.navigate('Landing');
           }}
           style={{
             marginVertical: 8,
@@ -65,8 +80,8 @@ const styles = StyleSheet.create({
   navDrawer: {
     height: 460,
     width: 300,
-    position: "absolute",
-    backgroundColor: "#e8e8e8",
+    position: 'absolute',
+    backgroundColor: '#e8e8e8',
     zIndex: 150,
     top: 80,
     right: 0,
@@ -74,4 +89,10 @@ const styles = StyleSheet.create({
   }
 });
 
-export default NavDrawer;
+const mapStateToProps = state => {
+  return {};
+};
+
+export default connect(mapStateToProps, {
+  userLogout
+})(NavDrawer);
