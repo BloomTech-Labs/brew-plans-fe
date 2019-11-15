@@ -25,7 +25,7 @@ const initialState = {
     title: '',
     brew_type: '',
     ingredients: [],
-    instructions: []
+    instructions: ['']
   },
   recipeToEdit: {
     water_temp: null,
