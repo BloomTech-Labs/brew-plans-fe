@@ -38,8 +38,6 @@ const RecipeFormComponent = props => {
   const [localInstructions, setLocalInstructions] = useState(
     newRecipe.instructions
   );
-  const [addDuration, setAddDuration] = useState(false)
-
 
   handleInstructionChange=(index, text)=>{
       const theseInstructions = localInstructions
@@ -56,7 +54,7 @@ const RecipeFormComponent = props => {
 
   handleDurationChange=(index, duration) => {
     const theseInstr = localInstructions
-    theseInstr.splice(index, 1, {order: index+1, duration: duration, text: theseInstr[index].text})
+    theseInstr.splice(index, 1, {order: index+1, duration: Number(duration), text: theseInstr[index].text})
   }
 
   if (form == 'add') {
