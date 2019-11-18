@@ -32,14 +32,18 @@ const MyRecipes = props => {
   const [addRecipeModal, setAddRecipeModal] = useState(false);
   const [editRecipeModal, setEditRecipeModal] = useState(false);
   // const [numberIngredients, setNumberIngredients] = useState(['', '']);
+  const [userRecipesLoaded, setUserRecipesLoaded] = useState(false);
 
   useEffect(()=>{
-   console.log('currentUser', currentUser)
-    //props.getUserRecipes(currentUser.id);
-  //props.getSeededRecipes();
+    console.log('currentUser', currentUser)
+    setUserRecipesLoaded(false);
+    props.getUserRecipes(currentUser.id);
+    props.getSeededRecipes();
+    setUserRecipesLoaded(true)
   }, []);
 
-  // console.log('userRecipes', props.userRecipes);
+  //console.log('recipe', recipe)
+   console.log('userRecipes', props.userRecipes);
 
   if (view == 'Default Recipes') {
     return (
@@ -150,6 +154,9 @@ const MyRecipes = props => {
 
           <View style={styles.recipesContainer}>
             <ScrollView>
+              {
+              console.log('props.userRecipes', props.userRecipes)}
+              {userRecipesLoaded ? ( <View>
               {props.userRecipes.map((recipe, index) => (
                 <UserRecipe
                   key={index}
@@ -166,6 +173,7 @@ const MyRecipes = props => {
                   }}
                 />
               ))}
+              </View>) : null}
             </ScrollView>
           </View>
         </View>

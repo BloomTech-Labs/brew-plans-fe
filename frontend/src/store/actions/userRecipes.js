@@ -31,6 +31,7 @@ export const getUserRecipes = userString => dispatch => {
       )
       .then(res => {
         dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
+        console.log('Get res.data', res.data);
       })
       .catch(err => {
         dispatch({ type: GET_USER_RECIPES_FAIL, payload: err });

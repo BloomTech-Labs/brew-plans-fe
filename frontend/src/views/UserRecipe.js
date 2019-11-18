@@ -72,7 +72,7 @@ const UserRecipe = props => {
 
   return (
     <View style={{ flex: 1, width: '100%' }}>
-      {instructionsLoaded ? ( <View>
+      {/* {instructionsLoaded ? ( <View> */}
       <NavBar {...props} />
       <Image
         source={require('../../assets/RecipeImage.png')}
@@ -134,7 +134,7 @@ const UserRecipe = props => {
           </View>
         </ScrollView>
       </Layout>
-       </View>) : null} 
+       {/* </View>) : null}  */}
     </View>
     
   )}
