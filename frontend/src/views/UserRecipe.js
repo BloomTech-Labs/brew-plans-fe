@@ -72,6 +72,7 @@ const UserRecipe = props => {
 
   return (
     <View style={{ flex: 1, width: '100%' }}>
+      {instructionsLoaded ? ( <View>
       <NavBar {...props} />
       <Image
         source={require('../../assets/RecipeImage.png')}
@@ -88,7 +89,7 @@ const UserRecipe = props => {
               Water Temperature: {currentRecipe.water_temp}
             </Text>
 
-            {instructionsLoaded ? (
+         
               <ScrollView>
                 {sortedInstructions.map((instruction, index) => (
                   <View
@@ -130,13 +131,15 @@ const UserRecipe = props => {
                   </View>
                 ))}
               </ScrollView>
-            ) : null}
           </View>
         </ScrollView>
       </Layout>
+       </View>) : null} 
     </View>
-  );
-};
+    
+  )}
+    
+
 
 const mapStateToProps = state => {
   return {

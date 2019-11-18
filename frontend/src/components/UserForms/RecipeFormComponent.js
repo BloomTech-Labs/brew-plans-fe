@@ -135,7 +135,7 @@ const RecipeFormComponent = props => {
                     placeholder='Add step'
                   />
                   <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                  <MaterialIcons key={9594+index}name="timer" size={24} color="#720A13" onPress={()=> {this.addDuration(index)}}/>
+                  {/* <MaterialIcons key={9594+index}name="timer" size={24} color="#720A13" onPress={()=> {this.addDuration(index)}}/> */}
                   {/* <TextInput
                     style={{...styles.formInput, width: '80%'}}
                     // onChangeText={value =>
