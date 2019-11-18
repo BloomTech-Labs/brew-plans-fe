@@ -184,6 +184,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         currentRecipe: {
           title: action.payload.title,
+          id: action.payload.id,
           brew_type: action.payload.brew_type,
           water_temp: action.payload.water_temp,
           coarseness: action.payload.coarseness,

@@ -34,7 +34,7 @@ const MyRecipes = props => {
   // const [numberIngredients, setNumberIngredients] = useState(['', '']);
 
   useEffect(() => {
-    props.getUserRecipes(currentUser.id);
+    props.getUserRecipes(123456);
     props.getSeededRecipes();
   }, []);
 
