@@ -19,6 +19,7 @@ import {
   handleRecipeUpdate,
   handleRecipeEdit
 } from '../../store/actions/index.js';
+import AddTimer from "./AddTimer"
 
 const RecipeFormComponent = props => {
   const {
@@ -38,21 +39,22 @@ const RecipeFormComponent = props => {
     newRecipe.instructions
   );
 
-  // addDuration() {
-  //   return <TextInput onChangeText/>
-  // }
-
-  handleInstructionChange=(index, text, duration)=>{
-      const thisInstruction = localInstructions
-                      thisInstruction.splice(index, 1, {order: [index+1], text: text, duration: duration || null
+  handleInstructionChange=(index, text)=>{
+      const theseInstructions = localInstructions
+                      theseInstructions.splice(index, 1, {order: index+1, text: text, duration: theseInstructions[index].duration || null
                       // (localInstructions[index].text).concat(text)
                       })
                       setLocalInstructions([
-                        ...thisInstruction,
+                        ...theseInstructions
                         // ...localInstructions,
                         // {order: [index+1], text: value}
                         //  (localInstructions[index] = {order: [index+1], text: (localInstructions[index].text).concat( value)})
                       ])
+  }
+
+  handleDurationChange=(index, duration) => {
+    const theseInstr = localInstructions
+    theseInstr.splice(index, 1, {order: index+1, duration: Number(duration), text: theseInstr[index].text})
   }
 
   if (form == 'add') {
@@ -115,9 +117,9 @@ const RecipeFormComponent = props => {
                   placeholder='Coarseness'
                 />
                 {localInstructions.map((inst, index) => (
-                  <View key={115+index}>
+                  <View key={"V"+index}>
                   <TextInput
-                    key={index}
+                    key={"TI"+index}
                     style={styles.formInput}
                     // onChangeText={value =>
                     //   handleNewRecipeInput('instructions', value)
@@ -134,7 +136,7 @@ const RecipeFormComponent = props => {
                   />
                   <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <MaterialIcons key={9594+index}name="timer" size={24} color="#720A13" onPress={()=> {this.addDuration(index)}}/>
-                  <TextInput
+                  {/* <TextInput
                     style={{...styles.formInput, width: '80%'}}
                     // onChangeText={value =>
                     //   handleNewRecipeInput('instructions', value)
@@ -148,8 +150,9 @@ const RecipeFormComponent = props => {
                     // label='Coarseness'
                     mode='outlined'
                     placeholder='Add duration in seconds'
-                  />
+                  /> */}
                   </View>
+                  <AddTimer handleDurationChange={this.handleDurationChange} index={index} key={"AT"+index} localInstructions={localInstructions} />
                   </View>
                 ))}
 
@@ -165,8 +168,9 @@ const RecipeFormComponent = props => {
               <OurButton
                 // onPress={() => createUserRecipe(recipe)}
                 onPress={() => {
+                  newRecipe.instructions = localInstructions
                   createUserRecipe(newRecipe, currentUser.id);
-                  console.log('localInstructions', localInstructions);
+                  console.log('newRecipe', newRecipe);
                   cancel();
                 }}
                 title='Submit'

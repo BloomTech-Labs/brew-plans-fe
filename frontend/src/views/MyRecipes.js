@@ -38,7 +38,7 @@ const MyRecipes = props => {
     props.getSeededRecipes();
   }, []);
 
-  console.log('userRecipes', props.userRecipes);
+  // console.log('userRecipes', props.userRecipes);
 
   if (view == 'Default Recipes') {
     return (
