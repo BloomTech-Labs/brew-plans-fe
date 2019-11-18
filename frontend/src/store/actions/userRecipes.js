@@ -18,12 +18,12 @@ import {
 
 import axios from 'axios';
 
-export const getUserRecipes = userId => dispatch => {
+export const getUserRecipes = userString => dispatch => {
   dispatch({ type: GET_USER_RECIPES_START });
-  if (userId) {
+  if (userString) {
     axios
       .get(
-        `https://backend-development-coffee.herokuapp.com/userrecipes/${userId}`
+        `https://brewplans-production.herokuapp.com/userrecipes/user/${userString}`
       )
       .then(res => {
         dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
@@ -33,7 +33,9 @@ export const getUserRecipes = userId => dispatch => {
       });
   } else {
     axios
-      .get(`https://backend-development-coffee.herokuapp.com/userrecipes/1`)
+      .get(
+        `https://backend-development-coffee.herokuapp.com/userrecipes/user/12345677`
+      )
       .then(res => {
         dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
       })

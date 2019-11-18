@@ -34,7 +34,7 @@ const MyRecipes = props => {
   // const [numberIngredients, setNumberIngredients] = useState(['', '']);
 
   useEffect(() => {
-    props.getUserRecipes(1);
+    props.getUserRecipes(currentUser.id);
     props.getSeededRecipes();
   }, []);
 
@@ -149,20 +149,7 @@ const MyRecipes = props => {
 
           <View style={styles.recipesContainer}>
             <ScrollView>
-              <UserRecipe
-                recipe={props.userRecipes}
-                edit={() => {
-                  setEditRecipeModal(!editRecipeModal);
-                }}
-                delete={() => {
-                  props.deleteUserRecipe(props.userRecipes.id);
-                }}
-                pressed={() => {
-                  props.setCurrentRecipe(props.userRecipes);
-                  props.navigation.navigate('UserRecipe');
-                }}
-              />
-              {/* {props.userRecipes.map((recipe, index) => (
+              {props.userRecipes.map((recipe, index) => (
                 <UserRecipe
                   key={index}
                   recipe={recipe}
@@ -177,7 +164,7 @@ const MyRecipes = props => {
                     props.navigation.navigate('UserRecipe');
                   }}
                 />
-              ))} */}
+              ))}
             </ScrollView>
           </View>
         </View>

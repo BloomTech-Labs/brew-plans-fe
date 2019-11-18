@@ -17,7 +17,7 @@ import {
 } from '../actions/actionTypes.js';
 
 const initialState = {
-  userRecipes: {},
+  userRecipes: [],
   edittedRecipe: {},
   newRecipe: {
     water_temp: null,
@@ -26,7 +26,7 @@ const initialState = {
     brew_type: '',
     ingredients: [],
     // instructions: ['']
-    instructions: [{order: 1, text: "", duration: null}]
+    instructions: [{ order: 1, text: '', duration: null }]
   },
   recipeToEdit: {
     water_temp: null,
