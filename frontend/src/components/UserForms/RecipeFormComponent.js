@@ -42,13 +42,13 @@ const RecipeFormComponent = props => {
   //   return <TextInput onChangeText/>
   // }
 
-  handleInstructionChange=(index, text)=>{
+  handleInstructionChange=(index, text, duration)=>{
       const thisInstruction = localInstructions
-                      thisInstruction.splice(index, 1, {order: [index+1], text: text
+                      thisInstruction.splice(index, 1, {order: [index+1], text: text, duration: duration || null
                       // (localInstructions[index].text).concat(text)
                       })
                       setLocalInstructions([
-                        ...thisInstruction
+                        ...thisInstruction,
                         // ...localInstructions,
                         // {order: [index+1], text: value}
                         //  (localInstructions[index] = {order: [index+1], text: (localInstructions[index].text).concat( value)})
@@ -132,7 +132,24 @@ const RecipeFormComponent = props => {
                     mode='outlined'
                     placeholder='Add step'
                   />
+                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <MaterialIcons key={9594+index}name="timer" size={24} color="#720A13" onPress={()=> {this.addDuration(index)}}/>
+                  <TextInput
+                    style={{...styles.formInput, width: '80%'}}
+                    // onChangeText={value =>
+                    //   handleNewRecipeInput('instructions', value)
+                    // }
+                    onChangeText={value =>this.handleInstructionChange(index,value)
+   
+                    
+                    }
+                    value={localInstructions[index].duration}
+                    onBlur={props.handleBlur('Instructions')} // change this!
+                    // label='Coarseness'
+                    mode='outlined'
+                    placeholder='Add duration in seconds'
+                  />
+                  </View>
                   </View>
                 ))}
 
