@@ -88,7 +88,7 @@ export const setRecipeToEdit = recipe_id => dispatch => {
     .then(res => {
   console.log('set recipe to edit: recipe', recipe)
   dispatch({ type: SET_RECIPE_TO_EDIT, payload: res.data });
-};
+})}
 
 export const handleRecipeUpdate = (updatedRecipe, recipeId) => dispatch => {
   dispatch({ type: UPDATE_USER_RECIPE_START });

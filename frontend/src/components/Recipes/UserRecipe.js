@@ -33,7 +33,7 @@ const UserRecipe = props => {
       <View style={styles.recipeInfoContainer}>
         <TouchableOpacity
           onPress={() => {
-            props.setRecipeToEdit(recipe);
+            props.setRecipeToEdit(recipe.id);
             props.setCurrentRecipe(recipe);
           }}
         >
