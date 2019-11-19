@@ -100,6 +100,7 @@ export const setRecipeToEdit = recipe_id => dispatch => {
 
 export const handleRecipeUpdate = (updatedRecipe, recipeId) => dispatch => {
   dispatch({ type: UPDATE_USER_RECIPE_START });
+  console.log('updatedRecipe in Action', updatedRecipe);
   axios
     .put(
       //`https://brewplans-production.herokuapp.com/userrecipes/${recipeId}`,
@@ -107,25 +108,24 @@ export const handleRecipeUpdate = (updatedRecipe, recipeId) => dispatch => {
       updatedRecipe
     )
     .then(res => {
-      console.log("Updated Recipe", updatedRecipe);
+      console.log('Updated Recipe', updatedRecipe);
       dispatch({ type: UPDATE_USER_RECIPE_SUCCESS, payload: res.data });
       axios
-     // dispatch(getUserRecipes(updatedRecipe.userString));
-     .get(
-      //`https://brewplans-production.herokuapp.com/userrecipes/user/${userString}`
+        // dispatch(getUserRecipes(updatedRecipe.userString));
+        .get(
+          //`https://brewplans-production.herokuapp.com/userrecipes/user/${userString}`
 
-      `https://backend-development-coffee.herokuapp.com/userrecipes/user/${updatedRecipe.userString}`
-      //`https://backend-production-coffee.herokuapp.com/userrecipes/${userString}`
-    )
-    .then(res => {
-      
-      dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
-      console.log('Get res.data', res.data);
-    })
-    .catch(err => {
-      console.log('HERE IS THE CATCH !!!!!!!!!!!!!!!!!!!!!!!!!!', err);
-      dispatch({ type: GET_USER_RECIPES_FAIL, payload: err });
-    });
+          `https://backend-development-coffee.herokuapp.com/userrecipes/user/${updatedRecipe.userString}`
+          //`https://backend-production-coffee.herokuapp.com/userrecipes/${userString}`
+        )
+        .then(res => {
+          dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
+          console.log('Get res.data', res.data);
+        })
+        .catch(err => {
+          console.log('HERE IS THE CATCH !!!!!!!!!!!!!!!!!!!!!!!!!!', err);
+          dispatch({ type: GET_USER_RECIPES_FAIL, payload: err });
+        });
     })
     .catch(err => {
       console.log('Edit err', err);
