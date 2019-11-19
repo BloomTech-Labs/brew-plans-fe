@@ -7,7 +7,7 @@ import { setCurrentRecipe } from '../../store/actions/user';
 // import styles from '../../styling/UserRecipeStyling';
 
 const UserRecipe = props => {
-  const { recipe } = props;
+  const { recipe, setEditRecipe, editRecipeModal } = props;
 
   return (
     <TouchableOpacity onPress={props.pressed} style={styles.recipeContainer}>
@@ -35,6 +35,7 @@ const UserRecipe = props => {
           onPress={() => {
             props.setRecipeToEdit(recipe.id);
             props.setCurrentRecipe(recipe);
+            props.edit();
           }}
         >
           <MaterialIcons name={'edit'} size={20} color={'black'} />

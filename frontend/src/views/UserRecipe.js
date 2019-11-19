@@ -7,7 +7,7 @@ import Layout from '../components/Layout/Layout';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
 import styles from '../styling/SeededRecipesStyling';
 import Timer from '../components/timer';
-import Axios from 'axios';
+import axios from 'axios';
 
 //Recipe
 const UserRecipe = props => {
@@ -23,7 +23,7 @@ const UserRecipe = props => {
   }, []);
 
   useEffect(() => {
-    Axios.get(
+    axios.get(
       `https://backend-development-coffee.herokuapp.com/userrecipes/${currentRecipe.id}`
     )
       .then(res => {

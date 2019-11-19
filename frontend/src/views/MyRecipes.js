@@ -104,7 +104,8 @@ const MyRecipes = props => {
             </TouchableOpacity>
           </View>
 
-          {addRecipeModal ? (
+          {addRecipeModal
+           ? (
             <Modal
               visible={addRecipeModal}
               onRequestClose={() => {
