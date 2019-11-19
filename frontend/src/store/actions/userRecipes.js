@@ -21,8 +21,8 @@ import {
 import axios from 'axios';
 
 export const getUserRecipes = userString => dispatch => {
-  dispatch({ type: GET_USER_RECIPES_START });
   console.log('GET USER RECIPES STARTED!!!!!!!!!!!!!');
+  dispatch({ type: GET_USER_RECIPES_START });
   // if (userString) {
   axios
     .get(
@@ -107,9 +107,25 @@ export const handleRecipeUpdate = (updatedRecipe, recipeId) => dispatch => {
       updatedRecipe
     )
     .then(res => {
-      console.log('Edit res', res.data);
-      getUserRecipes(updatedRecipe.userString);
+      console.log("Updated Recipe", updatedRecipe);
       dispatch({ type: UPDATE_USER_RECIPE_SUCCESS, payload: res.data });
+      axios
+     // dispatch(getUserRecipes(updatedRecipe.userString));
+     .get(
+      //`https://brewplans-production.herokuapp.com/userrecipes/user/${userString}`
+
+      `https://backend-development-coffee.herokuapp.com/userrecipes/user/${updatedRecipe.userString}`
+      //`https://backend-production-coffee.herokuapp.com/userrecipes/${userString}`
+    )
+    .then(res => {
+      
+      dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
+      console.log('Get res.data', res.data);
+    })
+    .catch(err => {
+      console.log('HERE IS THE CATCH !!!!!!!!!!!!!!!!!!!!!!!!!!', err);
+      dispatch({ type: GET_USER_RECIPES_FAIL, payload: err });
+    });
     })
     .catch(err => {
       console.log('Edit err', err);

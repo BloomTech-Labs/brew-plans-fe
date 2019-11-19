@@ -78,6 +78,9 @@ const RecipeFormComponent = props => {
   };
 
   if (form == 'add') {
+
+
+    
     return (
       <Formik
         initialValues={{}}
@@ -190,6 +193,7 @@ const RecipeFormComponent = props => {
       // so we have to build out a text input field, that is submitted with a button at also prompts the next input field.
     );
   } else if (form == 'edit' && isLoading) {
+
     return (
       <View>
         <Text>Loading</Text>
@@ -197,6 +201,32 @@ const RecipeFormComponent = props => {
     );
   } else if (form == 'edit' && !isLoading) {
     // console.log("RECIPE TO EDIT FORMIK RETURN", recipeToEdit);
+    const instructionsMap = 
+      recipeToEdit.instructions ? (
+               
+      recipeToEdit.instructions.map((instruction, index) => {
+        return(
+        <View>
+          <Text>Hello2</Text>
+          {console.log('Inside .map')}
+          <TextInput
+            style={styles.formInput}
+            value={instruction.text}
+            key={'inst' + index}
+            label={'Step' + (index + 1)}
+            onChangeText={value =>
+              this.handleInstructionChange(index, value)
+            }
+            placeholder='blah'
+            mode='outlined'
+          />
+          
+        </View>)                      ;
+      })
+    ) : (
+      // )
+      <>{console.log('ELSE')}</>
+    )
     return (
       <View>
         <Formik
@@ -251,57 +281,10 @@ const RecipeFormComponent = props => {
                     mode='outlined'
                     placeholder='Coarseness'
                   />
-                  {/* {console.log('recipe to edit', recipeToEdit)} */}
-                  {recipeToEdit.instructions ? (
-                    // (
-                    // <View>
-                    recipeToEdit.instructions.map((instruction, index) => {
-                      <View>
-                        <Text>Hello2</Text>
-                        {console.log('Inside .map')}
-                        <TextInput
-                          style={styles.formInput}
-                          value={instruction.text}
-                          key={'inst' + index}
-                          label={'Step' + (index + 1)}
-                          onChangeText={value =>
-                            this.handleInstructionChange(index, value)
-                          }
-                          placeholder='blah'
-                          mode='outlined'
-                        />
-                        {/* 
-                          {instruction.duration ? (
-                            <View>
-                              <MaterialIcons
-                                key={"du" + index}
-                                name="timer"
-                                size={24}
-                                color="#720A13"
-                              />
-                              <TextInput
-                                style={styles.durationInput}
-                                value={instruction.duration}
-                                label="Duration in seconds"
-                                key={"dur" + index}
-                                placeholder="blah"
-                                mode="outlined"
-                              />
-                            </View>
-                          ) : (
-                            <AddTimer
-                              handleDurationChange={this.handleDurationChange}
-                              index={index}
-                              key={"DI" + index}
-                              order={instruction.order}
-                            />
-                          )} */}
-                      </View>;
-                    })
-                  ) : (
-                    // )
-                    <>{console.log('ELSE')}</>
-                  )}
+               
+      {console.log('instructionsMap', instructionsMap)}
+      {instructionsMap}
+               
                 </ScrollView>
                 <OurButton
                   // onPress={() => createUserRecipe(recipe)}
