@@ -130,8 +130,8 @@ const userRecipeReducer = (state = initialState, action) => {
           coarseness: action.payload.coarseness,
           title: action.payload.title,
           brew_type: action.payload.brew_type,
-          id: action.payload.id
-          // ingredients: []
+          id: action.payload.id,
+          instructions: action.payoad.instructions
         }
       };
 

@@ -17,7 +17,8 @@ import {
   handleNewRecipeInput,
   createUserRecipe,
   handleRecipeUpdate,
-  handleRecipeEdit
+  handleRecipeEdit,
+  setCurrentRecipe
 } from '../../store/actions/index.js';
 import AddTimer from "./AddTimer"
 
@@ -32,12 +33,27 @@ const RecipeFormComponent = props => {
     createUserRecipe,
     handleNewRecipeInput,
     handleRecipeEdit,
-    handleRecipeUpdate
+    handleRecipeUpdate,
   } = props;
 
   const [localInstructions, setLocalInstructions] = useState(
     newRecipe.instructions
   );
+
+    useEffect(() => {
+    Axios.get(
+      `https://backend-development-coffee.herokuapp.com/userrecipes/${currentRecipe.id}`
+    )
+      .then(res => {
+        const currentInstructions = res.data.instructions;
+        console.log('currentInstructions', currentInstructions);
+        setSortedInstructions(currentInstructions);
+        setInstructionsLoaded(true);
+      })
+      .catch(err => {
+        console.log('error', err);
+      });
+  }, []);
 
   handleInstructionChange=(index, text)=>{
       const theseInstructions = localInstructions
@@ -259,7 +275,8 @@ const mapStateToProps = state => {
   return {
     newRecipe: state.userRecipes.newRecipe,
     recipeToEdit: state.userRecipes.recipeToEdit,
-    currentUser: state.user.currentUser
+    currentUser: state.user.currentUser,
+    currentRecipe: state.user.currentRecipe
   };
 };
 

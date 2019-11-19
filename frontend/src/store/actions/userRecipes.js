@@ -81,8 +81,13 @@ export const handleRecipeEdit = (inputField, inputValue) => dispatch => {
   });
 };
 
-export const setRecipeToEdit = recipe => dispatch => {
-  dispatch({ type: SET_RECIPE_TO_EDIT, payload: recipe });
+export const setRecipeToEdit = recipe_id => dispatch => {
+  Axios.get(
+    `https://backend-development-coffee.herokuapp.com/userrecipes/${recipe_id}`
+  )
+    .then(res => {
+  console.log('set recipe to edit: recipe', recipe)
+  dispatch({ type: SET_RECIPE_TO_EDIT, payload: res.data });
 };
 
 export const handleRecipeUpdate = (updatedRecipe, recipeId) => dispatch => {

@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import { setRecipeToEdit } from '../../store/actions/userRecipes.js';
+import { setCurrentRecipe } from '../../store/actions/user';
 // import styles from '../../styling/UserRecipeStyling';
 
 const UserRecipe = props => {
@@ -32,8 +33,8 @@ const UserRecipe = props => {
       <View style={styles.recipeInfoContainer}>
         <TouchableOpacity
           onPress={() => {
-            props.edit();
             props.setRecipeToEdit(recipe);
+            props.setCurrentRecipe(recipe);
           }}
         >
           <MaterialIcons name={'edit'} size={20} color={'black'} />
@@ -81,6 +82,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    setRecipeToEdit
+    setRecipeToEdit,
+    setCurrentRecipe
   }
 )(UserRecipe);
