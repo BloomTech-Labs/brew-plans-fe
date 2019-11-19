@@ -17,12 +17,12 @@ export default StyleSheet.create({
   },
   formView: {
     alignItems: 'center',
-    backgroundColor: '#ece6cf',
     width: '90%',
     marginTop: 24,
     paddingVertical: 16,
     borderRadius: 5,
-    height: 450
+    height: 475,
+    backgroundColor: 'white'
   },
 
   formInputsContainer: {
@@ -42,5 +42,4 @@ export default StyleSheet.create({
     width: '80%',
     fontSize: 3
   }
-  
 });

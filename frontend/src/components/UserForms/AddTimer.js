@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TextInput } from 'react-native-paper';
 import { View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import theme from '../../theme';
 
 export default AddTimer = props => {
   const [addDuration, setAddDuration] = useState(false);
@@ -11,7 +12,7 @@ export default AddTimer = props => {
     localInstructions[index].duration
   );
   return (
-    <View>
+    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
       <MaterialIcons
         key={'MI' + index}
         name='timer'
@@ -20,16 +21,26 @@ export default AddTimer = props => {
         onPress={() => setAddDuration(true)}
       />
       {addDuration || localInstructions[index].duration ? (
-        <TextInput
-          key={'D' + index}
-          value={
-            localInstructions[index].duration
-              ? localInstructions[index].duration.toString()
-              : ''
-          }
-          mode='outlined'
-          onChangeText={value => handleDurationChange(index, value)}
-        />
+        <View>
+          <TextInput
+            key={'D' + index}
+            value={
+              localInstructions[index].duration
+                ? localInstructions[index].duration.toString()
+                : ''
+            }
+            mode='outlined'
+            onChangeText={value => handleDurationChange(index, value)}
+            theme={theme}
+            placeholder='Add duration in seconds'
+            style={{
+              marginHorizontal: 16,
+              marginVertical: 8,
+              width: '90%',
+              fontSize: 3
+            }}
+          />
+        </View>
       ) : (
         <></>
       )}

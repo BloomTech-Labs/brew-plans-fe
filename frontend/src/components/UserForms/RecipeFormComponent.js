@@ -21,6 +21,7 @@ import {
   setCurrentRecipe
 } from '../../store/actions/index.js';
 import AddTimer from './AddTimer';
+import theme from '../../theme';
 
 const RecipeFormComponent = props => {
   const {
@@ -101,6 +102,7 @@ const RecipeFormComponent = props => {
                   label='Title'
                   mode='outlined'
                   placeholder='Title'
+                  theme={theme}
                 />
 
                 <TextInput
@@ -113,6 +115,7 @@ const RecipeFormComponent = props => {
                   label='Brew Method'
                   mode='outlined'
                   placeholder='Brew Type'
+                  theme={theme}
                 />
 
                 <TextInput
@@ -125,6 +128,7 @@ const RecipeFormComponent = props => {
                   label='Brew Temperature'
                   mode='outlined'
                   placeholder='Brew Temperature'
+                  theme={theme}
                 />
 
                 <TextInput
@@ -137,9 +141,16 @@ const RecipeFormComponent = props => {
                   label='Coarseness'
                   mode='outlined'
                   placeholder='Coarseness'
+                  theme={theme}
                 />
                 {localInstructions.map((inst, index) => (
-                  <View key={'V' + index}>
+                  <View
+                    style={{
+                      justifyContent: 'center',
+                      flexWrap: 'wrap'
+                    }}
+                    key={'V' + index}
+                  >
                     <TextInput
                       key={'TI' + index}
                       style={styles.formInput}
@@ -154,6 +165,7 @@ const RecipeFormComponent = props => {
                       label={'Step' + index + 1}
                       mode='outlined'
                       placeholder='Add step'
+                      theme={theme}
                     />
                     <AddTimer
                       handleDurationChange={this.handleDurationChange}
@@ -164,14 +176,21 @@ const RecipeFormComponent = props => {
                   </View>
                 ))}
 
-                <Button
-                  // onPress={() => createUserRecipe(recipe)}\
-                  style={{ width: '100%' }}
-                  onPress={() =>
-                    setLocalInstructions([...localInstructions, {}])
-                  }
-                  title='Add Instructions'
-                />
+                <View
+                  style={{
+                    width: '100%',
+                    alignItems: 'center',
+                    marginVertical: 6
+                  }}
+                >
+                  <OurButton
+                    // onPress={() => createUserRecipe(recipe)}\
+                    onPress={() =>
+                      setLocalInstructions([...localInstructions, {}])
+                    }
+                    title='Add Step'
+                  />
+                </View>
               </ScrollView>
               <OurButton
                 // onPress={() => createUserRecipe(recipe)}
@@ -322,4 +341,4 @@ export default connect(mapStateToProps, {
   createUserRecipe,
   handleRecipeUpdate,
   handleRecipeEdit
-})(withTheme(RecipeFormComponent));
+})(RecipeFormComponent);
