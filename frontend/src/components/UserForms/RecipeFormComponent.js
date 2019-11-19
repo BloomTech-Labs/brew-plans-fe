@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import styles from '../../styling/RecipeFormComponentStyling';
+import React, { useState, useEffect } from "react";
+import styles from "../../styling/RecipeFormComponentStyling";
 import {
   View,
   Text,
@@ -7,20 +7,20 @@ import {
   TouchableOpacity,
   Animated,
   Button
-} from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
-import { Formik } from 'formik';
-import { TextInput, withTheme } from 'react-native-paper';
-import OurButton from './SubmitButton';
-import { connect } from 'react-redux';
+} from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Formik } from "formik";
+import { TextInput, withTheme } from "react-native-paper";
+import OurButton from "./SubmitButton";
+import { connect } from "react-redux";
 import {
   handleNewRecipeInput,
   createUserRecipe,
   handleRecipeUpdate,
   handleRecipeEdit,
   setCurrentRecipe
-} from '../../store/actions/index.js';
-import AddTimer from './AddTimer';
+} from "../../store/actions/index.js";
+import AddTimer from "./AddTimer";
 
 const RecipeFormComponent = props => {
   const {
@@ -42,14 +42,13 @@ const RecipeFormComponent = props => {
   );
 
   useEffect(() => {
-    //if (form == "edit") {
-    //  setLocalInstructions(recipeToEdit.instructions);
-    //}
-    {
-      console.log('4. RecipeToEdit in Formik', recipeToEdit);
-      // console.log('localInstructions', localInstructions);
-      console.log('form', form);
+    if (form == "edit") {
+     setLocalInstructions(recipeToEdit.instructions);
     }
+
+    console.log("4. RecipeToEdit in Formik", recipeToEdit);
+    // console.log('localInstructions', localInstructions);
+    // console.log('form', form);
   }, [isLoading]);
 
   handleInstructionChange = (index, text) => {
@@ -77,10 +76,7 @@ const RecipeFormComponent = props => {
     });
   };
 
-  if (form == 'add') {
-
-
-    
+  if (form == "add") {
     return (
       <Formik
         initialValues={{}}
@@ -90,59 +86,59 @@ const RecipeFormComponent = props => {
           <View style={styles.backgroundOverlay}>
             <View style={{ ...styles.formView, marginTop: 75 }}>
               <TouchableOpacity onPress={() => cancel()}>
-                <MaterialIcons name={'cancel'} size={36} color={'black'} />
+                <MaterialIcons name={"cancel"} size={36} color={"black"} />
               </TouchableOpacity>
               <Text style={styles.formHeader}>{titleText}</Text>
               <ScrollView style={styles.formInputsContainer}>
                 <TextInput
                   style={styles.formInput}
-                  onChangeText={value => handleNewRecipeInput('title', value)}
-                  onBlur={props.handleBlur('title')}
+                  onChangeText={value => handleNewRecipeInput("title", value)}
+                  onBlur={props.handleBlur("title")}
                   value={newRecipe.title}
-                  label='Title'
-                  mode='outlined'
-                  placeholder='Title'
+                  label="Title"
+                  mode="outlined"
+                  placeholder="Title"
                 />
 
                 <TextInput
                   style={styles.formInput}
                   onChangeText={value =>
-                    handleNewRecipeInput('brew_type', value)
+                    handleNewRecipeInput("brew_type", value)
                   }
-                  onBlur={props.handleBlur('Brew Method')}
+                  onBlur={props.handleBlur("Brew Method")}
                   value={newRecipe.brew_type}
-                  label='Brew Method'
-                  mode='outlined'
-                  placeholder='Brew Type'
+                  label="Brew Method"
+                  mode="outlined"
+                  placeholder="Brew Type"
                 />
 
                 <TextInput
                   style={styles.formInput}
                   onChangeText={value =>
-                    handleNewRecipeInput('water_temp', value)
+                    handleNewRecipeInput("water_temp", value)
                   }
-                  onBlur={props.handleBlur('Temperature')}
+                  onBlur={props.handleBlur("Temperature")}
                   value={newRecipe.water_temp} // change this!
-                  label='Brew Temperature'
-                  mode='outlined'
-                  placeholder='Brew Temperature'
+                  label="Brew Temperature"
+                  mode="outlined"
+                  placeholder="Brew Temperature"
                 />
 
                 <TextInput
                   style={styles.formInput}
                   onChangeText={value =>
-                    handleNewRecipeInput('coarseness', value)
+                    handleNewRecipeInput("coarseness", value)
                   }
-                  onBlur={props.handleBlur('Grounds Coarseness')}
+                  onBlur={props.handleBlur("Grounds Coarseness")}
                   value={newRecipe.coarseness} // change this!
-                  label='Coarseness'
-                  mode='outlined'
-                  placeholder='Coarseness'
+                  label="Coarseness"
+                  mode="outlined"
+                  placeholder="Coarseness"
                 />
                 {localInstructions.map((inst, index) => (
-                  <View key={'V' + index}>
+                  <View key={"V" + index}>
                     <TextInput
-                      key={'TI' + index}
+                      key={"TI" + index}
                       style={styles.formInput}
                       // onChangeText={value =>
                       //   handleNewRecipeInput('instructions', value)
@@ -151,27 +147,27 @@ const RecipeFormComponent = props => {
                         this.handleInstructionChange(index, value)
                       }
                       value={localInstructions[index].text}
-                      onBlur={props.handleBlur('Instructions')} // change this!
-                      label={'Step' + index + 1}
-                      mode='outlined'
-                      placeholder='Add step'
+                      onBlur={props.handleBlur("Instructions")} // change this!
+                      label={"Step" + index + 1}
+                      mode="outlined"
+                      placeholder="Add step"
                     />
                     <AddTimer
                       handleDurationChange={this.handleDurationChange}
                       index={index}
-                      key={'AT' + index}
-                      order={localInstructions[index].order}
+                      key={"AT" + index}
+                      localInstructions={localInstructions}
                     />
                   </View>
                 ))}
 
                 <Button
                   // onPress={() => createUserRecipe(recipe)}\
-                  style={{ width: '100%' }}
+                  style={{ width: "100%" }}
                   onPress={() =>
                     setLocalInstructions([...localInstructions, {}])
                   }
-                  title='Add Instructions'
+                  title="Add Instructions"
                 />
               </ScrollView>
               <OurButton
@@ -179,10 +175,10 @@ const RecipeFormComponent = props => {
                 onPress={() => {
                   newRecipe.instructions = localInstructions;
                   createUserRecipe(newRecipe, currentUser.id);
-                  console.log('newRecipe', newRecipe);
+                  console.log("newRecipe", newRecipe);
                   cancel();
                 }}
-                title='Submit'
+                title="Submit"
               />
             </View>
           </View>
@@ -192,41 +188,44 @@ const RecipeFormComponent = props => {
       // A way to add steps/ingredients
       // so we have to build out a text input field, that is submitted with a button at also prompts the next input field.
     );
-  } else if (form == 'edit' && isLoading) {
-
+  } else if (form == "edit" && isLoading) {
     return (
       <View>
         <Text>Loading</Text>
       </View>
     );
-  } else if (form == 'edit' && !isLoading) {
-    // console.log("RECIPE TO EDIT FORMIK RETURN", recipeToEdit);
-    const instructionsMap = 
-      recipeToEdit.instructions ? (
-               
-      recipeToEdit.instructions.map((instruction, index) => {
-        return(
-        <View>
-          <Text>Hello2</Text>
-          {console.log('Inside .map')}
-          <TextInput
-            style={styles.formInput}
-            value={instruction.text}
-            key={'inst' + index}
-            label={'Step' + (index + 1)}
-            onChangeText={value =>
-              this.handleInstructionChange(index, value)
-            }
-            placeholder='blah'
-            mode='outlined'
-          />
-          
-        </View>)                      ;
-      })
-    ) : (
-      // )
-      <>{console.log('ELSE')}</>
-    )
+  } else if (form == "edit" && !isLoading) {
+    console.log("localinstructions FORMIK RETURN", localInstructions);
+    const instructionsMap =
+      recipeToEdit.instructions.length > 0 ? (
+        localInstructions.map((instruction, index) => {
+
+       // recipeToEdit.instructions.map((instruction, index) => {
+          return (
+            <View>
+              {console.log("Instruction in .map", instruction)}
+
+              <TextInput
+                style={styles.formInput}
+                value={localInstructions[index].text}
+                key={"inst" + index}
+                label={"Step" + (index + 1)}
+                onChangeText={value => this.handleInstructionChange(index, value)}
+                placeholder="blah"
+                mode="outlined"
+              />
+              <AddTimer
+              handleDurationChange={this.handleDurationChange}
+              index={index}
+              key={"EF"+index}
+              localInstructions={localInstructions}/>
+            </View>
+          );
+        })
+      ) : (
+        // )
+        <>{console.log("ELSE")}</>
+      );
     return (
       <View>
         <Formik
@@ -237,54 +236,53 @@ const RecipeFormComponent = props => {
             <View style={styles.backgroundOverlay}>
               <View style={styles.formView}>
                 <TouchableOpacity onPress={cancel}>
-                  <MaterialIcons name={'cancel'} size={36} color={'black'} />
+                  <MaterialIcons name={"cancel"} size={36} color={"black"} />
                 </TouchableOpacity>
                 <Text style={styles.formHeader}>{titleText}</Text>
                 <ScrollView style={styles.formInputsContainer}>
                   <TextInput
                     style={styles.formInput}
-                    onChangeText={value => handleRecipeEdit('title', value)}
-                    onBlur={props.handleBlur('title')}
+                    onChangeText={value => handleRecipeEdit("title", value)}
+                    onBlur={props.handleBlur("title")}
                     value={recipeToEdit.title}
-                    label='Title'
-                    mode='outlined'
-                    placeholder='Title'
+                    label="Title"
+                    mode="outlined"
+                    placeholder="Title"
                   />
                   <TextInput
                     style={styles.formInput}
-                    onChangeText={value => handleRecipeEdit('brew_type', value)}
-                    onBlur={props.handleBlur('Brew Method')}
+                    onChangeText={value => handleRecipeEdit("brew_type", value)}
+                    onBlur={props.handleBlur("Brew Method")}
                     value={recipeToEdit.brew_type}
-                    label='Brew Method'
-                    mode='outlined'
-                    placeholder='Brew Type'
+                    label="Brew Method"
+                    mode="outlined"
+                    placeholder="Brew Type"
                   />
                   <TextInput
                     style={styles.formInput}
                     onChangeText={value =>
-                      handleRecipeEdit('water_temp', value)
+                      handleRecipeEdit("water_temp", value)
                     }
-                    onBlur={props.handleBlur('Temperature')}
+                    onBlur={props.handleBlur("Temperature")}
                     value={recipeToEdit.water_temp} // moved .toString() to reducer
-                    label='Brew Temperature'
-                    mode='outlined'
-                    placeholder='Brew Temperature'
+                    label="Brew Temperature"
+                    mode="outlined"
+                    placeholder="Brew Temperature"
                   />
                   <TextInput
                     style={styles.formInput}
                     onChangeText={value =>
-                      handleRecipeEdit('coarseness', value)
+                      handleRecipeEdit("coarseness", value)
                     }
-                    onBlur={props.handleBlur('Grounds Coarseness')}
+                    onBlur={props.handleBlur("Grounds Coarseness")}
                     value={recipeToEdit.coarseness} // change this!
-                    label='Coarseness'
-                    mode='outlined'
-                    placeholder='Coarseness'
+                    label="Coarseness"
+                    mode="outlined"
+                    placeholder="Coarseness"
                   />
-               
-      {console.log('instructionsMap', instructionsMap)}
-      {instructionsMap}
-               
+
+                  {console.log("instructionsMap", instructionsMap)}
+                  {instructionsMap}
                 </ScrollView>
                 <OurButton
                   // onPress={() => createUserRecipe(recipe)}
@@ -292,7 +290,7 @@ const RecipeFormComponent = props => {
                     handleRecipeUpdate(recipeToEdit, recipeToEdit.id);
                     cancel();
                   }}
-                  title='Submit'
+                  title="Submit"
                 />
               </View>
             </View>

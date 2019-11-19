@@ -65,9 +65,20 @@ const userRecipeReducer = (state = initialState, action) => {
 
     case UPDATE_USER_RECIPE_INPUT:
       const { type, value } = action.payload;
-
+      instructionTypes= "text" || "order"|| "duration"
       // console.log(state.recipeToEdit)
-
+      if(type=== instructionTypes) {
+        return{
+          ...state,
+          recipeToEdit: {
+            ...state.recipeToEdit,
+            instructions: {
+              ...state.recipeToEdit.instructions,
+            [type]: value
+            }
+          }
+        }
+      }
       return {
         ...state,
         recipeToEdit: {
