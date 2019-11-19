@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Formik } from 'formik';
-import { TextInput } from 'react-native-paper';
+import { TextInput, withTheme } from 'react-native-paper';
 import OurButton from './SubmitButton';
 import { connect } from 'react-redux';
 import {
@@ -63,6 +63,7 @@ const RecipeFormComponent = props => {
         initialValues={{}}
         // onSubmit={values => console.log(values)} /// Add props.handlesubmt or equivelent.
       >
+       
         {props => (
           <View style={styles.backgroundOverlay}>
             <View style={{ ...styles.formView, marginTop: 75 }}>
@@ -88,7 +89,7 @@ const RecipeFormComponent = props => {
                   }
                   onBlur={props.handleBlur('Brew Method')}
                   value={newRecipe.brew_type}
-                  // label='Brew Method'
+                  label='Brew Method'
                   mode='outlined'
                   placeholder='Brew Type'
                 />
@@ -100,7 +101,7 @@ const RecipeFormComponent = props => {
                   }
                   onBlur={props.handleBlur('Temperature')}
                   value={newRecipe.water_temp} // change this!
-                  // label='Brew Temperature'
+                  label='Brew Temperature'
                   mode='outlined'
                   placeholder='Brew Temperature'
                 />
@@ -112,7 +113,7 @@ const RecipeFormComponent = props => {
                   }
                   onBlur={props.handleBlur('Grounds Coarseness')}
                   value={newRecipe.coarseness} // change this!
-                  // label='Coarseness'
+                  label='Coarseness'
                   mode='outlined'
                   placeholder='Coarseness'
                 />
@@ -130,7 +131,7 @@ const RecipeFormComponent = props => {
                     }
                     value={localInstructions[index].text}
                     onBlur={props.handleBlur('Instructions')} // change this!
-                    // label='Coarseness'
+                    label='Coarseness'
                     mode='outlined'
                     placeholder='Add step'
                   />
@@ -189,6 +190,7 @@ const RecipeFormComponent = props => {
         initialValues={{}}
         // onSubmit={values => console.log(values)} /// Add props.handlesubmt or equivelent.
       >
+         {console.log("RecipeToEdit in Formik", RecipeToEdit)}
         {props => (
           <View style={styles.backgroundOverlay}>
             <View style={styles.formView}>
@@ -212,7 +214,7 @@ const RecipeFormComponent = props => {
                   onChangeText={value => handleRecipeEdit('brew_type', value)}
                   onBlur={props.handleBlur('Brew Method')}
                   value={recipeToEdit.brew_type}
-                  // label='Brew Method'
+                   label='Brew Method'
                   mode='outlined'
                   placeholder='Brew Type'
                 />
@@ -222,7 +224,7 @@ const RecipeFormComponent = props => {
                   onChangeText={value => handleRecipeEdit('water_temp', value)}
                   onBlur={props.handleBlur('Temperature')}
                   value={recipeToEdit.water_temp.toString()} // change this!
-                  // label='Brew Temperature'
+                   label='Brew Temperature'
                   mode='outlined'
                   placeholder='Brew Temperature'
                 />
@@ -232,7 +234,7 @@ const RecipeFormComponent = props => {
                   onChangeText={value => handleRecipeEdit('coarseness', value)}
                   onBlur={props.handleBlur('Grounds Coarseness')}
                   value={recipeToEdit.coarseness} // change this!
-                  // label='Coarseness'
+                   label='Coarseness'
                   mode='outlined'
                   placeholder='Coarseness'
                 />
@@ -266,4 +268,4 @@ export default connect(mapStateToProps, {
   createUserRecipe,
   handleRecipeUpdate,
   handleRecipeEdit
-})(RecipeFormComponent);
+})(withTheme(RecipeFormComponent));

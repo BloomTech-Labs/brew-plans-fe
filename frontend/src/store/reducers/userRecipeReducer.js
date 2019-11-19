@@ -75,14 +75,14 @@ const userRecipeReducer = (state = initialState, action) => {
       };
 
     case DELETE_USER_RECIPE_START:
-      // console.log(action)
+       console.log(action)
 
       return {
         ...state
       };
 
     case DELETE_USER_RECIPE_SUCCESS:
-      // console.log('delete success payload: ', action.payload)
+       console.log('delete success payload: ', action.payload)
       return {
         ...state,
         userRecipes: state.userRecipes.filter(
@@ -91,21 +91,21 @@ const userRecipeReducer = (state = initialState, action) => {
       };
 
     case DELETE_USER_RECIPE_FAIL:
-      // console.log(action)
+      console.log(action)
 
       return {
         ...state
       };
 
     case UPDATE_USER_RECIPE_START:
-      // console.log('update user recipe start: ', action)
+      console.log('update user recipe start: ', action)
 
       return {
         ...state
       };
 
     case UPDATE_USER_RECIPE_SUCCESS:
-      // console.log('update user recipe success: ', action.payload.updated)
+       console.log('update user recipe success: ', action.payload.updated)
       state.userRecipes = state.userRecipes.filter(
         recipe => recipe.id !== action.payload.updated.id
       );
@@ -116,13 +116,13 @@ const userRecipeReducer = (state = initialState, action) => {
       };
 
     case UPDATE_USER_RECIPE_FAIL:
-      // console.log('update user recipe fail: ', action)
+       console.log('update user recipe fail: ', action)
       return {
         ...state
       };
 
     case SET_RECIPE_TO_EDIT:
-      // console.log('recipe to edit: ', action.payload)
+      console.log('recipe to edit: ', action.payload)
       return {
         ...state,
         recipeToEdit: {
@@ -136,7 +136,7 @@ const userRecipeReducer = (state = initialState, action) => {
       };
 
     case NEW_RECIPE_INPUT_UPDATE:
-      // console.log(action.payload)
+       console.log(action.payload)
       const { inputType, inputValue } = action.payload;
       return {
         ...state,
@@ -147,7 +147,7 @@ const userRecipeReducer = (state = initialState, action) => {
       };
 
     case CREATE_USER_RECIPE_START:
-      // console.log(action)
+       console.log(action)
       return state;
 
     case CREATE_USER_RECIPE_SUCCESS:
@@ -164,7 +164,7 @@ const userRecipeReducer = (state = initialState, action) => {
       };
 
     case CREATE_USER_RECIPE_FAIL:
-      // console.log(action)
+       console.log(action)
 
       return state;
 

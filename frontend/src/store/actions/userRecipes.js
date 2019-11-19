@@ -53,15 +53,23 @@ export const getUserRecipes = userString => dispatch => {
 
 export const deleteUserRecipe = recipeId => dispatch => {
   dispatch({ type: DELETE_USER_RECIPE_START });
+  console.log("in deleteUserRecipe function")
   axios
     .delete(
-      `https://brewplans-production.herokuapp.com/userrecipes/${recipeId}`
+      // `https://brewplans-production.herokuapp.com/userrecipes/${recipeId}`
+      `https://backend-development-coffee.herokuapp.com/userrecipes/${recipeId}`
     )
     .then(res => {
+      console.log('Delete res', res)
       dispatch({ type: DELETE_USER_RECIPE_SUCCESS, payload: recipeId });
     })
-    .catch(err => [dispatch({ type: DELETE_USER_RECIPE_FAIL, payload: err })]);
-};
+    .catch(err =>{
+      console.log('Delete err', err)
+      dispatch({ type: DELETE_USER_RECIPE_FAIL, payload: err })
+    })
+  };
+
+
 
 export const handleRecipeEdit = (inputField, inputValue) => dispatch => {
   dispatch({
@@ -82,16 +90,17 @@ export const handleRecipeUpdate = (updatedRecipe, recipeId) => dispatch => {
   axios
     .put(
       //`https://brewplans-production.herokuapp.com/userrecipes/${recipeId}`,
-      'https://brewplans-development-coffee.herokuapp.com/userrecipes/${recipeId}',
+      `https://brewplans-development-coffee.herokuapp.com/userrecipes/${recipeId}`,
       updatedRecipe
     )
     .then(res => {
-      // console.log(res);
+       console.log("Edit res", res);
       dispatch({ type: UPDATE_USER_RECIPE_SUCCESS, payload: res.data });
     })
     .catch(err => {
+      console.log('Edit err', err)
       dispatch({ type: UPDATE_USER_RECIPE_FAIL, payload: err });
-      // console.log(err);
+      
     });
 };
 
