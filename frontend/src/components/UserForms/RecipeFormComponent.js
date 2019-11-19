@@ -38,16 +38,19 @@ const RecipeFormComponent = props => {
   } = props;
 
   const [localInstructions, setLocalInstructions] = useState(
-  newRecipe.instructions 
+    newRecipe.instructions
   );
 
   useEffect(() => {
+    //if (form == "edit") {
+    //  setLocalInstructions(recipeToEdit.instructions);
+    //}
     {
       console.log("4. RecipeToEdit in Formik", recipeToEdit);
-      console.log("localInstructions", localInstructions)
-      console.log("form", form)
+      console.log("localInstructions", localInstructions);
+      console.log("form", form);
     }
-  }, []);
+  }, [isLoading]);
 
   handleInstructionChange = (index, text) => {
     const theseInstructions = localInstructions;
@@ -154,7 +157,7 @@ const RecipeFormComponent = props => {
                       handleDurationChange={this.handleDurationChange}
                       index={index}
                       key={"AT" + index}
-                      localInstructions={localInstructions}
+                      order={localInstructions[index].order}
                     />
                   </View>
                 ))}
@@ -193,7 +196,6 @@ const RecipeFormComponent = props => {
       </View>
     );
   } else if (form == "edit" && !isLoading) {
-    setLocalInstructions(recipeToEdit.instructions)
     console.log("RECIPE TO EDIT FORMIK RETURN", recipeToEdit);
     return (
       <View>
@@ -249,21 +251,26 @@ const RecipeFormComponent = props => {
                     mode="outlined"
                     placeholder="Coarseness"
                   />
-                  {recipeToEdit.instructions.length > 0
-                    ? 
-                    
+                  {console.log("recipe to edit", recipeToEdit)}
+                  {recipeToEdit.instructions ? (
+                    // (
+                    // <View>
                     recipeToEdit.instructions.map((instruction, index) => {
-                        <View>
-                          <TextInput
-                            style={styles.formInput}
-                            value={instruction.text}
-                            key={"inst" + index}
-                            label={"Step" + (index + 1)}
-                            onChangeText={value =>
-                              this.handleInstructionChange(index, value)
-                            }
-                          />
-
+                      <View>
+                        <Text>Hello2</Text>
+                        {console.log("Inside .map")}
+                        <TextInput
+                          style={styles.formInput}
+                          value={instruction.text}
+                          key={"inst" + index}
+                          label={"Step" + (index + 1)}
+                          onChangeText={value =>
+                            this.handleInstructionChange(index, value)
+                          }
+                          placeholder="blah"
+                          mode="outlined"
+                        />
+                        {/* 
                           {instruction.duration ? (
                             <View>
                               <MaterialIcons
@@ -277,6 +284,8 @@ const RecipeFormComponent = props => {
                                 value={instruction.duration}
                                 label="Duration in seconds"
                                 key={"dur" + index}
+                                placeholder="blah"
+                                mode="outlined"
                               />
                             </View>
                           ) : (
@@ -284,13 +293,15 @@ const RecipeFormComponent = props => {
                               handleDurationChange={this.handleDurationChange}
                               index={index}
                               key={"DI" + index}
-                              localInstructions={localInstructions}
+                              order={instruction.order}
                             />
-                          )}
-                        </View>;
-                      })
-                      : <></>}
-                  
+                          )} */}
+                      </View>;
+                    })
+                  ) : (
+                    // )
+                    <>{console.log("ELSE")}</>
+                  )}
                 </ScrollView>
                 <OurButton
                   // onPress={() => createUserRecipe(recipe)}
