@@ -34,16 +34,13 @@ const MyRecipes = props => {
   // const [numberIngredients, setNumberIngredients] = useState(['', '']);
   const [userRecipesLoaded, setUserRecipesLoaded] = useState(false);
 
-  useEffect(()=>{
-    console.log('currentUser', currentUser)
+  useEffect(() => {
+    console.log('currentUser', currentUser);
     setUserRecipesLoaded(false);
     props.getUserRecipes(currentUser.id);
     props.getSeededRecipes();
-    setUserRecipesLoaded(true)
-  }, []);
-
-  //console.log('recipe', recipe)
-   console.log('userRecipes', props.userRecipes);
+    setUserRecipesLoaded(true);
+  }, [newRecipe]);
 
   if (view == 'Default Recipes') {
     return (
@@ -154,26 +151,27 @@ const MyRecipes = props => {
 
           <View style={styles.recipesContainer}>
             <ScrollView>
-              {
-              console.log('props.userRecipes', props.userRecipes)}
-              {userRecipesLoaded ? ( <View>
-              {props.userRecipes.map((recipe, index) => (
-                <UserRecipe
-                  key={index}
-                  recipe={recipe}
-                  edit={() => {
-                    setEditRecipeModal(!editRecipeModal);
-                  }}
-                  delete={() => {
-                    props.deleteUserRecipe(recipe.id);
-                  }}
-                  pressed={() => {
-                    props.setCurrentRecipe(recipe);
-                    props.navigation.navigate('UserRecipe');
-                  }}
-                />
-              ))}
-              </View>) : null}
+              {/* {console.log('props.userRecipes', props.userRecipes)} */}
+              {userRecipesLoaded ? (
+                <View>
+                  {props.userRecipes.map((recipe, index) => (
+                    <UserRecipe
+                      key={index}
+                      recipe={recipe}
+                      edit={() => {
+                        setEditRecipeModal(!editRecipeModal);
+                      }}
+                      delete={() => {
+                        props.deleteUserRecipe(recipe.id);
+                      }}
+                      pressed={() => {
+                        props.setCurrentRecipe(recipe);
+                        props.navigation.navigate('UserRecipe');
+                      }}
+                    />
+                  ))}
+                </View>
+              ) : null}
             </ScrollView>
           </View>
         </View>

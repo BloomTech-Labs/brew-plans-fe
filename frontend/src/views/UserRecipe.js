@@ -24,7 +24,7 @@ const UserRecipe = props => {
 
   useEffect(() => {
     Axios.get(
-      `https://brewplans-production.herokuapp.com/userrecipes/${currentRecipe.id}`
+      `https://backend-development-coffee.herokuapp.com/userrecipes/${currentRecipe.id}`
     )
       .then(res => {
         const currentInstructions = res.data.instructions;
@@ -89,57 +89,54 @@ const UserRecipe = props => {
               Water Temperature: {currentRecipe.water_temp}
             </Text>
 
-         
-              <ScrollView>
-                {sortedInstructions.map((instruction, index) => (
-                  <View
-                    key={index}
-                    style={{
-                      borderBottomWidth: 0.8,
-                      borderBottomColor: 'black'
-                    }}
-                  >
-                    {instruction.duration ? (
-                      <View key={index}>
-                        <Text
-                          style={{
-                            marginVertical: 5,
-                            backgroundColor: 'white',
-                            padding: 6,
-                            fontSize: 16
-                          }}
-                        >
-                          Step {index + 1}: {instruction.text}
-                        </Text>
-                        <Timer stepLength={instruction.duration} />
-                      </View>
-                    ) : (
+            <ScrollView>
+              {sortedInstructions.map((instruction, index) => (
+                <View
+                  key={index}
+                  style={{
+                    borderBottomWidth: 0.8,
+                    borderBottomColor: 'black'
+                  }}
+                >
+                  {instruction.duration ? (
+                    <View key={index}>
                       <Text
                         style={{
                           marginVertical: 5,
                           backgroundColor: 'white',
                           padding: 6,
                           fontSize: 16
-                          // borderBottomWidth: 0.8,
-                          // borderBottomColor: "black"
                         }}
-                        key={index}
                       >
                         Step {index + 1}: {instruction.text}
                       </Text>
-                    )}
-                  </View>
-                ))}
-              </ScrollView>
+                      <Timer stepLength={instruction.duration} />
+                    </View>
+                  ) : (
+                    <Text
+                      style={{
+                        marginVertical: 5,
+                        backgroundColor: 'white',
+                        padding: 6,
+                        fontSize: 16
+                        // borderBottomWidth: 0.8,
+                        // borderBottomColor: "black"
+                      }}
+                      key={index}
+                    >
+                      Step {index + 1}: {instruction.text}
+                    </Text>
+                  )}
+                </View>
+              ))}
+            </ScrollView>
           </View>
         </ScrollView>
       </Layout>
-       {/* </View>) : null}  */}
+      {/* </View>) : null}  */}
     </View>
-    
-  )}
-    
-
+  );
+};
 
 const mapStateToProps = state => {
   return {

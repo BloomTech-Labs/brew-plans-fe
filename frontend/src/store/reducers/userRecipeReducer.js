@@ -25,7 +25,6 @@ const initialState = {
     title: '',
     brew_type: '',
     ingredients: [],
-    // instructions: ['']
     instructions: [{ order: 1, text: '', duration: null }]
   },
   recipeToEdit: {
@@ -152,8 +151,6 @@ const userRecipeReducer = (state = initialState, action) => {
       return state;
 
     case CREATE_USER_RECIPE_SUCCESS:
-      const newRecipe = action.payload.recipe;
-      state.userRecipes.unshift(newRecipe);
       return {
         ...state,
         newRecipe: {
