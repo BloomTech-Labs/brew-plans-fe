@@ -13,7 +13,9 @@ import {
   CREATE_USER_RECIPE_START,
   CREATE_USER_RECIPE_SUCCESS,
   CREATE_USER_RECIPE_FAIL,
-  SET_RECIPE_TO_EDIT
+  SET_RECIPE_TO_EDIT_START,
+  SET_RECIPE_TO_EDIT_SUCCESS,
+  SET_RECIPE_TO_EDIT_FAIL
 } from './actionTypes.js';
 
 import axios from 'axios';
@@ -82,13 +84,20 @@ export const handleRecipeEdit = (inputField, inputValue) => dispatch => {
 };
 
 export const setRecipeToEdit = recipe_id => dispatch => {
+  dispatch({type: SET_RECIPE_TO_EDIT_START})
+  console.log("inSetRecipeToEdit in action")
   axios.get(
     `https://backend-development-coffee.herokuapp.com/userrecipes/${recipe_id}`
   )
     .then(res => {
-  console.log('set recipe to edit: recipe', res.data)
-  dispatch({ type: SET_RECIPE_TO_EDIT, payload: res.data });
-})}
+  console.log('1. set recipe to edit in action: recipe', res.data)
+  dispatch({ type: SET_RECIPE_TO_EDIT_SUCCESS, payload: res.data });
+    })
+  .catch(err=> {
+    dispatch({type: SET_RECIPE_TO_EDIT_FAIL, payload: err})
+    console.log("1. set recipe to edit error in action", err)
+  })
+}
 
 export const handleRecipeUpdate = (updatedRecipe, recipeId) => dispatch => {
   dispatch({ type: UPDATE_USER_RECIPE_START });

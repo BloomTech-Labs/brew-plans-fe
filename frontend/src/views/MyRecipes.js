@@ -159,6 +159,8 @@ const MyRecipes = props => {
                     <UserRecipe
                       key={index}
                       recipe={recipe}
+                      editRecipeModal={editRecipeModal}
+                      setEditRecipeModal={setEditRecipeModal}
                       edit={() => {
                         setEditRecipeModal(!editRecipeModal);
                       }}

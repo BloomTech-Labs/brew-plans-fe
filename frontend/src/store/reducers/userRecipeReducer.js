@@ -13,7 +13,9 @@ import {
   CREATE_USER_RECIPE_START,
   CREATE_USER_RECIPE_SUCCESS,
   CREATE_USER_RECIPE_FAIL,
-  SET_RECIPE_TO_EDIT
+  SET_RECIPE_TO_EDIT_SUCCESS,
+  SET_RECIPE_TO_EDIT_START,
+  SET_RECIPE_TO_EDIT_FAIL
 } from '../actions/actionTypes.js';
 
 const initialState = {
@@ -120,20 +122,31 @@ const userRecipeReducer = (state = initialState, action) => {
       return {
         ...state
       };
-
-    case SET_RECIPE_TO_EDIT:
-      console.log('recipe to edit: ', action.payload)
+      case SET_RECIPE_TO_EDIT_START:
+        return{
+          ...state,
+          isLoading: true
+        }
+    case SET_RECIPE_TO_EDIT_SUCCESS:
+      console.log('2. recipe to edit in Reducer: ', action.payload)
+      console.log('3. instructions on payload in reducer', action.payload.instructions)
       return {
         ...state,
+        isLoading: false,
         recipeToEdit: {
-          water_temp: action.payload.water_temp,
+          water_temp: action.payload.water_temp.toString(),
           coarseness: action.payload.coarseness,
           title: action.payload.title,
           brew_type: action.payload.brew_type,
           id: action.payload.id,
-          instructions: action.payoad.instructions
+          instructions: action.payload.instructions
         }
       };
+      case SET_RECIPE_TO_EDIT_FAIL:
+        return {
+          ...state,
+          isLoading: false
+        }
 
     case NEW_RECIPE_INPUT_UPDATE:
        console.log(action.payload)

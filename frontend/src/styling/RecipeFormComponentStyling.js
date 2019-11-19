@@ -35,5 +35,12 @@ export default StyleSheet.create({
     marginVertical: 8,
     width: '100%',
     fontSize: 3
+  },
+  durationInput: {
+    marginHorizontal: 'auto',
+    marginVertical: 8,
+    width: '80%',
+    fontSize: 3
   }
+  
 });
