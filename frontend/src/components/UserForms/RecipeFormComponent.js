@@ -230,7 +230,7 @@ const RecipeFormComponent = props => {
                 style={styles.formInput}
                 value={localInstructions[index].text}
                 key={'inst' + index}
-                label={'Step' + (index + 1)}
+                label={`Step`}
                 onChangeText={value =>
                   this.handleInstructionChange(index, value)
                 }
