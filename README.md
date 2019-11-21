@@ -1,9 +1,3 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
-
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by. Make sure to delete the numbers by the end of Labs.
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
-
 # Brew Plans
 
 You can find the deployed project at
@@ -28,15 +22,11 @@ You can find the deployed project at
 <br>
 <br>
 
-<!--🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project-->
-
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
 ![Redux](https://img.shields.io/badge/redux-v4.0.4-blueviolet)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
-<!--🚫 more info on using badges [here](https://github.com/badges/shields)-->
 
 ## Project Overview
 
@@ -48,7 +38,7 @@ You can find the deployed project at
 
 Brew Plans is a native mobile app for coffee connoisseurs that allow users to create, view, update, and delete recipes. In addition, Brew Plans provides recipes for new users, detailing how to create tried and trusted coffee recipes.
 
-### 4️⃣ Key Features
+### Key Features
 
 - User Sign Up and Login
 - User sign in with Google
@@ -56,7 +46,7 @@ Brew Plans is a native mobile app for coffee connoisseurs that allow users to cr
 - User can view, create, update, and delete their own recipes
 - User can add steps to their recipe, along with timers with a specified duration
 
-## 1️⃣ Tech Stack
+## Tech Stack
 
 ### Front end built using:
 
@@ -87,15 +77,13 @@ Front End Libraries:
 
 # APIs
 
-## 2️⃣ Firebase
+## Firebase
 
 Firebase allows us to store users who sign in with Google easily.
 
-# 3️⃣ Environment Variables
+# Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
-
-🚫These are just examples, replace them with the specifics for your app
 
 - apiKey: AIzaSyDZKLP2FGiOx0aMXeDjAc3MOWSQa9pvJQg
 - authDomain: brew-plans.firebaseapp.com
@@ -106,32 +94,21 @@ In order for the app to function correctly, the user must set up their own envir
 - appId: 1:449923889220:web:61af8a8355e54b3fba2411
 - measurementId: G-01P13B1Q2M
 
-# 5️⃣ Content Licenses
-
-🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
+# Content Licenses
 
 | Image Filename | Source / Creator | License                                                                      |
 | -------------- | ---------------- | ---------------------------------------------------------------------------- |
 | doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
 | rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
 
-# 4️⃣ Testing (N/A)
-
-🚫Document what you used for testing and why
-
-# 4️⃣ Installation Instructions
+# Installation Instructions
 
 1. cd frontend
 2. npm i
 
 ## Other Scripts
 
-🚫replace these examples with your own (N/A)
-
-    * typecheck - runs the TypeScript compiler
-    * build - creates a build of the application
-    * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
+    N/A
 
 # Contributing
 
