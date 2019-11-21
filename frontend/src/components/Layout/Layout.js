@@ -18,8 +18,7 @@ const Layout = props => {
           padding: 16,
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#ece6cf',
-          padding: 24
+          backgroundColor:'white',
         }}
       >
         {props.children}

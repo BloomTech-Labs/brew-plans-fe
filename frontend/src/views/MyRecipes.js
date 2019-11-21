@@ -27,20 +27,24 @@ import SeededRecipe from '../components/Recipes/SeededRecipe';
 import RecipeFormComponent from '../components/UserForms/RecipeFormComponent';
 
 const MyRecipes = props => {
-  const { currentUser, newRecipe, createUserRecipe } = props;
+  const { currentUser, newRecipe, createUserRecipe, isLoading } = props;
   const [view, setView] = useState('Default Recipes');
   const [addRecipeModal, setAddRecipeModal] = useState(false);
   const [editRecipeModal, setEditRecipeModal] = useState(false);
   // const [numberIngredients, setNumberIngredients] = useState(['', '']);
+  const [userRecipesLoaded, setUserRecipesLoaded] = useState(false);
 
   useEffect(() => {
+    console.log('currentUser', currentUser);
+    setUserRecipesLoaded(false);
     props.getUserRecipes(currentUser.id);
     props.getSeededRecipes();
-  }, []);
+    setUserRecipesLoaded(true);
+  }, [view]);
 
   if (view == 'Default Recipes') {
     return (
-      <View style={{ flex: 1, backgroundColor: '#ece6cf' }}>
+      <View style={{ flex: 1 }}>
         <NavBar {...props} />
         <View style={styles.pageContainer}>
           <View style={styles.navbar}>
@@ -81,7 +85,7 @@ const MyRecipes = props => {
     );
   } else if (view == 'My Recipes') {
     return (
-      <View style={{ flex: 1, backgroundColor: '#ece6cf' }}>
+      <View style={{ flex: 1 }}>
         <NavBar {...props} />
 
         <View style={styles.pageContainer}>
@@ -147,22 +151,29 @@ const MyRecipes = props => {
 
           <View style={styles.recipesContainer}>
             <ScrollView>
-              {props.userRecipes.map((recipe, index) => (
-                <UserRecipe
-                  key={index}
-                  recipe={recipe}
-                  edit={() => {
-                    setEditRecipeModal(!editRecipeModal);
-                  }}
-                  delete={() => {
-                    props.deleteUserRecipe(recipe.id);
-                  }}
-                  pressed={() => {
-                    props.setCurrentRecipe(recipe);
-                    props.navigation.navigate('Recipe');
-                  }}
-                />
-              ))}
+              {/* {console.log('props.userRecipes', props.userRecipes)} */}
+              {userRecipesLoaded ? (
+                <View>
+                  {props.userRecipes.map((recipe, index) => (
+                    <UserRecipe
+                      key={index}
+                      recipe={recipe}
+                      editRecipeModal={editRecipeModal}
+                      setEditRecipeModal={setEditRecipeModal}
+                      edit={() => {
+                        setEditRecipeModal(!editRecipeModal);
+                      }}
+                      delete={() => {
+                        props.deleteUserRecipe(recipe.id);
+                      }}
+                      pressed={() => {
+                        props.setCurrentRecipe(recipe);
+                        props.navigation.navigate('UserRecipe');
+                      }}
+                    />
+                  ))}
+                </View>
+              ) : null}
             </ScrollView>
           </View>
         </View>
@@ -182,15 +193,12 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    getUserRecipes,
-    getSeededRecipes,
-    deleteUserRecipe,
-    handleRecipeEdit,
-    handleRecipeUpdate,
-    createUserRecipe,
-    setCurrentRecipe
-  }
-)(MyRecipes);
+export default connect(mapStateToProps, {
+  getUserRecipes,
+  getSeededRecipes,
+  deleteUserRecipe,
+  handleRecipeEdit,
+  handleRecipeUpdate,
+  createUserRecipe,
+  setCurrentRecipe
+})(MyRecipes);

@@ -1,45 +1,49 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Appbar, withTheme, Drawer } from 'react-native-paper';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import theme from '../../../theme.js';
 import { connect } from 'react-redux';
 import Layout from '../Layout';
 import { userLogout } from '../../../store/actions/user.js';
 import * as firebase from 'firebase';
-// import NavDrawer from './NavDrawer';
+import styles from '../../../styling/NavStyling';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Svg } from 'expo';
+import Logo from '../../../../assets/brewplans.svg';
+import NavDrawer from './NavDrawer';
 
 const NavTabs = props => {
-  const [open, setOpen] = useState(false);
   return (
     <View>
-      <Appbar style={{ width: '100%' }} theme={theme}>
-        <Appbar.Action
-          icon='home'
-          onPress={() => props.navigation.navigate('Dashboard')}
-        /> 
-        <Appbar.Action
-          icon='person'
-          onPress={() => props.navigation.navigate('MyRecipes')}
-        />
-       
-        <Appbar.Action
-          icon='work'
-          onPress={() => {
-            firebase.auth().signOut();
-            props.userLogout();
-            props.navigation.navigate('Landing');
+      <Appbar
+        style={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'row'
+        }}
+        theme={theme}
+      >
+        <View
+          style={{
+            flexDirection: 'row',
+            width: '100%',
+            height: '100%',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingHorizontal: 6
           }}
-        />
-        {/* <Appbar.Action
-          icon='menu'
-          onPress={() => {
-            setOpen(!open);
-            console.log(open);
-          }}
-        /> */}
+        >
+          <View>
+            <Logo width={60} height={'100%'} />
+          </View>
+          <Appbar.Action
+            icon='menu'
+            color='white'
+            onPress={props.toggleDrawer}
+          />
+        </View>
       </Appbar>
-      {/* {open ? <NavDrawer {...props} /> : null} */}
     </View>
   );
 };
@@ -48,9 +52,6 @@ const mapStateToProps = state => {
   return {};
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    userLogout
-  }
-)(NavTabs);
+export default connect(mapStateToProps, {
+  userLogout
+})(NavTabs);

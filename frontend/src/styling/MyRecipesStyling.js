@@ -5,7 +5,7 @@ export default StyleSheet.create({
       flex: .85,
       justifyContent: 'flex-start',
       padding: 24,
-      backgroundColor: '#ece6cf',
+      backgroundColor: 'white',
     },
     recipesHeader: {
       flexDirection: 'row',
@@ -28,7 +28,7 @@ export default StyleSheet.create({
     },
     navbarButton: {
       width: '48%',
-      backgroundColor: '#ffa537',
+      backgroundColor: '#870c27',
       borderRadius: 6,
       justifyContent: 'center'
     },  

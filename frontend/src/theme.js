@@ -9,8 +9,8 @@ export default {
 
   colors: {
     ...DefaultTheme.colors,
-    primary: '#ffa537',
-    background: '#ece6cf',
+    primary: '#870c27',
+    background: 'white',
     surface: '#0f1f40'
   },
 
@@ -33,14 +33,14 @@ export default {
   },
 
   formSocialsContainer: {
-    width: '40%',
+    width: '80%',
     marginTop: space[4],
     alignItems: 'center'
   },
 
   formIcons: {
     flexDirection: 'row',
-    width: '100%',
+    width: '40%',
     justifyContent: 'space-between',
     textAlign: 'center',
     marginTop: space[0]

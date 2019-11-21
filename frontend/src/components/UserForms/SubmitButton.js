@@ -5,7 +5,7 @@ import { withTheme } from 'react-native-paper';
 const OurButton = props => {
   return (
     <Button
-      style={{ width: '50%', backgroundColor: '#ffa537' }}
+      style={{ width: '50%', backgroundColor: '#870c27' }}
       mode='contained'
       onPress={props.onPress}
     >

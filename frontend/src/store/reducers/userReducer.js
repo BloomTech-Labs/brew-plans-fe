@@ -76,7 +76,7 @@ const userReducer = (state = initialState, action) => {
       };
 
     case USER_REGISTER_SUCCESS:
-      console.log('register_success action payload: ', action.payload);
+      // console.log('register_success action payload: ', action.payload);
       storeLocalData('user', {
         id: action.payload.user.uid,
         email: action.payload.user.email
@@ -127,7 +127,7 @@ const userReducer = (state = initialState, action) => {
       };
 
     case GOOGLE_SIGNIN_SUCCESS:
-      console.log('google sign-in payload: ', action.payload);
+      // console.log('google sign-in payload: ', action.payload);
       const { user, token } = action.payload;
       storeLocalData('token', token);
       storeLocalData('user', {
@@ -144,7 +144,7 @@ const userReducer = (state = initialState, action) => {
       };
 
     case GOOGLE_SIGNIN_FAIL:
-      console.log(action);
+      // console.log(action);
       return {
         ...state
       };
@@ -184,6 +184,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         currentRecipe: {
           title: action.payload.title,
+          id: action.payload.id,
           brew_type: action.payload.brew_type,
           water_temp: action.payload.water_temp,
           coarseness: action.payload.coarseness,

@@ -20,7 +20,6 @@ const seededRecipeReducer = (state = initialState, action) => {
 
     case GET_SEEDED_RECIPES_SUCCESS: 
     const recipes = action.payload;
-    recipes.instructions.split("////")
       return {
         ...state,
         seededRecipes: recipes,

@@ -13,7 +13,9 @@ import {
   CREATE_USER_RECIPE_START,
   CREATE_USER_RECIPE_SUCCESS,
   CREATE_USER_RECIPE_FAIL,
-  SET_RECIPE_TO_EDIT
+  SET_RECIPE_TO_EDIT_SUCCESS,
+  SET_RECIPE_TO_EDIT_START,
+  SET_RECIPE_TO_EDIT_FAIL
 } from '../actions/actionTypes.js';
 
 const initialState = {
@@ -24,32 +26,34 @@ const initialState = {
     coarseness: '',
     title: '',
     brew_type: '',
-    // ingredients: []
+    ingredients: [],
+    instructions: [{ order: 1, text: '', duration: null }]
   },
   recipeToEdit: {
     water_temp: null,
     coarseness: '',
     title: '',
     brew_type: '',
-    id: null
-    // ingredients: []
+    id: null,
+    ingredients: [],
+    instructions: []
   },
   isLoading: false
-}
+};
 
 const userRecipeReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     // get user's recipes
     case GET_USER_RECIPES_START:
       return {
         ...state,
         isLoading: true
-      }
+      };
 
     case GET_USER_RECIPES_SUCCESS:
       return {
         ...state,
-        userRecipes: action.payload.reverse(),
+        userRecipes: action.payload,
         isLoading: false
       };
 
@@ -57,74 +61,116 @@ const userRecipeReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false
-      }
+      };
 
     case UPDATE_USER_RECIPE_INPUT:
       const { type, value } = action.payload;
-      console.log(state.recipeToEdit)
+      instructionTypes= "text" || "order"|| "duration"
+      // console.log(state.recipeToEdit)
+      if(type=== instructionTypes) {
+        return{
+          ...state,
+          recipeToEdit: {
+            ...state.recipeToEdit,
+            instructions: {
+              ...state.recipeToEdit.instructions,
+            [type]: value
+            }
+          }
+        }
+      }
       return {
         ...state,
         recipeToEdit: {
           ...state.recipeToEdit,
           [type]: value
         }
-      }
+      };
 
     case DELETE_USER_RECIPE_START:
-        console.log(action)
+      console.log(action);
+
       return {
-        ...state
-      }  
+        ...state,
+        isLading: true
+      };
 
     case DELETE_USER_RECIPE_SUCCESS:
-      console.log('delete success payload: ', action.payload)
+      console.log('delete success payload: ', action.payload);
       return {
         ...state,
-        userRecipes: state.userRecipes.filter(recipe => recipe.id !== action.payload)
-      }
+        isLoading: false,
+        userRecipes: state.userRecipes.filter(
+          recipe => recipe.id !== action.payload
+        )
+      };
 
     case DELETE_USER_RECIPE_FAIL:
-        console.log(action)
+      console.log(action);
+
       return {
         ...state,
-      }  
+        isLoading: false
+      };
 
     case UPDATE_USER_RECIPE_START:
-      console.log('update user recipe start: ', action)
+      console.log('update user recipe start: ', action);
+
       return {
         ...state,
-      }
+        isLoading: true
+      };
 
     case UPDATE_USER_RECIPE_SUCCESS:
-      console.log('update user recipe success: ', action.payload.updated)
-      state.userRecipes = state.userRecipes.filter(recipe => recipe.id !== action.payload.updated.id)
-      state.userRecipes.unshift(action.payload.updated)
+      console.log('update user recipe success: ', action.payload);
+      // state.userRecipes = state.userRecipes.filter(
+      //   recipe => recipe.id !== action.payload.updated.id
+      // );
+      // state.userRecipes.unshift(action.payload.updated);
+
       return {
         ...state,
-      }
+        isLoading: false
+      };
 
     case UPDATE_USER_RECIPE_FAIL:
-      console.log('update user recipe fail: ', action)
+      console.log('update user recipe fail: ', action);
       return {
         ...state,
-      }
-
-    case SET_RECIPE_TO_EDIT:
-      console.log('recipe to edit: ', action.payload)
+        isLoading: false
+      };
+    case SET_RECIPE_TO_EDIT_START:
       return {
         ...state,
+        isLoading: true
+      };
+      console.log('update user recipe success: ', action.payload.updated);
+    case SET_RECIPE_TO_EDIT_SUCCESS:
+      console.log('2. recipe to edit in Reducer: ', action.payload);
+      console.log(
+        '3. instructions on payload in reducer',
+        action.payload.instructions
+      );
+      return {
+        ...state,
+        isLoading: false,
         recipeToEdit: {
-          water_temp: action.payload.water_temp,
+          water_temp: action.payload.water_temp.toString(),
           coarseness: action.payload.coarseness,
           title: action.payload.title,
           brew_type: action.payload.brew_type,
-          id: action.payload.id
-          // ingredients: []
+          id: action.payload.id,
+          instructions: action.payload.instructions
         }
-      }
+      };
+    case SET_RECIPE_TO_EDIT_FAIL:
+      return {
+        ...state,
+        isLoading: false
+      };
 
     case NEW_RECIPE_INPUT_UPDATE:
-      // console.log(action.payload)
+      console.log(action.payload);
       const { inputType, inputValue } = action.payload;
       return {
         ...state,
@@ -132,34 +178,34 @@ const userRecipeReducer = (state = initialState, action) => {
           ...state.newRecipe,
           [inputType]: inputValue
         }
-      }
+      };
 
     case CREATE_USER_RECIPE_START:
-      console.log(action)
-      return state;
+      console.log(action);
+      return { ...state, isLoading: true };
 
     case CREATE_USER_RECIPE_SUCCESS:
-      console.log('create success action: ', action)
-      const newRecipe = action.payload.recipe;
-      state.userRecipes.unshift(newRecipe)
       return {
         ...state,
+        isLoading: false,
         newRecipe: {
-            water_temp: null,
-            coarseness: '',
-            title: '',
-            brew_type: '',
-            // ingredients: []
-        },
-      }
+          water_temp: null,
+          coarseness: '',
+          title: '',
+          brew_type: '',
+          instructions: [],
+          ingredients: []
+        }
+      };
 
     case CREATE_USER_RECIPE_FAIL:
-      console.log(action)
-      return state;
+      console.log(action);
+
+      return { ...state, isLoading: false };
 
     default:
       return state;
   }
-}
+};
 
 export default userRecipeReducer;
