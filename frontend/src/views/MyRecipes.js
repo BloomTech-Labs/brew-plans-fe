@@ -27,7 +27,7 @@ import SeededRecipe from '../components/Recipes/SeededRecipe';
 import RecipeFormComponent from '../components/UserForms/RecipeFormComponent';
 
 const MyRecipes = props => {
-  const { currentUser, newRecipe, createUserRecipe } = props;
+  const { currentUser, newRecipe, createUserRecipe, isLoading } = props;
   const [view, setView] = useState('Default Recipes');
   const [addRecipeModal, setAddRecipeModal] = useState(false);
   const [editRecipeModal, setEditRecipeModal] = useState(false);
@@ -40,7 +40,7 @@ const MyRecipes = props => {
     props.getUserRecipes(currentUser.id);
     props.getSeededRecipes();
     setUserRecipesLoaded(true);
-  }, [newRecipe]);
+  }, [view]);
 
   if (view == 'Default Recipes') {
     return (
@@ -158,6 +158,8 @@ const MyRecipes = props => {
                     <UserRecipe
                       key={index}
                       recipe={recipe}
+                      editRecipeModal={editRecipeModal}
+                      setEditRecipeModal={setEditRecipeModal}
                       edit={() => {
                         setEditRecipeModal(!editRecipeModal);
                       }}
