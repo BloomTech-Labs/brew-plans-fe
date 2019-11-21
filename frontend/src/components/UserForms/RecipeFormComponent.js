@@ -19,7 +19,7 @@ import {
   handleRecipeUpdate,
   handleRecipeEdit
 } from '../../store/actions/index.js';
-import AddTimer from "./AddTimer"
+import AddTimer from './AddTimer';
 
 const RecipeFormComponent = props => {
   const {
@@ -39,23 +39,30 @@ const RecipeFormComponent = props => {
     newRecipe.instructions
   );
 
-  handleInstructionChange=(index, text)=>{
-      const theseInstructions = localInstructions
-                      theseInstructions.splice(index, 1, {order: index+1, text: text, duration: theseInstructions[index].duration || null
-                      // (localInstructions[index].text).concat(text)
-                      })
-                      setLocalInstructions([
-                        ...theseInstructions
-                        // ...localInstructions,
-                        // {order: [index+1], text: value}
-                        //  (localInstructions[index] = {order: [index+1], text: (localInstructions[index].text).concat( value)})
-                      ])
-  }
+  handleInstructionChange = (index, text) => {
+    const theseInstructions = localInstructions;
+    theseInstructions.splice(index, 1, {
+      order: index + 1,
+      text: text,
+      duration: theseInstructions[index].duration || null
+      // (localInstructions[index].text).concat(text)
+    });
+    setLocalInstructions([
+      ...theseInstructions
+      // ...localInstructions,
+      // {order: [index+1], text: value}
+      //  (localInstructions[index] = {order: [index+1], text: (localInstructions[index].text).concat( value)})
+    ]);
+  };
 
-  handleDurationChange=(index, duration) => {
-    const theseInstr = localInstructions
-    theseInstr.splice(index, 1, {order: index+1, duration: Number(duration), text: theseInstr[index].text})
-  }
+  handleDurationChange = (index, duration) => {
+    const theseInstr = localInstructions;
+    theseInstr.splice(index, 1, {
+      order: index + 1,
+      duration: Number(duration),
+      text: theseInstr[index].text
+    });
+  };
 
   if (form == 'add') {
     return (
@@ -88,7 +95,7 @@ const RecipeFormComponent = props => {
                   }
                   onBlur={props.handleBlur('Brew Method')}
                   value={newRecipe.brew_type}
-                  // label='Brew Method'
+                  label='Brew Method'
                   mode='outlined'
                   placeholder='Brew Type'
                 />
@@ -100,7 +107,7 @@ const RecipeFormComponent = props => {
                   }
                   onBlur={props.handleBlur('Temperature')}
                   value={newRecipe.water_temp} // change this!
-                  // label='Brew Temperature'
+                  label='Brew Temperature'
                   mode='outlined'
                   placeholder='Brew Temperature'
                 />
@@ -112,31 +119,32 @@ const RecipeFormComponent = props => {
                   }
                   onBlur={props.handleBlur('Grounds Coarseness')}
                   value={newRecipe.coarseness} // change this!
-                  // label='Coarseness'
+                  label='Coarseness'
                   mode='outlined'
                   placeholder='Coarseness'
                 />
                 {localInstructions.map((inst, index) => (
-                  <View key={"V"+index}>
-                  <TextInput
-                    key={"TI"+index}
-                    style={styles.formInput}
-                    // onChangeText={value =>
-                    //   handleNewRecipeInput('instructions', value)
-                    // }
-                    onChangeText={value =>this.handleInstructionChange(index,value)
-   
-                    
-                    }
-                    value={localInstructions[index].text}
-                    onBlur={props.handleBlur('Instructions')} // change this!
-                    // label='Coarseness'
-                    mode='outlined'
-                    placeholder='Add step'
-                  />
-                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                  {/* <MaterialIcons key={9594+index}name="timer" size={24} color="#720A13" onPress={()=> {this.addDuration(index)}}/> */}
-                  {/* <TextInput
+                  <View key={'V' + index}>
+                    <TextInput
+                      key={'TI' + index}
+                      style={styles.formInput}
+                      // onChangeText={value =>
+                      //   handleNewRecipeInput('instructions', value)
+                      // }
+                      onChangeText={value =>
+                        this.handleInstructionChange(index, value)
+                      }
+                      value={localInstructions[index].text}
+                      onBlur={props.handleBlur('Instructions')} // change this!
+                      label={`Step ${index}`}
+                      mode='outlined'
+                      placeholder='Add step'
+                    />
+                    <View
+                      style={{ flexDirection: 'row', alignItems: 'center' }}
+                    >
+                      {/* <MaterialIcons key={9594+index}name="timer" size={24} color="#720A13" onPress={()=> {this.addDuration(index)}}/> */}
+                      {/* <TextInput
                     style={{...styles.formInput, width: '80%'}}
                     // onChangeText={value =>
                     //   handleNewRecipeInput('instructions', value)
@@ -151,8 +159,13 @@ const RecipeFormComponent = props => {
                     mode='outlined'
                     placeholder='Add duration in seconds'
                   /> */}
-                  </View>
-                  <AddTimer handleDurationChange={this.handleDurationChange} index={index} key={"AT"+index} localInstructions={localInstructions} />
+                    </View>
+                    <AddTimer
+                      handleDurationChange={this.handleDurationChange}
+                      index={index}
+                      key={'AT' + index}
+                      localInstructions={localInstructions}
+                    />
                   </View>
                 ))}
 
@@ -168,7 +181,7 @@ const RecipeFormComponent = props => {
               <OurButton
                 // onPress={() => createUserRecipe(recipe)}
                 onPress={() => {
-                  newRecipe.instructions = localInstructions
+                  newRecipe.instructions = localInstructions;
                   createUserRecipe(newRecipe, currentUser.id);
                   console.log('newRecipe', newRecipe);
                   cancel();
@@ -212,7 +225,7 @@ const RecipeFormComponent = props => {
                   onChangeText={value => handleRecipeEdit('brew_type', value)}
                   onBlur={props.handleBlur('Brew Method')}
                   value={recipeToEdit.brew_type}
-                  // label='Brew Method'
+                  label='Brew Method'
                   mode='outlined'
                   placeholder='Brew Type'
                 />
@@ -222,7 +235,7 @@ const RecipeFormComponent = props => {
                   onChangeText={value => handleRecipeEdit('water_temp', value)}
                   onBlur={props.handleBlur('Temperature')}
                   value={recipeToEdit.water_temp.toString()} // change this!
-                  // label='Brew Temperature'
+                  label='Brew Temperature'
                   mode='outlined'
                   placeholder='Brew Temperature'
                 />
@@ -232,7 +245,7 @@ const RecipeFormComponent = props => {
                   onChangeText={value => handleRecipeEdit('coarseness', value)}
                   onBlur={props.handleBlur('Grounds Coarseness')}
                   value={recipeToEdit.coarseness} // change this!
-                  // label='Coarseness'
+                  label='Coarseness'
                   mode='outlined'
                   placeholder='Coarseness'
                 />
