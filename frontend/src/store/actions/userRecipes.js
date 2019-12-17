@@ -28,7 +28,9 @@ export const getUserRecipes = userString => dispatch => {
     .get(
       //`https://brewplans-production.herokuapp.com/userrecipes/user/${userString}`
 
-      `https://backend-development-coffee.herokuapp.com/userrecipes/user/${userString}`
+      // `https://backend-development-coffee.herokuapp.com/userrecipes/user/${userString}`
+
+      `https://brewplans-be.herokuapp.com/userrecipes/user/${userString}`
       //`https://backend-production-coffee.herokuapp.com/userrecipes/${userString}`
     )
     .then(res => {
@@ -59,7 +61,9 @@ export const deleteUserRecipe = recipeId => dispatch => {
   axios
     .delete(
       // `https://brewplans-production.herokuapp.com/userrecipes/${recipeId}`
-      `https://backend-development-coffee.herokuapp.com/userrecipes/${recipeId}`
+      // `https://backend-development-coffee.herokuapp.com/userrecipes/${recipeId}`
+
+      `https://brewplans-be.herokuapp.com/userrecipes/${recipeId}`
     )
     .then(res => {
       console.log('Delete res', res);
@@ -86,7 +90,9 @@ export const setRecipeToEdit = recipe_id => dispatch => {
   console.log('inSetRecipeToEdit in action');
   axios
     .get(
-      `https://backend-development-coffee.herokuapp.com/userrecipes/${recipe_id}`
+      // `https://backend-development-coffee.herokuapp.com/userrecipes/${recipe_id}`
+
+      `https://brewplans-be.herokuapp.com/userrecipes/${recipe_id}`
     )
     .then(res => {
       console.log('1. set recipe to edit in action: recipe', res.data);
@@ -104,7 +110,9 @@ export const handleRecipeUpdate = (updatedRecipe, recipeId) => dispatch => {
   axios
     .put(
       //`https://brewplans-production.herokuapp.com/userrecipes/${recipeId}`,
-      `https://backend-development-coffee.herokuapp.com/userrecipes/${recipeId}`,
+      // `https://backend-development-coffee.herokuapp.com/userrecipes/${recipeId}`,
+      
+      `https://brewplans-be.herokuapp.com/userrecipes/${recipeId}`,
       updatedRecipe
     )
     .then(res => {
@@ -115,7 +123,8 @@ export const handleRecipeUpdate = (updatedRecipe, recipeId) => dispatch => {
         .get(
           //`https://brewplans-production.herokuapp.com/userrecipes/user/${userString}`
 
-          `https://backend-development-coffee.herokuapp.com/userrecipes/user/${updatedRecipe.userString}`
+          // `https://backend-development-coffee.herokuapp.com/userrecipes/user/${updatedRecipe.userString}`
+          `https://brewplans-be.herokuapp.com/userrecipes/user/${updatedRecipe.userString}`
           //`https://backend-production-coffee.herokuapp.com/userrecipes/${userString}`
         )
         .then(res => {
@@ -152,7 +161,8 @@ export const createUserRecipe = (newRecipe, userId) => dispatch => {
 
   axios
     .post(
-      `https://backend-development-coffee.herokuapp.com/userrecipes/newrecipe`,
+      // `https://backend-development-coffee.herokuapp.com/userrecipes/newrecipe`,
+      `https://brewplans-be.herokuapp.com/userrecipes/newrecipe`,
       //   `https://brewplans-production.herokuapp.com/userrecipes/newrecipe`,
       newRecipe
     )
