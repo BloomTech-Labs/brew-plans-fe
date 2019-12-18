@@ -16,6 +16,7 @@ class Timer extends React.Component {
       sec: (props.stepLength % 60).toString() || 0,
       startDisabled: false,
     };
+    // setInterval returns a intervalID which has to be stored in state otherwise on rerender it get's lost
     this.timer = null;
     this.startTimer = this.startTimer.bind(this);
     this.countdown = this.countdown.bind(this);
@@ -45,6 +46,7 @@ class Timer extends React.Component {
   startTimer() {
     const { startDisabled } = this.state;
     if(!startDisabled) {
+      // Store the intervalID in this.timer so it doesn't get lost on rerender causing us not to be able to use clearInterval() to stop the timer
       this.timer = setInterval(this.countdown, 1000);
       this.setState({ startDisabled: true })
     }
@@ -58,7 +60,6 @@ class Timer extends React.Component {
   }
 
   pause() {
-    console.log('pausing');
     clearInterval(this.timer);
     this.setState({ startDisabled: false });
   }
@@ -97,13 +98,6 @@ class Timer extends React.Component {
                   this.startTimer();
                 }}
               />
-
-              // <Button
-              //   title="Start"
-              //   onPress={() => {
-              //     this.countdown();
-              //   }}
-              // ></Button>
             )}
           </TouchableOpacity>
           <TouchableOpacity>
@@ -118,12 +112,6 @@ class Timer extends React.Component {
             />
           </TouchableOpacity>
         </View>
-        {/* <TouchableOpacity>
-          <Ionicons name="md-pause" size={32} color="black"             onPress={() => {
-              this.pause();
-            }}/>
-
-        </TouchableOpacity> */}
       </View>
     );
   }
