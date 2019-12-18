@@ -162,7 +162,7 @@ const RecipeFormComponent = props => {
                       }
                       value={localInstructions[index].text}
                       onBlur={props.handleBlur('Instructions')} // change this!
-                      label={'Step' + index + 1}
+                      label={'Step' + " " + index}
                       mode='outlined'
                       placeholder='Add step'
                       theme={theme}
