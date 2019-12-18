@@ -19,7 +19,6 @@ class Timer extends React.Component {
     this.timer = null;
     this.startTimer = this.startTimer.bind(this);
     this.countdown = this.countdown.bind(this);
-    // this.pause = this.pause.bind(this);
   }
 
   timer = {};
@@ -32,31 +31,6 @@ class Timer extends React.Component {
       console.log("error", error)
     }
   }
-
-  // countdown() {
-  //   console.log(this.state);
-  //   // console.log("pressed button in function ");
-  //   timer = setInterval(() => {
-  //     console.log("min", this.state.min, "sec", this.state.sec);
-  //     let seconds = Number(this.state.sec) - 1,
-  //       minutes = Number(this.state.min)
-
-  //     if (seconds == 0) {
-  //       // console.log('seconds == 0')
-  //       // minutes = Number(this.state.min);
-  //       // seconds = 59;
-  //       clearInterval(timer)
-  //     }
-  //     this.setState({ min: minutes.toString() });
-  //     this.setState({ sec: seconds.toString() });
-  //     this.setState({ startDisabled: true });
-  //     if (seconds === 0 && minutes === 0) {
-  //       console.log('timer let', timer);
-  //       clearInterval(timer);
-  //       // await this.soundObject.playAsync()
-  //     }
-  //   }, 1000);
-  // }
 
   countdown() {
     if(this.state.sec > 0) {
@@ -73,9 +47,6 @@ class Timer extends React.Component {
     if(!startDisabled) {
       this.timer = setInterval(this.countdown, 1000);
       this.setState({ startDisabled: true })
-    } else {
-      clearInterval(this.timer)
-      this.setState({ startDisabled: false })
     }
   }
 
@@ -97,7 +68,6 @@ class Timer extends React.Component {
       <View style={styles.timerWrapper}>
         <View style={styles.textWrapper}>
           <Text style={styles.timerText}>
-            {/* {console.log("state.min", this.state.min, Math.floor(this.props.stepLength))} */}
             {this.state.min}:{" "}
 
             {this.state.sec.length === 1
@@ -109,7 +79,6 @@ class Timer extends React.Component {
           <TouchableOpacity>
             {this.state.startDisabled ? (
               <Ionicons
-                disabled
                 name="md-pause"
                 size={32}
                 color="#720A13"
