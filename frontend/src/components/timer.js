@@ -15,11 +15,15 @@ class Timer extends React.Component {
       || 0,
       sec: (props.stepLength % 60).toString() || 0,
       startDisabled: false,
+    
     };
     // setInterval returns a intervalID which has to be stored in state otherwise on rerender it get's lost
     this.timer = null;
     this.startTimer = this.startTimer.bind(this);
     this.countdown = this.countdown.bind(this);
+
+    // this.newtimer = this.newtimer.bind(this);
+    // this.autoStartTimer = this.autoStartTimer.bind(this);
   }
 
   timer = {};
@@ -51,6 +55,10 @@ class Timer extends React.Component {
       this.setState({ startDisabled: true })
     }
   }
+ 
+  
+  
+
 
   reset() {
     clearInterval(this.timer);
