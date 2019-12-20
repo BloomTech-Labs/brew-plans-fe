@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { useKeepAwake } from 'expo-keep-awake';
 
 import { View, ScrollView, Text, Image } from "react-native";
 
@@ -10,6 +11,8 @@ import Timer from "../components/timer";
 
 //Recipe
 const Recipe = props => {
+  useKeepAwake();
+  console.log('Recipe Props', props)
   const [sortedInstructions, setSortedInstructions] = useState([]);
 
   const [timerArray, setTimerArray] = useState([]);
