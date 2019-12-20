@@ -24,7 +24,9 @@ const UserRecipe = props => {
 
   useEffect(() => {
     axios.get(
-      `https://backend-development-coffee.herokuapp.com/userrecipes/${currentRecipe.id}`
+      // `https://backend-development-coffee.herokuapp.com/userrecipes/${currentRecipe.id}`
+
+      `https://brewplans-be.herokuapp.com/userrecipes/${currentRecipe.id}`
     )
       .then(res => {
         const currentInstructions = res.data.instructions;
