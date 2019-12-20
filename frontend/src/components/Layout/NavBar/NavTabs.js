@@ -31,7 +31,8 @@ const NavTabs = props => {
             height: '100%',
             justifyContent: 'space-between',
             alignItems: 'center',
-            paddingHorizontal: 6
+            paddingHorizontal: 6,
+            zIndex: 151,
           }}
         >
           <View>
