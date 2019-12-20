@@ -7,9 +7,12 @@ import NavDrawer from "./NavDrawer";
 const NavBar = props => {
   const [isOpen, setIsOpen] = useState(false);
 
+
   return (
     <View style={styles.navbarContainer}>
-      <NavTabs toggleDrawer={() => setIsOpen(!isOpen)} {...props} />
+      <NavTabs toggleDrawer={() => {
+        setIsOpen(!isOpen);
+       }}/>
       <NavDrawer
         drawerOpen={isOpen}
         closeDrawer={() => setIsOpen(false)}
