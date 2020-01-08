@@ -74,7 +74,8 @@ const MyRecipes = props => {
                   recipe={recipe}
                   pressed={() => {
                     props.setCurrentRecipe(recipe);
-                    props.navigation.navigate('Recipe');
+                    // props.navigation.navigate('Recipe');
+                    props.navigation.navigate('StartBrew');
                   }}
                 />
               ))}
@@ -168,7 +169,8 @@ const MyRecipes = props => {
                       }}
                       pressed={() => {
                         props.setCurrentRecipe(recipe);
-                        props.navigation.navigate('UserRecipe');
+                        props.navigation.navigate('StartBrew');
+                        // props.navigation.navigate('UserRecipe');
                       }}
                     />
                   ))}

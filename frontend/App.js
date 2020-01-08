@@ -25,6 +25,7 @@ import MyRecipes from './src/views/MyRecipes.js';
 import RecipeForm from './src/views/RecipeForm.js';
 import Recipe from './src/views/Recipe.js';
 import UserRecipe from './src/views/UserRecipe.js';
+import StartBrew from './src/views/StartBrew';
 import * as firebase from 'firebase';
 
 const handleCustomTransition = ({ scenes }) => {
@@ -119,6 +120,9 @@ const AppNavigator = createStackNavigator(
     },
     Login: {
       screen: Login
+    },
+    StartBrew: {
+      screen: StartBrew
     },
 
     RecipeForm: {
