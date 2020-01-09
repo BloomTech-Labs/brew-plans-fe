@@ -1,14 +1,16 @@
 import React from 'react'
 import { connect} from 'react-redux'
 
-import { View, ScrollView, Text, Image, StyleSheet } from "react-native";
+import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useKeepAwake } from 'expo-keep-awake';
 import NavBar from "../components/Layout/NavBar/NavBar.js";
+import RecipeSteps from './RecipeSteps.js';
 
 function StartBrew(props) {
     useKeepAwake();
     const { currentRecipe } = props;
     return (
+    
         <View style={ styles.mainView }>
             <NavBar {...props} />
             <Image
@@ -26,10 +28,13 @@ function StartBrew(props) {
                 style={{ marginVertical: 10 }}
                 />
                 <Text style={{ fontSize: 30, marginVertical: 10, fontWeight: 'bold' }}>Start Brewing</Text>
+                <TouchableOpacity onPress={() => props.navigation.navigate("RecipeSteps")}>
                 <Image
+                
                 source={require('../../assets/play9.png')}
                 style={{ marginTop: 10 }}
                 />
+                </TouchableOpacity>
             </View>
             <View style={ styles.overview }>
                 <Text style={ styles.overviewText }>Overview</Text>
@@ -83,3 +88,5 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(StartBrew)
+
+
