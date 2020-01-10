@@ -41,7 +41,7 @@ const LoginForm = props => {
           <Text style={{color: 'black', fontWeight: 'bold',  marginBottom: -20, marginLeft: -127}}>Email</Text>
             <Akira
               style={theme.formInput}
-              // label={'Email'}
+              // label={'...enter email'}
               // this is used as active and passive border color
               borderColor={'lightgray'}
               inputPadding={16}
@@ -82,12 +82,12 @@ const LoginForm = props => {
           <View style={theme.formSocialsContainer}>
           
 
-            <Text style={{ marginBottom: 8, fontSize: 16 }}>
+            {/* <Text style={{ marginBottom: 8, fontSize: 16 }}>
               Login using social network
-            </Text>
+            </Text> */}
             <View style={theme.formIcons}>
-              <SocialButton icon='logo-google' loginConfig={loginConfig} />
-              <SocialButton icon='logo-facebook' />
+              <SocialButton loginConfig={loginConfig} />
+              {/* <SocialButton icon='logo-facebook' /> */}
             </View>
           </View>
         </View>

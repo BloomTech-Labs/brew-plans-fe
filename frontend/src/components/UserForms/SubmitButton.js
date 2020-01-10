@@ -9,7 +9,7 @@ const OurButton = props => {
   return (
     <View>
     <Button
-      style={{ marginTop: -20, padding: 7, width: 169, backgroundColor: '#1F2233' }}
+      style={{ marginTop: -20, padding: 7, width: 280, backgroundColor: '#1F2233' }}
       mode='contained'
       onPress={props.onPress}
     >
@@ -18,6 +18,7 @@ const OurButton = props => {
       
     </Button>
     
+    {/* this is the sign up button */}
     <LandingButton 
           // buttonBackground={'#870c27'}
           buttonBackground={'#1F2233'}
