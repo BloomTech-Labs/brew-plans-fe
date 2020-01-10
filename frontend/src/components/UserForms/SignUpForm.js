@@ -46,6 +46,8 @@ const SignUpForm = props => {
               inputPadding={16}
               labelHeight={24}
               labelStyle={{ color: '#870c27' }}
+              
+
               value={newUser.email}
               textContentType={'emailAddress'}
               onChangeText={value => handleChange('email', value)}
