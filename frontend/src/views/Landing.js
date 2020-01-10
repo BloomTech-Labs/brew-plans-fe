@@ -49,7 +49,7 @@ const Landing = props => {
         style={{ position: 'absolute', top: '5%', left: '5%', zIndex: 50 }}
         source={require('../../assets/BrewPlansLogo.png')}
       />
-      <Image
+      {/* <Image
         style={{
           borderRadius: 5,
           top: '10%',
@@ -58,18 +58,22 @@ const Landing = props => {
           marginTop: 32
         }}
         source={require('../../assets/IntroImage.png')}
-      />
+      /> */}
       <View style={{ marginTop: 86 }}>
         <LandingButton
-          buttonBackground={'#870c27'}
+          // buttonBackground={'#870c27'}
+          buttonBackground={'#1F2233'}
+
           buttonText={'white'}
           title='Sign Up'
           onPress={() => props.navigation.navigate('SignUp')}
         />
         <LandingButton
           title='Login'
-          buttonBackground={'white'}
-          buttonText={'black'}
+          // buttonBackground={'white'}
+          buttonBackground={'#1F2233'}
+
+          buttonText={'white'}
           onPress={() => props.navigation.navigate('Login')}
         />
       </View>
