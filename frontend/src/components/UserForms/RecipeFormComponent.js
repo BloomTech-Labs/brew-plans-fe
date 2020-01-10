@@ -278,7 +278,7 @@ const RecipeFormComponent = props => {
                     onChangeText={value => handleRecipeEdit('brew_type', value)}
                     onBlur={props.handleBlur('Brew Method')}
                     value={recipeToEdit.brew_type}
-                    label='Brew Method'
+                    label='Brew Type'
                     mode='outlined'
                     placeholder='Brew Type'
                   />
