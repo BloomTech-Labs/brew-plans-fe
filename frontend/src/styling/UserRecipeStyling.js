@@ -12,9 +12,9 @@ export default StyleSheet.create({
     borderColor: 'lightgray'
   },
   recipeTitle: {
-     fontSize: 16,
-     fontWeight: 'bold',    
-     textAlign: 'left'
+    fontSize: 16,
+    fontWeight: 'bold',    
+    textAlign: 'left'
   },
   recipeInfoContainer: {
     width: '100%',
@@ -23,13 +23,13 @@ export default StyleSheet.create({
     marginTop: 12
   },
   recipeInfo: {
-     flexDirection: 'row'
+    flexDirection: 'row'
   },
   coarseness: {
-     position: 'absolute',
-     left: 0
+    position: 'absolute',
+    left: 0
   },
- iconButton: {
+iconButton: {
     height: 30,
     width: 30
 
