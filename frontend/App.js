@@ -18,7 +18,9 @@ import GreetingPage1 from './src/views/GreetingPages/GreetingPage1.js';
 import GreetingPage2 from './src/views/GreetingPages/GreetingPage2.js';
 import GreetingPage3 from './src/views/GreetingPages/GreetingPage3.js';
 import Landing from './src/views/Landing';
+import LandingButton from './src/components/Landing/LandingButton';
 import SignUp from './src/views/SignUp';
+import OurButton from './src/components/UserForms/SubmitButton.js';
 // import Login from './src/views/Login';
 import Dashboard from './src/views/Dashboard.js';
 import MyRecipes from './src/views/MyRecipes.js';
@@ -138,8 +140,15 @@ const AppNavigator = createStackNavigator(
     },
     UserRecipe: {
       screen: UserRecipe
+    },
+    OurButton: {
+      screen: OurButton
+    },
+    LandingButton: {
+      screen: LandingButton
     }
   },
+  
   {
     transitionConfig: nav => handleCustomTransition(nav),
     defaultNavigationOptions: {

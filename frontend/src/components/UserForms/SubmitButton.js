@@ -6,6 +6,7 @@ import { withTheme, Text } from 'react-native-paper';
 import { NativeModulesProxy } from '@unimodules/core';
 
 const OurButton = props => {
+  console.log('submit button props', props);
   return (
     <View>
     <Button

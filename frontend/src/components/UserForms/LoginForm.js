@@ -37,10 +37,13 @@ const LoginForm = props => {
     <Formik>
       {props => (
         <View style={theme.formView}>
-          <View style={theme.formInputsContainer}>
-          <Text style={{color: 'black', fontWeight: 'bold',  marginBottom: -20, marginLeft: -127}}>Email</Text>
+          {/* <View style={theme.formInputsContainer}> */}
+          <View style={{width: 290}}>
+
+          <Text style={{color: 'black', fontWeight: 'bold',  marginBottom: -20, marginLeft: 2}}>Email</Text>
             <Akira
-              style={theme.formInput}
+              // style={theme.formInput}
+              style={{ marginBottom: 15, width: 280}}
               // label={'...enter email'}
               // this is used as active and passive border color
               borderColor={'lightgray'}
@@ -54,9 +57,10 @@ const LoginForm = props => {
               returnKeyType='next'
               onSubmitEditing={() => passwordRef.current.focus()}
             />
-            <Text style={{color: 'black', fontWeight: 'bold',  marginBottom: -20, marginLeft: -100}}>Password</Text>
+            <Text style={{color: 'black', fontWeight: 'bold',  marginBottom: -20, marginLeft: 2}}>Password</Text>
             <Akira 
-              style={theme.formInput}
+              // style={theme.formInput}
+              style={{ marginBottom: 42, width: 280}}
               // label={'Password'}
               ref={passwordRef}
               // this is used as active and passive border color
