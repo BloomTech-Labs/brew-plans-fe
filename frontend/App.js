@@ -23,7 +23,8 @@ import Login from './src/views/Login';
 import Dashboard from './src/views/Dashboard.js';
 import MyRecipes from './src/views/MyRecipes.js';
 import RecipeForm from './src/views/RecipeForm.js';
-import Recipe from './src/views/Recipe.js';
+// import Recipe from './src/views/Recipe.js';
+import RecipeOverview from './src/views/RecipeOverview';
 import UserRecipe from './src/views/UserRecipe.js';
 import * as firebase from 'firebase';
 
@@ -125,7 +126,8 @@ const AppNavigator = createStackNavigator(
       screen: RecipeForm
     },
     Recipe: {
-      screen: Recipe
+      // screen: Recipe
+      screen: RecipeOverview
     },
     UserRecipe: {
       screen: UserRecipe
