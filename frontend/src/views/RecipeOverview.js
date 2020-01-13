@@ -38,17 +38,25 @@ const RecipeOverview = props => {
     <View>
       <NavBar {...props}/>
       <View style={styles.viewBox}>
-        <View style={styles.contentBox}>
+        <View style={styles.titleBox}>
           <Text>{currentRecipe.title}</Text>
           <Text>{currentRecipe.brew_type}</Text>
           <Text>{currentRecipe.water_temp}</Text>
         </View>
         <ScrollView>
-          {sortedInstructions.map((instruction, index) => {
-            <View key={index} style={styles.contentBox}>
-              <Text>{instruction}</Text>
+          {sortedInstructions.map((instruction, index) => (
+            <View>
+              <View key={index} style={styles.contentBox}>
+                <Text key={index}>{instruction}</Text>
+              </View>
+              <View key={index} style={styles.contentBox}>
+                <Text key={index}>{instruction}</Text>
+              </View>
+              <View key={index} style={styles.contentBox}>
+                <Text key={index}>{instruction}</Text>
+              </View>
             </View>
-          })}
+          ))}
         </ScrollView>
       </View>
     </View>

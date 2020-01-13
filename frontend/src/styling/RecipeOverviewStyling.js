@@ -7,9 +7,17 @@ export default StyleSheet.create({
     padding: 20,
     backgroundColor: '#F6F7F7'
   },
+  titleBox: {
+    width: '100%',
+    height: 'auto',
+    padding: 20,
+    backgroundColor: '#E8ECEC',
+    borderRadius: 2,
+  },
   contentBox: {
     width: '100%',
     height: 'auto',
+    marginTop: 14,
     padding: 20,
     backgroundColor: '#E8ECEC',
     borderRadius: 2,
