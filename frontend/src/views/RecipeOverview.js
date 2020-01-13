@@ -38,12 +38,12 @@ const RecipeOverview = props => {
     <View>
       <NavBar {...props}/>
       <View style={styles.viewBox}>
+        <View style={styles.titleBox}>
+          <Text>{currentRecipe.title}</Text>
+          <Text>{currentRecipe.brew_type}</Text>
+          <Text>{currentRecipe.water_temp}</Text>
+        </View>
         <ScrollView>
-          <View style={styles.titleBox}>
-            <Text>{currentRecipe.title}</Text>
-            <Text>{currentRecipe.brew_type}</Text>
-            <Text>{currentRecipe.water_temp}</Text>
-          </View>
           <View>
             <View style={styles.contentBox}>
               <Text>You'll Need...</Text>
