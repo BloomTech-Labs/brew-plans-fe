@@ -8,22 +8,22 @@ import styles from '../styling/RecipeOverviewStyling';
 const RecipeOverview = props => {
   const [ sortedInstructions, setSortedInstructions ] = useState([]);
   const { currentRecipe } = props;
-  const instructions = currentRecipe;
+  const { instructions } = currentRecipe;
 
   const regex = new RegExp(/^\d+/g);
 
   useEffect(() => {
     if(instructions) {
-      let instructionsToSplit = instructions + " ";
-      const instructionsArray = instructionsToSplit.split("////");
+      const instructionsArray = instructions.split("////");
       let localInstructions = [];
 
       instructionsArray.map((instruction, index) => {
-        let step = `Step ${index + 1}`;
+        let step = `Step ${index + 1}
+`;
         const result = instruction.match(regex);
 
         if(result) {
-          instruction = instruction.substr(instruction.indexOf(' ') + 1);
+          instruction = instruction.substr(instruction.indexOf(" ") + 1);
         };
 
         let res = step.concat(instruction);
@@ -38,25 +38,34 @@ const RecipeOverview = props => {
     <View>
       <NavBar {...props}/>
       <View style={styles.viewBox}>
-        <View style={styles.titleBox}>
-          <Text>{currentRecipe.title}</Text>
-          <Text>{currentRecipe.brew_type}</Text>
-          <Text>{currentRecipe.water_temp}</Text>
-        </View>
         <ScrollView>
-          {sortedInstructions.map((instruction, index) => (
-            <View>
-              <View key={index} style={styles.contentBox}>
-                <Text key={index}>{instruction}</Text>
-              </View>
-              <View key={index} style={styles.contentBox}>
-                <Text key={index}>{instruction}</Text>
-              </View>
-              <View key={index} style={styles.contentBox}>
-                <Text key={index}>{instruction}</Text>
-              </View>
+          <View style={styles.titleBox}>
+            <Text>{currentRecipe.title}</Text>
+            <Text>{currentRecipe.brew_type}</Text>
+            <Text>{currentRecipe.water_temp}</Text>
+          </View>
+          <View>
+            <View style={styles.contentBox}>
+              <Text>You'll Need...</Text>
+              <Text>
+                Tool 1
+                Tool 2
+                Grounds 1
+                Water
+                Etc.
+              </Text>
             </View>
-          ))}
+            <View style={styles.contentBox}>
+              {sortedInstructions.map((instruction, index) => (
+                // <Text key={index}>{this.step}</Text>
+                <Text key={index}>{instruction}</Text>
+              ))}
+            </View>
+            <View style={styles.contentBox}>
+              <Text>Yield: 2 cups</Text>
+              <Text>Time: 4 minutes</Text>
+            </View>
+          </View>
         </ScrollView>
       </View>
     </View>
