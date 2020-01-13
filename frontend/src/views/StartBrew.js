@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         color: 'white'
     },
     overview: {
-        backgroundColor: '#231c1c', 
+        backgroundColor: '#1f2233', 
         width: '100%', 
         position: 'absolute', 
         bottom: 0, 
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     recipeInfo: {
         width: '100%', 
         height: '12%', 
-        backgroundColor: '#231c1c', 
+        backgroundColor: '#1f2233', 
         justifyContent: 'center'
     },
     recipeTitle: {

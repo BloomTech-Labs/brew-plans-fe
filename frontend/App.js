@@ -25,10 +25,12 @@ import OurButton from './src/components/UserForms/SubmitButton.js';
 import Dashboard from './src/views/Dashboard.js';
 import MyRecipes from './src/views/MyRecipes.js';
 import RecipeForm from './src/views/RecipeForm.js';
-import Recipe from './src/views/Recipe.js';
+// import Recipe from './src/views/Recipe.js';
+import RecipeOverview from './src/views/RecipeOverview';
 import UserRecipe from './src/views/UserRecipe.js';
 import StartBrew from './src/views/StartBrew';
 import RecipeSteps from './src/views/RecipeSteps';
+import Overview from './src/views/Overview';
 import * as firebase from 'firebase';
 
 const handleCustomTransition = ({ scenes }) => {
@@ -127,6 +129,9 @@ const AppNavigator = createStackNavigator(
     StartBrew: {
       screen: StartBrew
     },
+    Overview: {
+      screen: Overview
+    },
 
     RecipeSteps: {
       screen: RecipeSteps
@@ -136,7 +141,8 @@ const AppNavigator = createStackNavigator(
       screen: RecipeForm
     },
     Recipe: {
-      screen: Recipe
+      // screen: Recipe
+      screen: RecipeOverview
     },
     UserRecipe: {
       screen: UserRecipe
