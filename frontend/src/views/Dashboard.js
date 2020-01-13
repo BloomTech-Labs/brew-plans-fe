@@ -14,7 +14,7 @@ const Dashboard = props => {
       <NavBar {...props} />
         <ImageBackground source={require('../../assets/DashboardImage.jpeg')} style={{ height: '100%', width: '100%' }}>
           <Text style={styles.title}>Welcome {props.currentUser.name}</Text>
-          <TouchableOpacity onPress={() => props.navigation.navigate('MyRecipes')} style={{ marginTop: '45%', alignSelf: 'center', width: '40%', padding: 8, backgroundColor: '#870c27', borderRadius: 10 }}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('MyRecipes')} style={{ marginVertical: 200, alignSelf: 'center', width: '40%', padding: 8, backgroundColor: '#870c27', borderRadius: 10 }}>
             <Text style={{ color:  'white', alignSelf: 'center', fontSize: 30 }}>Start</Text>
           </TouchableOpacity>
         </ImageBackground>

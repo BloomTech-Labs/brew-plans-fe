@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { View, Text } from 'react-native';
 import { Formik } from 'formik';
 import { withTheme, TextInput } from 'react-native-paper';
@@ -11,6 +11,8 @@ import * as firebase from 'firebase';
 
 const LoginForm = props => {
   const { theme, handleSignInChange, authSignIn, signInCredentials } = props;
+
+  const passwordRef = useRef();
 
   const loginConfig = {
     androidClientId:
@@ -47,10 +49,13 @@ const LoginForm = props => {
               textContentType={'emailAddress'}
               onChangeText={value => handleSignInChange('email', value)}
               autoCapitalize={'none'}
+              returnKeyType='next'
+              onSubmitEditing={() => passwordRef.current.focus()}
             />
             <Akira
               style={theme.formInput}
               label={'Password'}
+              ref={passwordRef}
               // this is used as active and passive border color
               borderColor={'lightgray'}
               inputPadding={16}
@@ -60,6 +65,8 @@ const LoginForm = props => {
               onChangeText={value => handleSignInChange('password', value)}
               textContentType={'password'}
               secureTextEntry={true}
+              returnKeyType='go'
+              onSubmitEditing={() => authSignIn(signInCredentials)}
             />
           </View>
           <SubmitButton

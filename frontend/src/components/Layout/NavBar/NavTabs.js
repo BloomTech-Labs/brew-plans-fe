@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Appbar, withTheme, Drawer } from 'react-native-paper';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, Text } from 'react-native';
 import theme from '../../../theme.js';
 import { connect } from 'react-redux';
 import Layout from '../Layout';
@@ -31,16 +31,17 @@ const NavTabs = props => {
             height: '100%',
             justifyContent: 'space-between',
             alignItems: 'center',
-            paddingHorizontal: 6
+            paddingHorizontal: 6,
+            zIndex: 151,
           }}
         >
           <View>
-            <Logo width={60} height={'100%'} />
+          <Text style={{fontSize: 26, color: '#ffffff'}}>Brew Plans</Text>
           </View>
           <Appbar.Action
             icon='menu'
             color='white'
-            onPress={props.toggleDrawer}
+            onPress={props.toggleDrawer}git
           />
         </View>
       </Appbar>

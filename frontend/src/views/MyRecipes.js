@@ -52,7 +52,7 @@ const MyRecipes = props => {
               onPress={() => setView('Default Recipes')}
               style={styles.navbarButton}
             >
-              <Text style={styles.navbarText}>Brew Plan's Recipes</Text>
+              <Text style={styles.navbarText}>Recipes</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => setView('My Recipes')}
@@ -60,26 +60,12 @@ const MyRecipes = props => {
             >
               <Text style={styles.navbarText}>My Recipes</Text>
             </TouchableOpacity>
+            
           </View>
 
-          <View style={styles.recipesHeader}>
-            <Text style={styles.recipesHeaderText}>Brew Plan's Recipes</Text>
-          </View>
 
-          <View style={styles.recipesContainer}>
-            <ScrollView>
-              {props.seededRecipes.map(recipe => (
-                <SeededRecipe
-                  key={recipe.id}
-                  recipe={recipe}
-                  pressed={() => {
-                    props.setCurrentRecipe(recipe);
-                    props.navigation.navigate('Recipe');
-                  }}
-                />
-              ))}
-            </ScrollView>
-          </View>
+
+          
         </View>
       </View>
     );
@@ -94,7 +80,7 @@ const MyRecipes = props => {
               onPress={() => setView('Default Recipes')}
               style={styles.navbarButton}
             >
-              <Text style={styles.navbarText}>Brew Plan's Recipes</Text>
+              <Text style={styles.navbarText}>Recipes</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => setView('My Recipes')}
@@ -168,7 +154,8 @@ const MyRecipes = props => {
                       }}
                       pressed={() => {
                         props.setCurrentRecipe(recipe);
-                        props.navigation.navigate('UserRecipe');
+                        props.navigation.navigate('StartBrew');
+                        // props.navigation.navigate('UserRecipe');
                       }}
                     />
                   ))}

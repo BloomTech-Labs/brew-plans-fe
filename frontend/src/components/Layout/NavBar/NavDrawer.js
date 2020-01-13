@@ -7,14 +7,19 @@ import theme from '../../../theme.js';
 import { userLogout } from '../../../store/actions/user.js';
 import * as firebase from 'firebase';
 import { connect } from 'react-redux';
+
 const NavDrawer = props => {
   // const [active, setActive] = useState("dashboard");
 
   const [slideAnimation] = useState(new Animated.Value(300));
 
+
+  let displayBox = 'none';
+
   if (props.drawerOpen) {
+    displayBox = 'box';
     Animated.timing(slideAnimation, {
-      toValue: 0,
+      toValue: 1,
       duration: 800
     }).start();
   } else {
@@ -25,7 +30,7 @@ const NavDrawer = props => {
   }
 
   return (
-    <Animated.View style={{ ...styles.navDrawer, translateX: slideAnimation }}>
+    <Animated.View style={{ ...styles.navDrawer, translateX: slideAnimation, display: displayBox}}>
       <Drawer.Section
         theme={theme}
         style={{
@@ -82,7 +87,7 @@ const styles = StyleSheet.create({
     width: 300,
     position: 'absolute',
     backgroundColor: '#e8e8e8',
-    zIndex: 150,
+    zIndex: 50,
     top: 80,
     right: 0,
     borderBottomLeftRadius: 5

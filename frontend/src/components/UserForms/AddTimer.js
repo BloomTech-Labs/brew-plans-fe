@@ -23,6 +23,7 @@ export default AddTimer = props => {
       {addDuration || localInstructions[index].duration ? (
         <View>
           <TextInput
+            keyboardType="number-pad"
             key={'D' + index}
             value={
               localInstructions[index].duration
