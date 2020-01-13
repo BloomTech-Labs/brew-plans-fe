@@ -101,7 +101,7 @@ const RecipeFormComponent = props => {
                   value={newRecipe.title}
                   label='Title'
                   mode='outlined'
-                  placeholder='Title'
+                  placeholder=''
                   theme={theme}
                 />
 
@@ -112,9 +112,9 @@ const RecipeFormComponent = props => {
                   }
                   onBlur={props.handleBlur('Brew Method')}
                   value={newRecipe.brew_type}
-                  label='Brew Method'
+                  label='Brew Type'
                   mode='outlined'
-                  placeholder='Brew Type'
+                  placeholder=''
                   theme={theme}
                 />
 
@@ -127,7 +127,7 @@ const RecipeFormComponent = props => {
                   value={newRecipe.water_temp} // change this!
                   label='Brew Temperature'
                   mode='outlined'
-                  placeholder='Brew Temperature'
+                  placeholder=''
                   theme={theme}
                 />
 
@@ -140,7 +140,7 @@ const RecipeFormComponent = props => {
                   value={newRecipe.coarseness} // change this!
                   label='Coarseness'
                   mode='outlined'
-                  placeholder='Coarseness'
+                  placeholder=''
                   theme={theme}
                 />
                 {localInstructions.map((inst, index) => (
@@ -164,7 +164,7 @@ const RecipeFormComponent = props => {
                       onBlur={props.handleBlur('Instructions')} // change this!
                       label={'Step' + " " + [index + 1]}
                       mode='outlined'
-                      placeholder='Add step'
+                      placeholder=''
                       theme={theme}
                     />
                     <AddTimer
@@ -278,7 +278,7 @@ const RecipeFormComponent = props => {
                     onChangeText={value => handleRecipeEdit('brew_type', value)}
                     onBlur={props.handleBlur('Brew Method')}
                     value={recipeToEdit.brew_type}
-                    label='Brew Method'
+                    label='Brew Type'
                     mode='outlined'
                     placeholder='Brew Type'
                   />

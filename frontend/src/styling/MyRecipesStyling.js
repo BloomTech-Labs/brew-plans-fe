@@ -4,7 +4,7 @@ export default StyleSheet.create({
     pageContainer: {
       flex: .85,
       justifyContent: 'flex-start',
-      padding: 24,
+      padding: 20,
       backgroundColor: 'white',
     },
     recipesHeader: {
@@ -15,28 +15,32 @@ export default StyleSheet.create({
     recipesHeaderText: {
       fontSize: 24
     },
-    recipesContainer: {
-      paddingVertical: 24
-    },
+    // recipesContainer: {
+    //   paddingVertical: 24
+    // },
     navbar: {
-      width:'105%',
-      height: 60,
-      flexDirection: 'row',
+      width:'100%',
+      height: 80,
+      flexDirection: 'column',
       justifyContent: 'space-between',
-      alignSelf: 'center',
-      marginBottom: 20
+  
+      
     },
     navbarButton: {
-      width: '48%',
-      backgroundColor: '#870c27',
-      borderRadius: 6,
-      justifyContent: 'center'
+      width: '97%',
+      alignSelf: 'center',
+      backgroundColor: '#1F2233',
+      borderRadius: 2,
+      justifyContent: 'center',
+      marginTop: 15
     },  
     navbarText: {
-      textAlign: 'center',
-      padding: 17,
+      textAlign: 'left',
+      padding: 10,
       color: 'white',
-      fontWeight: 'bold',
-      fontSize: 16
+      fontSize: 27
     }
   });
+
+
+
