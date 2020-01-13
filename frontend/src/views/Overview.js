@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useKeepAwake } from 'expo-keep-awake';
-
-import { View, ScrollView, Text, Image, StyleSheet, StatusBar } from "react-native";
+import { View, ScrollView, Text, Image } from "react-native";
 
 import Layout from "../components/Layout/Layout";
-import NavBar from "../components/Layout/NavBar/NavBar.js";
 import styles from "../styling/SeededRecipesStyling";
-import Timer from "../components/timer";
 
-//Recipe
+
 const Overview = props => {
     useKeepAwake();
     const [sortedInstructions, setSortedInstructions] = useState([]);
@@ -56,7 +53,7 @@ const Overview = props => {
         style={{ width: "101%", height: "20%", paddingTop: 24 }}
         />
         <View style={{ width: '100%', zIndex: 150 }}>
-            <Text style={{ paddingVertical: '3%', color: 'white', fontSize: 30, fontWeight: 'bold', textAlign: 'center', backgroundColor: '#231c1c' }}>{currentRecipe.title}</Text>
+            <Text style={{ paddingVertical: '3%', color: 'white', fontSize: 30, fontWeight: 'bold', textAlign: 'center', backgroundColor: '#1f2233' }}>{currentRecipe.title}</Text>
         </View>
         <Layout>
         <ScrollView>
@@ -69,7 +66,6 @@ const Overview = props => {
             </Text>
 
             <ScrollView>
-
                 {sortedInstructions.map((instruction, index) => (
                 <View
                     key={index}
@@ -81,8 +77,6 @@ const Overview = props => {
                     backgroundColor: "white",
                     padding: 6,
                     fontSize: 16
-                    // borderBottomWidth: 0.8,
-                    // borderBottomColor: "black"
                     }}
                     key={index}
                 >
