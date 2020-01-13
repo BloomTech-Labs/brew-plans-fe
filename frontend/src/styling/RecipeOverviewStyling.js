@@ -29,16 +29,44 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
-  titleTitle: {
-    fontSize: 26,
+  catBox: {
+    width: 100
+  },
+  yieldBox: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  catCoarse: {
+    width: 150
+  },
+  titleText: {
+    fontSize: 24,
     fontWeight: '700',
   },
-  titleCat: {
+  lightText: {
     fontSize: 14,
     fontWeight: '300'
   },
-  titleContent: {
+  regularText: {
+    fontSize: 15,
+    fontWeight: '400'
+  },
+  mediumText: {
     fontSize: 16,
     fontWeight: '500'
+  },
+  boldText: {
+    fontSize: 18,
+    fontWeight: '700'
+  },
+  yieldRegularText: {
+    fontSize: 15,
+    fontWeight: '400'
+  },
+  yieldBoldText: {
+    width: 50,
+    marginRight: 20,
+    fontSize: 18,
+    fontWeight: '700'
   }
 });

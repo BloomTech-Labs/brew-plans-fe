@@ -39,24 +39,27 @@ const RecipeOverview = props => {
       <NavBar {...props}/>
       <View style={styles.viewBox}>
         <View style={styles.titleBox}>
-          <Text style={styles.titleTitle}>{currentRecipe.title}</Text>
+          <Text style={styles.titleText}>{currentRecipe.title}</Text>
           <View style={styles.innerBox}>
-            <Text style={styles.titleCat}>Creator</Text>
-            <Text style={styles.titleCat}>Brew Temp</Text>
-            <Text style={styles.titleCat}>Coarseness</Text>
+            <View style={styles.catBox}>
+              <Text style={styles.lightText}>Creator</Text>
+              <Text style={styles.mediumText}>Brew Plans</Text>
+            </View>
+            <View style={styles.catBox}>
+              <Text style={styles.lightText}>Brew Temp</Text>
+              <Text style={styles.mediumText}>{currentRecipe.water_temp}º F</Text>
+            </View>
+            <View style={styles.catCoarse}>
+              <Text style={styles.lightText}>Coarseness</Text>
+              <Text style={styles.mediumText}>Medium-Coarse</Text>
+            </View>
           </View>
-          <View style={styles.innerBox}>
-            <Text style={styles.titleContent}>Brew Plans</Text>
-            <Text style={styles.titleContent}>{currentRecipe.water_temp}</Text>
-            <Text style={styles.titleContent}>Medium</Text>
-          </View>
-          
         </View>
         <ScrollView>
           <View>
             <View style={styles.contentBox}>
-              <Text>You'll Need...</Text>
-              <Text>
+              <Text style={styles.titleText}>You'll Need...</Text>
+              <Text style={styles.lightText}>
                 Tool 1
                 Tool 2
                 Grounds 1
@@ -67,12 +70,18 @@ const RecipeOverview = props => {
             <View style={styles.contentBox}>
               {sortedInstructions.map((instruction, index) => (
                 // <Text key={index}>{this.step}</Text>
-                <Text key={index}>{instruction}</Text>
+                <Text style={styles.regularText} key={index}>{instruction}</Text>
               ))}
             </View>
             <View style={styles.contentBox}>
-              <Text>Yield: 2 cups</Text>
-              <Text>Time: 4 minutes</Text>
+              <View style={styles.yieldBox}>
+                <Text style={styles.yieldBoldText}>Yield</Text>
+                <Text style={styles.yieldRegularText}>2 cups</Text>
+              </View>
+              <View style={styles.yieldBox}>
+                <Text style={styles.yieldBoldText}>Time</Text>
+                <Text style={styles.yieldRegularText}>4 minutes</Text>
+              </View>
             </View>
           </View>
         </ScrollView>
