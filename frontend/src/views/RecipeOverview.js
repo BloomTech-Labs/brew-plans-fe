@@ -39,9 +39,18 @@ const RecipeOverview = props => {
       <NavBar {...props}/>
       <View style={styles.viewBox}>
         <View style={styles.titleBox}>
-          <Text>{currentRecipe.title}</Text>
-          <Text>{currentRecipe.brew_type}</Text>
-          <Text>{currentRecipe.water_temp}</Text>
+          <Text style={styles.titleTitle}>{currentRecipe.title}</Text>
+          <View style={styles.innerBox}>
+            <Text style={styles.titleCat}>Creator</Text>
+            <Text style={styles.titleCat}>Brew Temp</Text>
+            <Text style={styles.titleCat}>Coarseness</Text>
+          </View>
+          <View style={styles.innerBox}>
+            <Text style={styles.titleContent}>Brew Plans</Text>
+            <Text style={styles.titleContent}>{currentRecipe.water_temp}</Text>
+            <Text style={styles.titleContent}>Medium</Text>
+          </View>
+          
         </View>
         <ScrollView>
           <View>
