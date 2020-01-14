@@ -19,15 +19,12 @@ export default StyleSheet.create({
       paddingVertical: 15,
       width:'96%',
       alignSelf: 'center'
-
     },
     navbar: {
       width:'100%',
       height: 80,
       flexDirection: 'column',
       justifyContent: 'space-between',
-  
-      
     },
     navbarButton: {
       width: '96%',
