@@ -17,15 +17,13 @@ const RecipeOverview = props => {
       const instructionsArray = instructions.split("////");
       let localInstructions = [];
 
-      instructionsArray.map((instruction, index) => {
-        var step = `Step ${index + 1}`;
+      instructionsArray.map((instruction) => {
         const result = instruction.match(regex);
 
         if(result) {
           instruction = instruction.substr(instruction.indexOf(" ") + 1);
         };
 
-        // let res = step.concat(instruction);
         localInstructions.push(instruction);
       });
 
