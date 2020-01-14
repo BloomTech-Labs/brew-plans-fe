@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { View, Image } from 'react-native';
+import { Button } from 'react-native-paper';
 import Layout from '../components/Layout/Layout';
-// import LandingButton from '../components/Landing/LandingButton';
+import LandingButton from '../components/Landing/LandingButton';
 import Login from '../views/Login.js'
 import { connect } from 'react-redux';
 import { getLocalData, storeLocalData } from '../store/actions/asyncStorage.js';
@@ -63,14 +64,14 @@ const Landing = props => {
       <View style={{ marginTop: 86 }}>
       <Login />
 
-        {/* <LandingButton 
+        <LandingButton 
           // buttonBackground={'#870c27'}
           buttonBackground={'#1F2233'}
 
           buttonText={'white'}
           title='Sign Up'
           onPress={() => props.navigation.navigate('SignUp')}
-        /> */}
+        />
         {/* <LandingButton
           title='Login'
           // buttonBackground={'white'}
@@ -79,6 +80,10 @@ const Landing = props => {
           buttonText={'white'}
           onPress={() => props.navigation.navigate('Login')}
         /> */}
+        <Button>
+          Sign up
+        </Button>
+
       </View>
     </Layout>
   );

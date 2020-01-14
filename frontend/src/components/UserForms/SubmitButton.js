@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { Button } from 'react-native-paper';
-import LandingButton from '../Landing/LandingButton.js';
+// import LandingButton from '../Landing/LandingButton.js';
 import { withTheme, Text } from 'react-native-paper';
 import { NativeModulesProxy } from '@unimodules/core';
 
@@ -20,13 +20,13 @@ const OurButton = props => {
     </Button>
     
     {/* this is the sign up button */}
-    <LandingButton 
+    {/* <LandingButton 
           // buttonBackground={'#870c27'}
           buttonBackground={'#1F2233'}
           // buttonText={'white'}
           title='Sign Up'
           onPress={() => props.navigation.navigate('SignUp')}
-        />
+        /> */}
     
     </View>
     
