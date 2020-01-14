@@ -15,9 +15,12 @@ export default StyleSheet.create({
     recipesHeaderText: {
       fontSize: 24
     },
-    // recipesContainer: {
-    //   paddingVertical: 24
-    // },
+    recipesContainer: {
+      paddingVertical: 15,
+      width:'96%',
+      alignSelf: 'center'
+
+    },
     navbar: {
       width:'100%',
       height: 80,
@@ -27,7 +30,7 @@ export default StyleSheet.create({
       
     },
     navbarButton: {
-      width: '97%',
+      width: '96%',
       alignSelf: 'center',
       backgroundColor: '#1F2233',
       borderRadius: 2,
@@ -36,7 +39,7 @@ export default StyleSheet.create({
     },  
     navbarText: {
       textAlign: 'left',
-      padding: 10,
+      padding: 13,
       color: 'white',
       fontSize: 27
     }
