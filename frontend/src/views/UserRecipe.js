@@ -78,7 +78,7 @@ const UserRecipe = props => {
       <NavBar {...props} />
       <Image
         source={require('../../assets/RecipeImage.png')}
-        style={{ width: '100%', height: '25%' }}
+        style={{ width: '100%', height: '100%' }}
       />
       <Layout>
         <ScrollView>
