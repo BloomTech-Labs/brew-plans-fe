@@ -3,21 +3,20 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   viewBox: {
     width: '100%',
-    height: '100%',
     padding: 20,
+    display: 'flex',
+    alignContent: 'center',
     backgroundColor: '#F6F7F7',
     color: '#231C1C'
   },
   titleBox: {
     width: '100%',
-    height: 'auto',
     padding: 20,
     backgroundColor: '#E8ECEC',
     borderRadius: 2,
   },
   contentBox: {
     width: '100%',
-    height: 'auto',
     marginTop: 14,
     padding: 20,
     backgroundColor: '#E8ECEC',
@@ -48,6 +47,7 @@ export default StyleSheet.create({
     fontWeight: '300'
   },
   regularText: {
+    marginTop: 2,
     fontSize: 15,
     fontWeight: '400'
   },
@@ -56,6 +56,7 @@ export default StyleSheet.create({
     fontWeight: '500'
   },
   boldText: {
+    marginTop: 4,
     fontSize: 18,
     fontWeight: '700'
   },

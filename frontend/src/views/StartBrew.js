@@ -36,10 +36,12 @@ function StartBrew(props) {
                 />
                 </TouchableOpacity>
             </View>
-            <View style={ styles.overview }>
-                <Text style={ styles.overviewText }>Overview</Text>
-                <Text style={ styles.overviewText }>+</Text>
-            </View>
+            <TouchableOpacity onPress={() => props.navigation.navigate('Overview')}>
+                <View style={ styles.overview }>
+                    <Text style={ styles.overviewText }>Overview</Text>
+                    <Text style={ styles.overviewText }>+</Text>
+                </View>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -53,7 +55,6 @@ const styles = StyleSheet.create({
     overview: {
         backgroundColor: '#1f2233', 
         width: '100%', 
-        position: 'absolute', 
         bottom: 0, 
         justifyContent: 'space-between', 
         flexDirection: 'row', 
