@@ -13,10 +13,10 @@ function StartBrew(props) {
     
         <View style={ styles.mainView }>
             <NavBar {...props} />
-            <Image
+            {/* <Image
             source={require("../../assets/RecipeImage.png")}
             style={{ width: "100%", height: "20%" }}
-            />
+            /> */}
             <Text style={ styles.recipeTitle }>{currentRecipe.title}</Text>
             <View style={ styles.recipeInfo }>
                 <Text style={ styles.recipeInfoText }>Brew Type: {currentRecipe.brew_type}</Text>
