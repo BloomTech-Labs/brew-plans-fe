@@ -44,15 +44,16 @@ const MyRecipes = props => {
 
   if (view == 'Default Recipes') {
     return (
-      <View style={{ flex: 1 }}>
+      <View>
         <NavBar {...props} />
         <View style={styles.pageContainer}>
           <View style={styles.navbar}>
             <TouchableOpacity
-              onPress={() => setView('Default Recipes')}
-              style={styles.navbarButton}
-            >
+              onPress={() => setView('Default Recipes')}>
               <Text style={styles.navbarText}>Recipes</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setAddRecipeModal(!addRecipeModal)} style={{ marginRight: 5 }}>
+              <MaterialIcons name={'add-circle'} size={36} color={'white'} />
             </TouchableOpacity>
           </View>
 

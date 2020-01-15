@@ -14,7 +14,7 @@ function RecipeSteps(props) {
     
     const [stepNumber, setStepNumber] = useState(0);
     const [nextDisabled, setNextDisabled] = useState(false);
-    const [currentIcon, setCurrentIcon] = useState('');
+    const [currentIcon, setCurrentIcon] = useState(images.default.source);
 
     const [sortedInstructions, setSortedInstructions] = useState([]);
     const [timerArray, setTimerArray] = useState([]);
@@ -47,13 +47,10 @@ function RecipeSteps(props) {
         
         setSortedInstructions([...localInstructions]);
         setTimerArray([...localTimerArray]);
-        
-
-        console.log(sortedInstructions)
     }
     if(sortedInstructions[0]) {
         if(sortedInstructions[stepNumber].includes('boil')) {
-            setCurrentIcon(images.kettle.source)
+            setCurrentIcon(images.boil.source)
         } else if (sortedInstructions[stepNumber].includes('filter')) {
             setCurrentIcon(images.filter.source)
         } else if (sortedInstructions[stepNumber].includes('pour')) {
@@ -70,11 +67,9 @@ function RecipeSteps(props) {
             <NavBar {...props} />
             <Text style={ styles.recipeTitle }>{currentRecipe.title}</Text>
             <View style={ styles.instructionsContainer }>
-                {  }
                 <Image
-                // source={require('../../assets/yellow-coffee-cup.png')}
                 source={ currentIcon }
-                style={{ marginVertical: 10 }}
+                style={{ marginVertical: 10, width: 200, height: 200 }}
                 />
                 <Text style={ styles.instructions }>{sortedInstructions[stepNumber]}</Text>
             </View>
@@ -98,7 +93,6 @@ function RecipeSteps(props) {
                         <Text style={ styles.step }>Step {stepNumber+1} </Text> 
                     <TouchableOpacity disabled={nextDisabled} onPress={() => stepNumber === sortedInstructions.length - 1 ? setNextDisabled(true) : setStepNumber(stepNumber+1)
                     }>
-
                         <Image
                         source={require('../../assets/next.png')}
                         style={{ marginVertical: 10 }}
@@ -139,7 +133,7 @@ const styles = StyleSheet.create({
         fontSize: 30, 
         alignSelf: 'center', 
         fontWeight: 'bold',
-        marginTop: 30,
+        marginVertical: 30,
         paddingBottom: '1%',
         borderBottomWidth: 2,
         borderBottomColor: '#C4C4C4'
@@ -162,7 +156,8 @@ const styles = StyleSheet.create({
     instructions: { 
         fontSize:22, 
         textAlign: 'center', 
-        width: '80%' 
+        width: '80%',
+        marginTop: 30
     },
     instructionsContainer: {
         justifyContent: 'space-around', 

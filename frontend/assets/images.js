@@ -1,6 +1,6 @@
 const images = {
-    kettle: {
-        source: require('./kettle-outline1.png')
+    boil: {
+        source: require('./boil.png')
     },
     coffeeMaker: {
         source: require('./coffee-maker.png')
