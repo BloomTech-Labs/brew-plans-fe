@@ -30,11 +30,9 @@ import StartBrew from './src/views/StartBrew';
 import RecipeSteps from './src/views/RecipeSteps';
 import Overview from './src/views/Overview';
 import * as firebase from 'firebase';
-
 const handleCustomTransition = ({ scenes }) => {
   const prevScene = scenes[scenes.length - 2];
   const nextScene = scenes[scenes.length - 1];
-
   // Custom transitions go there
   if (
     (prevScene &&
@@ -44,7 +42,6 @@ const handleCustomTransition = ({ scenes }) => {
   ) {
     return fromRight(700);
   }
-
   if (
     prevScene &&
     prevScene.route.routeName === 'GreetingPage4' &&
@@ -52,14 +49,12 @@ const handleCustomTransition = ({ scenes }) => {
   ) {
     return fromBottom();
   }
-
   if (
     (prevScene && prevScene.route.routeName === 'Login') ||
     ('Signup' && nextScene.route.routeName === 'Dashboard')
   ) {
     return fromTop(700);
   }
-
   if (
     (prevScene &&
       prevScene.route.routeName === 'Landing' &&
@@ -68,11 +63,9 @@ const handleCustomTransition = ({ scenes }) => {
   ) {
     return fromRight(500);
   }
-
   if ((prevScene && nextScene.route.routeName === 'Dashboard') || 'MyRecipes') {
     return fadeIn(500);
   }
-
   if (
     prevScene &&
     prevScene.route.routeName === 'InitialLoad' &&
@@ -81,7 +74,6 @@ const handleCustomTransition = ({ scenes }) => {
     return fadeIn(1000);
   }
 };
-
 const firebaseConfig = {
   apiKey: 'AIzaSyDZKLP2FGiOx0aMXeDjAc3MOWSQa9pvJQg',
   authDomain: 'brew-plans.firebaseapp.com',
@@ -92,9 +84,7 @@ const firebaseConfig = {
   appId: '1:449923889220:web:61af8a8355e54b3fba2411',
   measurementId: 'G-01P13B1Q2M'
 };
-
 firebase.initializeApp(firebaseConfig);
-
 const AppNavigator = createStackNavigator(
   {
     InitialLoad: {
@@ -124,17 +114,16 @@ const AppNavigator = createStackNavigator(
     Login: {
       screen: Login
     },
+    
     StartBrew: {
       screen: StartBrew
     },
     Overview: {
       screen: RecipeOverview
     },
-
     RecipeSteps: {
       screen: RecipeSteps
     },
-
     RecipeForm: {
       screen: RecipeForm
     },
@@ -152,5 +141,16 @@ const AppNavigator = createStackNavigator(
     }
   }
 );
-
 export default createAppContainer(AppNavigator);
+
+
+
+
+
+
+
+
+
+
+
+
