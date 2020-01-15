@@ -12,7 +12,7 @@ function RecipeSteps(props) {
     const { currentRecipe } = props;
     const { instructions } = currentRecipe;
     
-    const [step, setStep] = useState(0);
+    const [stepNumber, setStepNumber] = useState(0);
     const [nextDisabled, setNextDisabled] = useState(false);
     const [currentIcon, setCurrentIcon] = useState(images.default.source);
 
@@ -48,43 +48,41 @@ function RecipeSteps(props) {
         setSortedInstructions([...localInstructions]);
         setTimerArray([...localTimerArray]);
     }
-}, [step, sortedInstructions.length]);
-
-
-
-    console.log('sortedInstructions', sortedInstructions.length === 0)
-    
-    if(sortedInstructions.length === 0) {
-        return (
-            <View>
-                <Text>
-                    Loading...
-                </Text>
-            </View>
-        )
-    } else {
+    if(sortedInstructions[0]) {
+        if(sortedInstructions[stepNumber].includes('boil')) {
+            setCurrentIcon(images.boil.source)
+        } else if (sortedInstructions[stepNumber].includes('filter')) {
+            setCurrentIcon(images.filter.source)
+        } else if (sortedInstructions[stepNumber].includes('pour')) {
+            setCurrentIcon(images.pouring.source)
+        } else if (sortedInstructions.length - 1 === stepNumber) {
+            setCurrentIcon(images.coffeeCup.source)
+        } else {
+            setCurrentIcon(images.default.source)
+        }
+    }
+}, [stepNumber, sortedInstructions.length]);
     return (
         <View style={ styles.mainView }>
             <NavBar {...props} />
             <Text style={ styles.recipeTitle }>{currentRecipe.title}</Text>
             <View style={ styles.instructionsContainer }>
                 <Image
-                // source={require('../../assets/yellow-coffee-cup.png')}
-                source={images.default.source}
-                style={{ marginVertical: 10 }}
+                source={ currentIcon }
+                style={{ marginVertical: 10, width: 200, height: 200 }}
                 />
-                <Text style={ styles.instructions }>{sortedInstructions[step]}</Text>
+                <Text style={ styles.instructions }>{sortedInstructions[stepNumber]}</Text>
             </View>
             <View style={ styles.bottomContainer }>
                 <View style={ styles.stepContainer }>
                     <TouchableOpacity onPress={() => {
-                        if(step === 0) {
+                        if(stepNumber === 0) {
                             props.navigation.navigate('StartBrew')
-                        } else if (step === sortedInstructions.length -1) {
-                            setStep(step - 1)
+                        } else if (stepNumber === sortedInstructions.length -1) {
+                            setStepNumber(stepNumber - 1)
                             setNextDisabled(false)
                         } else {
-                            setStep(step - 1)
+                            setStepNumber(stepNumber - 1)
                         }
                     }}>
                     <Image
@@ -92,10 +90,9 @@ function RecipeSteps(props) {
                         style={{ marginVertical: 10 }}
                         /> 
                         </TouchableOpacity>
-                        <Text style={ styles.step }>Step {step+1} </Text> 
-                    <TouchableOpacity disabled={nextDisabled} onPress={() => step === sortedInstructions.length - 1 ? setNextDisabled(true) : setStep(step+1)
+                        <Text style={ styles.step }>Step {stepNumber+1} </Text> 
+                    <TouchableOpacity disabled={nextDisabled} onPress={() => stepNumber === sortedInstructions.length - 1 ? setNextDisabled(true) : setStepNumber(stepNumber+1)
                     }>
-
                         <Image
                         source={require('../../assets/next.png')}
                         style={{ marginVertical: 10 }}
@@ -110,7 +107,7 @@ function RecipeSteps(props) {
                 </TouchableOpacity>
             </View>
         </View>
-    )}
+    )
 }
 const styles = StyleSheet.create({
     overviewText: {
@@ -136,7 +133,7 @@ const styles = StyleSheet.create({
         fontSize: 30, 
         alignSelf: 'center', 
         fontWeight: 'bold',
-        marginTop: 30,
+        marginVertical: 30,
         paddingBottom: '1%',
         borderBottomWidth: 2,
         borderBottomColor: '#C4C4C4'
@@ -159,7 +156,8 @@ const styles = StyleSheet.create({
     instructions: { 
         fontSize:22, 
         textAlign: 'center', 
-        width: '80%' 
+        width: '80%',
+        marginTop: 30
     },
     instructionsContainer: {
         justifyContent: 'space-around', 

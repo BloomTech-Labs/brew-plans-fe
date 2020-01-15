@@ -48,6 +48,7 @@ const MyRecipes = props => {
         <NavBar {...props} />
         <View style={styles.pageContainer}>
           <View style={styles.navbar}>
+            
             <TouchableOpacity
               onPress={() => setView('Default Recipes')}
               style={styles.navbarButton}
@@ -60,13 +61,25 @@ const MyRecipes = props => {
             >
               <Text style={styles.navbarText}>My Recipes</Text>
             </TouchableOpacity>
-            
+          </View>
+        </View>
+        <View style={styles.recipesContainer}>
+            <ScrollView>
+              {props.seededRecipes.map(recipe => (
+                <SeededRecipe
+                  key={recipe.id}
+                  recipe={recipe}
+                  pressed={() => {
+                    props.setCurrentRecipe(recipe);
+                    // props.navigation.navigate('Recipe');
+                    props.navigation.navigate('StartBrew');
+                  }}
+                />
+              ))}
+            </ScrollView>
           </View>
 
 
-
-          
-        </View>
       </View>
     );
   } else if (view == 'My Recipes') {
@@ -90,6 +103,7 @@ const MyRecipes = props => {
             </TouchableOpacity>
           </View>
 
+      
           {addRecipeModal ? (
             <Modal
               visible={addRecipeModal}
@@ -127,7 +141,7 @@ const MyRecipes = props => {
           ) : null}
 
           <View style={styles.recipesHeader}>
-            <Text style={styles.recipesHeaderText}>My Recipes</Text>
+            <Text style={styles.recipesHeaderText}>Add New Recipe</Text>
             <TouchableOpacity
               onPress={() => setAddRecipeModal(!addRecipeModal)}
             >
@@ -189,3 +203,4 @@ export default connect(mapStateToProps, {
   createUserRecipe,
   setCurrentRecipe
 })(MyRecipes);
+

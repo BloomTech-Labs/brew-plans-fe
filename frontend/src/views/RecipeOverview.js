@@ -17,17 +17,14 @@ const RecipeOverview = props => {
       const instructionsArray = instructions.split("////");
       let localInstructions = [];
 
-      instructionsArray.map((instruction, index) => {
-        let step = `Step ${index + 1}
-`;
+      instructionsArray.map((instruction) => {
         const result = instruction.match(regex);
 
         if(result) {
           instruction = instruction.substr(instruction.indexOf(" ") + 1);
         };
 
-        let res = step.concat(instruction);
-        localInstructions.push(res);
+        localInstructions.push(instruction);
       });
 
       setSortedInstructions([...localInstructions]);
@@ -35,27 +32,27 @@ const RecipeOverview = props => {
   }, []);
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <NavBar {...props}/>
-      <View style={styles.viewBox}>
-        <View style={styles.titleBox}>
-          <Text style={styles.titleText}>{currentRecipe.title}</Text>
-          <View style={styles.innerBox}>
-            <View style={styles.catBox}>
-              <Text style={styles.lightText}>Creator</Text>
-              <Text style={styles.mediumText}>Brew Plans</Text>
-            </View>
-            <View style={styles.catBox}>
-              <Text style={styles.lightText}>Brew Temp</Text>
-              <Text style={styles.mediumText}>{currentRecipe.water_temp}º F</Text>
-            </View>
-            <View style={styles.catCoarse}>
-              <Text style={styles.lightText}>Coarseness</Text>
-              <Text style={styles.mediumText}>Medium-Coarse</Text>
+      <ScrollView style={{ flex: 1 }}>
+        <View style={styles.viewBox}>
+          <View style={styles.titleBox}>
+            <Text style={styles.titleText}>{currentRecipe.title}</Text>
+            <View style={styles.innerBox}>
+              <View style={styles.catBox}>
+                <Text style={styles.lightText}>Creator</Text>
+                <Text style={styles.mediumText}>Brew Plans</Text>
+              </View>
+              <View style={styles.catBox}>
+                <Text style={styles.lightText}>Brew Temp</Text>
+                <Text style={styles.mediumText}>{currentRecipe.water_temp}º F</Text>
+              </View>
+              <View style={styles.catCoarse}>
+                <Text style={styles.lightText}>Coarseness</Text>
+                <Text style={styles.mediumText}>Medium-Coarse</Text>
+              </View>
             </View>
           </View>
-        </View>
-        <ScrollView>
           <View>
             <View style={styles.contentBox}>
               <Text style={styles.titleText}>You'll Need...</Text>
@@ -69,8 +66,10 @@ const RecipeOverview = props => {
             </View>
             <View style={styles.contentBox}>
               {sortedInstructions.map((instruction, index) => (
-                // <Text key={index}>{this.step}</Text>
-                <Text style={styles.regularText} key={index}>{instruction}</Text>
+                <View key={index}>
+                  <Text style={styles.boldText}>Step {index + 1}</Text>
+                  <Text style={styles.regularText}>{instruction}</Text>
+                </View>
               ))}
             </View>
             <View style={styles.contentBox}>
@@ -84,8 +83,8 @@ const RecipeOverview = props => {
               </View>
             </View>
           </View>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     </View>
   );
 };

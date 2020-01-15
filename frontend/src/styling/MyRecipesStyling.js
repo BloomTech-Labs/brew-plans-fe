@@ -2,10 +2,8 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
     pageContainer: {
-      flex: .85,
-      justifyContent: 'flex-start',
-      padding: 20,
-      backgroundColor: 'white',
+
+      padding: 20
     },
     recipesHeader: {
       flexDirection: 'row',
@@ -13,21 +11,17 @@ export default StyleSheet.create({
       alignItems: 'center'
     },
     recipesHeaderText: {
+      marginTop: 15,
+      padding: 10,
       fontSize: 24
     },
-    // recipesContainer: {
-    //   paddingVertical: 24
-    // },
-    navbar: {
-      width:'100%',
-      height: 80,
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-  
-      
+    recipesContainer: {
+      paddingVertical: 15,
+      width:'90%',
+      alignSelf: 'center'
     },
     navbarButton: {
-      width: '97%',
+      width: '98%',
       alignSelf: 'center',
       backgroundColor: '#1F2233',
       borderRadius: 2,
@@ -35,9 +29,9 @@ export default StyleSheet.create({
       marginTop: 15
     },  
     navbarText: {
-      textAlign: 'left',
-      padding: 10,
+      padding: 15 ,
       color: 'white',
+      textAlign: 'left',
       fontSize: 27
     }
   });
