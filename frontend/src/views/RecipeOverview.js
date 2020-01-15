@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { View, ScrollView, Text } from 'react-native';
 
-import NavBar from '../components/Layout/NavBar/NavBar';
+import OverviewBar from '../components/Layout/OverviewBar';
 import styles from '../styling/RecipeOverviewStyling';
 
 const RecipeOverview = props => {
@@ -33,7 +33,7 @@ const RecipeOverview = props => {
 
   return (
     <View style={{ flex: 1 }}>
-      <NavBar {...props}/>
+      <OverviewBar {...props} />
       <ScrollView style={{ flex: 1 }}>
         <View style={styles.viewBox}>
           <View style={styles.titleBox}>
