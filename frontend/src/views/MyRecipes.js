@@ -44,30 +44,25 @@ const MyRecipes = props => {
 
   if (view == 'Default Recipes') {
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <NavBar {...props} />
         <View style={styles.pageContainer}>
           <View style={styles.navbar}>
+            
             <TouchableOpacity
-              onPress={() => setView('Default Recipes')}>
-              <Text style={styles.navbarText}>Recipes</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setAddRecipeModal(!addRecipeModal)} style={{ marginRight: 5 }}>
-              <MaterialIcons name={'add-circle'} size={36} color={'white'} />
-            </TouchableOpacity>
-          </View>
-
-
-          <View style={styles.navbar}>
-          <TouchableOpacity
               onPress={() => setView('Default Recipes')}
               style={styles.navbarButton}
             >
-            <Text style={styles.navbarText}>My Recipes</Text>
+              <Text style={styles.navbarText}>Recipes</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => setView('My Recipes')}
+              style={styles.navbarButton}
+            >
+              <Text style={styles.navbarText}>My Recipes</Text>
             </TouchableOpacity>
           </View>
-
-
+        </View>
         <View style={styles.recipesContainer}>
             <ScrollView>
               {props.seededRecipes.map(recipe => (
@@ -83,7 +78,7 @@ const MyRecipes = props => {
               ))}
             </ScrollView>
           </View>
-          </View>
+
 
       </View>
     );
@@ -146,7 +141,7 @@ const MyRecipes = props => {
           ) : null}
 
           <View style={styles.recipesHeader}>
-            <Text style={styles.recipesHeaderText}>My Recipes</Text>
+            <Text style={styles.recipesHeaderText}>Add New Recipe</Text>
             <TouchableOpacity
               onPress={() => setAddRecipeModal(!addRecipeModal)}
             >
