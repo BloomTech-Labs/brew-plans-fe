@@ -26,7 +26,7 @@ const LoginForm = props => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        props.navigation.replace('Dashboard');
+        props.navigation.replace('MyRecipes');
       })
       .catch(error => {
         Alert.alert(error.message);
