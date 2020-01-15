@@ -39,18 +39,6 @@ const NavDrawer = props => {
         // title='Some title'
       >
         <Drawer.Item
-          label='Dashboard'
-          active={props.navigation.state.routeName === 'Dashboard'}
-          onPress={() => {
-            // setActive("dashboard");
-            props.navigation.navigate('Dashboard');
-            props.closeDrawer();
-          }}
-          style={{
-            marginVertical: 8
-          }}
-        />
-        <Drawer.Item
           label='Recipes'
           active={props.navigation.state.routeName === 'MyRecipes'}
           onPress={() => {

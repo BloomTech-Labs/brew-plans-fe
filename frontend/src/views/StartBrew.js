@@ -24,14 +24,14 @@ function StartBrew(props) {
             </View>
             <View style={{ justifyContent: 'space-between', alignItems: 'center' }}>
                 <Image
-                source={require('../../assets/coffee-bean.png')}
+                source={require('../../assets/coffee-start.png')}
                 style={{ marginVertical: 10 }}
                 />
                 <Text style={{ fontSize: 30, marginVertical: 10, fontWeight: 'bold' }}>Start Brewing</Text>
                 <TouchableOpacity onPress={() => props.navigation.navigate("RecipeSteps")}>
                 <Image
                 
-                source={require('../../assets/play9.png')}
+                source={require('../../assets/play-start.png')}
                 style={{ marginTop: 10 }}
                 />
                 </TouchableOpacity>

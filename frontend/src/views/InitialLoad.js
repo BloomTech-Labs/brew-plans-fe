@@ -11,7 +11,7 @@ const InitialLoad = (props) => {
         .then(res => { 
           // console.log("res", res)
           if(res !== null) {
-            setTimeout(() => props.navigation.navigate('Dashboard'), 2000)
+            setTimeout(() => props.navigation.navigate('MyRecipes'), 2000)
           } else {
             setTimeout(() => props.navigation.navigate('Landing'), 2000)
           }
