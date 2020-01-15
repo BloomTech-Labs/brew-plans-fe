@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { View, Image } from 'react-native';
-import { Button } from 'react-native-paper';
 import Layout from '../components/Layout/Layout';
 import LandingButton from '../components/Landing/LandingButton';
 import Login from '../views/Login.js'
@@ -80,9 +79,7 @@ const Landing = props => {
           buttonText={'white'}
           onPress={() => props.navigation.navigate('Login')}
         /> */}
-        <Button>
-          Sign up
-        </Button>
+        
 
       </View>
     </Layout>

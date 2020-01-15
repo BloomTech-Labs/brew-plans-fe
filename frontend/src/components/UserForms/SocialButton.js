@@ -9,7 +9,7 @@ const SocialButton = props => {
   // console.log(props);
   return (
     <TouchableOpacity onPress={() => props.googleSignIn(props.loginConfig)}>
-    <Image style={{width: 280, height: 42, borderWidth: 2, borderColor:'#1F2233', marginLeft: -96, marginBottom: 22}} source={require('../../../assets/google.png')}/>
+    <Image style={{width: 280, height: 42, borderWidth: 2, borderColor:'#1F2233', marginLeft: -96, marginTop: 60, marginBottom: 22}} source={require('../../../assets/google.png')}/>
     <Image style={{width: 280, height: 42, borderWidth: 2, borderColor:'#1F2233', marginLeft: -96}} source={require('../../../assets/facebook.png')}/>
 
       {/* <Ionicons name={props.icon} size={36} color={'black'} /> */}
