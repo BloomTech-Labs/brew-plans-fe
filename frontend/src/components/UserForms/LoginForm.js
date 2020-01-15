@@ -40,7 +40,7 @@ const LoginForm = props => {
       {props => (
         <View style={theme.formView}>
           {/* <View style={theme.formInputsContainer}> */}
-          <View style={{width: 290}}>
+          <View style={{width: 290, marginTop: -47}}>
 
           <Text style={{color: 'black', fontWeight: 'bold',  marginBottom: -20, marginLeft: 2}}>Email</Text>
             <Akira
@@ -61,6 +61,7 @@ const LoginForm = props => {
             />
             <Text style={{color: 'black', fontWeight: 'bold',  marginBottom: -20, marginLeft: 2}}>Password</Text>
             <Akira 
+        
               // style={theme.formInput}
               style={{ marginBottom: 42, width: 280}}
               // label={'Password'}
