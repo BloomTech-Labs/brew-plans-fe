@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from '../../styling/RecipeFormComponentStyling';
 import {
   View,
@@ -41,6 +41,8 @@ const RecipeFormComponent = props => {
   const [localInstructions, setLocalInstructions] = useState(
     newRecipe.instructions
   );
+
+  const scrollViewRef = useRef();
 
   useEffect(() => {
     if (form == 'edit') {
@@ -93,7 +95,7 @@ const RecipeFormComponent = props => {
                 <MaterialIcons name={'cancel'} size={36} color={'black'} />
               </TouchableOpacity>
               <Text style={styles.formHeader}>{titleText}</Text>
-              <ScrollView style={styles.formInputsContainer}>
+              <ScrollView ref={scrollViewRef} style={styles.formInputsContainer}>
                 <TextInput
                   style={styles.formInput}
                   onChangeText={value => handleNewRecipeInput('title', value)}
@@ -104,7 +106,6 @@ const RecipeFormComponent = props => {
                   placeholder=''
                   theme={theme}
                 />
-
                 <TextInput
                   style={styles.formInput}
                   onChangeText={value =>
@@ -117,7 +118,6 @@ const RecipeFormComponent = props => {
                   placeholder=''
                   theme={theme}
                 />
-
                 <TextInput
                   style={styles.formInput}
                   onChangeText={value =>
@@ -130,7 +130,6 @@ const RecipeFormComponent = props => {
                   placeholder=''
                   theme={theme}
                 />
-
                 <TextInput
                   style={styles.formInput}
                   onChangeText={value =>
@@ -175,33 +174,30 @@ const RecipeFormComponent = props => {
                     />
                   </View>
                 ))}
-
-                <View
-                  style={{
-                    width: '100%',
-                    alignItems: 'center',
-                    marginVertical: 6
-                  }}
-                >
-                  <OurButton
+                <View style={{ justifyContent: 'space-between', flex: 1 }}>
+                  <TouchableOpacity
+                    style={{ width: '100%', backgroundColor: '#1f2233', padding: '2%', marginVertical: '2%', borderRadius: 5 }}
                     // onPress={() => createUserRecipe(recipe)}\
-                    onPress={() =>
-                      setLocalInstructions([...localInstructions, {}])
+                    onPress={() => {
+                        setLocalInstructions([...localInstructions, {}]);
+                      }
                     }
-                    title='Add Step'
-                  />
+                  >
+                    <Text style={{ color: 'white', fontSize: 24, fontWeight: 'bold', textAlign: 'center' }}>Add Step</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={{ width: '100%', backgroundColor: '#1f2233', padding: '2%', borderRadius: 5 }}
+                    onPress={() => {
+                      newRecipe.instructions = localInstructions;
+                      createUserRecipe(newRecipe, currentUser.id);
+                      console.log('newRecipe', newRecipe);
+                      cancel();
+                    }}
+                  >
+                    <Text style={{ color: 'white', fontSize: 24, fontWeight: 'bold', textAlign: 'center' }}>Submit</Text>
+                  </TouchableOpacity>
                 </View>
               </ScrollView>
-              <OurButton
-                // onPress={() => createUserRecipe(recipe)}
-                onPress={() => {
-                  newRecipe.instructions = localInstructions;
-                  createUserRecipe(newRecipe, currentUser.id);
-                  console.log('newRecipe', newRecipe);
-                  cancel();
-                }}
-                title='Submit'
-              />
             </View>
           </View>
         )}
@@ -217,7 +213,6 @@ const RecipeFormComponent = props => {
       </View>
     );
   } else if (form == 'edit' && !isLoading) {
-    //console.log('localinstructions FORMIK RETURN', localInstructions);
     const instructionsMap =
       recipeToEdit.instructions.length > 0 ? (
         localInstructions.map((instruction, index) => {
@@ -254,7 +249,6 @@ const RecipeFormComponent = props => {
       <View>
         <Formik
           initialValues={{}}
-          // onSubmit={values => console.log(values)} /// Add props.handlesubmt or equivelent.
         >
           {props => (
             <View style={styles.backgroundOverlay}>
@@ -309,7 +303,6 @@ const RecipeFormComponent = props => {
                   {instructionsMap}
                 </ScrollView>
                 <OurButton
-                  // onPress={() => createUserRecipe(recipe)}
                   onPress={() => {
                     recipeToEdit.instructions = localInstructions;
                     handleRecipeUpdate(recipeToEdit, recipeToEdit.id);
