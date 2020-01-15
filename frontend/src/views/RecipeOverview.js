@@ -56,13 +56,11 @@ const RecipeOverview = props => {
           <View>
             <View style={styles.contentBox}>
               <Text style={styles.titleText}>You'll Need...</Text>
-              <Text style={styles.lightText}>
-                Tool 1
-                Tool 2
-                Grounds 1
-                Water
-                Etc.
-              </Text>
+              <Text style={styles.lightText}>Tool 1</Text>
+              <Text style={styles.lightText}>Tool 2</Text>
+              <Text style={styles.lightText}>Grounds</Text>
+              <Text style={styles.lightText}>Water</Text>
+              <Text style={styles.lightText}>Etc.</Text>
             </View>
             <View style={styles.contentBox}>
               {sortedInstructions.map((instruction, index) => (

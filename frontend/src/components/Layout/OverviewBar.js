@@ -14,7 +14,7 @@ const OverviewBar = props => {
           <Appbar.Action
             icon="close"
             color="white"
-            // onPress={props.navigation.goBack()}
+            onPress={() => props.navigation.goBack()}
           />
         </View>
       </Appbar>

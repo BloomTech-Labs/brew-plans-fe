@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   Appbox: {
     width: '100%',
+    marginTop: 24,
     display: 'flex',
     flexDirection: 'row'
   },
