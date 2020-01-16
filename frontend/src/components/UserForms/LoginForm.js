@@ -49,6 +49,7 @@ const LoginForm = props => {
               // label={'...enter email'}
               // this is used as active and passive border color
               borderColor={'lightgray'}
+              textAlign={'left'}
               inputPadding={16}
               labelHeight={24}
               labelStyle={{ color: '#870c27' }}
@@ -69,6 +70,7 @@ const LoginForm = props => {
               // this is used as active and passive border color
               borderColor={'lightgray'}
               // borderRadius={15}
+              textAlign={'left'}
               inputPadding={16}
               labelHeight={24}
               labelStyle={{ color: '#870c27' }}

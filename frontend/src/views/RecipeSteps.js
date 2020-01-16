@@ -76,7 +76,7 @@ function RecipeSteps(props) {
                 style={{ marginVertical: 10, width: 200, height: 200 }}
                 />
                 <Text style={ styles.instructions }>{sortedInstructions[stepNumber]}</Text>
-                {timerArray[stepNumber] ? ( <Timer stepLength={timerArray[stepNumber]} /> ) : (null)}             
+                {timerArray[stepNumber] ? ( <Timer stepLength={timerArray[stepNumber]} /> ) : (null)}                 
             </View>
             <View style={ styles.bottomContainer }>
                 <View style={ styles.stepContainer }>
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         color: 'white',
-        padding: '2%'
+        padding: '4%'
     },
     overviewContainer: {
         flexDirection: 'row', 
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center', 
         fontWeight: 'bold',
         marginVertical: 30,
-        paddingBottom: '1%',
+        paddingBottom: '2%',
         borderBottomWidth: 2,
         borderBottomColor: '#C4C4C4'
     },
@@ -159,13 +159,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#1f2233'
     },
     instructions: { 
-        fontSize:22, 
+        fontSize:21, 
         textAlign: 'center', 
-        width: '80%',
-        marginTop: 30
+        width: '81%',
+        paddingTop: 40
     },
     instructionsContainer: {
-        justifyContent: 'space-around', 
+        justifyContent: 'space-between', 
         alignItems: 'center', 
         height: '33%'
     }
