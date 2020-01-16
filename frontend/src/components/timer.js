@@ -29,13 +29,8 @@ class Timer extends React.Component {
   timer = {};
   soundObject = new Audio.Sound()
 
-  async componentDidMount() {   
-    // this.reset(); 
-    try {
-        await this.soundObject.loadAsync(require("../../assets/coffee-song.mp3"))
-    } catch(error) {
-      console.log("error", error)
-    }
+  componentDidMount() {
+    this.startTimer();
   }
 
   countdown() {
@@ -43,6 +38,7 @@ class Timer extends React.Component {
       this.setState({ sec: (this.state.sec - 1).toString() })
     } else if(this.state.sec == 0 && this.state.min == 0) {
       clearInterval(this.timer);
+      this.props.setStepNumber(this.props.stepNumber+1)
     } else if(this.state.sec == 0 && this.state.min > 0) {
       this.setState({ sec: 59, min: this.state.min - 1 })
     }
@@ -76,6 +72,10 @@ class Timer extends React.Component {
   componentDidUpdate(prevProps) {
     if(this.props.stepLength !== prevProps.stepLength) {
         this.reset();
+        // We need to wait a very short amount of time (150ms) after this.reset(); to run to automatically start the timer again properly
+        setTimeout(() => {
+          this.startTimer();
+        }, 150)
     }
 }
 

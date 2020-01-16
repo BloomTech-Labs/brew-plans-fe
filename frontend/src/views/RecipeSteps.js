@@ -76,7 +76,7 @@ function RecipeSteps(props) {
                 style={{ marginVertical: 10, width: 200, height: 200 }}
                 />
                 <Text style={ styles.instructions }>{sortedInstructions[stepNumber]}</Text>
-                {timerArray[stepNumber] ? ( <Timer stepLength={timerArray[stepNumber]} /> ) : (null)}             
+                {timerArray[stepNumber] ? <Timer stepLength={timerArray[stepNumber]} setStepNumber={setStepNumber} stepNumber={stepNumber} /> : (null)}         
             </View>
             <View style={ styles.bottomContainer }>
                 <View style={ styles.stepContainer }>
