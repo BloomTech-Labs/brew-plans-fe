@@ -20,7 +20,6 @@ import GreetingPage3 from './src/views/GreetingPages/GreetingPage3.js';
 import Landing from './src/views/Landing';
 import SignUp from './src/views/SignUp';
 import Login from './src/views/Login';
-import Dashboard from './src/views/Dashboard.js';
 import MyRecipes from './src/views/MyRecipes.js';
 import RecipeForm from './src/views/RecipeForm.js';
 import Recipe from './src/views/Recipe.js';
@@ -51,7 +50,7 @@ const handleCustomTransition = ({ scenes }) => {
   }
   if (
     (prevScene && prevScene.route.routeName === 'Login') ||
-    ('Signup' && nextScene.route.routeName === 'Dashboard')
+    ('Signup' && nextScene.route.routeName === 'MyRecipes')
   ) {
     return fromTop(700);
   }
@@ -63,7 +62,7 @@ const handleCustomTransition = ({ scenes }) => {
   ) {
     return fromRight(500);
   }
-  if ((prevScene && nextScene.route.routeName === 'Dashboard') || 'MyRecipes') {
+  if (prevScene && nextScene.route.routeName === ' MyRecipes') {
     return fadeIn(500);
   }
   if (
@@ -104,9 +103,6 @@ const AppNavigator = createStackNavigator(
     },
     MyRecipes: {
       screen: MyRecipes
-    },
-    Dashboard: {
-      screen: Dashboard
     },
     SignUp: {
       screen: SignUp

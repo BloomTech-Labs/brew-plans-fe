@@ -29,7 +29,7 @@ const Landing = props => {
 
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
-      props.navigation.navigate('Dashboard');
+      props.navigation.navigate('MyRecipes');
       firebase
         .auth()
         .currentUser.getIdToken(true)

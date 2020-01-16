@@ -48,10 +48,10 @@ const Overview = props => {
 
     return (
     <View style={{ flex: 1, width: "100%" }}>
-        <Image
+        {/* <Image
         source={require("../../assets/RecipeImage.png")}
         style={{ width: "101%", height: "20%", paddingTop: 24 }}
-        />
+        /> */}
         <View style={{ width: '100%', zIndex: 150 }}>
             <Text style={{ paddingVertical: '3%', color: 'white', fontSize: 30, fontWeight: 'bold', textAlign: 'center', backgroundColor: '#1f2233' }}>{currentRecipe.title}</Text>
         </View>

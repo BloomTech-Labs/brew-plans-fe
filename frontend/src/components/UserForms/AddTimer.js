@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { TextInput } from 'react-native-paper';
 import { View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import theme from '../../theme';
 
 export default AddTimer = props => {
+  const timerRef = useRef();
   const [addDuration, setAddDuration] = useState(false);
   const { handleDurationChange, index, localInstructions } = props;
-  console.log(
-    'instruction duration in AddTimer',
-    localInstructions[index].duration
-  );
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
       <MaterialIcons
@@ -18,11 +15,17 @@ export default AddTimer = props => {
         name='timer'
         size={24}
         color='#720A13'
-        onPress={() => setAddDuration(true)}
+        onPress={() => { 
+          setAddDuration(true)
+          setTimeout(() => {
+            timerRef.current.focus();
+          }, 150)
+        }}
       />
       {addDuration || localInstructions[index].duration ? (
         <View>
           <TextInput
+            ref={timerRef}
             keyboardType="number-pad"
             key={'D' + index}
             value={

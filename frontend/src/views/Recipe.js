@@ -55,10 +55,10 @@ const Recipe = props => {
   return (
     <View style={{ flex: 1, width: "100%" }}>
       <NavBar {...props} />
-      <Image
+      {/* <Image
         source={require("../../assets/RecipeImage.png")}
         style={{ width: "100%", height: "25%" }}
-      />
+      /> */}
       <Layout>
         <ScrollView>
           <Text style={styles.recipeTitle}>{currentRecipe.title}</Text>
