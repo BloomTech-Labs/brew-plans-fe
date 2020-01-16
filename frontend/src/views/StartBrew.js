@@ -22,12 +22,12 @@ function StartBrew(props) {
                 <Text style={ styles.recipeInfoText }>Brew Type: {currentRecipe.brew_type}</Text>
                 <Text style={ styles.recipeInfoText }>Water Temp: {currentRecipe.water_temp}&deg;F</Text>
             </View>
-            <View style={{ justifyContent: 'space-between', alignItems: 'center', flex: 1 }}>
+            <View style={{ justifyContent: 'flex-start', alignItems: 'center', flex: 1 }}>
                 <Image
                 source={require('../../assets/coffee-start.png')}
-                style={{ marginVertical: 10 }}
+                style={{ marginTop: 100 }}
                 />
-                <Text style={{ fontSize: 30, marginVertical: 10, fontWeight: 'bold' }}>Start Brewing</Text>
+                <Text style={{ fontSize: 30, marginVertical: 40, fontWeight: 'bold' }}>Start Brewing</Text>
                 <TouchableOpacity onPress={() => props.navigation.navigate("RecipeSteps")}>
                 <Image
                 
@@ -50,30 +50,33 @@ const styles = StyleSheet.create({
     overviewText: {
         fontSize: 30,
         fontWeight: 'bold',
-        color: 'white'
+        color: 'white',
+        padding: '4%'
     },
     overview: {
         backgroundColor: '#1f2233', 
         width: '100%', 
         bottom: 0, 
         justifyContent: 'space-between', 
-        flexDirection: 'row', 
-        padding: '2%',
+        flexDirection: 'row'
     },
     recipeInfoText: {
         color: 'white',
-        fontSize: 20
+        fontSize: 20,
+    
     },
     recipeInfo: {
         width: '100%', 
         height: '12%', 
+        padding: '2%',
         backgroundColor: '#1f2233', 
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     recipeTitle: {
         fontSize: 30, 
         alignSelf: 'center', 
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginVertical: 40,
     },
     mainView: {
         width: '100%',
