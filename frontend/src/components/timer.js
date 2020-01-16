@@ -29,7 +29,8 @@ class Timer extends React.Component {
   timer = {};
   soundObject = new Audio.Sound()
 
-  async componentDidMount() {
+  async componentDidMount() {   
+    // this.reset(); 
     try {
         await this.soundObject.loadAsync(require("../../assets/coffee-song.mp3"))
     } catch(error) {
@@ -72,7 +73,15 @@ class Timer extends React.Component {
     this.setState({ startDisabled: false });
   }
 
+  componentDidUpdate(prevProps) {
+    if(this.props.stepLength !== prevProps.stepLength) {
+        this.reset();
+    }
+}
+
   render() {
+
+    if (this.props.stepLength) {
     return (
       <View style={styles.timerWrapper}>
         <View style={styles.textWrapper}>
@@ -90,7 +99,7 @@ class Timer extends React.Component {
               <Ionicons
                 name="md-pause"
                 size={32}
-                color="#720A13"
+                color="#1F2233"
                 style={styles.icons}
                 onPress={() => {
                   this.pause();
@@ -100,7 +109,7 @@ class Timer extends React.Component {
               <Ionicons
                 name="md-play-circle"
                 size={32}
-                color="#720A13"
+                color="#1F2233"
                 style={styles.icons}
                 onPress={() => {
                   this.startTimer();
@@ -111,8 +120,8 @@ class Timer extends React.Component {
           <TouchableOpacity>
             <MaterialCommunityIcons
               name="restore"
-              size={24}
-              color="#720A13"
+              size={32}
+              color="#1F2233"
               style={styles.icons}
               onPress={() => {
                 this.reset();
@@ -122,6 +131,10 @@ class Timer extends React.Component {
         </View>
       </View>
     );
+            }
+            else {
+              return (null);
+            }
   }
 }
 
