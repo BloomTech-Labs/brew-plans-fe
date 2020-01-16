@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import Layout from '../components/Layout/Layout';
 import LandingButton from '../components/Landing/LandingButton';
 import Login from '../views/Login.js'
@@ -45,11 +45,32 @@ const Landing = props => {
   });
 
   return (
+    
+    
     <Layout custom={'white'}>
-      <Image
-        style={{ position: 'absolute', top: '5%', left: '5%', zIndex: 50 }}
-        source={require('../../assets/BrewPlansLogo.png')}
-      />
+    
+    <Image
+         style={{ position: 'absolute', top: '5%', left: '5%', zIndex: 50 }} 
+        //  source={require('../../assets/BrewPlansLogo.png')} 
+      /> 
+       <Image
+        style={{
+          // borderRadius: 5,
+          top: '10%',
+          height: '20%',
+          width: '110%',
+          // maxHeight: 360,
+          marginTop: 62
+        
+        }}
+        source={require('../../assets/login-header.png')}
+      /> 
+    
+    
+      {/* <Image */}
+        {/* style={{ position: 'absolute', top: '5%', left: '5%', zIndex: 50 }} */}
+        {/* source={require('../../assets/BrewPlansLogo.png')} */}
+      {/* /> */}
       {/* <Image
         style={{
           borderRadius: 5,
@@ -60,6 +81,7 @@ const Landing = props => {
         }}
         source={require('../../assets/IntroImage.png')}
       /> */}
+      
       <View style={{ marginTop: 86 }}>
       <Login />
 
@@ -80,9 +102,11 @@ const Landing = props => {
           onPress={() => props.navigation.navigate('Login')}
         /> */}
         
-
       </View>
+        
+    
     </Layout>
+  
   );
 };
 
