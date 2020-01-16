@@ -9,6 +9,7 @@ import styles from "../styling/TimerStyling";
 class Timer extends React.Component {
   constructor(props) {
     super(props);
+    console.log('Timer Props', props);
     this.state = {
       min: (Math.floor((props.stepLength) / 60))
       || 0,
@@ -29,7 +30,7 @@ class Timer extends React.Component {
   soundObject = new Audio.Sound()
 
   async componentDidMount() {   
-    this.reset(); 
+    // this.reset(); 
     try {
         await this.soundObject.loadAsync(require("../../assets/coffee-song.mp3"))
     } catch(error) {
@@ -71,6 +72,12 @@ class Timer extends React.Component {
     clearInterval(this.timer);
     this.setState({ startDisabled: false });
   }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.stepLength !== prevProps.stepLength) {
+        this.reset();
+    }
+}
 
   render() {
 
