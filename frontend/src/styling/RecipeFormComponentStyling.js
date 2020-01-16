@@ -33,7 +33,7 @@ export default StyleSheet.create({
   formInput: {
     marginHorizontal: 'auto',
     marginVertical: 8,
-    width: '105%',
+    width: '100%',
     fontSize: 4
   },
   durationInput: {

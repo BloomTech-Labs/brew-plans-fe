@@ -51,14 +51,16 @@ function RecipeSteps(props) {
 
     }
     if(sortedInstructions[0]) {
-        if(sortedInstructions[stepNumber].includes('boil')) {
+        if(sortedInstructions[stepNumber].toLowerCase().includes('boil')) {
             setCurrentIcon(images.boil.source)
-        } else if (sortedInstructions[stepNumber].includes('filter')) {
+        } else if (sortedInstructions[stepNumber].toLowerCase().includes('filter')) {
             setCurrentIcon(images.filter.source)
-        } else if (sortedInstructions[stepNumber].includes('pour')) {
+        } else if (sortedInstructions[stepNumber].toLowerCase().includes('pour')) {
             setCurrentIcon(images.pouring.source)
         } else if (sortedInstructions.length - 1 === stepNumber) {
             setCurrentIcon(images.coffeeCup.source)
+        } else if (sortedInstructions[stepNumber].toLowerCase().includes('brew')) {
+            setCurrentIcon(images.coffeeMaker.source)
         } else {
             setCurrentIcon(images.default.source)
         }

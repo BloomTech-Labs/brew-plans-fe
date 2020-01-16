@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { View, ScrollView, Text } from 'react-native';
 
-import NavBar from '../components/Layout/NavBar/NavBar';
+import OverviewBar from '../components/Layout/OverviewBar';
 import styles from '../styling/RecipeOverviewStyling';
 
 const RecipeOverview = props => {
@@ -33,7 +33,7 @@ const RecipeOverview = props => {
 
   return (
     <View style={{ flex: 1 }}>
-      <NavBar {...props}/>
+      <OverviewBar {...props} />
       <ScrollView style={{ flex: 1 }}>
         <View style={styles.viewBox}>
           <View style={styles.titleBox}>
@@ -56,13 +56,11 @@ const RecipeOverview = props => {
           <View>
             <View style={styles.contentBox}>
               <Text style={styles.titleText}>You'll Need...</Text>
-              <Text style={styles.lightText}>
-                Tool 1
-                Tool 2
-                Grounds 1
-                Water
-                Etc.
-              </Text>
+              <Text style={styles.lightText}>Tool 1</Text>
+              <Text style={styles.lightText}>Tool 2</Text>
+              <Text style={styles.lightText}>Grounds</Text>
+              <Text style={styles.lightText}>Water</Text>
+              <Text style={styles.lightText}>Etc.</Text>
             </View>
             <View style={styles.contentBox}>
               {sortedInstructions.map((instruction, index) => (
