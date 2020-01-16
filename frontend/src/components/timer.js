@@ -9,7 +9,6 @@ import styles from "../styling/TimerStyling";
 class Timer extends React.Component {
   constructor(props) {
     super(props);
-    console.log('Timer Props', props);
     this.state = {
       min: (Math.floor((props.stepLength) / 60))
       || 0,
@@ -93,7 +92,7 @@ class Timer extends React.Component {
               <Ionicons
                 name="md-pause"
                 size={32}
-                color="#720A13"
+                color="#1F2233"
                 style={styles.icons}
                 onPress={() => {
                   this.pause();
@@ -103,7 +102,7 @@ class Timer extends React.Component {
               <Ionicons
                 name="md-play-circle"
                 size={32}
-                color="#720A13"
+                color="#1F2233"
                 style={styles.icons}
                 onPress={() => {
                   this.startTimer();
@@ -114,8 +113,8 @@ class Timer extends React.Component {
           <TouchableOpacity>
             <MaterialCommunityIcons
               name="restore"
-              size={24}
-              color="#720A13"
+              size={32}
+              color="#1F2233"
               style={styles.icons}
               onPress={() => {
                 this.reset();
