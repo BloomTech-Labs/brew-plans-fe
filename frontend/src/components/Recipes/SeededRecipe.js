@@ -9,18 +9,35 @@ const SeededRecipe = props => {
       <Text style={styles.recipeTitle}>{recipe.title}</Text>
       <View style={styles.recipeInfoContainer}>
         <View style={styles.recipeInfo}>
-          <Text>
-            Brew Type: {recipe.brew_type}
-            {'\n'}
-            Brewing Temperature: {recipe.water_temp}
-            <MaterialCommunityIcons
+          <View style={styles.brewType}>
+            <Text>
+              Brew Type 
+            </Text>
+            <Text style={{ fontWeight: 'bold' }}>
+              {recipe.brew_type}
+            </Text>
+          </View>
+          <View style={ styles.brewTemp }>
+            <Text>
+            Brew Temp
+            </Text>
+            <Text style={{ fontWeight: 'bold' }}>
+              {recipe.water_temp}
+              <MaterialCommunityIcons
               name={'temperature-fahrenheit'}
               size={16}
               color={'black'}
             />
-            {'\n'}
-            Coarseness: {recipe.coarseness}
-          </Text>
+            </Text>
+          </View>
+          <View style={ styles.brewCoarseness }>
+            <Text>
+              Coarseness
+            </Text>
+            <Text style={{ fontWeight: 'bold' }}>
+              {recipe.coarseness}
+            </Text>
+          </View>
         </View>
       </View>
     </TouchableOpacity>
@@ -39,7 +56,7 @@ const styles = StyleSheet.create({
     borderColor: 'lightgray'
   },
   recipeTitle: {
-    fontSize: 16,
+    fontSize: 22,
     fontWeight: 'bold'
   },
   recipeInfoContainer: {
@@ -49,7 +66,18 @@ const styles = StyleSheet.create({
     marginTop: 12
   },
   recipeInfo: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%'
+  },
+  brewType: {
+    justifyContent: 'space-between'
+  },
+  brewTemp: {
+    justifyContent: 'space-between'
+  },
+  brewCoarseness: {
+    justifyContent: 'space-between'
   }
 });
 
