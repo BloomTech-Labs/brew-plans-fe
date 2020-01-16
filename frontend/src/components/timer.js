@@ -9,7 +9,6 @@ import styles from "../styling/TimerStyling";
 class Timer extends React.Component {
   constructor(props) {
     super(props);
-    console.log('Timer Props', props);
     this.state = {
       min: (Math.floor((props.stepLength) / 60))
       || 0,
@@ -21,16 +20,39 @@ class Timer extends React.Component {
     this.timer = null;
     this.startTimer = this.startTimer.bind(this);
     this.countdown = this.countdown.bind(this);
-
-    // this.newtimer = this.newtimer.bind(this);
-    // this.autoStartTimer = this.autoStartTimer.bind(this);
+    
+    this.soundObject = new Audio.Sound();
   }
 
   timer = {};
-  soundObject = new Audio.Sound()
 
   componentDidMount() {
     this.startTimer();
+  }
+  
+  componentDidUpdate(prevProps) {
+    if(this.props.stepLength !== prevProps.stepLength) {
+        this.reset();
+        // We need to wait a very short amount of time (150ms) after this.reset(); to run to automatically start the timer again properly
+        setTimeout(() => {
+          this.startTimer();
+        }, 150)
+    }
+  }
+
+  async componentWillUnmount() {
+    clearInterval(this.timer)
+    await this.soundObject.unloadAsync();
+  }
+
+  playSound = async () => {
+    try {
+      await this.soundObject.unloadAsync();
+      await this.soundObject.loadAsync(require('../../assets/notification.wav'));
+      await this.soundObject.playFromPositionAsync(0);
+    } catch (error) {
+      console.log('Could not play the audio', error)
+    }
   }
 
   countdown() {
@@ -38,7 +60,10 @@ class Timer extends React.Component {
       this.setState({ sec: (this.state.sec - 1).toString() })
     } else if(this.state.sec == 0 && this.state.min == 0) {
       clearInterval(this.timer);
-      this.props.setStepNumber(this.props.stepNumber+1)
+      this.playSound();
+      setTimeout(() => {
+        this.props.setStepNumber(this.props.stepNumber+1)
+      }, 1200)
     } else if(this.state.sec == 0 && this.state.min > 0) {
       this.setState({ sec: 59, min: this.state.min - 1 })
     }
@@ -52,10 +77,6 @@ class Timer extends React.Component {
       this.setState({ startDisabled: true })
     }
   }
- 
-  
-  
-
 
   reset() {
     clearInterval(this.timer);
@@ -68,16 +89,6 @@ class Timer extends React.Component {
     clearInterval(this.timer);
     this.setState({ startDisabled: false });
   }
-
-  componentDidUpdate(prevProps) {
-    if(this.props.stepLength !== prevProps.stepLength) {
-        this.reset();
-        // We need to wait a very short amount of time (150ms) after this.reset(); to run to automatically start the timer again properly
-        setTimeout(() => {
-          this.startTimer();
-        }, 150)
-    }
-}
 
   render() {
 
