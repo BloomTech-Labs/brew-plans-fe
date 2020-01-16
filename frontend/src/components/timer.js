@@ -29,7 +29,8 @@ class Timer extends React.Component {
   timer = {};
   soundObject = new Audio.Sound()
 
-  async componentDidMount() {
+  async componentDidMount() {   
+    this.reset(); 
     try {
         await this.soundObject.loadAsync(require("../../assets/coffee-song.mp3"))
     } catch(error) {
@@ -73,6 +74,8 @@ class Timer extends React.Component {
   }
 
   render() {
+
+    if (this.props.stepLength) {
     return (
       <View style={styles.timerWrapper}>
         <View style={styles.textWrapper}>
@@ -122,6 +125,10 @@ class Timer extends React.Component {
         </View>
       </View>
     );
+            }
+            else {
+              return (null);
+            }
   }
 }
 
