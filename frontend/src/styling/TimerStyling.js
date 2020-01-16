@@ -19,6 +19,6 @@ export default StyleSheet.create({
       alignItems: "center"
   },
   timerWrapper: {
-      
+      marginTop: 160,
   }
 });

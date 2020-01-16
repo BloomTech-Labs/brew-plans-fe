@@ -5,6 +5,7 @@ import { useKeepAwake } from 'expo-keep-awake';
 
 import NavBar from "../components/Layout/NavBar/NavBar.js";
 import images from '../../assets/images'
+import Timer from "../components/timer";
 
 
 function RecipeSteps(props) {
@@ -47,6 +48,7 @@ function RecipeSteps(props) {
         
         setSortedInstructions([...localInstructions]);
         setTimerArray([...localTimerArray]);
+
     }
     if(sortedInstructions[0]) {
         if(sortedInstructions[stepNumber].toLowerCase().includes('boil')) {
@@ -74,6 +76,7 @@ function RecipeSteps(props) {
                 style={{ marginVertical: 10, width: 200, height: 200 }}
                 />
                 <Text style={ styles.instructions }>{sortedInstructions[stepNumber]}</Text>
+                {timerArray[stepNumber] ? ( <Timer stepLength={timerArray[stepNumber]} /> ) : (null)}             
             </View>
             <View style={ styles.bottomContainer }>
                 <View style={ styles.stepContainer }>
