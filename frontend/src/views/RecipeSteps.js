@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useKeepAwake } from 'expo-keep-awake';
+import { Button } from 'react-native-elements';
 
 import NavBar from "../components/Layout/NavBar/NavBar.js";
 import images from '../../assets/images'
@@ -76,8 +77,12 @@ function RecipeSteps(props) {
                 style={{ marginVertical: 10, width: 200, height: 200 }}
                 />
                 <Text style={ styles.instructions }>{sortedInstructions[stepNumber]}</Text>
-                {timerArray[stepNumber] ? <Timer stepLength={timerArray[stepNumber]} setStepNumber={setStepNumber} stepNumber={stepNumber} /> : (null)}         
+                {timerArray[stepNumber] ? <Timer stepLength={timerArray[stepNumber]} setStepNumber={setStepNumber} stepNumber={stepNumber} /> : (null)}
+                <View style={ styles.buttonContainer }>
+                    <Text style={styles.finalStepButton}>Complete Brew!</Text>
+                </View>
             </View>
+            
             <View style={ styles.bottomContainer }>
                 <View style={ styles.stepContainer }>
                     <TouchableOpacity onPress={() => {
@@ -168,6 +173,20 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between', 
         alignItems: 'center', 
         height: '33%'
+    },
+    buttonContainer: {
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        height: '33%',
+        paddingTop: 40
+    },
+    finalStepButton: {
+        borderWidth: 2,
+        padding: 20,
+        borderColor: 'black',
+        backgroundColor: 'white',
+        fontWeight: "bold",
+        fontSize: 24
     }
 })
 
