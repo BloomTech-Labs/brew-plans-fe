@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { getLocalData, storeLocalData } from '../store/actions/asyncStorage.js';
 import { setUserInState, setTokenInState } from '../store/actions/index.js';
 import * as firebase from 'firebase';
+import { Button } from 'react-native-paper';  // added just to see the profile page for styling
 
 //LANDING SCREEN
 
@@ -101,7 +102,10 @@ const Landing = props => {
           buttonText={'white'}
           onPress={() => props.navigation.navigate('Login')}
         /> */}
-        
+      {/* added this button to use for navigation to profile page for styling */}
+      {/* <Button style={{ position: 'relative', top: -340, marginLeft: 17, padding: 7, width: 280, backgroundColor: '#1F2233' }} 
+      onPress={() => props.navigation.navigate('UserProfile')}><Text style={{color:'white'}}>Profile page</Text></Button>
+         */}
       </View>
         
     
