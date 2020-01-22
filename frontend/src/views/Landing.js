@@ -104,8 +104,8 @@ const Landing = props => {
         /> */}
       {/* added this button to use for navigation to profile page for styling */}
       {/* <Button style={{ position: 'relative', top: -340, marginLeft: 17, padding: 7, width: 280, backgroundColor: '#1F2233' }} 
-      onPress={() => props.navigation.navigate('UserProfile')}><Text style={{color:'white'}}>Profile page</Text></Button>
-         */}
+      onPress={() => props.navigation.navigate('UserProfile')}><Text style={{color:'white'}}>Profile page</Text></Button> */}
+        
       </View>
         
     
