@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TextInput, Image } from 'react-native';
 import { Button } from 'react-native-paper';
 import { bold } from 'ansi-colors';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 
@@ -15,7 +16,16 @@ return (
   <View>
  
  <Image style={{top: '5%',height: '10%',width: '115%',marginTop: 12}} source={require('../../assets/profile-header.png')}/>
+ 
+ <TouchableOpacity onPress={() => props.navigation.navigate('MyRecipes')}>
+ <Image  style={{position: 'relative', top: -15.5, height: 47, marginLeft: 350}} source={require('../../assets/close-icon.png')}/>
+ 
+
+ </TouchableOpacity>
+ 
  <Image style={{marginTop: 85, marginLeft: 130}} source={require('../../assets/upload-img.png')}/>
+ 
+
  
  
  {/* <Text style={{fontWeight: 'bold', position: 'relative', top: 65 }}>Name</Text> */}
