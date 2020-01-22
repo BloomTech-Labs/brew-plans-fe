@@ -20,6 +20,7 @@ import GreetingPage3 from './src/views/GreetingPages/GreetingPage3.js';
 import Landing from './src/views/Landing';
 import SignUp from './src/views/SignUp';
 import Login from './src/views/Login';
+import UserProfile from './src/views/UserProfile';
 import MyRecipes from './src/views/MyRecipes.js';
 import RecipeForm from './src/views/RecipeForm.js';
 import Recipe from './src/views/Recipe.js';
@@ -109,6 +110,9 @@ const AppNavigator = createStackNavigator(
     },
     Login: {
       screen: Login
+    },
+    UserProfile: {
+      screen: UserProfile
     },
     
     StartBrew: {

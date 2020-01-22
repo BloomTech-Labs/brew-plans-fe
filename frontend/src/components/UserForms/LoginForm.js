@@ -10,7 +10,7 @@ import { handleSignInChange, authSignIn } from '../../store/actions/index.js';
 import * as firebase from 'firebase';
 
 const LoginForm = props => {
-  console.log('new login form:', props.onPress);
+  
   const { theme, handleSignInChange, authSignIn, signInCredentials } = props;
 
   const passwordRef = useRef();
@@ -49,6 +49,7 @@ const LoginForm = props => {
               // label={'...enter email'}
               // this is used as active and passive border color
               borderColor={'lightgray'}
+              textAlign={'left'}
               inputPadding={16}
               labelHeight={24}
               labelStyle={{ color: '#870c27' }}
@@ -69,6 +70,7 @@ const LoginForm = props => {
               // this is used as active and passive border color
               borderColor={'lightgray'}
               // borderRadius={15}
+              textAlign={'left'}
               inputPadding={16}
               labelHeight={24}
               labelStyle={{ color: '#870c27' }}

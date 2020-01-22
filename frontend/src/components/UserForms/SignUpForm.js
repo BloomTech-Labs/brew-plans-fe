@@ -47,6 +47,7 @@ const SignUpForm = props => {
               // this is used as active and passive border color
               borderColor={'lightgray'}
               inputPadding={16}
+              textAlign={'left'}
               labelHeight={24}
               labelStyle={{ color: '#870c27' }}
               
@@ -68,6 +69,7 @@ const SignUpForm = props => {
               // this is used as active and passive border color
               borderColor={'lightgray'}
               inputPadding={16}
+              textAlign={'left'}
               labelHeight={24}
               labelStyle={{ color: '#870c27' }}
               value={newUser.password}
