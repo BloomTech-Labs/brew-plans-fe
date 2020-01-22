@@ -6,7 +6,8 @@ import {
   ScrollView,
   TouchableOpacity,
   Animated,
-  Button
+  Button,
+  KeyboardAvoidingView
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Formik } from 'formik';

@@ -10,7 +10,7 @@ import { handleSignInChange, authSignIn } from '../../store/actions/index.js';
 import * as firebase from 'firebase';
 
 const LoginForm = props => {
-  console.log('new login form:', props.onPress);
+  
   const { theme, handleSignInChange, authSignIn, signInCredentials } = props;
 
   const passwordRef = useRef();
