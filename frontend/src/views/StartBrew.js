@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect} from 'react-redux'
-
 import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { useKeepAwake } from 'expo-keep-awake';
 import NavBar from "../components/Layout/NavBar/NavBar.js";
 import RecipeSteps from './RecipeSteps.js';
@@ -22,17 +22,15 @@ function StartBrew(props) {
                 <Text style={ styles.recipeInfoText }>Brew Type: {currentRecipe.brew_type}</Text>
                 <Text style={ styles.recipeInfoText }>Water Temp: {currentRecipe.water_temp}&deg;F</Text>
             </View>
-            <View style={{ justifyContent: 'flex-start', alignItems: 'center', flex: 1 }}>
+            <View style={{ justifyContent: 'space-evenly', alignItems: 'center', flex: 1 }}>
                 <Image
                 source={require('../../assets/coffee-start.png')}
-                style={{ marginTop: 100 }}
                 />
-                <Text style={{ fontSize: 30, marginVertical: 40, fontWeight: 'bold' }}>Start Brewing</Text>
+                <Text style={{ fontSize: hp('5%'), fontWeight: 'bold' }}>Start Brewing</Text>
                 <TouchableOpacity onPress={() => props.navigation.navigate("RecipeSteps")}>
                 <Image
                 
                 source={require('../../assets/play-start.png')}
-                style={{ marginTop: 10 }}
                 />
                 </TouchableOpacity>
             </View>
@@ -48,10 +46,10 @@ function StartBrew(props) {
 
 const styles = StyleSheet.create({
     overviewText: {
-        fontSize: 30,
+        fontSize: hp('3.5%'),
         fontWeight: 'bold',
         color: 'white',
-        padding: '4%'
+        padding: '5%'
     },
     overview: {
         backgroundColor: '#1f2233', 
@@ -62,18 +60,19 @@ const styles = StyleSheet.create({
     },
     recipeInfoText: {
         color: 'white',
-        fontSize: 20,
+        marginLeft: '2%',
+        padding: '1%',
+        fontSize: hp('2.5%')
     
     },
     recipeInfo: {
         width: '100%', 
         height: '12%', 
-        padding: '2%',
         backgroundColor: '#1f2233', 
         justifyContent: 'center',
     },
     recipeTitle: {
-        fontSize: 30, 
+        fontSize: hp('4%'),
         alignSelf: 'center', 
         fontWeight: 'bold',
         marginVertical: 40,
