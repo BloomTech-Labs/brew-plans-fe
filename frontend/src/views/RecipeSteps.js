@@ -90,11 +90,11 @@ function RecipeSteps(props) {
                             setStepNumber(stepNumber - 1)
                         }
                     }}>
-                    <Image
-                        source={require('../../assets/previous.png')}
-                        style={{ marginVertical: 10 }}
-                        /> 
-                        </TouchableOpacity>
+                        <Image
+                            source={require('../../assets/previous.png')}
+                            style={{ marginVertical: 10 }}
+                            /> 
+                    </TouchableOpacity>
                         <Text style={ styles.step }>Step {stepNumber+1} </Text> 
                     <TouchableOpacity disabled={nextDisabled} onPress={() => stepNumber === sortedInstructions.length - 1 ? setNextDisabled(true) : setStepNumber(stepNumber+1)
                     }>
@@ -112,15 +112,7 @@ function RecipeSteps(props) {
                 </TouchableOpacity>
             </View>
         </View>
-        <TouchableOpacity onPress={() => props.navigation.navigate("Overview")}>
-          <View style={styles.overviewContainer}>
-            <Text style={styles.overviewText}>Overview</Text>
-            <Text style={styles.overviewText}>+</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
+    );
 }
 const styles = StyleSheet.create({
     overviewText: {
@@ -170,7 +162,6 @@ const styles = StyleSheet.create({
         fontSize:hp('2.5%'), 
         textAlign: 'center', 
         width: wp('81%'),
-        // paddingTop: 40
     },
     instructionsContainer: {
         justifyContent: 'space-between', 
@@ -178,38 +169,38 @@ const styles = StyleSheet.create({
         height: hp('30%')
     },
     buttonContainer: {
-      justifyContent: "space-between",
-      alignItems: "center",
-      height: "33%",
-      paddingTop: 40
+        justifyContent: "space-between",
+        alignItems: "center",
+        height: wp("33%"),
+        paddingTop: 40
     },
     finalStepButton: {
-      borderWidth: 2,
-      padding: 20,
-      borderColor: "black",
-      backgroundColor: "white",
-      fontWeight: "bold",
-      fontSize: 24
+        borderWidth: 2,
+        padding: 20,
+        borderColor: "black",
+        backgroundColor: "white",
+        fontWeight: "bold",
+        fontSize: 24
     },
     textStyle: {
-      fontSize: 20,
-      color: "#ffffff",
-      textAlign: "center"
+        fontSize: 20,
+        color: "#ffffff",
+        textAlign: "center"
     },
     buttonStyle: {
-      justifyContent: "space-around",
-      alignItems: "center",
-      padding: 10,
-      backgroundColor: "#202646",
-      borderRadius: 5,
-      marginTop: 50
+        justifyContent: "space-around",
+        alignItems: "center",
+        padding: 10,
+        backgroundColor: "#202646",
+        borderRadius: 5,
+        marginTop: 50
     }
 });
 
 const mapStateToProps = state => {
-  return {
-    currentRecipe: state.user.currentRecipe
-  };
+    return {
+        currentRecipe: state.user.currentRecipe
+    };
 };
 
 export default connect(mapStateToProps)(RecipeSteps);
