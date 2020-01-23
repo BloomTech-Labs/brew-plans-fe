@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { useKeepAwake } from 'expo-keep-awake';
 
 import NavBar from "../components/Layout/NavBar/NavBar.js";
@@ -73,7 +74,7 @@ function RecipeSteps(props) {
             <View style={ styles.instructionsContainer }>
                 <Image
                 source={ currentIcon }
-                style={{ marginVertical: 10, width: 200, height: 200 }}
+                style={{ marginBottom: hp('3%'), width: 150, height: 150 }}
                 />
                 <Text style={ styles.instructions }>{sortedInstructions[stepNumber]}</Text>
                 {timerArray[stepNumber] ? <Timer stepLength={timerArray[stepNumber]} setStepNumber={setStepNumber} stepNumber={stepNumber} /> : (null)}         
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         color: 'white',
-        padding: '4%'
+        margin: '2%'
     },
     overviewContainer: {
         flexDirection: 'row', 
@@ -128,11 +129,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#1f2233'
     },
     bottomContainer: { 
-        width: '100%', 
+        width: wp('100%'), 
         position: 'absolute', 
         bottom: 0, 
         justifyContent: 'space-between',
-        height: '16.5%'
+        height: hp('20%')
     },
     recipeTitle: {
         fontSize: 30, 
@@ -144,8 +145,8 @@ const styles = StyleSheet.create({
         borderBottomColor: '#C4C4C4'
     },
     mainView: {
-        width: '100%',
-        height: '100%'
+        width: wp('100%'),
+        height: hp('100%')
     },
     step: {
         color: 'white', 
@@ -159,15 +160,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#1f2233'
     },
     instructions: { 
-        fontSize:21, 
+        fontSize:hp('2.5%'), 
         textAlign: 'center', 
-        width: '81%',
-        paddingTop: 40
+        width: wp('81%'),
+        // paddingTop: 40
     },
     instructionsContainer: {
         justifyContent: 'space-between', 
         alignItems: 'center', 
-        height: '33%'
+        height: hp('30%')
     }
 })
 
