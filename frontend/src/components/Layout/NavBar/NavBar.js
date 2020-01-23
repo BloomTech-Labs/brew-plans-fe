@@ -6,7 +6,7 @@ import { userLogout } from '../../../store/actions/user.js';
 
 const NavBar = props => {
   return (
-    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: wp('100%'), backgroundColor: '#1F2233', paddingHorizontal: '3%', height: hp('8%') }}>
+    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', width: wp('100%'), backgroundColor: '#1F2233', paddingBottom: '1.5%', paddingHorizontal: '3%', height: hp('11%') }}>
       <Image
         source={require('../../../../assets/Group.png')}
         style={{ width: 30, height: 30 }}
