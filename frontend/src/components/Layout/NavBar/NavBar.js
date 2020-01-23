@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { View, TouchableOpacity, Image } from "react-native";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { userLogout } from '../../../store/actions/user.js';
 
 const NavBar = props => {
   return (
-    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', backgroundColor: '#1F2233', paddingHorizontal: '3%', height: '8%' }}>
+    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: wp('100%'), backgroundColor: '#1F2233', paddingHorizontal: '3%', height: hp('8%') }}>
       <Image
         source={require('../../../../assets/Group.png')}
         style={{ width: 30, height: 30 }}

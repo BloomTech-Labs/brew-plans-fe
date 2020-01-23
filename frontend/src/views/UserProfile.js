@@ -7,7 +7,6 @@ import NavBar from '../components/Layout/NavBar/NavBar';
 import styles from '../styling/MyRecipesStyling';
 
 const UserProfile = props => {
-  console.log(props);
   return (
     <Fragment>
       <NavBar {...props} />
