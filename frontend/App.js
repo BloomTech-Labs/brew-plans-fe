@@ -29,6 +29,9 @@ import StartBrew from './src/views/StartBrew';
 import RecipeSteps from './src/views/RecipeSteps';
 import Overview from './src/views/Overview';
 import * as firebase from 'firebase';
+import * as Segment from 'expo-analytics-segment';
+
+
 const handleCustomTransition = ({ scenes }) => {
   const prevScene = scenes[scenes.length - 2];
   const nextScene = scenes[scenes.length - 1];
@@ -73,6 +76,17 @@ const handleCustomTransition = ({ scenes }) => {
     return fadeIn(1000);
   }
 };
+
+initialize = () => {
+  const androidWriteKey = 'X4vHXd0k3pxiKf8vFrEnXw0JsbW87UNx'
+  const iOSWriteKey = 'x3tSgCVSVN22261z6fB0FHEuneSf06W0'
+  Segment.initialize({ androidWriteKey, iOSWriteKey });
+}
+// Segment.initialize({ androidWriteKey, iosWriteKey });
+
+// const androidWriteKey = “X4vHXd0k3pxiKf8vFrEnXw0JsbW87UNx”;
+// const iosWriteKey = “x3tSgCVSVN22261z6fB0FHEuneSf06W0”;
+
 const firebaseConfig = {
   apiKey: 'AIzaSyDZKLP2FGiOx0aMXeDjAc3MOWSQa9pvJQg',
   authDomain: 'brew-plans.firebaseapp.com',
