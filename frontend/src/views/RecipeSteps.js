@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useKeepAwake } from "expo-keep-awake";
-import { Button } from "react-native-elements";
+// import { Button } from "react-native-elements";
 import NavBar from "../components/Layout/NavBar/NavBar.js";
 import images from "../../assets/images";
 import Timer from "../components/timer";
