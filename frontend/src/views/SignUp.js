@@ -1,14 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Image } from 'react-native';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Layout from '../components/Layout/Layout';
 import SignUpForm from '../components/UserForms/SignUpForm';
-import { connect } from 'react-redux';
 
 const SignUp = props => {
 
   return (
-    <Layout>
-      <SignUpForm navigate={props.navigation.navigate}/>
-    </Layout>
+    <>
+      <Image
+      style={{
+        height: hp('20%'),
+        width: wp('100%')
+      }}
+      source={require('../../assets/login-header.png')}
+      /> 
+      <Layout>
+        <SignUpForm navigate={props.navigation.navigate}/>
+      </Layout>
+    </>
   );
 };
 

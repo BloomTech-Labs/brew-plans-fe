@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { View, Image, Text } from 'react-native';
-import Layout from '../components/Layout/Layout';
-import LandingButton from '../components/Landing/LandingButton';
-import Login from '../views/Login.js'
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { connect } from 'react-redux';
 import { getLocalData, storeLocalData } from '../store/actions/asyncStorage.js';
 import { setUserInState, setTokenInState } from '../store/actions/index.js';
 import * as firebase from 'firebase';
-import { Button } from 'react-native-paper';  // added just to see the profile page for styling
+
+import LandingButton from '../components/Landing/LandingButton';
+import Login from '../views/Login.js'
 
 //LANDING SCREEN
 
@@ -46,71 +46,33 @@ const Landing = props => {
   });
 
   return (
-    
-    
-    <Layout custom={'white'}>
-    
-    <Image
-         style={{ position: 'absolute', top: '5%', left: '5%', zIndex: 50 }} 
-        //  source={require('../../assets/BrewPlansLogo.png')} 
-      /> 
-       <Image
+    <>
+      <Image
         style={{
-          // borderRadius: 5,
-          top: '10%',
-          height: '20%',
-          width: '110%',
-          // maxHeight: 360,
-          marginTop: 62
-        
+          height: hp('20%'),
+          width: wp('100%'),
+          // marginBottom: 100
         }}
         source={require('../../assets/login-header.png')}
       /> 
-    
-    
-      {/* <Image */}
-        {/* style={{ position: 'absolute', top: '5%', left: '5%', zIndex: 50 }} */}
-        {/* source={require('../../assets/BrewPlansLogo.png')} */}
-      {/* /> */}
-      {/* <Image
-        style={{
-          borderRadius: 5,
-          top: '10%',
-          height: '50%',
-          maxHeight: 360,
-          marginTop: 32
-        }}
-        source={require('../../assets/IntroImage.png')}
-      /> */}
-      
-      <View style={{ marginTop: 86 }}>
+    <View style={{
+      flex: 1,
+      width: wp('100%'),
+      padding: 16,
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}>
+      <View>
       <Login />
-
-        <LandingButton 
-          // buttonBackground={'#870c27'}
+        <LandingButton
           buttonBackground={'#1F2233'}
-
           buttonText={'white'}
           title='Sign Up'
           onPress={() => props.navigation.navigate('SignUp')}
         />
-        {/* <LandingButton
-          title='Login'
-          // buttonBackground={'white'}
-          buttonBackground={'#1F2233'}
-
-          buttonText={'white'}
-          onPress={() => props.navigation.navigate('Login')}
-        /> */}
-      {/* added this button to use for navigation to profile page for styling */}
-      {/* <Button style={{ position: 'relative', top: -340, marginLeft: 17, padding: 7, width: 280, backgroundColor: '#1F2233' }} 
-      onPress={() => props.navigation.navigate('UserProfile')}><Text style={{color:'white'}}>Profile page</Text></Button> */}
-        
       </View>
-        
-    
-    </Layout>
-  
+    </View>
+    </>
   );
 };
 
