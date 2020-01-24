@@ -183,12 +183,15 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         currentRecipe: {
-          title: action.payload.title,
+          name: action.payload.name,
           id: action.payload.id,
-          brew_type: action.payload.brew_type,
+          creator: action.payload.creator,
           water_temp: action.payload.water_temp,
           coarseness: action.payload.coarseness,
-          instructions: action.payload.instructions
+          tools_ingredients: action.payload.tools_ingredients,
+          instructions: action.payload.instructions,
+          yield: action.payload.yield,
+          duration: action.payload.duration
         }
       };
     }
