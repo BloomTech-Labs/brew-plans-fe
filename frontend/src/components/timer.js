@@ -109,7 +109,7 @@ class Timer extends React.Component {
             {this.state.startDisabled ? (
               <Ionicons
                 name="md-pause"
-                size={32}
+                size={20}
                 color="#1F2233"
                 style={styles.icons}
                 onPress={() => {
@@ -119,7 +119,7 @@ class Timer extends React.Component {
             ) : (
               <Ionicons
                 name="md-play-circle"
-                size={32}
+                size={20}
                 color="#1F2233"
                 style={styles.icons}
                 onPress={() => {
@@ -131,7 +131,7 @@ class Timer extends React.Component {
           <TouchableOpacity>
             <MaterialCommunityIcons
               name="restore"
-              size={32}
+              size={20}
               color="#1F2233"
               style={styles.icons}
               onPress={() => {

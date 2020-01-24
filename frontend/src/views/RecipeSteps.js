@@ -7,6 +7,8 @@ import NavBar from "../components/Layout/NavBar/NavBar.js";
 import images from "../../assets/images";
 import Timer from "../components/timer";
 
+
+
 function RecipeSteps(props) {
   useKeepAwake();
   const { currentRecipe } = props;
@@ -74,7 +76,7 @@ function RecipeSteps(props) {
             <View style={ styles.instructionsContainer }>
                 <Image
                 source={ currentIcon }
-                style={{ marginBottom: hp('3%'), width: 150, height: 150 }}
+                style={{ marginBottom: hp('2%'), width: 150, height: 150 }}
                 />
                 <Text style={ styles.instructions }>{sortedInstructions[stepNumber]}</Text>
                 {timerArray[stepNumber] ? <Timer stepLength={timerArray[stepNumber]} setStepNumber={setStepNumber} stepNumber={stepNumber} /> : (null)}         
@@ -122,10 +124,10 @@ function RecipeSteps(props) {
 }
 const styles = StyleSheet.create({
     overviewText: {
-        fontSize: 30,
+        fontSize: hp('3.5%'),
         fontWeight: 'bold',
         color: 'white',
-        margin: '2%'
+        padding: '5%'
     },
     overviewContainer: {
         flexDirection: 'row', 
@@ -138,14 +140,14 @@ const styles = StyleSheet.create({
         position: 'absolute', 
         bottom: 0, 
         justifyContent: 'space-between',
-        height: hp('20%')
+        height: hp('22%')
     },
     recipeTitle: {
-        fontSize: 30, 
+        fontSize: hp('4%'),
         alignSelf: 'center', 
         fontWeight: 'bold',
-        marginVertical: 30,
-        paddingBottom: '2%',
+        marginVertical: 40,
+        paddingBottom: '1.5%',
         borderBottomWidth: 2,
         borderBottomColor: '#C4C4C4'
     },
@@ -155,7 +157,7 @@ const styles = StyleSheet.create({
     },
     step: {
         color: 'white', 
-        fontSize:30, 
+        fontSize: hp('4%'),
         fontWeight: 'bold'
     },
     stepContainer: {
@@ -165,9 +167,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#1f2233'
     },
     instructions: { 
-        fontSize:hp('2.5%'), 
+        fontSize:hp('2.4%'), 
         textAlign: 'center', 
-        width: wp('81%'),
+        width: wp('83%'),
     },
     instructionsContainer: {
         justifyContent: 'space-between', 
@@ -179,6 +181,7 @@ const styles = StyleSheet.create({
         width: wp('80%'),
         height: 'auto',
         alignSelf: 'center',
+        padding: hp('2%'),
         marginVertical: hp('3%'),
         borderRadius: 2
     },
