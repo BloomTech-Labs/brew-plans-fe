@@ -177,8 +177,8 @@ const styles = StyleSheet.create({
     completeBrewButton: {
         backgroundColor: '#1f2233',
         width: wp('80%'),
+        height: 'auto',
         alignSelf: 'center',
-        padding: '2%',
         marginVertical: hp('3%'),
         borderRadius: 2
     },
@@ -186,7 +186,8 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 26,
         textAlign: 'center',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        padding: '2%'
     }
 });
 
