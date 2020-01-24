@@ -95,11 +95,11 @@ const RecipeOverview = props => {
             <View style={styles.contentBox}>
               <View style={styles.yieldBox}>
                 <Text style={styles.yieldBoldText}>Yield</Text>
-                <Text style={styles.yieldRegularText}>2 cups</Text>
+                <Text style={styles.yieldRegularText}>{currentRecipe.yield} cups</Text>
               </View>
               <View style={styles.yieldBox}>
                 <Text style={styles.yieldBoldText}>Time</Text>
-                <Text style={styles.yieldRegularText}>4 minutes</Text>
+                <Text style={styles.yieldRegularText}>{currentRecipe.duration} minutes</Text>
               </View>
             </View>
           </View>
