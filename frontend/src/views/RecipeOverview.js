@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { useKeepAwake } from 'expo-keep-awake';
 import { View, ScrollView, Text } from 'react-native';
 
 import OverviewBar from '../components/Layout/OverviewBar';
 import styles from '../styling/RecipeOverviewStyling';
 
 const RecipeOverview = props => {
+  console.log('Recipes, Seeded', props);
+  useKeepAwake();
+
   const [ sortedInstructions, setSortedInstructions ] = useState([]);
+  const [ sortedToolsIng, setSortedToolsIng ] = useState([]);
   const { currentRecipe } = props;
-  const { instructions } = currentRecipe;
+  const { instructions, tools_ingredients } = currentRecipe;
 
   const regex = new RegExp(/^\d+/g);
 
@@ -29,6 +34,23 @@ const RecipeOverview = props => {
 
       setSortedInstructions([...localInstructions]);
     };
+
+    if(tools_ingredients) {
+      const toolsIngredientsArray = tools_ingredients.split('////');
+      let localToolsIngredients = [];
+
+      toolsIngredientsArray.map((tools_ingredients) => {
+        const result = tools_ingredients.match(regex);
+
+        if(result) {
+          tools_ingredients = tools_ingredients.substr(tools_ingredients.indexOf(' ') + 1);
+        };
+
+        localToolsIngredients.push(tools_ingredients);
+      });
+
+      setSortedToolsIng([...localToolsIngredients]);
+    }
   }, []);
 
   return (
@@ -37,11 +59,11 @@ const RecipeOverview = props => {
       <ScrollView style={{ flex: 1 }}>
         <View style={styles.viewBox}>
           <View style={styles.titleBox}>
-            <Text style={styles.titleText}>{currentRecipe.title}</Text>
+            <Text style={styles.titleText}>{currentRecipe.name}</Text>
             <View style={styles.innerBox}>
               <View style={styles.catBox}>
                 <Text style={styles.lightText}>Creator</Text>
-                <Text style={styles.mediumText}>Brew Plans</Text>
+                <Text style={styles.mediumText}>{currentRecipe.creator}</Text>
               </View>
               <View style={styles.catBox}>
                 <Text style={styles.lightText}>Brew Temp</Text>
@@ -49,18 +71,18 @@ const RecipeOverview = props => {
               </View>
               <View style={styles.catCoarse}>
                 <Text style={styles.lightText}>Coarseness</Text>
-                <Text style={styles.mediumText}>Medium-Coarse</Text>
+                <Text style={styles.mediumText}>{currentRecipe.coarseness}</Text>
               </View>
             </View>
           </View>
           <View>
             <View style={styles.contentBox}>
               <Text style={styles.titleText}>You'll Need...</Text>
-              <Text style={styles.lightText}>Tool 1</Text>
-              <Text style={styles.lightText}>Tool 2</Text>
-              <Text style={styles.lightText}>Grounds</Text>
-              <Text style={styles.lightText}>Water</Text>
-              <Text style={styles.lightText}>Etc.</Text>
+                {sortedToolsIng.map((tools_ingredients, index) => (
+                  <View key={index}>
+                    <Text style={styles.lightText}>{tools_ingredients}</Text>
+                  </View>
+                ))}
             </View>
             <View style={styles.contentBox}>
               {sortedInstructions.map((instruction, index) => (
