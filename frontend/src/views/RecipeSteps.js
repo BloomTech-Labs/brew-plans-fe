@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center', 
         fontWeight: 'bold',
         marginVertical: 40,
-        paddingBottom: '1%',
+        paddingBottom: '1.5%',
         borderBottomWidth: 2,
         borderBottomColor: '#C4C4C4'
     },
@@ -161,14 +161,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#1f2233'
     },
     instructions: { 
-        fontSize:hp('2.5%'), 
+        fontSize:hp('2.4%'), 
         textAlign: 'center', 
-        width: wp('81%'),
+        width: wp('83%'),
     },
     instructionsContainer: {
         justifyContent: 'space-between', 
         alignItems: 'center', 
-        height: hp('25%')
+        height: hp('30%')
     },
     buttonContainer: {
         justifyContent: "space-between",
