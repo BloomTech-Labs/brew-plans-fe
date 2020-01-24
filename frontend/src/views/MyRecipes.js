@@ -3,14 +3,11 @@ import styles from '../styling/MyRecipesStyling';
 import {
   View,
   Text,
-  StyleSheet,
   TouchableOpacity,
   ScrollView,
   Modal
 } from 'react-native';
-import { TextInput } from 'react-native-paper';
-import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
-import Layout from '../components/Layout/Layout';
+import { MaterialIcons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import NavBar from '../components/Layout/NavBar/NavBar.js';
 import {
@@ -63,8 +60,8 @@ const MyRecipes = props => {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={styles.recipesContainer}>
-            <ScrollView>
+          <ScrollView>
+            <View style={styles.recipesContainer}>
               {props.seededRecipes.map(recipe => (
                 <SeededRecipe
                   key={recipe.id}
@@ -76,8 +73,8 @@ const MyRecipes = props => {
                   }}
                 />
               ))}
-            </ScrollView>
-          </View>
+            </View>
+          </ScrollView>
 
 
       </View>
@@ -149,8 +146,8 @@ const MyRecipes = props => {
             </TouchableOpacity>
           </View>
 
-          <View style={styles.recipesContainer}>
-            <ScrollView>
+          <ScrollView>
+            <View style={styles.recipesContainer}>
               {/* {console.log('props.userRecipes', props.userRecipes)} */}
               {userRecipesLoaded ? (
                 <View>
@@ -175,8 +172,8 @@ const MyRecipes = props => {
                   ))}
                 </View>
               ) : null}
-            </ScrollView>
-          </View>
+            </View>
+          </ScrollView>
         </View>
       </View>
     );

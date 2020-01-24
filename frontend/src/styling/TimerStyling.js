@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
   timerText: {
-    fontSize: 48,
+    fontSize:hp('5.3%'), 
   },
   iconWrapper: {
     display: "flex",
@@ -11,7 +12,7 @@ export default StyleSheet.create({
 
   },
   icons: {
-    padding: 10,
+    padding: '1%',
   },
   textWrapper: {
       display: "flex",
@@ -19,6 +20,6 @@ export default StyleSheet.create({
       alignItems: "center"
   },
   timerWrapper: {
-      marginTop: 20,
+      marginTop: '3.3%'
   }
 });

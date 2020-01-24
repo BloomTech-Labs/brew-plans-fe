@@ -1,69 +1,72 @@
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { useKeepAwake } from 'expo-keep-awake';
-
 import NavBar from "../components/Layout/NavBar/NavBar.js";
-import images from '../../assets/images'
+import images from "../../assets/images";
 import Timer from "../components/timer";
 
 
+
 function RecipeSteps(props) {
-    useKeepAwake();
-    const { currentRecipe } = props;
-    const { instructions } = currentRecipe;
-    
-    const [stepNumber, setStepNumber] = useState(0);
-    const [nextDisabled, setNextDisabled] = useState(false);
-    const [currentIcon, setCurrentIcon] = useState(images.default.source);
+  useKeepAwake();
+  const { currentRecipe } = props;
+  const { instructions } = currentRecipe;
+  const [stepNumber, setStepNumber] = useState(0);
+  const [nextDisabled, setNextDisabled] = useState(false);
+  const [currentIcon, setCurrentIcon] = useState(images.default.source);
+  const [sortedInstructions, setSortedInstructions] = useState([]);
+  const [timerArray, setTimerArray] = useState([]);
 
-    const [sortedInstructions, setSortedInstructions] = useState([]);
-    const [timerArray, setTimerArray] = useState([]);
+  const regex = new RegExp(/^\d+/g);
 
-    const regex = new RegExp(/^\d+/g);
+  useEffect(() => {
+    if (instructions) {
+      const instructionsArray = instructions.split("////");
+      instructionsArray.push('Enjoy!');
+      let localTimerArray = [];
+      let localInstructions = [];
 
+      instructionsArray.map((instruction, index) => {
+        let step = "";
 
-    useEffect(() => {
-        if (instructions) {
-            const instructionsArray = instructions.split("////");
-            let localTimerArray = [];
-            let localInstructions = [];
-    
-            instructionsArray.map((instruction, index) => {
-            let step = '';
-    
-            const result = instruction.match(regex);
-    
-            if (result) {
-                localTimerArray.push(parseInt(result[0]));
-                instruction = instruction.substr(instruction.indexOf(" ") + 1);
-            } else {
-                localTimerArray.push(0);
-            }
-    
-            let res = step.concat(instruction);
-            localInstructions.push(res);
-        });
-    
-        
-        setSortedInstructions([...localInstructions]);
-        setTimerArray([...localTimerArray]);
+        const result = instruction.match(regex);
 
-    }
-    if(sortedInstructions[0]) {
-        if(sortedInstructions[stepNumber].toLowerCase().includes('boil')) {
-            setCurrentIcon(images.boil.source)
-        } else if (sortedInstructions[stepNumber].toLowerCase().includes('filter')) {
-            setCurrentIcon(images.filter.source)
-        } else if (sortedInstructions[stepNumber].toLowerCase().includes('pour')) {
-            setCurrentIcon(images.pouring.source)
-        } else if (sortedInstructions.length - 1 === stepNumber) {
-            setCurrentIcon(images.coffeeCup.source)
-        } else if (sortedInstructions[stepNumber].toLowerCase().includes('brew')) {
-            setCurrentIcon(images.coffeeMaker.source)
+        if (result) {
+          localTimerArray.push(parseInt(result[0]));
+          instruction = instruction.substr(instruction.indexOf(" ") + 1);
         } else {
-            setCurrentIcon(images.default.source)
+          localTimerArray.push(0);
         }
+
+        let res = step.concat(instruction);
+        localInstructions.push(res);
+      });
+
+      setSortedInstructions([...localInstructions]);
+      setTimerArray([...localTimerArray]);
+    }
+    if (sortedInstructions[0]) {
+      if (sortedInstructions[stepNumber].toLowerCase().includes("boil")) {
+        setCurrentIcon(images.boil.source);
+      } else if (
+        sortedInstructions[stepNumber].toLowerCase().includes("filter")
+      ) {
+        setCurrentIcon(images.filter.source);
+      } else if (
+        sortedInstructions[stepNumber].toLowerCase().includes("pour")
+      ) {
+        setCurrentIcon(images.pouring.source);
+      } else if (
+        sortedInstructions[stepNumber].toLowerCase().includes("brew")
+      ) {
+        setCurrentIcon(images.coffeeMaker.source);
+      } else if (sortedInstructions.length - 1 === stepNumber) {
+        setCurrentIcon(images.coffeeCup.source);
+      } else {
+        setCurrentIcon(images.default.source);
+      }
     }
 }, [stepNumber, sortedInstructions.length]);
     return (
@@ -73,11 +76,16 @@ function RecipeSteps(props) {
             <View style={ styles.instructionsContainer }>
                 <Image
                 source={ currentIcon }
-                style={{ marginVertical: 10, width: 200, height: 200 }}
+                style={{ marginBottom: hp('2%'), width: 150, height: 150 }}
                 />
                 <Text style={ styles.instructions }>{sortedInstructions[stepNumber]}</Text>
                 {timerArray[stepNumber] ? <Timer stepLength={timerArray[stepNumber]} setStepNumber={setStepNumber} stepNumber={stepNumber} /> : (null)}         
             </View>
+            {stepNumber === sortedInstructions.length -1 && 
+                <TouchableOpacity style={ styles.completeBrewButton } onPress={() => props.navigation.navigate('MyRecipes')}>
+                    <Text style={ styles.completeBrewText }>Complete Brew</Text>
+                </TouchableOpacity>
+            }
             <View style={ styles.bottomContainer }>
                 <View style={ styles.stepContainer }>
                     <TouchableOpacity onPress={() => {
@@ -90,11 +98,11 @@ function RecipeSteps(props) {
                             setStepNumber(stepNumber - 1)
                         }
                     }}>
-                    <Image
-                        source={require('../../assets/previous.png')}
-                        style={{ marginVertical: 10 }}
-                        /> 
-                        </TouchableOpacity>
+                        <Image
+                            source={require('../../assets/previous.png')}
+                            style={{ marginVertical: 10 }}
+                            /> 
+                    </TouchableOpacity>
                         <Text style={ styles.step }>Step {stepNumber+1} </Text> 
                     <TouchableOpacity disabled={nextDisabled} onPress={() => stepNumber === sortedInstructions.length - 1 ? setNextDisabled(true) : setStepNumber(stepNumber+1)
                     }>
@@ -112,14 +120,14 @@ function RecipeSteps(props) {
                 </TouchableOpacity>
             </View>
         </View>
-    )
+    );
 }
 const styles = StyleSheet.create({
     overviewText: {
-        fontSize: 30,
+        fontSize: hp('3.5%'),
         fontWeight: 'bold',
         color: 'white',
-        padding: '4%'
+        padding: '5%'
     },
     overviewContainer: {
         flexDirection: 'row', 
@@ -128,28 +136,28 @@ const styles = StyleSheet.create({
         backgroundColor: '#1f2233'
     },
     bottomContainer: { 
-        width: '100%', 
+        width: wp('100%'), 
         position: 'absolute', 
         bottom: 0, 
         justifyContent: 'space-between',
-        height: '16.5%'
+        height: hp('22%')
     },
     recipeTitle: {
-        fontSize: 30, 
+        fontSize: hp('4%'),
         alignSelf: 'center', 
         fontWeight: 'bold',
-        marginVertical: 30,
-        paddingBottom: '2%',
+        marginVertical: 40,
+        paddingBottom: '1.5%',
         borderBottomWidth: 2,
         borderBottomColor: '#C4C4C4'
     },
     mainView: {
-        width: '100%',
-        height: '100%'
+        width: wp('100%'),
+        height: hp('100%')
     },
     step: {
         color: 'white', 
-        fontSize:30, 
+        fontSize: hp('4%'),
         fontWeight: 'bold'
     },
     stepContainer: {
@@ -159,23 +167,35 @@ const styles = StyleSheet.create({
         backgroundColor: '#1f2233'
     },
     instructions: { 
-        fontSize:21, 
+        fontSize:hp('2.4%'), 
         textAlign: 'center', 
-        width: '81%',
-        paddingTop: 40
+        width: wp('83%'),
     },
     instructionsContainer: {
         justifyContent: 'space-between', 
         alignItems: 'center', 
-        height: '33%'
+        height: hp('30%')
+    },
+    completeBrewButton: {
+        backgroundColor: '#1f2233',
+        width: wp('80%'),
+        alignSelf: 'center',
+        padding: hp('2%'),
+        marginVertical: hp('3%'),
+        borderRadius: 2
+    },
+    completeBrewText: {
+        color: 'white',
+        fontSize: 26,
+        textAlign: 'center',
+        fontWeight: 'bold'
     }
-})
-
+});
 
 const mapStateToProps = state => {
     return {
         currentRecipe: state.user.currentRecipe
     };
-}
+};
 
-export default connect(mapStateToProps)(RecipeSteps)
+export default connect(mapStateToProps)(RecipeSteps);
