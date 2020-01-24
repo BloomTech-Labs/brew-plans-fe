@@ -75,7 +75,7 @@ function RecipeSteps(props) {
             <View style={ styles.instructionsContainer }>
                 <Image
                 source={ currentIcon }
-                style={{ marginBottom: hp('3%'), width: 150, height: 150 }}
+                style={{ marginBottom: hp('2%'), width: 150, height: 150 }}
                 />
                 <Text style={ styles.instructions }>{sortedInstructions[stepNumber]}</Text>
                 {timerArray[stepNumber] ? <Timer stepLength={timerArray[stepNumber]} setStepNumber={setStepNumber} stepNumber={stepNumber} /> : (null)}         
@@ -134,14 +134,14 @@ const styles = StyleSheet.create({
         position: 'absolute', 
         bottom: 0, 
         justifyContent: 'space-between',
-        height: hp('25%')
+        height: hp('22%')
     },
     recipeTitle: {
         fontSize: hp('4%'),
         alignSelf: 'center', 
         fontWeight: 'bold',
         marginVertical: 40,
-        paddingBottom: '2%',
+        paddingBottom: '1%',
         borderBottomWidth: 2,
         borderBottomColor: '#C4C4C4'
     },
@@ -168,12 +168,12 @@ const styles = StyleSheet.create({
     instructionsContainer: {
         justifyContent: 'space-between', 
         alignItems: 'center', 
-        height: hp('30%')
+        height: hp('25%')
     },
     buttonContainer: {
         justifyContent: "space-between",
         alignItems: "center",
-        height: wp("33%"),
+        height: wp("30%"),
         paddingTop: 40
     },
     finalStepButton: {
