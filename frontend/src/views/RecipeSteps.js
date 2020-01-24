@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { View, Text, Image, StyleSheet, TouchableOpacity} from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { useKeepAwake } from 'expo-keep-awake';
 import NavBar from "../components/Layout/NavBar/NavBar.js";
