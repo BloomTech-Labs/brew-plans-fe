@@ -12,6 +12,7 @@ import * as firebase from 'firebase';
 const LoginForm = props => {
   
   const { theme, handleSignInChange, authSignIn, signInCredentials } = props;
+  
 
   const passwordRef = useRef();
 
@@ -21,6 +22,14 @@ const LoginForm = props => {
     scopes: ['profile', 'email']
   };
 
+
+  
+  const facebookLoginConfig = async function() {
+   const { type, token } = await Expo.Facebook.loginWithR
+  }
+
+  
+  
   function userSignin(email, password) {
     firebase
       .auth()
