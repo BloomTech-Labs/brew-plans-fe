@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { View, TouchableOpacity, Image } from "react-native";
+import { View, TouchableOpacity, Image, SafeAreaView } from "react-native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { userLogout } from '../../../store/actions/user.js';
 
 const NavBar = props => {
   return (
-    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', width: wp('100%'), backgroundColor: '#1F2233', paddingBottom: '1.5%', paddingHorizontal: '3%', height: hp('11%') }}>
+    <SafeAreaView style={{backgroundColor: '#1f2233'}}>
+    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: wp('100%'), backgroundColor: '#1F2233', paddingHorizontal: '3%', height: hp('7%') }}>
       <Image
         source={require('../../../../assets/Group.png')}
         style={{ width: 30, height: 30 }}
@@ -30,6 +31,7 @@ const NavBar = props => {
         />
       </TouchableOpacity>
     </View>
+    </SafeAreaView>
   );
 };
 
