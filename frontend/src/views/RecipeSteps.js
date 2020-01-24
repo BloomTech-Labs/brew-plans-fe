@@ -24,6 +24,7 @@ function RecipeSteps(props) {
   useEffect(() => {
     if (instructions) {
       const instructionsArray = instructions.split("////");
+      instructionsArray.push('Enjoy!');
       let localTimerArray = [];
       let localInstructions = [];
 
@@ -80,6 +81,11 @@ function RecipeSteps(props) {
                 <Text style={ styles.instructions }>{sortedInstructions[stepNumber]}</Text>
                 {timerArray[stepNumber] ? <Timer stepLength={timerArray[stepNumber]} setStepNumber={setStepNumber} stepNumber={stepNumber} /> : (null)}         
             </View>
+            {stepNumber === sortedInstructions.length -1 && 
+                <TouchableOpacity style={ styles.completeBrewButton } onPress={() => props.navigation.navigate('MyRecipes')}>
+                    <Text style={ styles.completeBrewText }>Complete Brew</Text>
+                </TouchableOpacity>
+            }
             <View style={ styles.bottomContainer }>
                 <View style={ styles.stepContainer }>
                     <TouchableOpacity onPress={() => {
@@ -170,32 +176,19 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         height: hp('30%')
     },
-    buttonContainer: {
-        justifyContent: "space-between",
-        alignItems: "center",
-        height: wp("30%"),
-        paddingTop: 40
+    completeBrewButton: {
+        backgroundColor: '#1f2233',
+        width: wp('80%'),
+        alignSelf: 'center',
+        padding: hp('2%'),
+        marginVertical: hp('3%'),
+        borderRadius: 2
     },
-    finalStepButton: {
-        borderWidth: 2,
-        padding: 20,
-        borderColor: "black",
-        backgroundColor: "white",
-        fontWeight: "bold",
-        fontSize: 24
-    },
-    textStyle: {
-        fontSize: 20,
-        color: "#ffffff",
-        textAlign: "center"
-    },
-    buttonStyle: {
-        justifyContent: "space-around",
-        alignItems: "center",
-        padding: 10,
-        backgroundColor: "#202646",
-        borderRadius: 5,
-        marginTop: 50
+    completeBrewText: {
+        color: 'white',
+        fontSize: 26,
+        textAlign: 'center',
+        fontWeight: 'bold'
     }
 });
 
