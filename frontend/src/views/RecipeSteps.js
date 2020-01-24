@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity} from "react-native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { useKeepAwake } from 'expo-keep-awake';
 import NavBar from "../components/Layout/NavBar/NavBar.js";
 import images from "../../assets/images";
 import Timer from "../components/timer";
+
+
 
 function RecipeSteps(props) {
   useKeepAwake();
@@ -116,10 +118,10 @@ function RecipeSteps(props) {
 }
 const styles = StyleSheet.create({
     overviewText: {
-        fontSize: 30,
+        fontSize: hp('3.5%'),
         fontWeight: 'bold',
         color: 'white',
-        margin: '2%'
+        padding: '5%'
     },
     overviewContainer: {
         flexDirection: 'row', 
@@ -132,13 +134,13 @@ const styles = StyleSheet.create({
         position: 'absolute', 
         bottom: 0, 
         justifyContent: 'space-between',
-        height: hp('20%')
+        height: hp('25%')
     },
     recipeTitle: {
-        fontSize: 30, 
+        fontSize: hp('4%'),
         alignSelf: 'center', 
         fontWeight: 'bold',
-        marginVertical: 30,
+        marginVertical: 40,
         paddingBottom: '2%',
         borderBottomWidth: 2,
         borderBottomColor: '#C4C4C4'
@@ -149,7 +151,7 @@ const styles = StyleSheet.create({
     },
     step: {
         color: 'white', 
-        fontSize:30, 
+        fontSize: hp('4%'),
         fontWeight: 'bold'
     },
     stepContainer: {
