@@ -8,7 +8,7 @@ const GreetingPage1 = props => {
       <View style={styles.header}>
         <Image
           style={styles.bpLogo}
-          source={require('../../../assets/BrewPlansLogo.png')}
+          source={require('../../../assets/new-logo.png')}
         />
         <TouchableOpacity
           onPress={() => props.navigation.navigate('Landing')}
@@ -20,7 +20,7 @@ const GreetingPage1 = props => {
 
       <Image
         style={styles.introImage}
-        source={require('../../../assets/greetingpage1image.png')}
+        source={require('../../../assets/greeting1-image.png')}
       />
 
       <TouchableOpacity

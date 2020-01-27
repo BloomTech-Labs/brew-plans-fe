@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getLocalData, storeLocalData } from '../store/actions/asyncStorage.js';
 import { setUserInState, setTokenInState } from '../store/actions/index.js';
 import * as firebase from 'firebase';
+import { Button } from 'react-native-paper';
 
 import LandingButton from '../components/Landing/LandingButton';
 import Login from '../views/Login.js'
@@ -70,6 +71,15 @@ const Landing = props => {
           title='Sign Up'
           onPress={() => props.navigation.navigate('SignUp')}
         />
+        <Button onPress={() => props.navigation.navigate('GreetingPage1')}
+      // style={{ backgroundColor: props.buttonBackground, marginTop: 14,  width: 280, padding: 7 }}
+      style={{ position: 'relative', top: -280, marginLeft: 17, padding: 7, width: 280, backgroundColor: '#1F2233' }}
+      mode='contained'
+      // onPress={props.onPress}
+      
+    >
+      <Text style={{ color: 'white', fontSize: 18 }}>Greeting 1</Text>
+    </Button>
       </View>
     </View>
     </>
