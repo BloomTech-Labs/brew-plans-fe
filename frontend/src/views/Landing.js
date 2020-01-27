@@ -70,6 +70,7 @@ const Landing = props => {
           title='Sign Up'
           onPress={() => props.navigation.navigate('SignUp')}
         />
+
       </View>
     </View>
     </>
