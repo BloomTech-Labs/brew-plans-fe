@@ -71,14 +71,14 @@ const Landing = props => {
           title='Sign Up'
           onPress={() => props.navigation.navigate('SignUp')}
         />
-        <Button onPress={() => props.navigation.navigate('GreetingPage1')}
+        <Button onPress={() => props.navigation.navigate('GreetingPage2')}
       // style={{ backgroundColor: props.buttonBackground, marginTop: 14,  width: 280, padding: 7 }}
       style={{ position: 'relative', top: -280, marginLeft: 17, padding: 7, width: 280, backgroundColor: '#1F2233' }}
       mode='contained'
       // onPress={props.onPress}
       
     >
-      <Text style={{ color: 'white', fontSize: 18 }}>Greeting 1</Text>
+      <Text style={{ color: 'white', fontSize: 18 }}>Greeting 2</Text>
     </Button>
       </View>
     </View>

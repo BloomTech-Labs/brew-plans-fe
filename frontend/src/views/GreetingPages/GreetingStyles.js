@@ -31,6 +31,15 @@ export default StyleSheet.create({
     borderRadius: 10,
     resizeMode: 'contain'
   },
+  introImage2: {
+    alignSelf: 'center',
+    marginTop: 70,
+    marginBottom: 20,
+    width: '95%',
+    height: '40%',
+    borderRadius: 10,
+    resizeMode: 'contain'
+  },
   textContainer: {
     width: '90%',
     alignSelf: 'center',
