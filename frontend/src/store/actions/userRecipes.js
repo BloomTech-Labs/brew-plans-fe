@@ -172,7 +172,7 @@ export const createUserRecipe = (newRecipe, userId) => dispatch => {
       getUserRecipes(userId);
     })
     .catch(err => {
-      console.log('error', err);
+      console.log('new recipe error', err);
       dispatch({ type: CREATE_USER_RECIPE_FAIL, payload: err });
     });
 };

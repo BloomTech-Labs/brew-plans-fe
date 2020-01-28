@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
         height: hp('22%')
     },
     recipeTitle: {
-        fontSize: hp('4%'),
+        fontSize: hp('4%'), 
         alignSelf: 'center', 
         fontWeight: 'bold',
         marginVertical: 40,
@@ -153,11 +153,11 @@ const styles = StyleSheet.create({
     },
     mainView: {
         width: wp('100%'),
-        height: hp('100%')
+        height: '100%'
     },
     step: {
         color: 'white', 
-        fontSize: hp('4%'),
+        fontSize: hp('4%'), 
         fontWeight: 'bold'
     },
     stepContainer: {
@@ -179,6 +179,7 @@ const styles = StyleSheet.create({
     completeBrewButton: {
         backgroundColor: '#1f2233',
         width: wp('80%'),
+        height: 'auto',
         alignSelf: 'center',
         padding: hp('2%'),
         marginVertical: hp('3%'),
@@ -188,7 +189,8 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 26,
         textAlign: 'center',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        padding: '2%'
     }
 });
 
