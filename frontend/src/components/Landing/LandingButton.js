@@ -19,7 +19,7 @@ const LandingButton = props => {
     // </Button> 
     <Button
       // style={{ backgroundColor: props.buttonBackground, marginTop: 14,  width: 280, padding: 7 }}
-      style={{ position: 'relative', top: -340, marginLeft: 17, padding: 7, width: 280, backgroundColor: '#1F2233' }}
+      style={{ position: 'relative', top: -280, marginLeft: 17, padding: 7, width: 280, backgroundColor: '#1F2233' }}
       mode='contained'
       onPress={props.onPress}
       

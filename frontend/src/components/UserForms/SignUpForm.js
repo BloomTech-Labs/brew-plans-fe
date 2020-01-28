@@ -28,29 +28,16 @@ const SignUpForm = props => {
     <Formik>
       {props => (
         <View style={theme.formView}>
-          {/* <View style={theme.formInputsContainer}> */}
           <View style={{width: 290}}>
-            {/* <TextInput
-              style={theme.formInput}
-              onChangeText={value => handleChange('email', value)}
-              onBlur={props.handleBlur('email')}
-              value={newUser.email}
-              placeholder='Please enter email'
-              label='Email'
-              mode='outlined'
-            /> */}
             <Text style={{color: 'black', fontWeight: 'bold',  marginBottom: -20, marginLeft: 2}}>Email</Text>
             <Akira
-              // style={theme.formInput}
               style={{ marginBottom: 15, width: 280}}
-              // label={'Email'}
               // this is used as active and passive border color
               borderColor={'lightgray'}
               inputPadding={16}
+              textAlign={'left'}
               labelHeight={24}
               labelStyle={{ color: '#870c27' }}
-              
-
               value={newUser.email}
               textContentType={'emailAddress'}
               onChangeText={value => handleChange('email', value)}
@@ -61,13 +48,12 @@ const SignUpForm = props => {
             />
             <Text style={{color: 'black', fontWeight: 'bold',  marginBottom: -20, marginLeft: 2}}>Password</Text>
             <Akira
-              // style={theme.formInput}
               style={{ marginBottom: 42, width: 280}}
-              // label={'Password'}
               ref={passwordRef}
               // this is used as active and passive border color
               borderColor={'lightgray'}
               inputPadding={16}
+              textAlign={'left'}
               labelHeight={24}
               labelStyle={{ color: '#870c27' }}
               value={newUser.password}
@@ -78,14 +64,10 @@ const SignUpForm = props => {
               onSubmitEditing={() => authSignup(newUser)}
             />
           </View>
-          
           <View style={{marginLeft: -11, marginTop: 30}}>  
         <SubmitButton onPress={() => authSignup(newUser)} title='Sign Up' />
           </View>
-
           <View style={theme.formSocialsContainer}>
-            
-            
             <View style={{marginLeft: 90}}>
               <SocialButton loginConfig={loginConfig} />
               {/* <SocialButton icon='logo-facebook' /> */}

@@ -20,6 +20,7 @@ import GreetingPage3 from './src/views/GreetingPages/GreetingPage3.js';
 import Landing from './src/views/Landing';
 import SignUp from './src/views/SignUp';
 import Login from './src/views/Login';
+import UserProfile from './src/views/UserProfile';
 import MyRecipes from './src/views/MyRecipes.js';
 import RecipeForm from './src/views/RecipeForm.js';
 import Recipe from './src/views/Recipe.js';
@@ -29,6 +30,9 @@ import StartBrew from './src/views/StartBrew';
 import RecipeSteps from './src/views/RecipeSteps';
 import Overview from './src/views/Overview';
 import * as firebase from 'firebase';
+import * as Segment from 'expo-analytics-segment';
+
+
 const handleCustomTransition = ({ scenes }) => {
   const prevScene = scenes[scenes.length - 2];
   const nextScene = scenes[scenes.length - 1];
@@ -73,6 +77,17 @@ const handleCustomTransition = ({ scenes }) => {
     return fadeIn(1000);
   }
 };
+
+initialize = () => {
+  const androidWriteKey = 'X4vHXd0k3pxiKf8vFrEnXw0JsbW87UNx'
+  const iOSWriteKey = 'x3tSgCVSVN22261z6fB0FHEuneSf06W0'
+  Segment.initialize({ androidWriteKey, iOSWriteKey });
+}
+// Segment.initialize({ androidWriteKey, iosWriteKey });
+
+// const androidWriteKey = “X4vHXd0k3pxiKf8vFrEnXw0JsbW87UNx”;
+// const iosWriteKey = “x3tSgCVSVN22261z6fB0FHEuneSf06W0”;
+
 const firebaseConfig = {
   apiKey: 'AIzaSyDZKLP2FGiOx0aMXeDjAc3MOWSQa9pvJQg',
   authDomain: 'brew-plans.firebaseapp.com',
@@ -109,6 +124,9 @@ const AppNavigator = createStackNavigator(
     },
     Login: {
       screen: Login
+    },
+    UserProfile: {
+      screen: UserProfile
     },
     
     StartBrew: {

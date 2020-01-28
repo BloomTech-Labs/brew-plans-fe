@@ -4,8 +4,11 @@ import { TouchableOpacity, Image, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import { googleSignIn } from '../../store/actions/index.js';
+import FacebookLogin from './FacebookLogin.js';
+
 
 const SocialButton = props => {
+  
   // console.log(props);
   return (
     <View>
@@ -14,10 +17,11 @@ const SocialButton = props => {
     
       {/* <Ionicons name={props.icon} size={36} color={'black'} /> */}
     </TouchableOpacity>
-    <TouchableOpacity>
+    {/* <TouchableOpacity>
     <Image style={{width: 280, height: 42, borderWidth: 2, borderColor:'#1F2233', marginLeft: -96}} source={require('../../../assets/facebook.png')}/>
     
-    </TouchableOpacity>
+    </TouchableOpacity> */}
+    <FacebookLogin />
     </View>
   );
 };

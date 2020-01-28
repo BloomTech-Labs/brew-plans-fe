@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
     pageContainer: {
@@ -17,11 +18,11 @@ export default StyleSheet.create({
     },
     recipesContainer: {
       paddingVertical: 15,
-      width:'90%',
+      width: wp('90%'),
       alignSelf: 'center'
     },
     navbarButton: {
-      width: '98%',
+      width: wp('90%'),
       alignSelf: 'center',
       backgroundColor: '#1F2233',
       borderRadius: 2,

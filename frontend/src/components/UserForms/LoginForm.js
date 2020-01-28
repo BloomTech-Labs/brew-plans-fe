@@ -10,8 +10,9 @@ import { handleSignInChange, authSignIn } from '../../store/actions/index.js';
 import * as firebase from 'firebase';
 
 const LoginForm = props => {
-  console.log('new login form:', props.onPress);
+  
   const { theme, handleSignInChange, authSignIn, signInCredentials } = props;
+  
 
   const passwordRef = useRef();
 
@@ -21,6 +22,14 @@ const LoginForm = props => {
     scopes: ['profile', 'email']
   };
 
+
+  
+  const facebookLoginConfig = async function() {
+   const { type, token } = await Expo.Facebook.loginWithR
+  }
+
+  
+  
   function userSignin(email, password) {
     firebase
       .auth()
@@ -39,16 +48,13 @@ const LoginForm = props => {
     <Formik>
       {props => (
         <View style={theme.formView}>
-          {/* <View style={theme.formInputsContainer}> */}
           <View style={{width: 290, marginTop: -47}}>
 
           <Text style={{color: 'black', fontWeight: 'bold',  marginBottom: -20, marginLeft: 2}}>Email</Text>
             <Akira
-              // style={theme.formInput}
               style={{ marginBottom: 15, width: 280}}
-              // label={'...enter email'}
-              // this is used as active and passive border color
               borderColor={'lightgray'}
+              textAlign={'left'}
               inputPadding={16}
               labelHeight={24}
               labelStyle={{ color: '#870c27' }}
@@ -60,15 +66,12 @@ const LoginForm = props => {
               onSubmitEditing={() => passwordRef.current.focus()}
             />
             <Text style={{color: 'black', fontWeight: 'bold',  marginBottom: -20, marginLeft: 2}}>Password</Text>
-            <Akira 
-        
-              // style={theme.formInput}
+            <Akira
               style={{ marginBottom: 42, width: 280}}
-              // label={'Password'}
               ref={passwordRef}
               // this is used as active and passive border color
               borderColor={'lightgray'}
-              // borderRadius={15}
+              textAlign={'left'}
               inputPadding={16}
               labelHeight={24}
               labelStyle={{ color: '#870c27' }}
@@ -80,33 +83,17 @@ const LoginForm = props => {
               onSubmitEditing={() => authSignIn(signInCredentials)}
             />
           </View>
-          
-          
-
-     <Button
+      <Button
       style={{ marginTop: -20, marginLeft: -8, marginBottom: 40,  padding: 7, width: 280, backgroundColor: '#1F2233' }}
       mode='contained'
-      // onPress={props.onPress}
       onPress={() => authSignIn(signInCredentials)}
-            title='Login'
-    >
+      title='Login'
+      >
       <Text style={{fontSize: 18, color: 'white' }} >Login</Text>
-    
-    </Button>
-
-    
-          
+      </Button>
           <View style={theme.formSocialsContainer}>
-          
-          
-
-            {/* <Text style={{ marginBottom: 8, fontSize: 16 }}>
-              Login using social network
-            </Text> */}
             <View style={theme.formIcons}>
-            
               <SocialButton loginConfig={loginConfig} />
-              {/* <SocialButton icon='logo-facebook' /> */}
             </View>
           </View>
         </View>

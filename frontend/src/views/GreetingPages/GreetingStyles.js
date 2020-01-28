@@ -12,7 +12,8 @@ export default StyleSheet.create({
     marginTop: 20
   },
   bpLogo: {
-    marginLeft: 10
+    marginLeft: 10,
+    marginTop: 20
   },
   skipButton: {
     marginRight: 30
@@ -23,7 +24,16 @@ export default StyleSheet.create({
   },
   introImage: {
     alignSelf: 'center',
-    marginTop: 40,
+    marginTop: 140,
+    marginBottom: 20,
+    width: '95%',
+    height: '40%',
+    borderRadius: 10,
+    resizeMode: 'contain'
+  },
+  introImage2: {
+    alignSelf: 'center',
+    marginTop: 70,
     marginBottom: 20,
     width: '95%',
     height: '40%',

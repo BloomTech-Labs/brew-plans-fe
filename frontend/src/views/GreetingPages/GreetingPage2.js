@@ -7,7 +7,7 @@ const GreetingPage2 = (props) => {
     <View style={styles.pageContainer}>
 
       <View style={styles.header}>
-        <Image style={styles.bpLogo} source={require('../../../assets/BrewPlansLogo.png')}/>
+        <Image style={styles.bpLogo} source={require('../../../assets/new-logo.png')}/>
         <TouchableOpacity
           onPress={() => props.navigation.navigate('Landing')}
           style={styles.skipButton}>
@@ -15,19 +15,19 @@ const GreetingPage2 = (props) => {
         </TouchableOpacity>
       </View>
 
-      <Image style={styles.introImage} source={require('../../../assets/greetingpage2image.png')}/>
+      <Image style={styles.introImage2} source={require('../../../assets/greeting2-image.png')}/>
 
       <View style={styles.textContainer}>
         <Text style={styles.introText}>
           Welcome to Brew Plans. {"\n"}
-          Where you can search through brewing recipes, and log you're own creations.
+          Where you can search through brewing recipes, and log your own creations.
         </Text>
       </View>
 
 
       <TouchableOpacity
       style={styles.button}
-      onPress={() => props.navigation.navigate('GreetingPage3')}
+      onPress={() => props.navigation.navigate('Landing')}
       >
         <Text style={styles.buttonText}>Next</Text>
       </TouchableOpacity>

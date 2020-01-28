@@ -3,8 +3,12 @@
     "name": "Brew Plans",
     "slug": "frontend",
     "privacy": "public",
-    "sdkVersion": "35.0.0",
-    "platforms": ["ios", "android", "web"],
+    "sdkVersion": "36.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/BrewPlansIcon.png",
@@ -16,13 +20,21 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "packagerOpts": {
       "config": "metro.config.js",
-      "sourceExts": ["js", "jsx", "svg", "ts", "tsx"]
+      "sourceExts": [
+        "js",
+        "jsx",
+        "svg",
+        "ts",
+        "tsx"
+      ]
     }
   }
 }
