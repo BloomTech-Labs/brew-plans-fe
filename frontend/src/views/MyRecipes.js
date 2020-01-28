@@ -145,12 +145,12 @@ const MyRecipes = props => {
               <MaterialIcons name={'add-circle'} size={36} color={'black'} />
             </TouchableOpacity>
           </View>
-
+          <View>
           <ScrollView>
             <View style={styles.recipesContainer}>
               {/* {console.log('props.userRecipes', props.userRecipes)} */}
               {userRecipesLoaded ? (
-                <View>
+                <View style={{ flex: 1 }}>
                   {props.userRecipes.map((recipe, index) => (
                     <UserRecipe
                       key={index}
@@ -174,6 +174,7 @@ const MyRecipes = props => {
               ) : null}
             </View>
           </ScrollView>
+          </View>
         </View>
       </View>
     );

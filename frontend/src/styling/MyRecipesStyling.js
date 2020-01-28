@@ -3,8 +3,8 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 
 export default StyleSheet.create({
     pageContainer: {
-
-      padding: 20
+      padding: 20,
+      flex: 1
     },
     recipesHeader: {
       flexDirection: 'row',
@@ -17,9 +17,10 @@ export default StyleSheet.create({
       fontSize: 24
     },
     recipesContainer: {
-      paddingVertical: 15,
+      // paddingVertical: 15,
       width: wp('90%'),
-      alignSelf: 'center'
+      alignSelf: 'center',
+      flex: 1
     },
     navbarButton: {
       width: wp('90%'),
