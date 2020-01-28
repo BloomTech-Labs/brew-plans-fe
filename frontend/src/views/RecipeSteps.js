@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
         height: hp('22%')
     },
     recipeTitle: {
-        fontSize: hp('4%'),
+        fontSize: hp('4%'), 
         alignSelf: 'center', 
         fontWeight: 'bold',
         marginVertical: 40,
@@ -153,11 +153,11 @@ const styles = StyleSheet.create({
     },
     mainView: {
         width: wp('100%'),
-        height: hp('100%')
+        height: '100%'
     },
     step: {
         color: 'white', 
-        fontSize: hp('4%'),
+        fontSize: hp('4%'), 
         fontWeight: 'bold'
     },
     stepContainer: {
