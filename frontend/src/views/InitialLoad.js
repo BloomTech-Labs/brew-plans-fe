@@ -12,7 +12,6 @@ const InitialLoad = (props) => {
   // Checks if the user has previously signed in
   firebase.auth().onAuthStateChanged(user => {
     if(user) {
-      console.log('USER firebase.auth()', user)
       // If they have logged in before, we get their token
       firebase.auth().currentUser.getIdToken(true)
       .then(res => {
@@ -35,7 +34,6 @@ const InitialLoad = (props) => {
       // If they never launched the app firebase wont find the user so we check for previouslyLoaded in storage and if that's not available we show them the greeting pages
       getLocalData('previouslyLoaded')
       .then(res => {
-        console.log('previouslyLoaded RES', res)
         if(res == true) {
           // If previouslyLoaded is in storage we know they launched the app before and navigate them to the landing screen
           setTimeout(() => {
