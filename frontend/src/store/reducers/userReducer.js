@@ -150,7 +150,7 @@ const userReducer = (state = initialState, action) => {
       };
 
     case USER_LOGOUT:
-      AsyncStorage.clear();
+      AsyncStorage.multiRemove(['user', 'token'])
       return {
         ...state,
         currentUser: {

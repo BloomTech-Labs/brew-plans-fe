@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Image, Platform } from 'react-native';
-import { getLocalData } from '../store/actions/asyncStorage.js';
+import { getLocalData, storeLocalData } from '../store/actions/asyncStorage.js';
+
 
 import * as firebase from 'firebase';
 import { setUserInState, setTokenInState } from '../store/actions/index.js';
@@ -22,7 +23,8 @@ const InitialLoad = (props) => {
             // if response isn't null, which it should never be, we set the token in state and set user in state so they are logged in and can view (make requests to the server) their recipes based off of localData.user.token and then navigate to the MyRecipes screen
             props.setTokenInState(res);
             props.setUserInState(response);
-            props.navigation.navigate('MyRecipes')
+            storeLocalData('previouslyLoaded', true);
+            props.navigation.navigate('MyRecipes');
           }
         })
       })
@@ -32,14 +34,13 @@ const InitialLoad = (props) => {
       // If they never launched the app firebase wont find the user so we check for previouslyLoaded in storage and if that's not available we show them the greeting pages
       getLocalData('previouslyLoaded')
       .then(res => {
-        console.log(res)
-        if(res == null) {
-          setTimeout(() => props.navigation.navigate('GreetingPage1'), 1500)
-        } else {
+        if(res == true) {
           // If previouslyLoaded is in storage we know they launched the app before and navigate them to the landing screen
           setTimeout(() => {
             props.navigation.navigate('Landing')
           })
+        } else {
+          setTimeout(() => props.navigation.navigate('GreetingPage1'), 1500)
         }
       })
     }
