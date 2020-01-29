@@ -22,6 +22,7 @@ import {
 import UserRecipe from '../components/Recipes/UserRecipe';
 import SeededRecipe from '../components/Recipes/SeededRecipe';
 import RecipeFormComponent from '../components/UserForms/RecipeFormComponent';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const MyRecipes = props => {
   const { currentUser, newRecipe, createUserRecipe, isLoading } = props;
@@ -41,7 +42,7 @@ const MyRecipes = props => {
 
   if (view == 'Default Recipes') {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{flex: 1 }}>
         <NavBar {...props} />
         <View style={styles.pageContainer}>
           <View style={styles.navbar}>
@@ -60,9 +61,10 @@ const MyRecipes = props => {
             </TouchableOpacity>
           </View>
         </View>
-        <View>
-          <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-            <View style={{ flexShrink: 1, width: '90%', alignSelf: 'center' }}>
+        <View style={{ flex: 1, marginTop: hp('-40%') }}>
+          <View style={{ width: '90%', alignSelf: 'center' }}>
+            <ScrollView>
+              <View style={{ flex: 1 }}>
               {props.seededRecipes.map(recipe => (
                 <SeededRecipe
                   key={recipe.id}
@@ -74,8 +76,9 @@ const MyRecipes = props => {
                   }}
                 />
               ))}
-            </View>
-          </ScrollView>
+              </View>
+            </ScrollView>
+          </View>
           </View>
 
 
@@ -107,7 +110,7 @@ const MyRecipes = props => {
             <Modal
               visible={addRecipeModal}
               onRequestClose={() => {
-                Alert.alert('Modal has been closed.');
+                setAddRecipeModal(!addRecipeModal)
               }}
               transparent={false}
               animationType='fade'
@@ -125,7 +128,7 @@ const MyRecipes = props => {
             <Modal
               visible={editRecipeModal}
               onRequestClose={() => {
-                Alert.alert('Modal has been closed.');
+                setEditRecipeModal(!editRecipeModal)
               }}
               transparent={false}
               animationType='fade'

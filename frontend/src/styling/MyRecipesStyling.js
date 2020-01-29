@@ -20,7 +20,7 @@ export default StyleSheet.create({
       // paddingVertical: 15,
       width: wp('90%'),
       alignSelf: 'center',
-      flexGrow: 1
+      flex: 1
     },
     navbarButton: {
       width: wp('90%'),
