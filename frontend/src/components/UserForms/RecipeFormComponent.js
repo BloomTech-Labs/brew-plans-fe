@@ -107,7 +107,7 @@ const RecipeFormComponent = props => {
                 <MaterialIcons name={'cancel'} size={36} color={'black'} />
               </TouchableOpacity>
               <Text style={styles.formHeader}>{titleText}</Text>
-              <ScrollView ref={scrollViewRef} keyboardShouldPersistTaps='always' style={styles.formInputsContainer} onContentSizeChange={() =>  {
+              <ScrollView ref={scrollViewRef} blurOnSubmit={false} style={styles.formInputsContainer} onContentSizeChange={() =>  {
                 if(localInstructions.length === 1) {
                   titleRef.current.focus();
                 } else {

@@ -29,8 +29,18 @@ const InitialLoad = (props) => {
     } else {
       // If the user clicked the log out button, they logged out from firebase and need to relogin so we navigate them to the landing screen to login again
       console.log('Trouble retrieving user from firebase')
-      setTimeout(() => {
-        props.navigation.navigate('Landing')
+      // If they never launched the app firebase wont find the user so we check for previouslyLoaded in storage and if that's not available we show them the greeting pages
+      getLocalData('previouslyLoaded')
+      .then(res => {
+        console.log(res)
+        if(res == null) {
+          setTimeout(() => props.navigation.navigate('GreetingPage1'), 1500)
+        } else {
+          // If previouslyLoaded is in storage we know they launched the app before and navigate them to the landing screen
+          setTimeout(() => {
+            props.navigation.navigate('Landing')
+          })
+        }
       })
     }
   })
