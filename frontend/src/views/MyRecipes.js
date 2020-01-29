@@ -60,8 +60,9 @@ const MyRecipes = props => {
             </TouchableOpacity>
           </View>
         </View>
-          <ScrollView>
-            <View style={styles.recipesContainer}>
+        <View>
+          <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+            <View style={{ flexShrink: 1, width: '90%', alignSelf: 'center' }}>
               {props.seededRecipes.map(recipe => (
                 <SeededRecipe
                   key={recipe.id}
@@ -75,6 +76,7 @@ const MyRecipes = props => {
               ))}
             </View>
           </ScrollView>
+          </View>
 
 
       </View>
@@ -145,8 +147,8 @@ const MyRecipes = props => {
               <MaterialIcons name={'add-circle'} size={36} color={'black'} />
             </TouchableOpacity>
           </View>
-          <View>
-          <ScrollView>
+          <View style={{ flex: 1 }}>
+          <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.recipesContainer}>
               {/* {console.log('props.userRecipes', props.userRecipes)} */}
               {userRecipesLoaded ? (

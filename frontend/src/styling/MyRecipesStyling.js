@@ -20,7 +20,7 @@ export default StyleSheet.create({
       // paddingVertical: 15,
       width: wp('90%'),
       alignSelf: 'center',
-      flex: 1
+      flexGrow: 1
     },
     navbarButton: {
       width: wp('90%'),
@@ -28,7 +28,7 @@ export default StyleSheet.create({
       backgroundColor: '#1F2233',
       borderRadius: 2,
       justifyContent: 'center',
-      marginTop: 15
+      marginTop: 15,
     },  
     navbarText: {
       padding: 15 ,

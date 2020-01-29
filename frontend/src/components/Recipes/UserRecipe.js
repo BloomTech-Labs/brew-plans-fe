@@ -10,7 +10,7 @@ const UserRecipe = props => {
   const { recipe, setEditRecipeModal, editRecipeModal } = props;
 
   return (
-    <>
+    <View style={{ flex: 1 }}>
       <TouchableOpacity onPress={props.pressed} style={styles.recipeContainer}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
         <View>
@@ -65,7 +65,7 @@ const UserRecipe = props => {
         </View>
       </View>
     </TouchableOpacity>
-  </>
+  </View>
   );
 };
 
