@@ -4,8 +4,14 @@ import { View, ScrollView, Text } from 'react-native';
 
 import OverviewBar from '../components/Layout/OverviewBar';
 import styles from '../styling/RecipeOverviewStyling';
+import { pourOver, aeroPress, mokaPot, frenchPress } from '../views/RecipeOverviewTools';
 
 const RecipeOverview = props => {
+  const [pourOverTools, setPourOverTools] = useState(pourOver);
+  const [aeroPressTools, setAeroPressTools] = useState(aeroPress);
+  const [mokaPotTools, setmokaPotTools] = useState(mokaPot);
+  const [FrenchPressTools, setFrenchPressTools] = useState(frenchPress);
+  
   const [ sortedInstructions, setSortedInstructions ] = useState([]);
   const { currentRecipe } = props;
   const { instructions } = currentRecipe;
@@ -31,6 +37,20 @@ const RecipeOverview = props => {
     };
   }, []);
 
+  const toolsMapper = function () {
+    let title = currentRecipe.title;
+    if(title.includes('Pour')) {
+    return <View>{pourOverTools}</View>
+    } else if(title.includes('Aeropress')) {
+      return <View>{aeroPressTools}</View>
+    } else if(title.includes('Moka')) {
+      return <View>{mokaPotTools}</View>
+    } else if(title.includes('French')) {
+      return <View>{FrenchPressTools}</View>
+    }
+    return toolsMapper;
+  }
+
   return (
     <View style={{ flex: 1 }}>
       <OverviewBar {...props} />
@@ -54,14 +74,8 @@ const RecipeOverview = props => {
             </View>
           </View>
           <View>
-            <View style={styles.contentBox}>
-              <Text style={styles.titleText}>You'll Need...</Text>
-              <Text style={styles.lightText}>Tool 1</Text>
-              <Text style={styles.lightText}>Tool 2</Text>
-              <Text style={styles.lightText}>Grounds</Text>
-              <Text style={styles.lightText}>Water</Text>
-              <Text style={styles.lightText}>Etc.</Text>
-            </View>
+            {toolsMapper()}
+            
             <View style={styles.contentBox}>
               {sortedInstructions.map((instruction, index) => (
                 <View key={index}>
