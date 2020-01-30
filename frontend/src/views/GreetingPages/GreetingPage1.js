@@ -1,8 +1,11 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import styles from './GreetingStyles.js';
+import { storeLocalData } from '../../store/actions/asyncStorage.js';
+
 
 const GreetingPage1 = props => {
+  storeLocalData('previouslyLoaded', true);
   return (
     <View style={styles.pageContainer}>
       <View style={styles.header}>
