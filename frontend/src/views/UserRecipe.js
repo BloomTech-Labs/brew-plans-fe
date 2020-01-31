@@ -19,10 +19,6 @@ const UserRecipe = props => {
   const [timerArray, setTimerArray] = useState([]);
 
   useEffect(() => {
-    console.log('currentRecipe', currentRecipe);
-  }, []);
-
-  useEffect(() => {
     axios.get(
       // `https://backend-development-coffee.herokuapp.com/userrecipes/${currentRecipe.id}`
 
@@ -30,7 +26,6 @@ const UserRecipe = props => {
     )
       .then(res => {
         const currentInstructions = res.data.instructions;
-        console.log('currentInstructions', currentInstructions);
         setSortedInstructions(currentInstructions);
         setInstructionsLoaded(true);
       })
@@ -39,7 +34,6 @@ const UserRecipe = props => {
       });
   }, []);
 
-  console.log('currentRecipe', currentRecipe);
   //   const { instructions } = currentRecipe;
 
   //captures strings starting with integers

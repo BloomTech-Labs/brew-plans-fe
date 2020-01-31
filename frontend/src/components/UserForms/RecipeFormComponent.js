@@ -5,9 +5,6 @@ import {
   Text,
   ScrollView,
   TouchableOpacity,
-  Animated,
-  Button,
-  KeyboardAvoidingView
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Formik } from 'formik';
@@ -19,7 +16,8 @@ import {
   createUserRecipe,
   handleRecipeUpdate,
   handleRecipeEdit,
-  setCurrentRecipe
+  setCurrentRecipe,
+  getUserRecipes
 } from '../../store/actions/index.js';
 import AddTimer from './AddTimer';
 import theme from '../../theme';
@@ -36,7 +34,8 @@ const RecipeFormComponent = props => {
     createUserRecipe,
     handleNewRecipeInput,
     handleRecipeEdit,
-    handleRecipeUpdate
+    handleRecipeUpdate,
+    getUserRecipes
   } = props;
 
   const [localInstructions, setLocalInstructions] = useState(
@@ -55,10 +54,6 @@ const RecipeFormComponent = props => {
     if (form == 'edit') {
       setLocalInstructions(recipeToEdit.instructions);
     }
-
-    console.log('4. RecipeToEdit in Formik', recipeToEdit);
-    // console.log('localInstructions', localInstructions);
-    // console.log('form', form);
   }, [isLoading]);
 
   handleInstructionChange = (index, text) => {
@@ -94,7 +89,6 @@ const RecipeFormComponent = props => {
   }
 
   if (form == 'add') {
-    console.log(localInstructions.length)
     return (
       <Formik
         initialValues={{}}
@@ -230,7 +224,7 @@ const RecipeFormComponent = props => {
                     onPress={() => {
                       newRecipe.instructions = localInstructions;
                       createUserRecipe(newRecipe, currentUser.id);
-                      console.log('newRecipe', newRecipe);
+                      getUserRecipes(currentUser.id);
                       cancel();
                     }}
                   >
@@ -259,7 +253,6 @@ const RecipeFormComponent = props => {
           // recipeToEdit.instructions.map((instruction, index) => {
           return (
             <View>
-              {console.log('Instruction in .map', instruction)}
 
               <TextInput
                 style={styles.formInput}
@@ -338,14 +331,13 @@ const RecipeFormComponent = props => {
                     mode='outlined'
                     placeholder='Coarseness'
                   />
-
-                  {console.log('instructionsMap', instructionsMap)}
                   {instructionsMap}
                 </ScrollView>
                 <OurButton
                   onPress={() => {
                     recipeToEdit.instructions = localInstructions;
                     handleRecipeUpdate(recipeToEdit, recipeToEdit.id);
+                    getUserRecipes(currentUser.id);
                     cancel();
                   }}
                   title='Submit'
@@ -373,5 +365,6 @@ export default connect(mapStateToProps, {
   handleNewRecipeInput,
   createUserRecipe,
   handleRecipeUpdate,
-  handleRecipeEdit
+  handleRecipeEdit,
+  getUserRecipes
 })(RecipeFormComponent);
