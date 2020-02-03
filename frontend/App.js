@@ -30,6 +30,8 @@ import StartBrew from './src/views/StartBrew';
 import RecipeSteps from './src/views/RecipeSteps';
 import Overview from './src/views/Overview';
 import * as firebase from 'firebase';
+// import * as firebase from 'firebase/app';
+// import 'firebase/analytics';
 import * as Segment from 'expo-analytics-segment';
 
 
@@ -99,6 +101,7 @@ const firebaseConfig = {
   measurementId: 'G-01P13B1Q2M'
 };
 firebase.initializeApp(firebaseConfig);
+// firebase.analytics();
 const AppNavigator = createStackNavigator(
   {
     InitialLoad: {

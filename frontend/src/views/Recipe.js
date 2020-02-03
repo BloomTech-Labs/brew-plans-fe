@@ -12,7 +12,6 @@ import Timer from "../components/timer";
 //Recipe
 const Recipe = props => {
   useKeepAwake();
-  console.log('Recipe Props', props)
   const [sortedInstructions, setSortedInstructions] = useState([]);
 
   const [timerArray, setTimerArray] = useState([]);
