@@ -2,6 +2,17 @@
 
 You can find the deployed project at
 
+## Labs 19
+
+|                                 [Tavis Laudahl](https://github.com/tlaudahl)                                  |                               [Jasmine Charles](https://github.com/mynameisjasmine)                                |                                   [Sydney Blom](https://github.com/sydneyblom)                                   |                               [TL - Elijah McKay](https://github.com/ElijahMcKay)                                |
+| :-----------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
+|  [<img src="https://avatars0.githubusercontent.com/u/19698780" width = "200" />](https://github.com/tlaudahl)  | [<img src="https://avatars2.githubusercontent.com/u/44042194" width = "200" />](https://github.com/mynameisjasmine) | [<img src="https://avatars3.githubusercontent.com/u/36520297" width = "200" />](https://github.com/sydneyblom)  | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/ElijahMcKay)  |
+|             [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/tlaudahl)              |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/mynameisjasmine)             |             [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/sydneyblom)             |             [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ElijahMcKay)             |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)    | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
+
+<br>
+<br>
+
 ## Contributors
 
 |                                 [Colin de Vries](https://github.com/dvcolin)                                  |                               [Justin Renninger](https://github.com/VulpineReynard)                                |                                   [Eli Citron](https://github.com/ebcitron)                                   |                               [Preston Middleton](https://github.com/Garuda27)                                |
