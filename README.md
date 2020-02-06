@@ -138,10 +138,10 @@ Please note we have a [code of conduct](./CODE_OF_CONDUCT.md). Please follow it 
 
 ## Known Bugs
 
-    1. Instructions are *null* on recipe creation so it returns a 500 error. The recipe is created and you can view it under My Recipes in the app. When you touch that recipe and click start brew, the step's arent there because of the instructions being *null* when sent to the server. [RecipeFormComponent](/frontend/src/components/UserForms/RecipeFormComponent.js)
-    2. When you add a recipe and click to add another recipe, all the inputs are still filled out with data from the last recipe that was added. The previous group set it up and the inputs aren't being handled in a normal way with local state, but being handled with redux and a custom function. Will probably have to redo that component without input being handled by redux.
-    3. Also after adding a recipe and you try to make a new one, there will be an error from **this.handleDurationChange** which will cause the app to stop working and hang. The app needs to be restarted or it will just be stuck loading. The error is from the same component as #2 which is [RecipeFormComponent](/frontend/src/components/UserForms/RecipeFormComponent.js)
-    4. When you login and then logout - the email and password fields aren't cleared. Might not be a *huge* bug but for security reasons at least the password input should clear on login. [LoginForm](/frontend/src/components/UserForms/LoginForm.js)
+1. Instructions are *null* on recipe creation so it returns a 500 error. The recipe is created and you can view it under My Recipes in the app. When you touch that recipe and click start brew, the step's arent there because of the instructions being *null* when sent to the server. [RecipeFormComponent](RecipeFormComponent.js)
+2. When you add a recipe and click to add another recipe, all the inputs are still filled out with data from the last recipe that was added. The previous group set it up and the inputs aren't being handled in a normal way with local state, but being handled with redux and a custom function. Will probably have to redo that component without input being handled by redux.
+3. Also after adding a recipe and you try to make a new one, there will be an error from **this.handleDurationChange** which will cause the app to stop working and hang. The app needs to be restarted or it will just be stuck loading. The error is from the same component as #2 which is [RecipeFormComponent](RecipeFormComponent.js)
+4. When you login and then logout - the email and password fields aren't cleared. Might not be a *huge* bug but for security reasons at least the password input should clear on login. [LoginForm](LoginForm.js)
 
 ### Feature Requests
 
