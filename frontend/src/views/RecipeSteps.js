@@ -196,7 +196,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
     return {
-        currentRecipe: state.user.currentRecipe
+        currentRecipe: state.user.currentRecipe,
+        currentUser: state.user.currentUser
     };
 };
 

@@ -35,7 +35,6 @@ export const getUserRecipes = userString => dispatch => {
     )
     .then(res => {
       dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
-      console.log('Get res.data', res.data);
     })
     .catch(err => {
       console.log('HERE IS THE CATCH !!!!!!!!!!!!!!!!!!!!!!!!!!', err);
@@ -106,7 +105,6 @@ export const setRecipeToEdit = recipe_id => dispatch => {
 
 export const handleRecipeUpdate = (updatedRecipe, recipeId) => dispatch => {
   dispatch({ type: UPDATE_USER_RECIPE_START });
-  console.log('updatedRecipe in Action', updatedRecipe);
   axios
     .put(
       //`https://brewplans-production.herokuapp.com/userrecipes/${recipeId}`,
@@ -116,7 +114,6 @@ export const handleRecipeUpdate = (updatedRecipe, recipeId) => dispatch => {
       updatedRecipe
     )
     .then(res => {
-      console.log('Updated Recipe', updatedRecipe);
       dispatch({ type: UPDATE_USER_RECIPE_SUCCESS, payload: res.data });
       axios
         // dispatch(getUserRecipes(updatedRecipe.userString));
@@ -129,7 +126,6 @@ export const handleRecipeUpdate = (updatedRecipe, recipeId) => dispatch => {
         )
         .then(res => {
           dispatch({ type: GET_USER_RECIPES_SUCCESS, payload: res.data });
-          console.log('Get res.data', res.data);
         })
         .catch(err => {
           console.log('HERE IS THE CATCH !!!!!!!!!!!!!!!!!!!!!!!!!!', err);
@@ -156,8 +152,6 @@ export const createUserRecipe = (newRecipe, userId) => dispatch => {
   dispatch({ type: CREATE_USER_RECIPE_START });
   newRecipe.userString = userId;
   // newRecipe.userString = '100GcdNaMWStDxhBPce5Pxg3lhY2';
-
-  console.log('actions new recipe: ', newRecipe);
 
   axios
     .post(

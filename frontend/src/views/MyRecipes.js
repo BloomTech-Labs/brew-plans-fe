@@ -33,7 +33,6 @@ const MyRecipes = props => {
   const [userRecipesLoaded, setUserRecipesLoaded] = useState(false);
 
   useEffect(() => {
-    console.log('currentUser', currentUser);
     setUserRecipesLoaded(false);
     props.getUserRecipes(currentUser.id);
     props.getSeededRecipes();
@@ -111,6 +110,7 @@ const MyRecipes = props => {
               visible={addRecipeModal}
               onRequestClose={() => {
                 setAddRecipeModal(!addRecipeModal)
+                props.getUserRecipes(currentUser.id);
               }}
               transparent={false}
               animationType='fade'
@@ -156,8 +156,8 @@ const MyRecipes = props => {
               {/* {console.log('props.userRecipes', props.userRecipes)} */}
               {userRecipesLoaded ? (
                 <View style={{ flex: 1 }}>
-                  {props.userRecipes.map((recipe, index) => (
-                    <UserRecipe
+                  {props.userRecipes.map((recipe, index) => {
+                    return ( <UserRecipe
                       key={index}
                       recipe={recipe}
                       editRecipeModal={editRecipeModal}
@@ -173,8 +173,8 @@ const MyRecipes = props => {
                         props.navigation.navigate('StartBrew');
                         // props.navigation.navigate('UserRecipe');
                       }}
-                    />
-                  ))}
+                    /> )
+                  })}
                 </View>
               ) : null}
             </View>
@@ -193,7 +193,8 @@ const mapStateToProps = state => {
     seededRecipes: state.seededRecipes.seededRecipes,
     newRecipe: state.userRecipes.newRecipe,
     currentUser: state.user.currentUser,
-    recipe: state.userRecipes.newRecipe
+    recipe: state.userRecipes.newRecipe,
+    currentRecipe: state.user.currentRecipe
   };
 };
 

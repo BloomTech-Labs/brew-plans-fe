@@ -4,7 +4,6 @@ import { Button, Text } from 'react-native-paper';
 
 // this is the login button
 const LandingButton = props => {
-  console.log('landing button props', props);
   return (
     //  <Button
     //   style={{ marginTop: -20, marginLeft: -8, padding: 7, width: 280, backgroundColor: '#1F2233' }}

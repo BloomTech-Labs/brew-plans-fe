@@ -30,11 +30,14 @@ You can find the deployed project at
 
 ## Project Overview
 
-[Trello Board](https://trello.com/b/85OKFr9A/labs17-brew-plans)
+[Trello Board](https://trello.com/b/jNQMsvi9/labs19-brew-plans)
 
 [Product Canvas](https://www.notion.so/Brew-Plans-84229482fc5d43db823089c26b0e1882)
 
-[UX Design files](https://xd.adobe.com/spec/336ee148-d62c-4de4-7ba4-6aa9c1b7538e-455f/)
+[UX Design Figma files](https://www.figma.com/file/WwJrZl2JKhyAxw6TBwII7C/Brew-Plans?node-id=0%3A1)
+
+[Expo Staging Environment](https://expo.io/@tlaudahl/frontend?release-channel=brew-plans)
+
 
 Brew Plans is a native mobile app for coffee connoisseurs that allow users to create, view, update, and delete recipes. In addition, Brew Plans provides recipes for new users, detailing how to create tried and trusted coffee recipes.
 
@@ -63,6 +66,7 @@ Front End Libraries:
 
 - React Native Paper
 - React Native TextInput Effects
+- @segment/analytics-react-native
 
 #### Front end deployed to `N/A`
 
