@@ -1,6 +1,6 @@
 # Brew Plans
 
-You can find the deployed project at
+You can find the deployed project at https://play.google.com/store/apps/details?id=com.brewplans.brewplansapp2
 
 ## Labs 19
 
