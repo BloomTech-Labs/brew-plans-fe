@@ -9,7 +9,7 @@
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/BrewPlansIcon.png",
     "splash": {
@@ -24,7 +24,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.lambdaschool.brewplans",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.brewplans.brewplansapp2",
+      "versionCode": 3
     },
     "packagerOpts": {
       "config": "metro.config.js",
